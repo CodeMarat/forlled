@@ -2,12 +2,12 @@
 
 namespace App\Filament\Pages;
 
+use App\Models\ContactUs as ContactUsModel;
 use Filament\Actions\Action;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Notifications\Notification;
 use Filament\Pages\Page;
-use App\Models\ContactUs as ContactUsModel;
 use Filament\Schemas\Components\Actions;
 use Filament\Schemas\Components\Component;
 use Filament\Schemas\Components\EmbeddedSchema;
@@ -18,10 +18,13 @@ use Filament\Schemas\Schema;
 class ContactUsPage extends Page
 {
     protected string $view = 'filament.pages.contact-us-page';
-    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-home';
+
+    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-envelope';
+
     protected static ?string $navigationLabel = 'Contact Us Page';
 
     public ?ContactUsModel $record = null;
+
     public ?array $data = [];
 
     public function mount(): void
@@ -42,7 +45,7 @@ class ContactUsPage extends Page
                         Textarea::make('description')
                             ->rows(3)
                             ->columnSpanFull(),
-                    ])
+                    ]),
             ])
             ->statePath('data')
             ->model($this->record);
