@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         $this->call([
+            AboutUsSeeder::class,
             TechnologyPageSeeder::class,
         ]);
     }
