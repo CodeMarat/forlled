@@ -32,6 +32,8 @@ class HomePage extends Page
 
     protected static ?string $navigationLabel = 'Home page';
 
+    protected static ?int $navigationSort = -10;
+
     protected string $view = 'filament.pages.home-page';
 
     public function mount(): void
