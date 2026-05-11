@@ -22,5 +22,9 @@ class DatabaseSeeder extends Seeder
             'password' => 'admin',
             'email_verified_at' => now(),
         ]);
+
+        $this->call([
+            TechnologyPageSeeder::class,
+        ]);
     }
 }
