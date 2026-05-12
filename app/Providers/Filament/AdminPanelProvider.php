@@ -6,7 +6,6 @@ use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
-use Filament\Pages;
 use Filament\Panel;
 use Filament\PanelProvider;
 use Filament\Support\Colors\Color;
@@ -22,6 +21,7 @@ use Illuminate\View\Middleware\ShareErrorsFromSession;
 class AdminPanelProvider extends PanelProvider
 {
     use Notifiable;
+
     public function panel(Panel $panel): Panel
     {
         return $panel
@@ -29,6 +29,7 @@ class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->path('admin')
             ->login()
+            ->favicon(asset('favicon.svg'))
             ->colors([
                 'primary' => Color::Gray,
             ])
