@@ -23,6 +23,8 @@ class ContactUsPage extends Page
 
     protected static ?string $navigationLabel = 'Contact Us Page';
 
+    protected static ?int $navigationSort = -30;
+
     public ?ContactUsModel $record = null;
 
     public ?array $data = [];

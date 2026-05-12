@@ -5,8 +5,9 @@ namespace App\Filament\Pages;
 use App\Models\HomePage as HomePageModel;
 use Filament\Actions\Action;
 use Filament\Forms\Components\FileUpload;
-use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\TextInput;
+use Filament\Notifications\Notification;
 use Filament\Pages\Page;
 use Filament\Schemas\Components\Actions;
 use Filament\Schemas\Components\Component;
@@ -17,7 +18,6 @@ use Filament\Schemas\Components\Section;
 use Filament\Schemas\Components\Tabs;
 use Filament\Schemas\Components\Tabs\Tab;
 use Filament\Schemas\Schema;
-use Filament\Notifications\Notification;
 
 class HomePage extends Page
 {
@@ -32,7 +32,7 @@ class HomePage extends Page
 
     protected static ?string $navigationLabel = 'Home page';
 
-    protected static ?int $navigationSort = -10;
+    protected static ?int $navigationSort = -100;
 
     protected string $view = 'filament.pages.home-page';
 

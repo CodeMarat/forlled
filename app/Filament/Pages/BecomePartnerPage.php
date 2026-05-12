@@ -5,8 +5,8 @@ namespace App\Filament\Pages;
 use App\Models\BecomePartnerPage as BecomePartnerPageModel;
 use Filament\Actions\Action;
 use Filament\Forms\Components\Repeater;
-use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\TextInput;
 use Filament\Notifications\Notification;
 use Filament\Pages\Page;
 use Filament\Schemas\Components\Actions;
@@ -25,7 +25,7 @@ class BecomePartnerPage extends Page
 
     protected static ?string $navigationLabel = 'Become Partner Page';
 
-    protected static ?int $navigationSort = -90;
+    protected static ?int $navigationSort = -50;
 
     public ?BecomePartnerPageModel $record = null;
 

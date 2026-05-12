@@ -30,6 +30,8 @@ class AboutUsPage extends Page
 
     protected static ?string $navigationLabel = 'About Us';
 
+    protected static ?int $navigationSort = -20;
+
     protected string $view = 'filament.pages.about-us-page';
 
     public function mount(): void

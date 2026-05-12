@@ -22,7 +22,8 @@ use Filament\Tables\Table;
 class TreatmentResource extends Resource
 {
     protected static ?string $model = Treatment::class;
-    protected static ?int $navigationSort = -7;
+
+    protected static ?int $navigationSort = 100;
 
     protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -34,7 +35,7 @@ class TreatmentResource extends Resource
                     TextInput::make('name')->required(),
                     RichEditor::make('description')->required(),
                     Checkbox::make('is_active'),
-                ])
+                ]),
             ]);
     }
 

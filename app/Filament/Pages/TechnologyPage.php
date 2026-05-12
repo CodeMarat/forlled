@@ -33,6 +33,8 @@ class TechnologyPage extends Page
 
     protected static ?string $navigationLabel = 'Technology';
 
+    protected static ?int $navigationSort = -60;
+
     protected string $view = 'filament.pages.technology-page';
 
     public function mount(): void
@@ -116,7 +118,7 @@ class TechnologyPage extends Page
                                                                     ->required(),
                                                             ])
                                                             ->addActionLabel('Add benefit')
-                                                            ->itemLabel(fn(array $state): ?string => $state['title'] ?? null)
+                                                            ->itemLabel(fn (array $state): ?string => $state['title'] ?? null)
                                                             ->reorderableWithButtons()
                                                             ->cloneable()
                                                             ->collapsible()
@@ -170,7 +172,7 @@ class TechnologyPage extends Page
                                                     ]),
                                             ])
                                             ->addActionLabel('Add card')
-                                            ->itemLabel(fn(array $state): ?string => $state['title'] ?? null)
+                                            ->itemLabel(fn (array $state): ?string => $state['title'] ?? null)
                                             ->reorderableWithButtons()
                                             ->cloneable()
                                             ->collapsible()
@@ -249,7 +251,7 @@ class TechnologyPage extends Page
                                                     ]),
                                             ])
                                             ->addActionLabel('Add case study')
-                                            ->itemLabel(fn(array $state): ?string => filled($state['duration'] ?? null) ? 'Duration: ' . $state['duration'] : null)
+                                            ->itemLabel(fn (array $state): ?string => filled($state['duration'] ?? null) ? 'Duration: '.$state['duration'] : null)
                                             ->reorderableWithButtons()
                                             ->cloneable()
                                             ->collapsible()
