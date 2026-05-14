@@ -1,0 +1,313 @@
+{
+  "info": {
+    "_postman_id": "2af17572-19ef-44bf-8fae-0f54c2c745f0",
+    "name": "Forlled Public API",
+    "description": "Postman collection for the public v1 Forlled API.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost/api/v1",
+      "type": "string"
+    },
+    {
+      "key": "blog_post_slug",
+      "value": "beauty-signals",
+      "type": "string"
+    },
+    {
+      "key": "product_slug",
+      "value": "hydra-serum",
+      "type": "string"
+    },
+    {
+      "key": "product_category_slug",
+      "value": "cleansers",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Pages",
+      "item": [
+        {
+          "name": "Home Page",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/pages/home",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "pages",
+                "home"
+              ]
+            }
+          }
+        },
+        {
+          "name": "About Us Page",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/pages/about-us",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "pages",
+                "about-us"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Technology Page",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/pages/technology",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "pages",
+                "technology"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Contact Us Page",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/pages/contact-us",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "pages",
+                "contact-us"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Become Partner Page",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/pages/become-partner",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "pages",
+                "become-partner"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Blog Page",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/pages/blog",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "pages",
+                "blog"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Blog Posts",
+      "item": [
+        {
+          "name": "List Blog Posts",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/blog-posts?page=1&per_page=12",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "blog-posts"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "per_page",
+                  "value": "12"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Show Blog Post",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/blog-posts/{{blog_post_slug}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "blog-posts",
+                "{{blog_post_slug}}"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Products",
+      "item": [
+        {
+          "name": "List Products",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/products?page=1&per_page=12",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "products"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "per_page",
+                  "value": "12"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Show Product",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/products/{{product_slug}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "products",
+                "{{product_slug}}"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Product Categories",
+      "item": [
+        {
+          "name": "List Product Categories",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/product-categories?page=1&per_page=12",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "product-categories"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "per_page",
+                  "value": "12"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Show Product Category",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/product-categories/{{product_category_slug}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "product-categories",
+                "{{product_category_slug}}"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Partner Requests",
+      "item": [
+        {
+          "name": "Create Partner Request",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"first_name\": \"Jane\",\n  \"last_name\": \"Doe\",\n  \"country\": \"Armenia\",\n  \"city\": \"Yerevan\",\n  \"company\": \"Clinic Name\",\n  \"company_type\": \"Clinic\",\n  \"position\": \"Owner\",\n  \"email\": \"jane@example.com\",\n  \"phone\": \"+37400000000\",\n  \"website\": \"https://example.com\",\n  \"message\": \"We want to become a partner.\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/partner-requests",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "partner-requests"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
