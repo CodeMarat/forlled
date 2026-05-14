@@ -1,0 +1,742 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Forlled Public API",
+    "version": "1.0.0",
+    "description": "Public REST API for CMS-driven website content and catalog data."
+  },
+  "servers": [
+    {
+      "url": "http://localhost/api/v1",
+      "description": "Local application"
+    }
+  ],
+  "paths": {
+    "/pages/home": {
+      "get": {
+        "summary": "Get home page content",
+        "responses": {
+          "200": {
+            "description": "Home page payload",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HomePage"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/pages/about-us": {
+      "get": {
+        "summary": "Get about us page content",
+        "responses": {
+          "200": {
+            "description": "About us page payload",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AboutUsPage"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/pages/technology": {
+      "get": {
+        "summary": "Get technology page content",
+        "responses": {
+          "200": {
+            "description": "Technology page payload",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TechnologyPage"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/pages/contact-us": {
+      "get": {
+        "summary": "Get contact us page content",
+        "responses": {
+          "200": {
+            "description": "Contact page payload",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContactUsPage"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/pages/become-partner": {
+      "get": {
+        "summary": "Get become partner page content",
+        "responses": {
+          "200": {
+            "description": "Become partner page payload",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BecomePartnerPage"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/pages/blog": {
+      "get": {
+        "summary": "Get blog page hero content",
+        "responses": {
+          "200": {
+            "description": "Blog page payload",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BlogPage"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/blog-posts": {
+      "get": {
+        "summary": "List published blog posts",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Page"
+          },
+          {
+            "$ref": "#/components/parameters/PerPage"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Paginated blog posts",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BlogPostPagination"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/blog-posts/{slug}": {
+      "get": {
+        "summary": "Get a published blog post by slug",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Slug"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Blog post payload",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BlogPostDetail"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Post not found"
+          }
+        }
+      }
+    },
+    "/products": {
+      "get": {
+        "summary": "List visible products",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Page"
+          },
+          {
+            "$ref": "#/components/parameters/PerPage"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Paginated products",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductPagination"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/products/{slug}": {
+      "get": {
+        "summary": "Get a visible product by slug",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Slug"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Product payload",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductDetail"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Product not found"
+          }
+        }
+      }
+    },
+    "/product-categories": {
+      "get": {
+        "summary": "List visible product categories",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Page"
+          },
+          {
+            "$ref": "#/components/parameters/PerPage"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Paginated product categories",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductCategoryPagination"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/product-categories/{slug}": {
+      "get": {
+        "summary": "Get a visible product category by slug",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Slug"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Product category payload",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductCategoryDetail"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Category not found"
+          }
+        }
+      }
+    },
+    "/partner-requests": {
+      "post": {
+        "summary": "Submit partner request",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PartnerRequestInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Partner request created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PartnerRequestCreated"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation error"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "parameters": {
+      "Page": {
+        "name": "page",
+        "in": "query",
+        "schema": {
+          "type": "integer",
+          "minimum": 1,
+          "default": 1
+        }
+      },
+      "PerPage": {
+        "name": "per_page",
+        "in": "query",
+        "schema": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100,
+          "default": 12
+        }
+      },
+      "Slug": {
+        "name": "slug",
+        "in": "path",
+        "required": true,
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    "schemas": {
+      "Image": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      },
+      "PaginationLinks": {
+        "type": "object",
+        "properties": {
+          "first": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "last": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "prev": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "next": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      },
+      "PaginationMeta": {
+        "type": "object",
+        "properties": {
+          "current_page": {
+            "type": "integer"
+          },
+          "from": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "last_page": {
+            "type": "integer"
+          },
+          "path": {
+            "type": "string"
+          },
+          "per_page": {
+            "type": "integer"
+          },
+          "to": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "total": {
+            "type": "integer"
+          }
+        }
+      },
+      "ProductCategoryCard": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "slug": {
+            "type": "string"
+          },
+          "type_label": {
+            "type": "string"
+          },
+          "hero_title": {
+            "type": "string"
+          },
+          "hero_image": {
+            "$ref": "#/components/schemas/Image"
+          },
+          "sort_order": {
+            "type": "integer"
+          }
+        }
+      },
+      "ProductCard": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "slug": {
+            "type": "string"
+          },
+          "size": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "listing_description": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "hero_image": {
+            "$ref": "#/components/schemas/Image"
+          },
+          "is_favorite": {
+            "type": "boolean"
+          },
+          "category": {
+            "$ref": "#/components/schemas/ProductCategoryCard"
+          }
+        }
+      },
+      "BlogPostCard": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "slug": {
+            "type": "string"
+          },
+          "excerpt": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "featured_image": {
+            "$ref": "#/components/schemas/Image"
+          },
+          "published_at": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          },
+          "sort_order": {
+            "type": "integer"
+          }
+        }
+      },
+      "BlogPostDetail": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BlogPostCard"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "content": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "status": {
+                "type": "string"
+              }
+            }
+          }
+        ]
+      },
+      "ProductDetail": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ProductCard"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "description": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "side_image": {
+                "$ref": "#/components/schemas/Image"
+              },
+              "key_benefits": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "benefit": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "sections": {
+                "type": "array",
+                "items": {
+                  "type": "object"
+                }
+              },
+              "recommendations_title": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "recommended_products": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ProductCard"
+                }
+              },
+              "combine_with_treatment": {
+                "type": "object"
+              },
+              "navigation_categories": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ProductCategoryCard"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "ProductCategoryDetail": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ProductCategoryCard"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "navigation_categories": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ProductCategoryCard"
+                }
+              },
+              "products": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ProductCard"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "BlogPostPagination": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BlogPostCard"
+            }
+          },
+          "links": {
+            "$ref": "#/components/schemas/PaginationLinks"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/PaginationMeta"
+          }
+        }
+      },
+      "ProductPagination": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProductCard"
+            }
+          },
+          "links": {
+            "$ref": "#/components/schemas/PaginationLinks"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/PaginationMeta"
+          }
+        }
+      },
+      "ProductCategoryPagination": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProductCategoryCard"
+            }
+          },
+          "links": {
+            "$ref": "#/components/schemas/PaginationLinks"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/PaginationMeta"
+          }
+        }
+      },
+      "HomePage": {
+        "type": "object"
+      },
+      "AboutUsPage": {
+        "type": "object"
+      },
+      "TechnologyPage": {
+        "type": "object"
+      },
+      "ContactUsPage": {
+        "type": "object"
+      },
+      "BecomePartnerPage": {
+        "type": "object"
+      },
+      "BlogPage": {
+        "type": "object"
+      },
+      "PartnerRequestInput": {
+        "type": "object",
+        "required": [
+          "first_name",
+          "last_name",
+          "email"
+        ],
+        "properties": {
+          "first_name": {
+            "type": "string"
+          },
+          "last_name": {
+            "type": "string"
+          },
+          "country": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "city": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "company": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "company_type": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "position": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "email": {
+            "type": "string",
+            "format": "email"
+          },
+          "phone": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "website": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "uri"
+          },
+          "message": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      },
+      "PartnerRequestCreated": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string"
+          },
+          "id": {
+            "type": "integer"
+          }
+        }
+      }
+    }
+  }
+}
