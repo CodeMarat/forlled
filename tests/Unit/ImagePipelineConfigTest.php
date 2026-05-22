@@ -14,11 +14,11 @@ class ImagePipelineConfigTest extends TestCase
         $livewireConfig = config('livewire');
 
         $this->assertSame(102400, $config['max_upload_kb']);
-        $this->assertSame(3840, $config['main_width']);
-        $this->assertSame(88, $config['jpeg_quality']);
-        $this->assertSame(86, $config['webp_quality']);
-        $this->assertTrue($config['store_originals']);
-        $this->assertSame('originals', $config['originals_directory']);
+        $this->assertSame(4200, $config['main_width']);
+        $this->assertSame(90, $config['jpeg_quality']);
+        $this->assertSame(88, $config['webp_quality']);
+        $this->assertArrayNotHasKey('store_originals', $config);
+        $this->assertArrayNotHasKey('originals_directory', $config);
         $this->assertArrayNotHasKey('client_resize_width', $config);
         $this->assertArrayNotHasKey('client_transform_quality', $config);
         $this->assertSame(['required', 'file', 'max:102400'], $livewireConfig['temporary_file_upload']['rules']);

@@ -34,16 +34,6 @@ class ImageUploadPipeline
 
         $directory = trim(pathinfo($file, PATHINFO_DIRNAME), './');
         $baseName = pathinfo($file, PATHINFO_FILENAME);
-        $extension = pathinfo($file, PATHINFO_EXTENSION);
-
-        if ((bool) config('image_pipeline.store_originals')) {
-            $originalPath = $this->joinPath(
-                $directory,
-                trim(config('image_pipeline.originals_directory'), '/')."/{$baseName}.{$extension}",
-            );
-
-            $component->getDisk()->delete($originalPath);
-        }
 
         $this->deleteLegacyVariants($component, $directory, $baseName);
     }
@@ -96,35 +86,14 @@ class ImageUploadPipeline
         $mimeType = strtolower((string) $file->getMimeType());
 
         $mainPath = $this->joinPath($directory, "{$baseName}.{$extension}");
-
-        if ((bool) config('image_pipeline.store_originals')) {
-            $originalPath = $this->joinPath(
-                $directory,
-                trim(config('image_pipeline.originals_directory'), '/')."/{$baseName}.{$extension}",
-            );
-
-            $this->storeOriginal($component, $file, $originalPath);
-        }
-
         $this->storeMainVariant($component, $file, $mainPath, $mimeType);
 
         return $mainPath;
     }
 
-    protected function storeOriginal(BaseFileUpload $component, TemporaryUploadedFile $file, string $path): void
-    {
-        $stream = fopen($file->getRealPath(), 'r');
-
-        $component->getDisk()->put($path, $stream, $component->getVisibility());
-
-        if (is_resource($stream)) {
-            fclose($stream);
-        }
-    }
-
     protected function storeMainVariant(BaseFileUpload $component, TemporaryUploadedFile $file, string $path, string $mimeType): void
     {
-        $image = Image::decode($file->getRealPath())
+        $image = Image::decodePath($file->getRealPath())
             ->orient()
             ->scaleDown(width: (int) config('image_pipeline.main_width'));
 
