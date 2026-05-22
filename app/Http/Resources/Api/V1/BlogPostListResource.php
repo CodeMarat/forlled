@@ -15,7 +15,7 @@ class BlogPostListResource extends ApiResource
             'title' => $this->title,
             'slug' => $this->slug,
             'excerpt' => $this->excerpt,
-            'featured_image' => $this->image($this->featured_image),
+            'featured_image' => $this->image($this->featured_image, 'card'),
             'published_at' => $this->published_at?->toIso8601String(),
             'sort_order' => $this->sort_order,
         ];

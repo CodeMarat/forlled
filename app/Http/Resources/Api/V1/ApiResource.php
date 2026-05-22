@@ -20,7 +20,7 @@ class ApiResource extends JsonResource
     /**
      * @return array{path: string, url: string}|null
      */
-    protected function image(?string $path): ?array
+    protected function image(?string $path, ?string $preferredVariant = null): ?array
     {
         if (blank($path)) {
             return null;
@@ -30,13 +30,66 @@ class ApiResource extends JsonResource
             return [
                 'path' => $path,
                 'url' => $path,
+                'original_path' => $path,
+                'original_url' => $path,
+                'variants' => [],
             ];
         }
 
-        return [
+        $original = [
             'path' => $path,
             'url' => Storage::disk('public')->url($path),
         ];
+
+        $variants = $this->imageVariants($path);
+        $selected = ($preferredVariant !== null && isset($variants[$preferredVariant]))
+            ? $variants[$preferredVariant]
+            : $original;
+
+        return [
+            'path' => $selected['path'],
+            'url' => $selected['url'],
+            'original_path' => $original['path'],
+            'original_url' => $original['url'],
+            'variants' => $variants,
+        ];
+    }
+
+    /**
+     * @return array<string, array{path: string, url: string}>
+     */
+    protected function imageVariants(string $path): array
+    {
+        $directory = trim(pathinfo($path, PATHINFO_DIRNAME), './');
+        $baseName = pathinfo($path, PATHINFO_FILENAME);
+        $extension = strtolower(pathinfo($path, PATHINFO_EXTENSION));
+        $disk = Storage::disk('public');
+        $variants = [];
+
+        /** @var array<string, array<string, mixed>> $configuredVariants */
+        $configuredVariants = config('image_pipeline.variants', []);
+
+        foreach ($configuredVariants as $variantName => $variantConfig) {
+            $variantExtension = ($variantConfig['format'] ?? 'source') === 'webp'
+                ? 'webp'
+                : $extension;
+
+            $variantPath = trim(collect([
+                $directory,
+                trim((string) config('image_pipeline.variants_directory'), '/')."/{$baseName}-{$variantName}.{$variantExtension}",
+            ])->filter()->implode('/'), '/');
+
+            if (! $disk->exists($variantPath)) {
+                continue;
+            }
+
+            $variants[$variantName] = [
+                'path' => $variantPath,
+                'url' => $disk->url($variantPath),
+            ];
+        }
+
+        return $variants;
     }
 
     /**

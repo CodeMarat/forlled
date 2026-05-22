@@ -17,6 +17,11 @@ class ImagePipelineConfigTest extends TestCase
         $this->assertSame(4200, $config['main_width']);
         $this->assertSame(90, $config['jpeg_quality']);
         $this->assertSame(88, $config['webp_quality']);
+        $this->assertSame('variants', $config['variants_directory']);
+        $this->assertSame(1200, $config['variants']['card']['width']);
+        $this->assertSame('source', $config['variants']['card']['format']);
+        $this->assertSame('webp', $config['variants']['card_webp']['format']);
+        $this->assertSame(4200, $config['variants']['detail_webp']['width']);
         $this->assertArrayNotHasKey('store_originals', $config);
         $this->assertArrayNotHasKey('originals_directory', $config);
         $this->assertArrayNotHasKey('client_resize_width', $config);
