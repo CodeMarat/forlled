@@ -36,20 +36,16 @@ class ImageUploadPipeline
         $baseName = pathinfo($file, PATHINFO_FILENAME);
         $extension = pathinfo($file, PATHINFO_EXTENSION);
 
-        $originalPath = $this->joinPath(
-            $directory,
-            trim(config('image_pipeline.originals_directory'), '/')."/{$baseName}.{$extension}",
-        );
-
-        $component->getDisk()->delete($originalPath);
-
-        $variantsDirectory = trim(config('image_pipeline.variants_directory'), '/');
-
-        foreach (array_keys(config('image_pipeline.variants', [])) as $variantName) {
-            $component->getDisk()->delete(
-                $this->joinPath($directory, "{$variantsDirectory}/{$baseName}-{$variantName}.webp"),
+        if ((bool) config('image_pipeline.store_originals')) {
+            $originalPath = $this->joinPath(
+                $directory,
+                trim(config('image_pipeline.originals_directory'), '/')."/{$baseName}.{$extension}",
             );
+
+            $component->getDisk()->delete($originalPath);
         }
+
+        $this->deleteLegacyVariants($component, $directory, $baseName);
     }
 
     protected function fileExists(TemporaryUploadedFile $file): bool
@@ -100,14 +96,17 @@ class ImageUploadPipeline
         $mimeType = strtolower((string) $file->getMimeType());
 
         $mainPath = $this->joinPath($directory, "{$baseName}.{$extension}");
-        $originalPath = $this->joinPath(
-            $directory,
-            trim(config('image_pipeline.originals_directory'), '/')."/{$baseName}.{$extension}",
-        );
 
-        $this->storeOriginal($component, $file, $originalPath);
+        if ((bool) config('image_pipeline.store_originals')) {
+            $originalPath = $this->joinPath(
+                $directory,
+                trim(config('image_pipeline.originals_directory'), '/')."/{$baseName}.{$extension}",
+            );
+
+            $this->storeOriginal($component, $file, $originalPath);
+        }
+
         $this->storeMainVariant($component, $file, $mainPath, $mimeType);
-        $this->storeResponsiveVariants($component, $file, $baseName);
 
         return $mainPath;
     }
@@ -126,30 +125,13 @@ class ImageUploadPipeline
     protected function storeMainVariant(BaseFileUpload $component, TemporaryUploadedFile $file, string $path, string $mimeType): void
     {
         $image = Image::decode($file->getRealPath())
+            ->orient()
             ->scaleDown(width: (int) config('image_pipeline.main_width'));
 
         $temporaryPath = $this->writeEncodedImageToTemporaryFile($image, $mimeType);
 
         $this->optimize($temporaryPath);
         $this->storeTemporaryFileOnDisk($component, $temporaryPath, $path);
-    }
-
-    protected function storeResponsiveVariants(BaseFileUpload $component, TemporaryUploadedFile $file, string $baseName): void
-    {
-        $directory = trim((string) $component->getDirectory(), '/');
-        $variantsDirectory = trim(config('image_pipeline.variants_directory'), '/');
-
-        foreach (config('image_pipeline.variants', []) as $variantName => $width) {
-            $variantPath = $this->joinPath($directory, "{$variantsDirectory}/{$baseName}-{$variantName}.webp");
-
-            $image = Image::decode($file->getRealPath())
-                ->scaleDown(width: (int) $width);
-
-            $temporaryPath = $this->writeEncodedImageToTemporaryFile($image, 'image/webp');
-
-            $this->optimize($temporaryPath);
-            $this->storeTemporaryFileOnDisk($component, $temporaryPath, $variantPath);
-        }
     }
 
     protected function writeEncodedImageToTemporaryFile(mixed $image, string $mimeType): string
@@ -160,10 +142,10 @@ class ImageUploadPipeline
             'image/jpeg', 'image/jpg' => $image->encodeUsingMediaType(
                 'image/jpeg',
                 progressive: true,
-                quality: (int) config('image_pipeline.quality'),
+                quality: (int) config('image_pipeline.jpeg_quality'),
             ),
             'image/png' => $image->encodeUsingMediaType('image/png'),
-            default => $image->encodeUsingMediaType('image/webp', quality: (int) config('image_pipeline.quality')),
+            default => $image->encodeUsingMediaType('image/webp', quality: (int) config('image_pipeline.webp_quality')),
         };
 
         file_put_contents($temporaryPath, (string) $encodedImage);
@@ -195,5 +177,16 @@ class ImageUploadPipeline
     protected function joinPath(string $directory, string $path): string
     {
         return trim(collect([$directory, $path])->filter()->implode('/'), '/');
+    }
+
+    protected function deleteLegacyVariants(BaseFileUpload $component, string $directory, string $baseName): void
+    {
+        $legacyVariantsDirectory = $this->joinPath($directory, 'variants');
+
+        rescue(function () use ($component, $legacyVariantsDirectory, $baseName): void {
+            collect($component->getDisk()->files($legacyVariantsDirectory))
+                ->filter(fn (string $path): bool => str_starts_with(pathinfo($path, PATHINFO_FILENAME), "{$baseName}-"))
+                ->each(fn (string $path): bool => $component->getDisk()->delete($path));
+        }, report: false);
     }
 }
