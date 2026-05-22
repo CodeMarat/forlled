@@ -41,7 +41,7 @@ class ImageUploadPipeline
         $directory = trim(pathinfo($file, PATHINFO_DIRNAME), './');
         $baseName = pathinfo($file, PATHINFO_FILENAME);
 
-        $this->deleteLegacyVariants($component, $directory, $baseName);
+        $this->deleteGeneratedVariants($component, $directory, $baseName);
     }
 
     protected function fileExists(TemporaryUploadedFile $file): bool
