@@ -25,6 +25,16 @@
       "key": "product_category_slug",
       "value": "cleansers",
       "type": "string"
+    },
+    {
+      "key": "location_page",
+      "value": "1",
+      "type": "string"
+    },
+    {
+      "key": "treatment_page",
+      "value": "1",
+      "type": "string"
     }
   ],
   "item": [
@@ -129,6 +139,40 @@
               "path": [
                 "pages",
                 "blog"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Locations Page",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/pages/locations",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "pages",
+                "locations"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Treatments Page",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/pages/treatments",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "pages",
+                "treatments"
               ]
             }
           }
@@ -273,6 +317,68 @@
               "path": [
                 "product-categories",
                 "{{product_category_slug}}"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Locations",
+      "item": [
+        {
+          "name": "List Locations",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/locations?page={{location_page}}&per_page=12",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "locations"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "{{location_page}}"
+                },
+                {
+                  "key": "per_page",
+                  "value": "12"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Treatments",
+      "item": [
+        {
+          "name": "List Treatments",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/treatments?page={{treatment_page}}&per_page=12",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "treatments"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "{{treatment_page}}"
+                },
+                {
+                  "key": "per_page",
+                  "value": "12"
+                }
               ]
             }
           }

@@ -22,6 +22,6 @@ class ApiDocumentationRoutesTest extends TestCase
         $response->assertOk();
         $response->assertHeader('content-type', 'application/json');
         $response->assertJsonPath('openapi', '3.1.0');
-        $response->assertJsonPath('servers.0.url', 'http://localhost/api/v1');
+        $response->assertJsonPath('servers.0.url', url('/api/v1'));
     }
 }

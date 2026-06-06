@@ -18,7 +18,11 @@ class ApiResource extends JsonResource
     }
 
     /**
-     * @return array{path: string, url: string}|null
+     * @return array{
+     *     path: string,
+     *     url: string,
+     *     variants: array<string, array{path: string, url: string}>
+     * }|null
      */
     protected function image(?string $path, ?string $preferredVariant = null): ?array
     {
@@ -30,13 +34,11 @@ class ApiResource extends JsonResource
             return [
                 'path' => $path,
                 'url' => $path,
-                'original_path' => $path,
-                'original_url' => $path,
                 'variants' => [],
             ];
         }
 
-        $original = [
+        $source = [
             'path' => $path,
             'url' => Storage::disk('public')->url($path),
         ];
@@ -44,13 +46,11 @@ class ApiResource extends JsonResource
         $variants = $this->imageVariants($path);
         $selected = ($preferredVariant !== null && isset($variants[$preferredVariant]))
             ? $variants[$preferredVariant]
-            : $original;
+            : $source;
 
         return [
             'path' => $selected['path'],
             'url' => $selected['url'],
-            'original_path' => $original['path'],
-            'original_url' => $original['url'],
             'variants' => $variants,
         ];
     }

@@ -20,11 +20,14 @@ use Filament\Schemas\Components\Grid;
 use Filament\Schemas\Components\RenderHook;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
+use Filament\Support\Enums\Alignment;
 use Filament\View\PanelsRenderHook;
 
 class ListBlogPosts extends ListRecords
 {
     protected static string $resource = BlogPostResource::class;
+
+    protected ?Alignment $headerActionsAlignment = Alignment::End;
 
     /**
      * @var array<string, mixed> | null
@@ -88,6 +91,12 @@ class ListBlogPosts extends ListRecords
                                             ->url()
                                             ->maxLength(255)
                                             ->helperText('Full link or relative path to open from the button.'),
+                                        Actions::make([
+                                            Action::make('saveBlogPage')
+                                                ->label('Save hero section')
+                                                ->submit('saveBlogPage'),
+                                        ])
+                                            ->alignment(Alignment::End),
                                     ]),
                             ]),
                     ]),
@@ -123,15 +132,10 @@ class ListBlogPosts extends ListRecords
 
     protected function getBlogPageFormContentComponent(): Component
     {
-        return Form::make([EmbeddedSchema::make('blogPageForm')])
+        return Form::make([
+            EmbeddedSchema::make('blogPageForm'),
+        ])
             ->id('blog-page-form')
-            ->livewireSubmitHandler('saveBlogPage')
-            ->footer([
-                Actions::make([
-                    Action::make('saveBlogPage')
-                        ->label('Save hero section')
-                        ->submit('saveBlogPage'),
-                ])->key('blog-page-form-actions'),
-            ]);
+            ->livewireSubmitHandler('saveBlogPage');
     }
 }

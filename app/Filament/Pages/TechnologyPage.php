@@ -10,7 +10,6 @@ use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Notifications\Notification;
 use Filament\Pages\Page;
-use Filament\Schemas\Components\Actions;
 use Filament\Schemas\Components\Component;
 use Filament\Schemas\Components\EmbeddedSchema;
 use Filament\Schemas\Components\Form;
@@ -19,6 +18,7 @@ use Filament\Schemas\Components\Section;
 use Filament\Schemas\Components\Tabs;
 use Filament\Schemas\Components\Tabs\Tab;
 use Filament\Schemas\Schema;
+use Filament\Support\Enums\Alignment;
 
 class TechnologyPage extends Page
 {
@@ -291,15 +291,17 @@ class TechnologyPage extends Page
 
     protected function getFormContentComponent(): Component
     {
-        return Form::make([EmbeddedSchema::make('form')])
-            ->id('form')
-            ->livewireSubmitHandler('save')
-            ->footer([
-                Actions::make([
+        return Form::make([
+            Section::make()
+                ->schema([EmbeddedSchema::make('form')])
+                ->footerActions([
                     Action::make('save')
                         ->label('Save')
                         ->submit('save'),
-                ])->key('form-actions'),
-            ]);
+                ])
+                ->footerActionsAlignment(Alignment::End),
+        ])
+            ->id('form')
+            ->livewireSubmitHandler('save');
     }
 }

@@ -114,6 +114,40 @@
         }
       }
     },
+    "/pages/locations": {
+      "get": {
+        "summary": "Get locations page content",
+        "responses": {
+          "200": {
+            "description": "Locations page payload",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocationsPage"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/pages/treatments": {
+      "get": {
+        "summary": "Get treatments page content",
+        "responses": {
+          "200": {
+            "description": "Treatments page payload",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TreatmentPage"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/blog-posts": {
       "get": {
         "summary": "List published blog posts",
@@ -160,6 +194,31 @@
           },
           "404": {
             "description": "Post not found"
+          }
+        }
+      }
+    },
+    "/locations": {
+      "get": {
+        "summary": "List visible locations",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Page"
+          },
+          {
+            "$ref": "#/components/parameters/PerPage"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Paginated locations",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocationPagination"
+                }
+              }
+            }
           }
         }
       }
@@ -264,6 +323,31 @@
         }
       }
     },
+    "/treatments": {
+      "get": {
+        "summary": "List visible treatments",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Page"
+          },
+          {
+            "$ref": "#/components/parameters/PerPage"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Paginated treatments",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TreatmentPagination"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/partner-requests": {
       "post": {
         "summary": "Submit partner request",
@@ -335,8 +419,32 @@
           "url": {
             "type": "string",
             "format": "uri"
+          },
+          "variants": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "object",
+              "properties": {
+                "path": {
+                  "type": "string"
+                },
+                "url": {
+                  "type": "string",
+                  "format": "uri"
+                }
+              },
+              "required": [
+                "path",
+                "url"
+              ]
+            }
           }
-        }
+        },
+        "required": [
+          "path",
+          "url",
+          "variants"
+        ]
       },
       "PaginationLinks": {
         "type": "object",
@@ -419,6 +527,89 @@
           },
           "sort_order": {
             "type": "integer"
+          }
+        }
+      },
+      "Location": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "slug": {
+            "type": "string"
+          },
+          "sort_order": {
+            "type": "integer"
+          },
+          "country": {
+            "type": "string"
+          },
+          "country_key": {
+            "type": "string"
+          },
+          "city": {
+            "type": "string"
+          },
+          "company": {
+            "type": "string"
+          },
+          "address": {
+            "type": "string"
+          },
+          "phones": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "email": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "email"
+          },
+          "map_pin_x": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "map_pin_y": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "is_active": {
+            "type": "boolean"
+          }
+        }
+      },
+      "Treatment": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          },
+          "slug": {
+            "type": "string"
+          },
+          "description": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "sort_order": {
+            "type": "integer"
+          },
+          "is_active": {
+            "type": "boolean"
           }
         }
       },
@@ -639,6 +830,40 @@
           }
         }
       },
+      "LocationPagination": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Location"
+            }
+          },
+          "links": {
+            "$ref": "#/components/schemas/PaginationLinks"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/PaginationMeta"
+          }
+        }
+      },
+      "TreatmentPagination": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Treatment"
+            }
+          },
+          "links": {
+            "$ref": "#/components/schemas/PaginationLinks"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/PaginationMeta"
+          }
+        }
+      },
       "HomePage": {
         "type": "object"
       },
@@ -656,6 +881,100 @@
       },
       "BlogPage": {
         "type": "object"
+      },
+      "LocationsPage": {
+        "type": "object",
+        "properties": {
+          "slug": {
+            "type": "string"
+          },
+          "meta_title": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "meta_description": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "hero": {
+            "type": "object",
+            "properties": {
+              "title": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "description": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            }
+          }
+        }
+      },
+      "TreatmentPage": {
+        "type": "object",
+        "properties": {
+          "slug": {
+            "type": "string"
+          },
+          "meta_title": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "meta_description": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "hero": {
+            "type": "object",
+            "properties": {
+              "title": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "description": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "button": {
+                "type": "object",
+                "properties": {
+                  "text": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "url": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                }
+              },
+              "image": {
+                "$ref": "#/components/schemas/Image"
+              }
+            }
+          }
+        }
       },
       "PartnerRequestInput": {
         "type": "object",

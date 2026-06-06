@@ -3,8 +3,10 @@
 namespace Tests\Unit\Unit;
 
 use App\Http\Controllers\Api\V1\BlogPostController;
+use App\Http\Controllers\Api\V1\LocationController;
 use App\Http\Controllers\Api\V1\ProductCategoryController;
 use App\Http\Controllers\Api\V1\ProductController;
+use App\Http\Controllers\Api\V1\TreatmentController;
 use App\Http\Requests\Api\PaginatedIndexRequest;
 use PHPUnit\Framework\Attributes\DataProvider;
 use ReflectionMethod;
@@ -41,8 +43,10 @@ class ApiPaginationAndDocumentationTest extends TestCase
     {
         return [
             [BlogPostController::class],
+            [LocationController::class],
             [ProductController::class],
             [ProductCategoryController::class],
+            [TreatmentController::class],
         ];
     }
 
@@ -52,13 +56,20 @@ class ApiPaginationAndDocumentationTest extends TestCase
 
         $this->assertSame('3.1.0', $spec['openapi']);
         $this->assertArrayHasKey('/blog-posts', $spec['paths']);
+        $this->assertArrayHasKey('/locations', $spec['paths']);
         $this->assertArrayHasKey('/products', $spec['paths']);
         $this->assertArrayHasKey('/product-categories', $spec['paths']);
+        $this->assertArrayHasKey('/treatments', $spec['paths']);
+        $this->assertArrayHasKey('/pages/locations', $spec['paths']);
+        $this->assertArrayHasKey('/pages/treatments', $spec['paths']);
 
         $this->assertCount(2, $spec['paths']['/blog-posts']['get']['parameters']);
+        $this->assertCount(2, $spec['paths']['/locations']['get']['parameters']);
         $this->assertSame('per_page', $spec['components']['parameters']['PerPage']['name']);
         $this->assertSame(12, $spec['components']['parameters']['PerPage']['schema']['default']);
         $this->assertSame(100, $spec['components']['parameters']['PerPage']['schema']['maximum']);
+        $this->assertArrayHasKey('variants', $spec['components']['schemas']['Image']['properties']);
+        $this->assertContains('variants', $spec['components']['schemas']['Image']['required']);
     }
 
     public function test_postman_collection_contains_expected_requests_and_variables(): void
@@ -77,10 +88,22 @@ class ApiPaginationAndDocumentationTest extends TestCase
         $this->assertSame('base_url', $collection['variable'][0]['key']);
         $this->assertSame('http://localhost/api/v1', $collection['variable'][0]['value']);
         $this->assertSame('Pages', $collection['item'][0]['name']);
-        $this->assertSame('Create Partner Request', $collection['item'][4]['item'][0]['name']);
+        $this->assertSame('Locations', $collection['item'][4]['name']);
+        $this->assertSame('Treatments', $collection['item'][5]['name']);
+        $this->assertSame('Create Partner Request', $collection['item'][6]['item'][0]['name']);
         $this->assertSame(
             '{{base_url}}/partner-requests',
-            $collection['item'][4]['item'][0]['request']['url']['raw'],
+            $collection['item'][6]['item'][0]['request']['url']['raw'],
         );
+    }
+
+    public function test_markdown_api_documentation_matches_current_image_contract(): void
+    {
+        $documentation = file_get_contents(base_path('docs/api.md'));
+
+        $this->assertIsString($documentation);
+        $this->assertStringContainsString('"variants"', $documentation);
+        $this->assertStringNotContainsString('original_path', $documentation);
+        $this->assertStringNotContainsString('original_url', $documentation);
     }
 }
