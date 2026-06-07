@@ -31,7 +31,7 @@ class BlogPostResource extends Resource
 
     protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-document-text';
 
-    protected static ?string $navigationLabel = 'Blog posts';
+    protected static ?string $navigationLabel = 'Blog Posts';
 
     public static function form(Schema $schema): Schema
     {

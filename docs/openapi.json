@@ -394,6 +394,36 @@
           }
         }
       }
+    },
+    "/contact-us-requests": {
+      "post": {
+        "summary": "Submit contact us request",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ContactUsRequestInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Contact us request created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContactUsRequestCreated"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation error"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -891,7 +921,90 @@
         "type": "object"
       },
       "ContactUsPage": {
-        "type": "object"
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "description": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "form": {
+            "type": "object",
+            "properties": {
+              "submit_button_text": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "success_message": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "fields": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "email": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "country": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "city": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "message": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                }
+              },
+              "options": {
+                "type": "object",
+                "properties": {
+                  "country": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "city": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
       },
       "BecomePartnerPage": {
         "type": "object"
@@ -1092,6 +1205,45 @@
         }
       },
       "PartnerRequestCreated": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string"
+          },
+          "id": {
+            "type": "integer"
+          }
+        }
+      },
+      "ContactUsRequestInput": {
+        "type": "object",
+        "required": [
+          "name",
+          "email",
+          "country",
+          "city",
+          "message"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string",
+            "format": "email"
+          },
+          "country": {
+            "type": "string"
+          },
+          "city": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      },
+      "ContactUsRequestCreated": {
         "type": "object",
         "properties": {
           "message": {

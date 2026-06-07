@@ -4,6 +4,7 @@ namespace App\Filament\Pages;
 
 use App\Models\ContactUs as ContactUsModel;
 use Filament\Actions\Action;
+use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Notifications\Notification;
@@ -31,7 +32,21 @@ class ContactUsPage extends Page
 
     public function mount(): void
     {
-        $this->record = ContactUsModel::query()->firstOrCreate([]);
+        $this->record = ContactUsModel::query()->firstOrCreate([], [
+            'name_label' => 'Name',
+            'email_label' => 'Email',
+            'country_label' => 'Country',
+            'city_label' => 'City',
+            'message_label' => 'Message',
+            'submit_button_text' => 'SEND',
+            'success_message' => 'Your message has been successfully sent. Our team will contact you shortly.',
+            'country_options' => [
+                ['value' => 'United States'],
+            ],
+            'city_options' => [
+                ['value' => 'Los Angeles'],
+            ],
+        ]);
         $this->form->fill($this->record->toArray());
     }
 
@@ -39,13 +54,61 @@ class ContactUsPage extends Page
     {
         return $schema
             ->components([
-                Section::make()
+                Section::make('Page content')
                     ->schema([
                         TextInput::make('title')
                             ->maxLength(255)
                             ->columnSpanFull(),
                         Textarea::make('description')
                             ->rows(3)
+                            ->columnSpanFull(),
+                    ]),
+                Section::make('Form labels and messages')
+                    ->schema([
+                        TextInput::make('name_label')
+                            ->required()
+                            ->maxLength(255),
+                        TextInput::make('email_label')
+                            ->required()
+                            ->maxLength(255),
+                        TextInput::make('country_label')
+                            ->required()
+                            ->maxLength(255),
+                        TextInput::make('city_label')
+                            ->required()
+                            ->maxLength(255),
+                        TextInput::make('message_label')
+                            ->required()
+                            ->maxLength(255),
+                        TextInput::make('submit_button_text')
+                            ->required()
+                            ->maxLength(255),
+                        Textarea::make('success_message')
+                            ->rows(3)
+                            ->columnSpanFull(),
+                    ])
+                    ->columns(2),
+                Section::make('Select options')
+                    ->schema([
+                        Repeater::make('country_options')
+                            ->label('Country options')
+                            ->schema([
+                                TextInput::make('value')
+                                    ->required()
+                                    ->maxLength(255),
+                            ])
+                            ->defaultItems(0)
+                            ->addActionLabel('Add country option')
+                            ->columnSpanFull(),
+                        Repeater::make('city_options')
+                            ->label('City options')
+                            ->schema([
+                                TextInput::make('value')
+                                    ->required()
+                                    ->maxLength(255),
+                            ])
+                            ->defaultItems(0)
+                            ->addActionLabel('Add city option')
                             ->columnSpanFull(),
                     ]),
             ])

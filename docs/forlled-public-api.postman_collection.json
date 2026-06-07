@@ -431,6 +431,36 @@
           }
         }
       ]
+    },
+    {
+      "name": "Contact Us Requests",
+      "item": [
+        {
+          "name": "Create Contact Us Request",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Jane Doe\",\n  \"email\": \"jane@example.com\",\n  \"country\": \"United States\",\n  \"city\": \"Los Angeles\",\n  \"message\": \"Please contact me back.\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/contact-us-requests",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "contact-us-requests"
+              ]
+            }
+          }
+        }
+      ]
     }
   ]
 }

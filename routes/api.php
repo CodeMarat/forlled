@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\V1\BlogPostController;
+use App\Http\Controllers\Api\V1\ContactUsRequestController;
 use App\Http\Controllers\Api\V1\LocationController;
 use App\Http\Controllers\Api\V1\Page\AboutUsPageController;
 use App\Http\Controllers\Api\V1\Page\BecomePartnerPageController;
@@ -38,6 +39,7 @@ Route::prefix('v1')
             ->parameters(['blog-posts' => 'slug'])
             ->only(['index', 'show']);
         Route::apiResource('locations', LocationController::class)->only(['index']);
+        Route::post('contact-us-requests', ContactUsRequestController::class)->name('contact-us-requests.store');
         Route::apiResource('products', ProductController::class)
             ->parameters(['products' => 'slug'])
             ->only(['index', 'show']);

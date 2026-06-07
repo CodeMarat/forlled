@@ -29,7 +29,7 @@ class ProductCategoryResource extends Resource
 
     protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-squares-2x2';
 
-    protected static ?string $navigationLabel = 'Product categories';
+    protected static ?string $navigationLabel = 'Product Categories';
 
     public static function shouldRegisterNavigation(): bool
     {

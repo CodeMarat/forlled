@@ -60,6 +60,7 @@ class ApiPaginationAndDocumentationTest extends TestCase
         $this->assertArrayHasKey('/products', $spec['paths']);
         $this->assertArrayHasKey('/product-categories', $spec['paths']);
         $this->assertArrayHasKey('/treatments', $spec['paths']);
+        $this->assertArrayHasKey('/contact-us-requests', $spec['paths']);
         $this->assertArrayHasKey('/pages/locations', $spec['paths']);
         $this->assertArrayHasKey('/pages/social-media', $spec['paths']);
         $this->assertArrayHasKey('/pages/treatments', $spec['paths']);
@@ -95,6 +96,11 @@ class ApiPaginationAndDocumentationTest extends TestCase
         $this->assertSame(
             '{{base_url}}/partner-requests',
             $collection['item'][6]['item'][0]['request']['url']['raw'],
+        );
+        $this->assertSame('Create Contact Us Request', $collection['item'][7]['item'][0]['name']);
+        $this->assertSame(
+            '{{base_url}}/contact-us-requests',
+            $collection['item'][7]['item'][0]['request']['url']['raw'],
         );
         $this->assertContains(
             'Social Media Page',

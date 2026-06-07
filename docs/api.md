@@ -124,6 +124,33 @@ Success response:
 
 Validation errors follow Laravel's standard `422` JSON format with `message` and `errors`.
 
+### Contact Us Requests
+
+- `POST /contact-us-requests`
+  - Creates a contact us request entry.
+  - Returns `201 Created`.
+
+Request body:
+
+```json
+{
+  "name": "Jane Doe",
+  "email": "jane@example.com",
+  "country": "United States",
+  "city": "Los Angeles",
+  "message": "Please contact me back."
+}
+```
+
+Success response:
+
+```json
+{
+  "message": "Contact request submitted successfully.",
+  "id": 1
+}
+```
+
 ## Notes For Frontend
 
 - Detail endpoints are slug-based, not numeric-id-based.

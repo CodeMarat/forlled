@@ -27,6 +27,7 @@ class ApiRouteRegistrationTest extends TestCase
             url('/api/v1/blog-posts/example-post'),
             route('api.v1.blog-posts.show', ['slug' => 'example-post']),
         );
+        $this->assertSame(url('/api/v1/contact-us-requests'), route('api.v1.contact-us-requests.store'));
         $this->assertSame(
             url('/api/v1/products/example-product'),
             route('api.v1.products.show', ['slug' => 'example-product']),

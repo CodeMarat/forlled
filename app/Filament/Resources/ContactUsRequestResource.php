@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\PartnerRequestResource\Pages\EditPartnerRequest;
-use App\Filament\Resources\PartnerRequestResource\Pages\ListPartnerRequests;
-use App\Models\PartnerRequest;
+use App\Filament\Resources\ContactUsRequestResource\Pages\EditContactUsRequest;
+use App\Filament\Resources\ContactUsRequestResource\Pages\ListContactUsRequests;
+use App\Models\ContactUsRequest;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
@@ -19,15 +19,15 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 
-class PartnerRequestResource extends Resource
+class ContactUsRequestResource extends Resource
 {
-    protected static ?string $model = PartnerRequest::class;
+    protected static ?string $model = ContactUsRequest::class;
 
-    protected static ?int $navigationSort = -40;
+    protected static ?int $navigationSort = -25;
 
-    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-inbox-stack';
+    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-chat-bubble-left-right';
 
-    protected static ?string $navigationLabel = 'Partner Requests';
+    protected static ?string $navigationLabel = 'Contact Us Requests';
 
     public static function form(Schema $schema): Schema
     {
@@ -37,19 +37,20 @@ class PartnerRequestResource extends Resource
                     ->schema([
                         Grid::make(2)
                             ->schema([
-                                TextInput::make('first_name')->required()->maxLength(255),
-                                TextInput::make('last_name')->required()->maxLength(255),
-                                TextInput::make('country')->maxLength(255),
-                                TextInput::make('city')->maxLength(255),
-                                TextInput::make('company')->maxLength(255),
-                                TextInput::make('company_type')->maxLength(255),
-                                TextInput::make('position')->maxLength(255),
-                                TextInput::make('email')->required()->email()->maxLength(255),
-                                TextInput::make('phone')->maxLength(255),
-                                TextInput::make('website')->url()->maxLength(255),
+                                TextInput::make('name')
+                                    ->required()
+                                    ->maxLength(255),
+                                TextInput::make('email')
+                                    ->required()
+                                    ->email()
+                                    ->maxLength(255),
+                                TextInput::make('country')
+                                    ->maxLength(255),
+                                TextInput::make('city')
+                                    ->maxLength(255),
                             ]),
                         Textarea::make('message')
-                            ->rows(4)
+                            ->rows(5)
                             ->columnSpanFull(),
                     ]),
                 Section::make('Processing')
@@ -58,8 +59,8 @@ class PartnerRequestResource extends Resource
                             ->options([
                                 'new' => 'New',
                                 'in_progress' => 'In progress',
-                                'approved' => 'Approved',
-                                'rejected' => 'Rejected',
+                                'resolved' => 'Resolved',
+                                'spam' => 'Spam',
                             ])
                             ->required(),
                         Textarea::make('admin_note')
@@ -74,30 +75,23 @@ class PartnerRequestResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('first_name')
-                    ->searchable()
-                    ->sortable(),
-                TextColumn::make('last_name')
+                TextColumn::make('name')
                     ->searchable()
                     ->sortable(),
                 TextColumn::make('email')
                     ->searchable(),
-                TextColumn::make('company')
-                    ->searchable()
-                    ->toggleable(),
-                TextColumn::make('company_type')
-                    ->toggleable(),
                 TextColumn::make('country')
                     ->toggleable(),
                 TextColumn::make('city')
+                    ->searchable()
                     ->toggleable(),
                 TextColumn::make('status')
                     ->badge()
                     ->colors([
                         'gray' => 'new',
                         'warning' => 'in_progress',
-                        'success' => 'approved',
-                        'danger' => 'rejected',
+                        'success' => 'resolved',
+                        'danger' => 'spam',
                     ])
                     ->sortable(),
                 TextColumn::make('created_at')
@@ -109,8 +103,8 @@ class PartnerRequestResource extends Resource
                     ->options([
                         'new' => 'New',
                         'in_progress' => 'In progress',
-                        'approved' => 'Approved',
-                        'rejected' => 'Rejected',
+                        'resolved' => 'Resolved',
+                        'spam' => 'Spam',
                     ]),
             ])
             ->actions([
@@ -126,16 +120,14 @@ class PartnerRequestResource extends Resource
 
     public static function getRelations(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public static function getPages(): array
     {
         return [
-            'index' => ListPartnerRequests::route('/'),
-            'edit' => EditPartnerRequest::route('/{record}/edit'),
+            'index' => ListContactUsRequests::route('/'),
+            'edit' => EditContactUsRequest::route('/{record}/edit'),
         ];
     }
 }

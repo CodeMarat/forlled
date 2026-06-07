@@ -4,10 +4,12 @@ namespace Tests\Unit\Unit;
 
 use App\Http\Resources\Api\V1\Page\AboutUsPageResource;
 use App\Http\Resources\Api\V1\Page\BecomePartnerPageResource;
+use App\Http\Resources\Api\V1\Page\ContactUsPageResource;
 use App\Http\Resources\Api\V1\Page\HomePageResource;
 use App\Http\Resources\Api\V1\Page\TechnologyPageResource;
 use App\Models\AboutUs;
 use App\Models\BecomePartnerPage;
+use App\Models\ContactUs;
 use App\Models\HomePage;
 use App\Models\TechnologyPage;
 use Illuminate\Http\Request;
@@ -102,6 +104,31 @@ class ApiPageResourceTest extends TestCase
         $this->assertSame('Company type', $payload['form']['fields']['company_type']);
         $this->assertSame(['Clinic'], $payload['form']['options']['company_type']);
         $this->assertSame(['Armenia', 'UAE'], $payload['form']['options']['country']);
+    }
+
+    public function test_contact_us_resource_maps_form_labels_and_options(): void
+    {
+        $page = new ContactUs([
+            'title' => 'Contact us',
+            'description' => 'We will answer as soon as possible.',
+            'name_label' => 'Name',
+            'email_label' => 'Email',
+            'country_label' => 'Country',
+            'city_label' => 'City',
+            'message_label' => 'Message',
+            'submit_button_text' => 'SEND',
+            'success_message' => 'Your message has been successfully sent.',
+            'country_options' => [['value' => 'United States']],
+            'city_options' => [['value' => 'Los Angeles']],
+        ]);
+
+        $payload = ContactUsPageResource::make($page)->resolve(Request::create('/'));
+
+        $this->assertSame('Contact us', $payload['title']);
+        $this->assertSame('SEND', $payload['form']['submit_button_text']);
+        $this->assertSame('Name', $payload['form']['fields']['name']);
+        $this->assertSame(['United States'], $payload['form']['options']['country']);
+        $this->assertSame(['Los Angeles'], $payload['form']['options']['city']);
     }
 
     public function test_technology_resource_maps_dynamic_collections(): void
