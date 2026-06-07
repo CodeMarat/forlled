@@ -131,6 +131,23 @@
         }
       }
     },
+    "/pages/social-media": {
+      "get": {
+        "summary": "Get social media links",
+        "responses": {
+          "200": {
+            "description": "Social media payload",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SocialMediaPage"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/pages/treatments": {
       "get": {
         "summary": "Get treatments page content",
@@ -916,6 +933,35 @@
                 ]
               }
             }
+          }
+        }
+      },
+      "SocialMediaPage": {
+        "type": "object",
+        "properties": {
+          "instagram_url": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "facebook_url": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "youtube_url": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "linkedin_url": {
+            "type": [
+              "string",
+              "null"
+            ]
           }
         }
       },

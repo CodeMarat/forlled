@@ -161,6 +161,23 @@
           }
         },
         {
+          "name": "Social Media Page",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/pages/social-media",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "pages",
+                "social-media"
+              ]
+            }
+          }
+        },
+        {
           "name": "Treatments Page",
           "request": {
             "method": "GET",

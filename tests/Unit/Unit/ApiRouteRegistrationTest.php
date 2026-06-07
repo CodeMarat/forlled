@@ -15,6 +15,7 @@ class ApiRouteRegistrationTest extends TestCase
         $this->assertSame(url('/api/v1/pages/become-partner'), route('api.v1.pages.become-partner'));
         $this->assertSame(url('/api/v1/pages/blog'), route('api.v1.pages.blog'));
         $this->assertSame(url('/api/v1/pages/locations'), route('api.v1.pages.locations'));
+        $this->assertSame(url('/api/v1/pages/social-media'), route('api.v1.pages.social-media'));
         $this->assertSame(url('/api/v1/pages/treatments'), route('api.v1.pages.treatments'));
     }
 

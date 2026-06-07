@@ -8,6 +8,7 @@ use App\Http\Controllers\Api\V1\Page\BlogPageController;
 use App\Http\Controllers\Api\V1\Page\ContactUsPageController;
 use App\Http\Controllers\Api\V1\Page\HomePageController;
 use App\Http\Controllers\Api\V1\Page\LocationsPageController;
+use App\Http\Controllers\Api\V1\Page\SocialMediaPageController;
 use App\Http\Controllers\Api\V1\Page\TechnologyPageController;
 use App\Http\Controllers\Api\V1\Page\TreatmentPageController;
 use App\Http\Controllers\Api\V1\PartnerRequestController;
@@ -29,6 +30,7 @@ Route::prefix('v1')
                 Route::get('become-partner', BecomePartnerPageController::class)->name('become-partner');
                 Route::get('blog', BlogPageController::class)->name('blog');
                 Route::get('locations', LocationsPageController::class)->name('locations');
+                Route::get('social-media', SocialMediaPageController::class)->name('social-media');
                 Route::get('treatments', TreatmentPageController::class)->name('treatments');
             });
 

@@ -42,6 +42,7 @@ Postman collection: [docs/forlled-public-api.postman_collection.json](/home/mara
 - `GET /pages/become-partner`
 - `GET /pages/blog`
 - `GET /pages/locations`
+- `GET /pages/social-media`
 - `GET /pages/treatments`
 
 These endpoints return a single structured payload per page, grouped by sections like `hero`, `story`, `science`, `form`, and similar.
