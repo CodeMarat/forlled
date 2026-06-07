@@ -44,8 +44,10 @@ class ApiPageResourceTest extends TestCase
         $payload = HomePageResource::make($homePage)->resolve(Request::create('/'));
 
         $this->assertSame('Glow', $payload['hero']['title']);
-        $this->assertSame('http://localhost/storage/home/hero/image.jpg', $payload['hero']['image']['url']);
+        $this->assertSame(url('/storage/home/hero/image.jpg'), $payload['hero']['image']['url']);
         $this->assertSame('Read more', $payload['science']['button']['text']);
+        $this->assertCount(2, $payload['science']['gallery']);
+        $this->assertSame(url('/storage/home/gallery/one.jpg'), $payload['science']['gallery'][0]['url']);
         $this->assertCount(2, $payload['gallery']);
     }
 
@@ -68,7 +70,7 @@ class ApiPageResourceTest extends TestCase
         $payload = AboutUsPageResource::make($aboutUs)->resolve(Request::create('/'));
 
         $this->assertSame('OUR MISSION', $payload['hero']['eyebrow']);
-        $this->assertSame('http://localhost/storage/about/story.jpg', $payload['story']['image']['url']);
+        $this->assertSame(url('/storage/about/story.jpg'), $payload['story']['image']['url']);
         $this->assertSame('Bottom right', $payload['bottom']['secondary_text']);
     }
 
@@ -89,9 +91,9 @@ class ApiPageResourceTest extends TestCase
             'phone_label' => 'Phone',
             'website_label' => 'Website',
             'message_label' => 'Message',
-            'country_options' => ['Armenia', 'UAE'],
-            'city_options' => ['Yerevan'],
-            'company_type_options' => ['Clinic'],
+            'country_options' => [['value' => 'Armenia'], ['value' => 'UAE']],
+            'city_options' => [['value' => 'Yerevan']],
+            'company_type_options' => [['value' => 'Clinic']],
         ]);
 
         $payload = BecomePartnerPageResource::make($page)->resolve(Request::create('/'));
@@ -99,6 +101,7 @@ class ApiPageResourceTest extends TestCase
         $this->assertSame('Send', $payload['form']['submit_button_text']);
         $this->assertSame('Company type', $payload['form']['fields']['company_type']);
         $this->assertSame(['Clinic'], $payload['form']['options']['company_type']);
+        $this->assertSame(['Armenia', 'UAE'], $payload['form']['options']['country']);
     }
 
     public function test_technology_resource_maps_dynamic_collections(): void
@@ -114,11 +117,11 @@ class ApiPageResourceTest extends TestCase
             'method_description' => 'Method description',
             'method_image' => 'technology/method.jpg',
             'method_benefits' => [
-                ['benefit' => 'Low molecular weight'],
+                ['title' => 'Low molecular weight', 'description' => 'Improves delivery'],
             ],
             'ingredients_section_title' => 'Ingredients',
             'ingredient_cards' => [
-                ['title' => 'Peptide', 'description' => 'Card text'],
+                ['title' => 'Peptide', 'badge' => 'Pt', 'description' => 'Card text', 'icon' => 'technology/icon.jpg'],
             ],
             'evidence_title' => 'Evidence',
             'evidence_text' => 'Evidence text',
@@ -138,8 +141,11 @@ class ApiPageResourceTest extends TestCase
 
         $payload = TechnologyPageResource::make($page)->resolve(Request::create('/'));
 
-        $this->assertSame('Low molecular weight', $payload['method']['benefits'][0]['benefit']);
+        $this->assertSame('Low molecular weight', $payload['method']['benefits'][0]['title']);
+        $this->assertSame('Improves delivery', $payload['method']['benefits'][0]['description']);
         $this->assertSame('Peptide', $payload['ingredients']['cards'][0]['title']);
-        $this->assertSame('http://localhost/storage/technology/after.jpg', $payload['case_studies']['items'][0]['after_image']['url']);
+        $this->assertSame('Pt', $payload['ingredients']['cards'][0]['badge']);
+        $this->assertSame(url('/storage/technology/icon.jpg'), $payload['ingredients']['cards'][0]['icon']['url']);
+        $this->assertSame(url('/storage/technology/after.jpg'), $payload['case_studies']['items'][0]['after_image']['url']);
     }
 }

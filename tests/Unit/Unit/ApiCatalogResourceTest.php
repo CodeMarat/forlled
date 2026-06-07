@@ -33,7 +33,7 @@ class ApiCatalogResourceTest extends TestCase
 
         $this->assertArrayNotHasKey('content', $listPayload);
         $this->assertSame('<p>Full content</p>', $detailPayload['content']);
-        $this->assertSame('http://localhost/storage/blog/posts/cover.jpg', $detailPayload['featured_image']['url']);
+        $this->assertSame(url('/storage/blog/posts/cover.jpg'), $detailPayload['featured_image']['url']);
     }
 
     public function test_product_category_resource_includes_navigation_and_products(): void
@@ -120,6 +120,6 @@ class ApiCatalogResourceTest extends TestCase
         $this->assertSame('Hydrates', $payload['key_benefits'][0]['benefit']);
         $this->assertSame('How to use', $payload['sections'][0]['title']);
         $this->assertSame('recovery-serum', $payload['recommended_products'][0]['slug']);
-        $this->assertSame('http://localhost/storage/products/items/hydra-side.jpg', $payload['side_image']['url']);
+        $this->assertSame(url('/storage/products/items/hydra-side.jpg'), $payload['side_image']['url']);
     }
 }

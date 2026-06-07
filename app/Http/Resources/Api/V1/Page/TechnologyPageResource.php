@@ -27,11 +27,29 @@ class TechnologyPageResource extends ApiResource
                 'title' => $this->method_title,
                 'description' => $this->method_description,
                 'image' => $this->image($this->method_image),
-                'benefits' => $this->values($this->method_benefits, 'benefit'),
+                'benefits' => array_values(array_filter(array_map(
+                    fn (mixed $item): ?array => is_array($item)
+                        ? [
+                            'title' => $item['title'] ?? null,
+                            'description' => $item['description'] ?? null,
+                        ]
+                        : null,
+                    is_array($this->method_benefits) ? $this->method_benefits : [],
+                ))),
             ],
             'ingredients' => [
                 'section_title' => $this->ingredients_section_title,
-                'cards' => $this->values($this->ingredient_cards),
+                'cards' => array_values(array_filter(array_map(
+                    fn (mixed $item): ?array => is_array($item)
+                        ? [
+                            'title' => $item['title'] ?? null,
+                            'badge' => $item['badge'] ?? null,
+                            'description' => $item['description'] ?? null,
+                            'icon' => $this->image($item['icon'] ?? null),
+                        ]
+                        : null,
+                    is_array($this->ingredient_cards) ? $this->ingredient_cards : [],
+                ))),
             ],
             'evidence' => [
                 'title' => $this->evidence_title,
@@ -43,7 +61,7 @@ class TechnologyPageResource extends ApiResource
                 'before_label' => $this->before_label,
                 'after_label' => $this->after_label,
                 'items' => array_values(array_map(
-                    fn(mixed $item): array => [
+                    fn (mixed $item): array => [
                         'before_image' => $this->image(is_array($item) ? $item['before_image'] ?? null : null),
                         'after_image' => $this->image(is_array($item) ? $item['after_image'] ?? null : null),
                         'duration' => is_array($item) ? ($item['duration'] ?? null) : null,

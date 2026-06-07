@@ -31,11 +31,37 @@ class BecomePartnerPageResource extends ApiResource
                     'message' => $this->message_label,
                 ],
                 'options' => [
-                    'country' => array_values($this->country_options ?? []),
-                    'city' => array_values($this->city_options ?? []),
-                    'company_type' => array_values($this->company_type_options ?? []),
+                    'country' => $this->optionValues($this->country_options),
+                    'city' => $this->optionValues($this->city_options),
+                    'company_type' => $this->optionValues($this->company_type_options),
                 ],
             ],
         ];
+    }
+
+    /**
+     * @param  array<int, array<string, mixed>|string>|null  $options
+     * @return array<int, string>
+     */
+    protected function optionValues(?array $options): array
+    {
+        if (! is_array($options)) {
+            return [];
+        }
+
+        return array_values(array_filter(array_map(
+            function (mixed $option): ?string {
+                if (is_string($option) && filled($option)) {
+                    return $option;
+                }
+
+                if (is_array($option) && filled($option['value'] ?? null)) {
+                    return (string) $option['value'];
+                }
+
+                return null;
+            },
+            $options,
+        )));
     }
 }

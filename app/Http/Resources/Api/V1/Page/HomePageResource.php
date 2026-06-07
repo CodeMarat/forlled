@@ -12,6 +12,13 @@ class HomePageResource extends ApiResource
      */
     public function toArray(Request $request): array
     {
+        $scienceGallery = array_values(array_filter([
+            $this->image($this->gallery_image_1),
+            $this->image($this->gallery_image_2),
+            $this->image($this->gallery_image_3),
+            $this->image($this->gallery_image_4),
+        ]));
+
         return [
             'hero' => [
                 'title' => $this->hero_title,
@@ -51,13 +58,9 @@ class HomePageResource extends ApiResource
                     'text' => $this->science_button_text,
                     'url' => $this->science_button_url,
                 ],
+                'gallery' => $scienceGallery,
             ],
-            'gallery' => array_values(array_filter([
-                $this->image($this->gallery_image_1),
-                $this->image($this->gallery_image_2),
-                $this->image($this->gallery_image_3),
-                $this->image($this->gallery_image_4),
-            ])),
+            'gallery' => $scienceGallery,
         ];
     }
 }
