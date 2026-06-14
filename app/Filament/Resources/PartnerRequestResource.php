@@ -131,6 +131,25 @@ class PartnerRequestResource extends Resource
         ];
     }
 
+    public static function getNavigationBadge(): ?string
+    {
+        $newRequestsCount = static::getModel()::query()
+            ->where('status', 'new')
+            ->count();
+
+        return $newRequestsCount > 0 ? (string) $newRequestsCount : null;
+    }
+
+    public static function getNavigationBadgeColor(): ?string
+    {
+        return static::getNavigationBadge() !== null ? 'warning' : 'gray';
+    }
+
+    public static function getNavigationBadgeTooltip(): ?string
+    {
+        return 'New partner requests';
+    }
+
     public static function getPages(): array
     {
         return [

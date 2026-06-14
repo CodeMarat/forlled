@@ -123,6 +123,25 @@ class ContactUsRequestResource extends Resource
         return [];
     }
 
+    public static function getNavigationBadge(): ?string
+    {
+        $newRequestsCount = static::getModel()::query()
+            ->where('status', 'new')
+            ->count();
+
+        return $newRequestsCount > 0 ? (string) $newRequestsCount : null;
+    }
+
+    public static function getNavigationBadgeColor(): ?string
+    {
+        return static::getNavigationBadge() !== null ? 'warning' : 'gray';
+    }
+
+    public static function getNavigationBadgeTooltip(): ?string
+    {
+        return 'New contact requests';
+    }
+
     public static function getPages(): array
     {
         return [
