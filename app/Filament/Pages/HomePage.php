@@ -58,19 +58,11 @@ class HomePage extends Page
                                             ->disk('public')
                                             ->directory('home/hero')
                                             ->columnSpanFull(),
-                                        TextInput::make('hero_title')
-                                            ->maxLength(255)->columnSpanFull(),
-                                        Textarea::make('hero_subtitle')
-                                            ->rows(3)
-                                            ->columnSpanFull(),
+                                        Textarea::make('intro_text')
+                                            ->rows(5)
+                                            ->columnSpanFull()
                                     ])
                                     ->columns(2),
-                            ]),
-                        Tab::make('Intro text')
-                            ->schema([
-                                Textarea::make('intro_text')
-                                    ->rows(5)
-                                    ->columnSpanFull(),
                             ]),
                         Tab::make('Favorites')
                             ->schema([
