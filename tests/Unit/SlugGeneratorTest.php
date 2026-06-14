@@ -4,6 +4,7 @@ namespace Tests\Unit;
 
 use App\Models\BlogPost;
 use App\Support\Slugs\SlugGenerator;
+use PHPUnit\Framework\Attributes\RequiresPhpExtension;
 use Tests\TestCase;
 
 class SlugGeneratorTest extends TestCase
@@ -26,6 +27,7 @@ class SlugGeneratorTest extends TestCase
         $this->assertSame('dubai-distributor', SlugGenerator::fromParts([null, 'Dubai', '', 'Distributor']));
     }
 
+    #[RequiresPhpExtension('pdo_sqlite')]
     public function test_it_generates_next_available_unique_slug(): void
     {
         BlogPost::factory()->create(['slug' => 'beauty-signals']);

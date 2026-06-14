@@ -47,8 +47,8 @@ class TreatmentResource extends Resource
                             ->label('Treatment name')
                             ->required()
                             ->live(onBlur: true)
-                            ->afterStateUpdated(function (Set $set, ?string $state): void {
-                                $set('slug', SlugGenerator::fromParts([$state]));
+                            ->afterStateUpdated(function (Set $set, ?Treatment $record, ?string $state): void {
+                                $set('slug', SlugGenerator::uniqueFromParts(Treatment::class, [$state], $record));
                             })
                             ->maxLength(255),
                         TextInput::make('slug')

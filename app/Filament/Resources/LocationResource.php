@@ -66,8 +66,12 @@ class LocationResource extends Resource
                                 TextInput::make('country')
                                     ->required()
                                     ->live(onBlur: true)
-                                    ->afterStateUpdated(function (Get $get, Set $set): void {
-                                        $set('slug', SlugGenerator::fromParts([$get('country_key') ?: $get('country'), $get('city'), $get('company')]));
+                                    ->afterStateUpdated(function (Get $get, Set $set, ?Location $record): void {
+                                        $set('slug', SlugGenerator::uniqueFromParts(
+                                            Location::class,
+                                            [$get('country_key') ?: $get('country'), $get('city'), $get('company')],
+                                            $record,
+                                        ));
                                     })
                                     ->maxLength(255),
                                 TextInput::make('country_key')
@@ -77,15 +81,23 @@ class LocationResource extends Resource
                                 TextInput::make('city')
                                     ->required()
                                     ->live(onBlur: true)
-                                    ->afterStateUpdated(function (Get $get, Set $set): void {
-                                        $set('slug', SlugGenerator::fromParts([$get('country_key') ?: $get('country'), $get('city'), $get('company')]));
+                                    ->afterStateUpdated(function (Get $get, Set $set, ?Location $record): void {
+                                        $set('slug', SlugGenerator::uniqueFromParts(
+                                            Location::class,
+                                            [$get('country_key') ?: $get('country'), $get('city'), $get('company')],
+                                            $record,
+                                        ));
                                     })
                                     ->maxLength(255),
                                 TextInput::make('company')
                                     ->required()
                                     ->live(onBlur: true)
-                                    ->afterStateUpdated(function (Get $get, Set $set): void {
-                                        $set('slug', SlugGenerator::fromParts([$get('country_key') ?: $get('country'), $get('city'), $get('company')]));
+                                    ->afterStateUpdated(function (Get $get, Set $set, ?Location $record): void {
+                                        $set('slug', SlugGenerator::uniqueFromParts(
+                                            Location::class,
+                                            [$get('country_key') ?: $get('country'), $get('city'), $get('company')],
+                                            $record,
+                                        ));
                                     })
                                     ->maxLength(255),
                             ]),

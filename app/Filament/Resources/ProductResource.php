@@ -68,7 +68,7 @@ class ProductResource extends Resource
                                                             ->required()
                                                             ->live(onBlur: true)
                                                             ->afterStateUpdated(function (Set $set, ?string $state): void {
-                                                                $set('slug', SlugGenerator::fromParts([$state]));
+                                                                $set('slug', SlugGenerator::uniqueFromParts(ProductCategory::class, [$state]));
                                                             })
                                                             ->maxLength(255),
                                                         TextInput::make('slug')
@@ -104,8 +104,8 @@ class ProductResource extends Resource
                                                     ->label('Product name')
                                                     ->required()
                                                     ->live(onBlur: true)
-                                                    ->afterStateUpdated(function (Set $set, ?string $state): void {
-                                                        $set('slug', SlugGenerator::fromParts([$state]));
+                                                    ->afterStateUpdated(function (Set $set, ?Product $record, ?string $state): void {
+                                                        $set('slug', SlugGenerator::uniqueFromParts(Product::class, [$state], $record));
                                                     })
                                                     ->maxLength(255),
                                                 TextInput::make('slug')
