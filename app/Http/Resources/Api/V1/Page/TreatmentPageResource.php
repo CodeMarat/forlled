@@ -23,7 +23,7 @@ class TreatmentPageResource extends ApiResource
                     'text' => $this->hero_button_text,
                     'url' => $this->hero_button_url,
                 ],
-                'image' => $this->image($this->hero_image),
+                'image' => $this->image($this->hero_image, alt: $this->hero_image_alt),
             ],
         ];
     }

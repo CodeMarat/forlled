@@ -18,6 +18,7 @@ class ProductCategory extends Model
         'type_label',
         'hero_title',
         'hero_image',
+        'hero_image_alt',
         'sort_order',
         'is_active',
     ];

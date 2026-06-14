@@ -17,18 +17,18 @@ class AboutUsPageResource extends ApiResource
                 'eyebrow' => $this->hero_eyebrow,
                 'title' => $this->hero_title,
                 'description' => $this->hero_description,
-                'image' => $this->image($this->hero_image),
+                'image' => $this->image($this->hero_image, alt: $this->hero_image_alt),
             ],
             'story' => [
                 'title' => $this->story_title,
                 'description' => $this->story_description,
                 'secondary_text' => $this->story_secondary_text,
-                'image' => $this->image($this->story_image),
+                'image' => $this->image($this->story_image, alt: $this->story_image_alt),
             ],
             'bottom' => [
                 'description' => $this->bottom_description,
                 'secondary_text' => $this->bottom_secondary_text,
-                'image' => $this->image($this->bottom_image),
+                'image' => $this->image($this->bottom_image, alt: $this->bottom_image_alt),
             ],
         ];
     }

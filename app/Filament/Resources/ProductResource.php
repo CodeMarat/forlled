@@ -133,18 +133,32 @@ class ProductResource extends Resource
                                     ->schema([
                                         Grid::make(2)
                                             ->schema([
-                                                FileUpload::make('hero_image')
-                                                    ->label('Main product image')
-                                                    ->image()
-                                                    ->disk('public')
-                                                    ->directory('products/items')
-                                                    ->helperText('Main product image shown on product and category pages.'),
-                                                FileUpload::make('side_image')
-                                                    ->label('Lifestyle image')
-                                                    ->image()
-                                                    ->disk('public')
-                                                    ->directory('products/items')
-                                                    ->helperText('Right-side supporting image shown next to the accordion section.'),
+                                                Grid::make(1)
+                                                    ->schema([
+                                                        FileUpload::make('hero_image')
+                                                            ->label('Main product image')
+                                                            ->image()
+                                                            ->disk('public')
+                                                            ->directory('products/items')
+                                                            ->helperText('Main product image shown on product and category pages.'),
+                                                        TextInput::make('hero_image_alt')
+                                                            ->label('Main product image alt text')
+                                                            ->maxLength(255)
+                                                            ->helperText('Describe the image to improve SEO and accessibility.'),
+                                                    ]),
+                                                Grid::make(1)
+                                                    ->schema([
+                                                        FileUpload::make('side_image')
+                                                            ->label('Lifestyle image')
+                                                            ->image()
+                                                            ->disk('public')
+                                                            ->directory('products/items')
+                                                            ->helperText('Right-side supporting image shown next to the accordion section.'),
+                                                        TextInput::make('side_image_alt')
+                                                            ->label('Lifestyle image alt text')
+                                                            ->maxLength(255)
+                                                            ->helperText('Describe the image to improve SEO and accessibility.'),
+                                                    ]),
                                             ]),
                                     ])
                                     ->columns(1),

@@ -69,12 +69,19 @@ class TechnologyPage extends Page
                                     ->schema([
                                         Grid::make(2)
                                             ->schema([
-                                                FileUpload::make('delivery_system_image')
-                                                    ->label('Illustration image')
-                                                    ->image()
-                                                    ->disk('public')
-                                                    ->directory('technology/overview')
-                                                    ->helperText('Main visual shown next to the delivery system content block.'),
+                                                Grid::make(1)
+                                                    ->schema([
+                                                        FileUpload::make('delivery_system_image')
+                                                            ->label('Illustration image')
+                                                            ->image()
+                                                            ->disk('public')
+                                                            ->directory('technology/overview')
+                                                            ->helperText('Main visual shown next to the delivery system content block.'),
+                                                        TextInput::make('delivery_system_image_alt')
+                                                            ->label('Illustration alt text')
+                                                            ->maxLength(255)
+                                                            ->helperText('Describe the image to improve SEO and accessibility.'),
+                                                    ]),
                                                 Grid::make(1)
                                                     ->schema([
                                                         TextInput::make('delivery_system_title')
@@ -127,12 +134,19 @@ class TechnologyPage extends Page
                                                             ->defaultItems(0)
                                                             ->columnSpanFull(),
                                                     ]),
-                                                FileUpload::make('method_image')
-                                                    ->label('Method illustration')
-                                                    ->image()
-                                                    ->disk('public')
-                                                    ->directory('technology/overview')
-                                                    ->helperText('Visual used on the right side of the method section.'),
+                                                Grid::make(1)
+                                                    ->schema([
+                                                        FileUpload::make('method_image')
+                                                            ->label('Method illustration')
+                                                            ->image()
+                                                            ->disk('public')
+                                                            ->directory('technology/overview')
+                                                            ->helperText('Visual used on the right side of the method section.'),
+                                                        TextInput::make('method_image_alt')
+                                                            ->label('Method illustration alt text')
+                                                            ->maxLength(255)
+                                                            ->helperText('Describe the image to improve SEO and accessibility.'),
+                                                    ]),
                                             ]),
                                     ]),
                             ]),
@@ -168,6 +182,11 @@ class TechnologyPage extends Page
                                                             ->disk('public')
                                                             ->directory('technology/ingredients')
                                                             ->helperText('Optional image if the frontend uses a custom icon instead of text badge.')
+                                                            ->columnSpanFull(),
+                                                        TextInput::make('icon_alt')
+                                                            ->label('Icon alt text')
+                                                            ->maxLength(255)
+                                                            ->helperText('Describe the image to improve SEO and accessibility.')
                                                             ->columnSpanFull(),
                                                     ]),
                                             ])
@@ -225,18 +244,32 @@ class TechnologyPage extends Page
                                             ->schema([
                                                 Grid::make(2)
                                                     ->schema([
-                                                        FileUpload::make('before_image')
-                                                            ->label('Before image')
-                                                            ->image()
-                                                            ->disk('public')
-                                                            ->directory('technology/case-studies')
-                                                            ->required(),
-                                                        FileUpload::make('after_image')
-                                                            ->label('After image')
-                                                            ->image()
-                                                            ->disk('public')
-                                                            ->directory('technology/case-studies')
-                                                            ->required(),
+                                                        Grid::make(1)
+                                                            ->schema([
+                                                                FileUpload::make('before_image')
+                                                                    ->label('Before image')
+                                                                    ->image()
+                                                                    ->disk('public')
+                                                                    ->directory('technology/case-studies')
+                                                                    ->required(),
+                                                                TextInput::make('before_image_alt')
+                                                                    ->label('Before image alt text')
+                                                                    ->maxLength(255)
+                                                                    ->helperText('Describe the image to improve SEO and accessibility.'),
+                                                            ]),
+                                                        Grid::make(1)
+                                                            ->schema([
+                                                                FileUpload::make('after_image')
+                                                                    ->label('After image')
+                                                                    ->image()
+                                                                    ->disk('public')
+                                                                    ->directory('technology/case-studies')
+                                                                    ->required(),
+                                                                TextInput::make('after_image_alt')
+                                                                    ->label('After image alt text')
+                                                                    ->maxLength(255)
+                                                                    ->helperText('Describe the image to improve SEO and accessibility.'),
+                                                            ]),
                                                         TextInput::make('duration')
                                                             ->label('Duration')
                                                             ->required()

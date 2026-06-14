@@ -21,10 +21,11 @@ class ApiResource extends JsonResource
      * @return array{
      *     path: string,
      *     url: string,
+     *     alt: string|null,
      *     variants: array<string, array{path: string, url: string}>
      * }|null
      */
-    protected function image(?string $path, ?string $preferredVariant = null): ?array
+    protected function image(?string $path, ?string $preferredVariant = null, ?string $alt = null): ?array
     {
         if (blank($path)) {
             return null;
@@ -34,6 +35,7 @@ class ApiResource extends JsonResource
             return [
                 'path' => $path,
                 'url' => $path,
+                'alt' => $alt,
                 'variants' => [],
             ];
         }
@@ -51,6 +53,7 @@ class ApiResource extends JsonResource
         return [
             'path' => $selected['path'],
             'url' => $selected['url'],
+            'alt' => $alt,
             'variants' => $variants,
         ];
     }

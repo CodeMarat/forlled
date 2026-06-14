@@ -14,7 +14,7 @@ class ProductResource extends ApiResource
         return [
             ...ProductCardResource::make($this->resource)->resolve($request),
             'description' => $this->description,
-            'side_image' => $this->image($this->side_image),
+            'side_image' => $this->image($this->side_image, alt: $this->side_image_alt),
             'key_benefits' => $this->values($this->key_benefits, 'benefit'),
             'sections' => $this->values($this->detail_sections),
             'recommendations_title' => $this->recommendations_title,

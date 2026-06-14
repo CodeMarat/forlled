@@ -23,15 +23,19 @@ class ApiPageResourceTest extends TestCase
             'hero_title' => 'Glow',
             'hero_subtitle' => 'Daily beauty',
             'hero_image' => 'home/hero/image.jpg',
+            'hero_image_alt' => 'Glass bottle on reflective surface',
             'intro_text' => 'Intro',
             'favorites_title' => 'Favorites',
             'duo_left_image' => 'home/duo/left.jpg',
+            'duo_left_image_alt' => 'Left product close-up',
             'duo_left_caption' => 'Left caption',
             'duo_right_image' => 'home/duo/right.jpg',
+            'duo_right_image_alt' => 'Right product close-up',
             'duo_right_caption' => 'Right caption',
             'person_name' => 'Dr. Jane',
             'person_title' => 'Founder',
             'person_photo' => 'home/person/photo.jpg',
+            'person_photo_alt' => 'Portrait of Dr. Jane',
             'person_text' => 'Person text',
             'newest_title' => 'Newest',
             'newest_description' => 'Newest description',
@@ -40,16 +44,20 @@ class ApiPageResourceTest extends TestCase
             'science_button_text' => 'Read more',
             'science_button_url' => '/science',
             'gallery_image_1' => 'home/gallery/one.jpg',
+            'gallery_image_1_alt' => 'Laboratory bottle',
             'gallery_image_2' => 'home/gallery/two.jpg',
+            'gallery_image_2_alt' => 'Product texture close-up',
         ]);
 
         $payload = HomePageResource::make($homePage)->resolve(Request::create('/'));
 
         $this->assertSame('Glow', $payload['hero']['title']);
         $this->assertSame(url('/storage/home/hero/image.jpg'), $payload['hero']['image']['url']);
+        $this->assertSame('Glass bottle on reflective surface', $payload['hero']['image']['alt']);
         $this->assertSame('Read more', $payload['science']['button']['text']);
         $this->assertCount(2, $payload['science']['gallery']);
         $this->assertSame(url('/storage/home/gallery/one.jpg'), $payload['science']['gallery'][0]['url']);
+        $this->assertSame('Laboratory bottle', $payload['science']['gallery'][0]['alt']);
         $this->assertCount(2, $payload['gallery']);
     }
 
@@ -60,19 +68,23 @@ class ApiPageResourceTest extends TestCase
             'hero_title' => 'About Us',
             'hero_description' => 'Hero text',
             'hero_image' => 'about/hero.jpg',
+            'hero_image_alt' => 'Woman holding product bottle',
             'story_title' => 'The Story',
             'story_description' => 'Story',
             'story_secondary_text' => 'More story',
             'story_image' => 'about/story.jpg',
+            'story_image_alt' => 'Skincare product on white background',
             'bottom_description' => 'Bottom left',
             'bottom_secondary_text' => 'Bottom right',
             'bottom_image' => 'about/bottom.jpg',
+            'bottom_image_alt' => 'Decorative botanical branch',
         ]);
 
         $payload = AboutUsPageResource::make($aboutUs)->resolve(Request::create('/'));
 
         $this->assertSame('OUR MISSION', $payload['hero']['eyebrow']);
         $this->assertSame(url('/storage/about/story.jpg'), $payload['story']['image']['url']);
+        $this->assertSame('Skincare product on white background', $payload['story']['image']['alt']);
         $this->assertSame('Bottom right', $payload['bottom']['secondary_text']);
     }
 
@@ -140,15 +152,17 @@ class ApiPageResourceTest extends TestCase
             'delivery_system_description' => 'Delivery description',
             'delivery_system_secondary_text' => 'Secondary',
             'delivery_system_image' => 'technology/delivery.jpg',
+            'delivery_system_image_alt' => 'Illustrated delivery system diagram',
             'method_title' => 'Method',
             'method_description' => 'Method description',
             'method_image' => 'technology/method.jpg',
+            'method_image_alt' => 'Skincare product tube on pedestal',
             'method_benefits' => [
                 ['title' => 'Low molecular weight', 'description' => 'Improves delivery'],
             ],
             'ingredients_section_title' => 'Ingredients',
             'ingredient_cards' => [
-                ['title' => 'Peptide', 'badge' => 'Pt', 'description' => 'Card text', 'icon' => 'technology/icon.jpg'],
+                ['title' => 'Peptide', 'badge' => 'Pt', 'description' => 'Card text', 'icon' => 'technology/icon.jpg', 'icon_alt' => 'Peptide ingredient icon'],
             ],
             'evidence_title' => 'Evidence',
             'evidence_text' => 'Evidence text',
@@ -159,7 +173,9 @@ class ApiPageResourceTest extends TestCase
             'case_studies' => [
                 [
                     'before_image' => 'technology/before.jpg',
+                    'before_image_alt' => 'Before treatment skin result',
                     'after_image' => 'technology/after.jpg',
+                    'after_image_alt' => 'After treatment skin result',
                     'duration' => '4 weeks',
                     'result_text' => 'Improvement',
                 ],
@@ -173,6 +189,8 @@ class ApiPageResourceTest extends TestCase
         $this->assertSame('Peptide', $payload['ingredients']['cards'][0]['title']);
         $this->assertSame('Pt', $payload['ingredients']['cards'][0]['badge']);
         $this->assertSame(url('/storage/technology/icon.jpg'), $payload['ingredients']['cards'][0]['icon']['url']);
+        $this->assertSame('Peptide ingredient icon', $payload['ingredients']['cards'][0]['icon']['alt']);
         $this->assertSame(url('/storage/technology/after.jpg'), $payload['case_studies']['items'][0]['after_image']['url']);
+        $this->assertSame('After treatment skin result', $payload['case_studies']['items'][0]['after_image']['alt']);
     }
 }

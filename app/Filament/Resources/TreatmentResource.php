@@ -140,12 +140,19 @@ class TreatmentResource extends Resource
                                 ->label('Header')
                                 ->required()
                                 ->maxLength(255),
-                            FileUpload::make('hero_image')
-                                ->label('Hero image')
-                                ->image()
-                                ->disk('public')
-                                ->directory('treatments/hero')
-                                ->helperText('Large image displayed below the top content block.'),
+                            Grid::make(1)
+                                ->schema([
+                                    FileUpload::make('hero_image')
+                                        ->label('Hero image')
+                                        ->image()
+                                        ->disk('public')
+                                        ->directory('treatments/hero')
+                                        ->helperText('Large image displayed below the top content block.'),
+                                    TextInput::make('hero_image_alt')
+                                        ->label('Hero image alt text')
+                                        ->maxLength(255)
+                                        ->helperText('Describe the image to improve SEO and accessibility.'),
+                                ]),
                         ]),
                     Textarea::make('hero_description')
                         ->label('Description')

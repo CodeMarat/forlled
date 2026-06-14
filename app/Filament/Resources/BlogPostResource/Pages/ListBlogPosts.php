@@ -62,12 +62,19 @@ class ListBlogPosts extends ListRecords
                     ->schema([
                         Grid::make(2)
                             ->schema([
-                                FileUpload::make('hero_image')
-                                    ->label('Left image')
-                                    ->image()
-                                    ->disk('public')
-                                    ->directory('blog/hero')
-                                    ->helperText('Recommended for the image block shown on the left side.'),
+                                Grid::make(1)
+                                    ->schema([
+                                        FileUpload::make('hero_image')
+                                            ->label('Left image')
+                                            ->image()
+                                            ->disk('public')
+                                            ->directory('blog/hero')
+                                            ->helperText('Recommended for the image block shown on the left side.'),
+                                        TextInput::make('hero_image_alt')
+                                            ->label('Left image alt text')
+                                            ->maxLength(255)
+                                            ->helperText('Describe the image to improve SEO and accessibility.'),
+                                    ]),
                                 Grid::make(1)
                                     ->schema([
                                         TextInput::make('hero_badge')

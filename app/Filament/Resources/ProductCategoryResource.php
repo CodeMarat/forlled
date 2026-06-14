@@ -88,6 +88,11 @@ class ProductCategoryResource extends Resource
                             ->directory('products/categories')
                             ->helperText('Background or hero image shown at the top of the category page.')
                             ->columnSpanFull(),
+                        TextInput::make('hero_image_alt')
+                            ->label('Hero image alt text')
+                            ->maxLength(255)
+                            ->helperText('Describe the image to improve SEO and accessibility.')
+                            ->columnSpanFull(),
                         Toggle::make('is_active')
                             ->label('Visible on website')
                             ->default(true)

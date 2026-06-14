@@ -66,12 +66,19 @@ class AboutUsPage extends Page
                                             ->required()
                                             ->helperText('Main descriptive text for the hero section.'),
                                     ]),
-                                FileUpload::make('hero_image')
-                                    ->label('Hero image')
-                                    ->image()
-                                    ->disk('public')
-                                    ->directory('about-us')
-                                    ->helperText('Top-right image block.'),
+                                Grid::make(1)
+                                    ->schema([
+                                        FileUpload::make('hero_image')
+                                            ->label('Hero image')
+                                            ->image()
+                                            ->disk('public')
+                                            ->directory('about-us')
+                                            ->helperText('Top-right image block.'),
+                                        TextInput::make('hero_image_alt')
+                                            ->label('Hero image alt text')
+                                            ->maxLength(255)
+                                            ->helperText('Describe the image to improve SEO and accessibility.'),
+                                    ]),
                             ]),
                     ]),
                 Section::make('Story section')
@@ -79,12 +86,19 @@ class AboutUsPage extends Page
                     ->schema([
                         Grid::make(2)
                             ->schema([
-                                FileUpload::make('story_image')
-                                    ->label('Story image')
-                                    ->image()
-                                    ->disk('public')
-                                    ->directory('about-us')
-                                    ->helperText('Large image shown on the left side of the story block.'),
+                                Grid::make(1)
+                                    ->schema([
+                                        FileUpload::make('story_image')
+                                            ->label('Story image')
+                                            ->image()
+                                            ->disk('public')
+                                            ->directory('about-us')
+                                            ->helperText('Large image shown on the left side of the story block.'),
+                                        TextInput::make('story_image_alt')
+                                            ->label('Story image alt text')
+                                            ->maxLength(255)
+                                            ->helperText('Describe the image to improve SEO and accessibility.'),
+                                    ]),
                                 Grid::make(1)
                                     ->schema([
                                         TextInput::make('story_title')
@@ -119,12 +133,19 @@ class AboutUsPage extends Page
                                             ->rows(4)
                                             ->helperText('Additional paragraph shown below the primary text.'),
                                     ]),
-                                FileUpload::make('bottom_image')
-                                    ->label('Bottom image')
-                                    ->image()
-                                    ->disk('public')
-                                    ->directory('about-us')
-                                    ->helperText('Bottom-right decorative image block.'),
+                                Grid::make(1)
+                                    ->schema([
+                                        FileUpload::make('bottom_image')
+                                            ->label('Bottom image')
+                                            ->image()
+                                            ->disk('public')
+                                            ->directory('about-us')
+                                            ->helperText('Bottom-right decorative image block.'),
+                                        TextInput::make('bottom_image_alt')
+                                            ->label('Bottom image alt text')
+                                            ->maxLength(255)
+                                            ->helperText('Describe the image to improve SEO and accessibility.'),
+                                    ]),
                             ]),
                     ]),
             ])

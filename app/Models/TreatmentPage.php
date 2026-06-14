@@ -20,5 +20,6 @@ class TreatmentPage extends Model
         'hero_button_text',
         'hero_button_url',
         'hero_image',
+        'hero_image_alt',
     ];
 }

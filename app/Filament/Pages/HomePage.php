@@ -58,9 +58,14 @@ class HomePage extends Page
                                             ->disk('public')
                                             ->directory('home/hero')
                                             ->columnSpanFull(),
+                                        TextInput::make('hero_image_alt')
+                                            ->label('Hero image alt text')
+                                            ->maxLength(255)
+                                            ->helperText('Describe the image to improve SEO and accessibility.')
+                                            ->columnSpanFull(),
                                         Textarea::make('intro_text')
                                             ->rows(5)
-                                            ->columnSpanFull()
+                                            ->columnSpanFull(),
                                     ])
                                     ->columns(2),
                             ]),
@@ -74,22 +79,36 @@ class HomePage extends Page
                             ->schema([
                                 Section::make()
                                     ->schema([
-                                        FileUpload::make('duo_left_image')
-                                            ->label('Left image')
-                                            ->image()
-                                            ->disk('public')
-                                            ->directory('home/duo'),
-                                        TextInput::make('duo_left_caption')
-                                            ->label('Left caption')
-                                            ->maxLength(255),
-                                        FileUpload::make('duo_right_image')
-                                            ->label('Right image')
-                                            ->image()
-                                            ->disk('public')
-                                            ->directory('home/duo'),
-                                        TextInput::make('duo_right_caption')
-                                            ->label('Right caption')
-                                            ->maxLength(255),
+                                        Grid::make(1)
+                                            ->schema([
+                                                FileUpload::make('duo_left_image')
+                                                    ->label('Left image')
+                                                    ->image()
+                                                    ->disk('public')
+                                                    ->directory('home/duo'),
+                                                TextInput::make('duo_left_image_alt')
+                                                    ->label('Left image alt text')
+                                                    ->maxLength(255)
+                                                    ->helperText('Describe the image to improve SEO and accessibility.'),
+                                                TextInput::make('duo_left_caption')
+                                                    ->label('Left caption')
+                                                    ->maxLength(255),
+                                            ]),
+                                        Grid::make(1)
+                                            ->schema([
+                                                FileUpload::make('duo_right_image')
+                                                    ->label('Right image')
+                                                    ->image()
+                                                    ->disk('public')
+                                                    ->directory('home/duo'),
+                                                TextInput::make('duo_right_image_alt')
+                                                    ->label('Right image alt text')
+                                                    ->maxLength(255)
+                                                    ->helperText('Describe the image to improve SEO and accessibility.'),
+                                                TextInput::make('duo_right_caption')
+                                                    ->label('Right caption')
+                                                    ->maxLength(255),
+                                            ]),
                                     ])
                                     ->columns(2),
                             ]),
@@ -97,17 +116,27 @@ class HomePage extends Page
                             ->schema([
                                 Section::make()
                                     ->schema([
-                                        FileUpload::make('person_photo')
-                                            ->label('Photo')
-                                            ->image()
-                                            ->disk('public')
-                                            ->directory('home/person'),
-                                        TextInput::make('person_name')
-                                            ->label('Name')
-                                            ->maxLength(255),
-                                        TextInput::make('person_title')
-                                            ->label('Title')
-                                            ->maxLength(255),
+                                        Grid::make(1)
+                                            ->schema([
+                                                FileUpload::make('person_photo')
+                                                    ->label('Photo')
+                                                    ->image()
+                                                    ->disk('public')
+                                                    ->directory('home/person'),
+                                                TextInput::make('person_photo_alt')
+                                                    ->label('Photo alt text')
+                                                    ->maxLength(255)
+                                                    ->helperText('Describe the image to improve SEO and accessibility.'),
+                                            ]),
+                                        Grid::make(1)
+                                            ->schema([
+                                                TextInput::make('person_name')
+                                                    ->label('Name')
+                                                    ->maxLength(255),
+                                                TextInput::make('person_title')
+                                                    ->label('Title')
+                                                    ->maxLength(255),
+                                            ]),
                                         Textarea::make('person_text')
                                             ->label('Quote / description')
                                             ->rows(4)
@@ -146,26 +175,54 @@ class HomePage extends Page
                                             ->maxLength(255),
                                         Grid::make(2)
                                             ->schema([
-                                                FileUpload::make('gallery_image_1')
-                                                    ->label('Gallery image 1')
-                                                    ->image()
-                                                    ->disk('public')
-                                                    ->directory('home/gallery'),
-                                                FileUpload::make('gallery_image_2')
-                                                    ->label('Gallery image 2')
-                                                    ->image()
-                                                    ->disk('public')
-                                                    ->directory('home/gallery'),
-                                                FileUpload::make('gallery_image_3')
-                                                    ->label('Gallery image 3')
-                                                    ->image()
-                                                    ->disk('public')
-                                                    ->directory('home/gallery'),
-                                                FileUpload::make('gallery_image_4')
-                                                    ->label('Gallery image 4')
-                                                    ->image()
-                                                    ->disk('public')
-                                                    ->directory('home/gallery'),
+                                                Grid::make(1)
+                                                    ->schema([
+                                                        FileUpload::make('gallery_image_1')
+                                                            ->label('Gallery image 1')
+                                                            ->image()
+                                                            ->disk('public')
+                                                            ->directory('home/gallery'),
+                                                        TextInput::make('gallery_image_1_alt')
+                                                            ->label('Gallery image 1 alt text')
+                                                            ->maxLength(255)
+                                                            ->helperText('Describe the image to improve SEO and accessibility.'),
+                                                    ]),
+                                                Grid::make(1)
+                                                    ->schema([
+                                                        FileUpload::make('gallery_image_2')
+                                                            ->label('Gallery image 2')
+                                                            ->image()
+                                                            ->disk('public')
+                                                            ->directory('home/gallery'),
+                                                        TextInput::make('gallery_image_2_alt')
+                                                            ->label('Gallery image 2 alt text')
+                                                            ->maxLength(255)
+                                                            ->helperText('Describe the image to improve SEO and accessibility.'),
+                                                    ]),
+                                                Grid::make(1)
+                                                    ->schema([
+                                                        FileUpload::make('gallery_image_3')
+                                                            ->label('Gallery image 3')
+                                                            ->image()
+                                                            ->disk('public')
+                                                            ->directory('home/gallery'),
+                                                        TextInput::make('gallery_image_3_alt')
+                                                            ->label('Gallery image 3 alt text')
+                                                            ->maxLength(255)
+                                                            ->helperText('Describe the image to improve SEO and accessibility.'),
+                                                    ]),
+                                                Grid::make(1)
+                                                    ->schema([
+                                                        FileUpload::make('gallery_image_4')
+                                                            ->label('Gallery image 4')
+                                                            ->image()
+                                                            ->disk('public')
+                                                            ->directory('home/gallery'),
+                                                        TextInput::make('gallery_image_4_alt')
+                                                            ->label('Gallery image 4 alt text')
+                                                            ->maxLength(255)
+                                                            ->helperText('Describe the image to improve SEO and accessibility.'),
+                                                    ]),
                                             ])
                                             ->columnSpanFull(),
                                     ])

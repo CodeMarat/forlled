@@ -21,12 +21,12 @@ class TechnologyPageResource extends ApiResource
                 'title' => $this->delivery_system_title,
                 'description' => $this->delivery_system_description,
                 'secondary_text' => $this->delivery_system_secondary_text,
-                'image' => $this->image($this->delivery_system_image),
+                'image' => $this->image($this->delivery_system_image, alt: $this->delivery_system_image_alt),
             ],
             'method' => [
                 'title' => $this->method_title,
                 'description' => $this->method_description,
-                'image' => $this->image($this->method_image),
+                'image' => $this->image($this->method_image, alt: $this->method_image_alt),
                 'benefits' => array_values(array_filter(array_map(
                     fn (mixed $item): ?array => is_array($item)
                         ? [
@@ -45,7 +45,7 @@ class TechnologyPageResource extends ApiResource
                             'title' => $item['title'] ?? null,
                             'badge' => $item['badge'] ?? null,
                             'description' => $item['description'] ?? null,
-                            'icon' => $this->image($item['icon'] ?? null),
+                            'icon' => $this->image($item['icon'] ?? null, alt: $item['icon_alt'] ?? null),
                         ]
                         : null,
                     is_array($this->ingredient_cards) ? $this->ingredient_cards : [],
@@ -62,8 +62,14 @@ class TechnologyPageResource extends ApiResource
                 'after_label' => $this->after_label,
                 'items' => array_values(array_map(
                     fn (mixed $item): array => [
-                        'before_image' => $this->image(is_array($item) ? $item['before_image'] ?? null : null),
-                        'after_image' => $this->image(is_array($item) ? $item['after_image'] ?? null : null),
+                        'before_image' => $this->image(
+                            is_array($item) ? $item['before_image'] ?? null : null,
+                            alt: is_array($item) ? ($item['before_image_alt'] ?? null) : null,
+                        ),
+                        'after_image' => $this->image(
+                            is_array($item) ? $item['after_image'] ?? null : null,
+                            alt: is_array($item) ? ($item['after_image_alt'] ?? null) : null,
+                        ),
                         'duration' => is_array($item) ? ($item['duration'] ?? null) : null,
                         'result_text' => is_array($item) ? ($item['result_text'] ?? null) : null,
                     ],

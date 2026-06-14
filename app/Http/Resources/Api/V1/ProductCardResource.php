@@ -16,7 +16,7 @@ class ProductCardResource extends ApiResource
             'slug' => $this->slug,
             'size' => $this->size,
             'listing_description' => $this->listing_description,
-            'hero_image' => $this->image($this->hero_image, 'card'),
+            'hero_image' => $this->image($this->hero_image, 'card', $this->hero_image_alt),
             'is_favorite' => (bool) $this->is_favorite,
             'category' => $this->whenLoaded(
                 'productCategory',

@@ -16,7 +16,7 @@ class ProductCategoryListResource extends ApiResource
             'slug' => $this->slug,
             'type_label' => $this->type_label,
             'hero_title' => $this->hero_title,
-            'hero_image' => $this->image($this->hero_image, 'card'),
+            'hero_image' => $this->image($this->hero_image, 'card', $this->hero_image_alt),
             'sort_order' => $this->sort_order,
         ];
     }

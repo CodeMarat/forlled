@@ -17,6 +17,7 @@ class BlogPost extends Model
         'excerpt',
         'content',
         'featured_image',
+        'featured_image_alt',
         'status',
         'published_at',
         'sort_order',
