@@ -6,6 +6,7 @@ use App\Filament\Resources\BlogPostResource\Pages\CreateBlogPost;
 use App\Filament\Resources\BlogPostResource\Pages\EditBlogPost;
 use App\Filament\Resources\BlogPostResource\Pages\ListBlogPosts;
 use App\Models\BlogPost;
+use App\Support\Slugs\SlugGenerator;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
@@ -18,6 +19,7 @@ use Filament\Forms\Components\TextInput;
 use Filament\Resources\Resource;
 use Filament\Schemas\Components\Grid;
 use Filament\Schemas\Components\Section;
+use Filament\Schemas\Components\Utilities\Set;
 use Filament\Schemas\Schema;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
@@ -44,14 +46,20 @@ class BlogPostResource extends Resource
                                 TextInput::make('title')
                                     ->label('Post title')
                                     ->required()
+                                    ->live(onBlur: true)
+                                    ->afterStateUpdated(function (Set $set, ?string $state): void {
+                                        $set('slug', SlugGenerator::fromParts([$state]));
+                                    })
                                     ->maxLength(255),
                                 TextInput::make('slug')
                                     ->label('Slug')
                                     ->required()
+                                    ->disabled()
+                                    ->dehydrated()
                                     ->alphaDash()
                                     ->unique(ignoreRecord: true)
                                     ->maxLength(255)
-                                    ->helperText('Used in the URL. Use lowercase letters, numbers, and hyphens.'),
+                                    ->helperText('Generated automatically from the title.'),
                             ]),
                         Textarea::make('excerpt')
                             ->label('Short description')

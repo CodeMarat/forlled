@@ -7,6 +7,7 @@ use App\Filament\Resources\ProductResource\Pages\EditProduct;
 use App\Filament\Resources\ProductResource\Pages\ListProducts;
 use App\Models\Product;
 use App\Models\ProductCategory;
+use App\Support\Slugs\SlugGenerator;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
@@ -21,6 +22,7 @@ use Filament\Schemas\Components\Grid;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Components\Tabs;
 use Filament\Schemas\Components\Tabs\Tab;
+use Filament\Schemas\Components\Utilities\Set;
 use Filament\Schemas\Schema;
 use Filament\Tables\Columns\CheckboxColumn;
 use Filament\Tables\Columns\TextColumn;
@@ -64,10 +66,16 @@ class ProductResource extends Resource
                                                         TextInput::make('name')
                                                             ->label('Category name')
                                                             ->required()
+                                                            ->live(onBlur: true)
+                                                            ->afterStateUpdated(function (Set $set, ?string $state): void {
+                                                                $set('slug', SlugGenerator::fromParts([$state]));
+                                                            })
                                                             ->maxLength(255),
                                                         TextInput::make('slug')
                                                             ->label('Slug')
                                                             ->required()
+                                                            ->disabled()
+                                                            ->dehydrated()
                                                             ->alphaDash()
                                                             ->unique(ProductCategory::class, 'slug')
                                                             ->maxLength(255),
@@ -95,14 +103,20 @@ class ProductResource extends Resource
                                                 TextInput::make('name')
                                                     ->label('Product name')
                                                     ->required()
+                                                    ->live(onBlur: true)
+                                                    ->afterStateUpdated(function (Set $set, ?string $state): void {
+                                                        $set('slug', SlugGenerator::fromParts([$state]));
+                                                    })
                                                     ->maxLength(255),
                                                 TextInput::make('slug')
                                                     ->label('Slug')
                                                     ->required()
+                                                    ->disabled()
+                                                    ->dehydrated()
                                                     ->alphaDash()
                                                     ->unique(ignoreRecord: true)
                                                     ->maxLength(255)
-                                                    ->helperText('Used in product URLs. Use lowercase letters, numbers, and hyphens.'),
+                                                    ->helperText('Generated automatically from the product name.'),
                                             ]),
                                         Grid::make(2)
                                             ->schema([

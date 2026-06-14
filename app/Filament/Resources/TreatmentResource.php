@@ -7,6 +7,7 @@ use App\Filament\Resources\TreatmentResource\Pages\EditTreatment;
 use App\Filament\Resources\TreatmentResource\Pages\ListTreatments;
 use App\Models\Treatment;
 use App\Models\TreatmentPage;
+use App\Support\Slugs\SlugGenerator;
 use Filament\Actions\Action;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
@@ -19,6 +20,7 @@ use Filament\Resources\Resource;
 use Filament\Schemas\Components\Actions;
 use Filament\Schemas\Components\Grid;
 use Filament\Schemas\Components\Section;
+use Filament\Schemas\Components\Utilities\Set;
 use Filament\Schemas\Schema;
 use Filament\Support\Enums\Alignment;
 use Filament\Tables\Columns\CheckboxColumn;
@@ -44,14 +46,20 @@ class TreatmentResource extends Resource
                         TextInput::make('name')
                             ->label('Treatment name')
                             ->required()
+                            ->live(onBlur: true)
+                            ->afterStateUpdated(function (Set $set, ?string $state): void {
+                                $set('slug', SlugGenerator::fromParts([$state]));
+                            })
                             ->maxLength(255),
                         TextInput::make('slug')
                             ->label('Slug')
                             ->required()
+                            ->disabled()
+                            ->dehydrated()
                             ->alphaDash()
                             ->unique(ignoreRecord: true)
                             ->maxLength(255)
-                            ->helperText('Unique public identifier used by the API.'),
+                            ->helperText('Generated automatically from the treatment name.'),
                         TextInput::make('sort_order')
                             ->label('Order')
                             ->required()

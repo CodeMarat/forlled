@@ -6,6 +6,7 @@ use App\Filament\Resources\ProductCategoryResource\Pages\CreateProductCategory;
 use App\Filament\Resources\ProductCategoryResource\Pages\EditProductCategory;
 use App\Filament\Resources\ProductCategoryResource\Pages\ListProductCategories;
 use App\Models\ProductCategory;
+use App\Support\Slugs\SlugGenerator;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
@@ -15,6 +16,7 @@ use Filament\Forms\Components\Toggle;
 use Filament\Resources\Resource;
 use Filament\Schemas\Components\Grid;
 use Filament\Schemas\Components\Section;
+use Filament\Schemas\Components\Utilities\Set;
 use Filament\Schemas\Schema;
 use Filament\Tables\Columns\CheckboxColumn;
 use Filament\Tables\Columns\TextColumn;
@@ -51,14 +53,20 @@ class ProductCategoryResource extends Resource
                                 TextInput::make('name')
                                     ->label('Category name')
                                     ->required()
+                                    ->live(onBlur: true)
+                                    ->afterStateUpdated(function (Set $set, ?string $state): void {
+                                        $set('slug', SlugGenerator::fromParts([$state]));
+                                    })
                                     ->maxLength(255),
                                 TextInput::make('slug')
                                     ->label('Slug')
                                     ->required()
+                                    ->disabled()
+                                    ->dehydrated()
                                     ->alphaDash()
                                     ->unique(ignoreRecord: true)
                                     ->maxLength(255)
-                                    ->helperText('Used in category URLs. Use lowercase letters, numbers, and hyphens.'),
+                                    ->helperText('Generated automatically from the category name.'),
                             ]),
                         Grid::make(3)
                             ->schema([

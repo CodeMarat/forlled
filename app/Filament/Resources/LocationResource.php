@@ -7,6 +7,7 @@ use App\Filament\Resources\LocationResource\Pages\EditLocation;
 use App\Filament\Resources\LocationResource\Pages\ListLocations;
 use App\Models\Location;
 use App\Models\LocationsPage;
+use App\Support\Slugs\SlugGenerator;
 use Filament\Actions\Action;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
@@ -19,6 +20,8 @@ use Filament\Resources\Resource;
 use Filament\Schemas\Components\Actions;
 use Filament\Schemas\Components\Grid;
 use Filament\Schemas\Components\Section;
+use Filament\Schemas\Components\Utilities\Get;
+use Filament\Schemas\Components\Utilities\Set;
 use Filament\Schemas\Schema;
 use Filament\Support\Enums\Alignment;
 use Filament\Tables\Columns\CheckboxColumn;
@@ -45,10 +48,12 @@ class LocationResource extends Resource
                             ->schema([
                                 TextInput::make('slug')
                                     ->required()
+                                    ->disabled()
+                                    ->dehydrated()
                                     ->alphaDash()
                                     ->unique(ignoreRecord: true)
                                     ->maxLength(255)
-                                    ->helperText('Unique public identifier used by the API.'),
+                                    ->helperText('Generated automatically from the country, city, and company.'),
                                 TextInput::make('sort_order')
                                     ->required()
                                     ->numeric()
@@ -60,6 +65,10 @@ class LocationResource extends Resource
                             ->schema([
                                 TextInput::make('country')
                                     ->required()
+                                    ->live(onBlur: true)
+                                    ->afterStateUpdated(function (Get $get, Set $set): void {
+                                        $set('slug', SlugGenerator::fromParts([$get('country_key') ?: $get('country'), $get('city'), $get('company')]));
+                                    })
                                     ->maxLength(255),
                                 TextInput::make('country_key')
                                     ->required()
@@ -67,9 +76,17 @@ class LocationResource extends Resource
                                     ->helperText('Machine-friendly country key, for example: russia'),
                                 TextInput::make('city')
                                     ->required()
+                                    ->live(onBlur: true)
+                                    ->afterStateUpdated(function (Get $get, Set $set): void {
+                                        $set('slug', SlugGenerator::fromParts([$get('country_key') ?: $get('country'), $get('city'), $get('company')]));
+                                    })
                                     ->maxLength(255),
                                 TextInput::make('company')
                                     ->required()
+                                    ->live(onBlur: true)
+                                    ->afterStateUpdated(function (Get $get, Set $set): void {
+                                        $set('slug', SlugGenerator::fromParts([$get('country_key') ?: $get('country'), $get('city'), $get('company')]));
+                                    })
                                     ->maxLength(255),
                             ]),
                         TextInput::make('address')
