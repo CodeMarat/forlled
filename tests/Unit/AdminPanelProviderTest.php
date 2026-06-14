@@ -33,4 +33,20 @@ class AdminPanelProviderTest extends TestCase
             (string) app()->call($sidebarHooks[0]),
         );
     }
+
+    public function test_admin_panel_registers_full_page_form_loader_hook(): void
+    {
+        $panel = (new AdminPanelProvider($this->app))->panel(Panel::make());
+        $renderHooksProperty = new ReflectionProperty($panel, 'renderHooks');
+
+        /** @var array<string, array<string, array<callable>>> $renderHooks */
+        $renderHooks = $renderHooksProperty->getValue($panel);
+        $bodyHooks = $renderHooks[PanelsRenderHook::BODY_START][''] ?? [];
+
+        $this->assertCount(1, $bodyHooks);
+        $this->assertStringContainsString(
+            'data-admin-form-loader',
+            (string) app()->call($bodyHooks[0]),
+        );
+    }
 }

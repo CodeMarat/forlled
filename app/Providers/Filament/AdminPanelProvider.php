@@ -37,6 +37,10 @@ class AdminPanelProvider extends PanelProvider
                 'primary' => Color::Gray,
             ])
             ->renderHook(
+                PanelsRenderHook::BODY_START,
+                fn (): string => view('filament.loading.full-page-form-submit-loader')->render(),
+            )
+            ->renderHook(
                 PanelsRenderHook::SIDEBAR_NAV_START,
                 fn (): string => view('filament.sidebar.navigation-search')->render(),
             )
