@@ -47,8 +47,8 @@ class BlogPostResource extends Resource
                                     ->label('Post title')
                                     ->required()
                                     ->live(onBlur: true)
-                                    ->afterStateUpdated(function (Set $set, ?string $state): void {
-                                        $set('slug', SlugGenerator::fromParts([$state]));
+                                    ->afterStateUpdated(function (Set $set, ?BlogPost $record, ?string $state): void {
+                                        $set('slug', SlugGenerator::uniqueFromParts(BlogPost::class, [$state], $record));
                                     })
                                     ->maxLength(255),
                                 TextInput::make('slug')
