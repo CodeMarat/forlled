@@ -5,11 +5,13 @@ namespace Tests\Unit\Unit;
 use App\Http\Resources\Api\V1\Page\AboutUsPageResource;
 use App\Http\Resources\Api\V1\Page\BecomePartnerPageResource;
 use App\Http\Resources\Api\V1\Page\ContactUsPageResource;
+use App\Http\Resources\Api\V1\Page\FeaturedInPageResource;
 use App\Http\Resources\Api\V1\Page\HomePageResource;
 use App\Http\Resources\Api\V1\Page\TechnologyPageResource;
 use App\Models\AboutUs;
 use App\Models\BecomePartnerPage;
 use App\Models\ContactUs;
+use App\Models\FeaturedInPage;
 use App\Models\HomePage;
 use App\Models\TechnologyPage;
 use Illuminate\Http\Request;
@@ -116,6 +118,24 @@ class ApiPageResourceTest extends TestCase
         $this->assertSame('Company type', $payload['form']['fields']['company_type']);
         $this->assertSame(['Clinic'], $payload['form']['options']['company_type']);
         $this->assertSame(['Armenia', 'UAE'], $payload['form']['options']['country']);
+    }
+
+    public function test_featured_in_page_resource_maps_logo_images(): void
+    {
+        $page = new FeaturedInPage([
+            'title' => 'FEATURED IN',
+            'logos' => [
+                ['image' => 'featured-in/logos/vogue.png', 'alt' => 'Vogue logo'],
+                ['image' => 'featured-in/logos/gq.png', 'alt' => 'GQ logo'],
+            ],
+        ]);
+
+        $payload = FeaturedInPageResource::make($page)->resolve(Request::create('/'));
+
+        $this->assertSame('FEATURED IN', $payload['title']);
+        $this->assertCount(2, $payload['logos']);
+        $this->assertSame(url('/storage/featured-in/logos/vogue.png'), $payload['logos'][0]['url']);
+        $this->assertSame('Vogue logo', $payload['logos'][0]['alt']);
     }
 
     public function test_contact_us_resource_maps_form_labels_and_options(): void

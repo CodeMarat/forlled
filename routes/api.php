@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\V1\Page\AboutUsPageController;
 use App\Http\Controllers\Api\V1\Page\BecomePartnerPageController;
 use App\Http\Controllers\Api\V1\Page\BlogPageController;
 use App\Http\Controllers\Api\V1\Page\ContactUsPageController;
+use App\Http\Controllers\Api\V1\Page\FeaturedInPageController;
 use App\Http\Controllers\Api\V1\Page\HomePageController;
 use App\Http\Controllers\Api\V1\Page\LocationsPageController;
 use App\Http\Controllers\Api\V1\Page\SocialMediaPageController;
@@ -29,6 +30,7 @@ Route::prefix('v1')
                 Route::get('technology', TechnologyPageController::class)->name('technology');
                 Route::get('contact-us', ContactUsPageController::class)->name('contact-us');
                 Route::get('become-partner', BecomePartnerPageController::class)->name('become-partner');
+                Route::get('featured-in', FeaturedInPageController::class)->name('featured-in');
                 Route::get('blog', BlogPageController::class)->name('blog');
                 Route::get('locations', LocationsPageController::class)->name('locations');
                 Route::get('social-media', SocialMediaPageController::class)->name('social-media');

@@ -40,6 +40,7 @@ Postman collection: [docs/forlled-public-api.postman_collection.json](/home/mara
 - `GET /pages/technology`
 - `GET /pages/contact-us`
 - `GET /pages/become-partner`
+- `GET /pages/featured-in`
 - `GET /pages/blog`
 - `GET /pages/locations`
 - `GET /pages/social-media`
@@ -88,6 +89,11 @@ These endpoints return a single structured payload per page, grouped by sections
   - Supports `page` and `per_page`.
 - `GET /pages/treatments`
   - Returns singleton page settings for the public treatments page.
+
+### Featured In
+
+- `GET /pages/featured-in`
+  - Returns the standalone featured logos block with section title and logo images.
 
 ### Partner Requests
 

@@ -97,6 +97,23 @@
         }
       }
     },
+    "/pages/featured-in": {
+      "get": {
+        "summary": "Get featured in page content",
+        "responses": {
+          "200": {
+            "description": "Featured in page payload",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FeaturedInPage"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/pages/blog": {
       "get": {
         "summary": "Get blog page hero content",
@@ -1008,6 +1025,23 @@
       },
       "BecomePartnerPage": {
         "type": "object"
+      },
+      "FeaturedInPage": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "logos": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Image"
+            }
+          }
+        }
       },
       "BlogPage": {
         "type": "object"

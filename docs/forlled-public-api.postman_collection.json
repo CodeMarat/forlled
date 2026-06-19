@@ -127,6 +127,23 @@
           }
         },
         {
+          "name": "Featured In Page",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/pages/featured-in",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "pages",
+                "featured-in"
+              ]
+            }
+          }
+        },
+        {
           "name": "Blog Page",
           "request": {
             "method": "GET",
