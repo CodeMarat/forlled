@@ -2,10 +2,13 @@
 
 namespace App\Models;
 
+use App\Models\Concerns\HasAdminAudit;
 use Illuminate\Database\Eloquent\Model;
 
 class HomePage extends Model
 {
+    use HasAdminAudit;
+
     protected $fillable = [
         'hero_title',
         'hero_subtitle',

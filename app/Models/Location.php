@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Concerns\HasAdminAudit;
 use Database\Factories\LocationFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -9,6 +10,8 @@ use Illuminate\Database\Eloquent\Model;
 class Location extends Model
 {
     /** @use HasFactory<LocationFactory> */
+    use HasAdminAudit;
+
     use HasFactory;
 
     protected $fillable = [

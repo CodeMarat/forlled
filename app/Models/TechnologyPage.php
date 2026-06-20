@@ -2,10 +2,13 @@
 
 namespace App\Models;
 
+use App\Models\Concerns\HasAdminAudit;
 use Illuminate\Database\Eloquent\Model;
 
 class TechnologyPage extends Model
 {
+    use HasAdminAudit;
+
     protected $fillable = [
         'page_title',
         'page_intro',
