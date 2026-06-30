@@ -33,9 +33,9 @@ class ProductResource extends ApiResource
                     'text' => $this->combine_right_text,
                 ],
             ],
-            'navigation_categories' => $this->whenLoaded(
-                'navigationCategories',
-                fn (): array => ProductCategoryListResource::collection($this->navigationCategories)->resolve($request),
+            'navigation_groups' => $this->when(
+                filled($this->navigation_groups ?? null),
+                fn (): array => $this->navigation_groups,
             ),
         ];
     }

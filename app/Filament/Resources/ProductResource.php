@@ -15,6 +15,7 @@ use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TagsInput;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Resources\Resource;
@@ -84,6 +85,29 @@ class ProductResource extends Resource
                                                             ->required()
                                                             ->default('TYPE')
                                                             ->maxLength(255),
+                                                        TagsInput::make('group_name')
+                                                            ->label('Category group')
+                                                            ->required()
+                                                            ->suggestions(fn (): array => ProductCategory::query()
+                                                                ->whereNotNull('group_name')
+                                                                ->where('group_name', '!=', '')
+                                                                ->select('group_name')
+                                                                ->distinct()
+                                                                ->orderBy('group_name')
+                                                                ->pluck('group_name')
+                                                                ->all())
+                                                            ->splitKeys(['Tab', 'Enter', ','])
+                                                            ->separator(',')
+                                                            ->afterStateHydrated(function (TagsInput $component, ?string $state): void {
+                                                                $component->state(filled($state) ? [$state] : []);
+                                                            })
+                                                            ->afterStateUpdated(function (Set $set, array $state): void {
+                                                                if (count($state) > 1) {
+                                                                    $set('group_name', [trim((string) last($state))]);
+                                                                }
+                                                            })
+                                                            ->dehydrateStateUsing(fn (array $state): ?string => filled($state[0] ?? null) ? trim((string) $state[0]) : null)
+                                                            ->nestedRecursiveRules(['min:1', 'max:255']),
                                                         TextInput::make('hero_title')
                                                             ->label('Hero title')
                                                             ->required()

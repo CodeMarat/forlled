@@ -13,6 +13,7 @@ class ProductCategoryListResource extends ApiResource
     {
         return [
             'name' => $this->name,
+            'group_name' => $this->group_name,
             'slug' => $this->slug,
             'type_label' => $this->type_label,
             'hero_title' => $this->hero_title,

@@ -310,21 +310,13 @@
     "/product-categories": {
       "get": {
         "summary": "List visible product categories",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/Page"
-          },
-          {
-            "$ref": "#/components/parameters/PerPage"
-          }
-        ],
         "responses": {
           "200": {
-            "description": "Paginated product categories",
+            "description": "Grouped product categories for navigation",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ProductCategoryPagination"
+                  "$ref": "#/components/schemas/ProductCategoryGroupsResponse"
                 }
               }
             }
@@ -577,6 +569,12 @@
           "name": {
             "type": "string"
           },
+          "group_name": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
           "slug": {
             "type": "string"
           },
@@ -809,10 +807,10 @@
               "combine_with_treatment": {
                 "type": "object"
               },
-              "navigation_categories": {
+              "navigation_groups": {
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/ProductCategoryCard"
+                  "$ref": "#/components/schemas/ProductCategoryGroup"
                 }
               }
             }
@@ -827,10 +825,10 @@
           {
             "type": "object",
             "properties": {
-              "navigation_categories": {
+              "navigation_groups": {
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/ProductCategoryCard"
+                  "$ref": "#/components/schemas/ProductCategoryGroup"
                 }
               },
               "products": {
@@ -891,6 +889,31 @@
           },
           "meta": {
             "$ref": "#/components/schemas/PaginationMeta"
+          }
+        }
+      },
+      "ProductCategoryGroup": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "categories": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProductCategoryCard"
+            }
+          }
+        }
+      },
+      "ProductCategoryGroupsResponse": {
+        "type": "object",
+        "properties": {
+          "groups": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProductCategoryGroup"
+            }
           }
         }
       },

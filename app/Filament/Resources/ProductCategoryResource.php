@@ -11,6 +11,7 @@ use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\TagsInput;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Resources\Resource;
@@ -58,6 +59,23 @@ class ProductCategoryResource extends Resource
                                         $set('slug', SlugGenerator::uniqueFromParts(ProductCategory::class, [$state], $record));
                                     })
                                     ->maxLength(255),
+                                TagsInput::make('group_name')
+                                    ->label('Category group')
+                                    ->required()
+                                    ->suggestions(fn (): array => static::groupOptions())
+                                    ->splitKeys(['Tab', 'Enter', ','])
+                                    ->separator(',')
+                                    ->afterStateHydrated(function (TagsInput $component, ?string $state): void {
+                                        $component->state(filled($state) ? [$state] : []);
+                                    })
+                                    ->afterStateUpdated(function (Set $set, array $state): void {
+                                        if (count($state) > 1) {
+                                            $set('group_name', [trim((string) last($state))]);
+                                        }
+                                    })
+                                    ->dehydrateStateUsing(fn (array $state): ?string => filled($state[0] ?? null) ? trim((string) $state[0]) : null)
+                                    ->nestedRecursiveRules(['min:1', 'max:255'])
+                                    ->helperText('Start typing to reuse an existing group, or press Enter to create a new one. Only one group should be assigned.'),
                                 TextInput::make('slug')
                                     ->label('Slug')
                                     ->required()
@@ -117,6 +135,11 @@ class ProductCategoryResource extends Resource
                     ->label('Category')
                     ->searchable()
                     ->sortable(),
+                TextColumn::make('group_name')
+                    ->label('Group')
+                    ->searchable()
+                    ->sortable()
+                    ->toggleable(),
                 TextColumn::make('slug')
                     ->searchable()
                     ->sortable(),
@@ -147,6 +170,21 @@ class ProductCategoryResource extends Resource
         return [
             //
         ];
+    }
+
+    /**
+     * @return array<string>
+     */
+    protected static function groupOptions(): array
+    {
+        return ProductCategory::query()
+            ->whereNotNull('group_name')
+            ->where('group_name', '!=', '')
+            ->select('group_name')
+            ->distinct()
+            ->orderBy('group_name')
+            ->pluck('group_name')
+            ->all();
     }
 
     public static function getPages(): array

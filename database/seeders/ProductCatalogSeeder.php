@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Product;
 use App\Models\ProductCategory;
 use App\Models\ProductRecommendation;
+use App\Support\Products\ProductCategoryNavigationDefaults;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Schema;
@@ -21,71 +22,7 @@ class ProductCatalogSeeder extends Seeder
             return;
         }
 
-        $categories = collect([
-            [
-                'name' => 'Cleansers',
-                'slug' => 'cleansers',
-                'type_label' => 'TYPE',
-                'hero_title' => 'CLEANSERS',
-                'hero_image' => null,
-                'sort_order' => 0,
-                'is_active' => true,
-            ],
-            [
-                'name' => 'Lotions',
-                'slug' => 'lotions',
-                'type_label' => 'TYPE',
-                'hero_title' => 'LOTIONS',
-                'hero_image' => null,
-                'sort_order' => 1,
-                'is_active' => true,
-            ],
-            [
-                'name' => 'Serums',
-                'slug' => 'serums',
-                'type_label' => 'TYPE',
-                'hero_title' => 'SERUMS',
-                'hero_image' => null,
-                'sort_order' => 2,
-                'is_active' => true,
-            ],
-            [
-                'name' => 'Masks',
-                'slug' => 'masks',
-                'type_label' => 'TYPE',
-                'hero_title' => 'MASKS',
-                'hero_image' => null,
-                'sort_order' => 3,
-                'is_active' => true,
-            ],
-            [
-                'name' => 'Creams & Emulsions',
-                'slug' => 'creams-emulsions',
-                'type_label' => 'TYPE',
-                'hero_title' => 'CREAMS & EMULSIONS',
-                'hero_image' => null,
-                'sort_order' => 4,
-                'is_active' => true,
-            ],
-            [
-                'name' => 'Eye Care',
-                'slug' => 'eye-care',
-                'type_label' => 'TYPE',
-                'hero_title' => 'EYE CARE',
-                'hero_image' => null,
-                'sort_order' => 5,
-                'is_active' => true,
-            ],
-            [
-                'name' => 'Special Care',
-                'slug' => 'special-care',
-                'type_label' => 'TYPE',
-                'hero_title' => 'SPECIAL CARE',
-                'hero_image' => null,
-                'sort_order' => 6,
-                'is_active' => true,
-            ],
-        ])->mapWithKeys(fn (array $attributes) => [
+        $categories = collect(ProductCategoryNavigationDefaults::categories())->mapWithKeys(fn (array $attributes) => [
             $attributes['slug'] => ProductCategory::query()->updateOrCreate(
                 ['slug' => $attributes['slug']],
                 $attributes,

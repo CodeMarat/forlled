@@ -13,9 +13,9 @@ class ProductCategoryResource extends ApiResource
     {
         return [
             ...ProductCategoryListResource::make($this->resource)->resolve($request),
-            'navigation_categories' => $this->whenLoaded(
-                'navigationCategories',
-                fn (): array => ProductCategoryListResource::collection($this->navigationCategories)->resolve($request),
+            'navigation_groups' => $this->when(
+                filled($this->navigation_groups ?? null),
+                fn (): array => $this->navigation_groups,
             ),
             'products' => $this->whenLoaded(
                 'products',

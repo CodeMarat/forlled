@@ -3,25 +3,30 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Api\PaginatedIndexRequest;
-use App\Http\Resources\Api\V1\ProductCategoryListResource;
+use App\Http\Resources\Api\V1\ProductCategoryGroupResource;
 use App\Http\Resources\Api\V1\ProductCategoryResource;
 use App\Models\ProductCategory;
-use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
+use App\Support\Products\ProductCategoryNavigationGrouper;
+use Illuminate\Http\JsonResponse;
 
 class ProductCategoryController extends Controller
 {
-    public function index(PaginatedIndexRequest $request): AnonymousResourceCollection
-    {
-        $perPage = $request->perPage();
+    public function __construct(
+        protected ProductCategoryNavigationGrouper $navigationGrouper,
+    ) {}
 
+    public function index(): JsonResponse
+    {
         $categories = ProductCategory::query()
             ->where('is_active', true)
             ->orderBy('sort_order')
-            ->paginate($perPage)
-            ->withQueryString();
+            ->get();
 
-        return ProductCategoryListResource::collection($categories);
+        return response()->json([
+            'groups' => ProductCategoryGroupResource::collection(
+                $this->navigationGrouper->group($categories),
+            )->resolve(),
+        ]);
     }
 
     public function show(string $productCategory): ProductCategoryResource
@@ -42,7 +47,12 @@ class ProductCategoryController extends Controller
             ])
             ->firstOrFail();
 
-        $category->setRelation('navigationCategories', $navigationCategories);
+        $category->setAttribute(
+            'navigation_groups',
+            ProductCategoryGroupResource::collection(
+                $this->navigationGrouper->group($navigationCategories),
+            )->resolve(),
+        );
 
         return ProductCategoryResource::make($category);
     }

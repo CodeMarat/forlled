@@ -4,14 +4,20 @@ namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\PaginatedIndexRequest;
+use App\Http\Resources\Api\V1\ProductCategoryGroupResource;
 use App\Http\Resources\Api\V1\ProductListResource;
 use App\Http\Resources\Api\V1\ProductResource;
 use App\Models\Product;
 use App\Models\ProductCategory;
+use App\Support\Products\ProductCategoryNavigationGrouper;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class ProductController extends Controller
 {
+    public function __construct(
+        protected ProductCategoryNavigationGrouper $navigationGrouper,
+    ) {}
+
     public function index(PaginatedIndexRequest $request): AnonymousResourceCollection
     {
         $perPage = $request->perPage();
@@ -50,7 +56,12 @@ class ProductController extends Controller
             ->values();
 
         $product->setRelation('recommendedProducts', $recommendedProducts);
-        $product->setRelation('navigationCategories', $navigationCategories);
+        $product->setAttribute(
+            'navigation_groups',
+            ProductCategoryGroupResource::collection(
+                $this->navigationGrouper->group($navigationCategories),
+            )->resolve(),
+        );
 
         return ProductResource::make($product);
     }
