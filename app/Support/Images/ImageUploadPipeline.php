@@ -36,12 +36,7 @@ class ImageUploadPipeline
 
     public function delete(BaseFileUpload $component, string $file): void
     {
-        $component->getDisk()->delete($file);
-
-        $directory = trim(pathinfo($file, PATHINFO_DIRNAME), './');
-        $baseName = pathinfo($file, PATHINFO_FILENAME);
-
-        $this->deleteGeneratedVariants($component, $directory, $baseName);
+        app(UploadedFileCleanup::class)->deletePathOnDisk($component->getDiskName(), $file);
     }
 
     protected function fileExists(TemporaryUploadedFile $file): bool
@@ -195,17 +190,6 @@ class ImageUploadPipeline
     protected function joinPath(string $directory, string $path): string
     {
         return trim(collect([$directory, $path])->filter()->implode('/'), '/');
-    }
-
-    protected function deleteGeneratedVariants(BaseFileUpload $component, string $directory, string $baseName): void
-    {
-        $variantsDirectory = $this->joinPath($directory, (string) config('image_pipeline.variants_directory'));
-
-        rescue(function () use ($component, $variantsDirectory, $baseName): void {
-            collect($component->getDisk()->files($variantsDirectory))
-                ->filter(fn (string $path): bool => str_starts_with(pathinfo($path, PATHINFO_FILENAME), "{$baseName}-"))
-                ->each(fn (string $path): bool => $component->getDisk()->delete($path));
-        }, report: false);
     }
 
     /**
