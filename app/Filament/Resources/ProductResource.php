@@ -98,8 +98,14 @@ class ProductResource extends Resource
                                                                 ->all())
                                                             ->splitKeys(['Tab', 'Enter', ','])
                                                             ->separator(',')
-                                                            ->afterStateHydrated(function (TagsInput $component, ?string $state): void {
-                                                                $component->state(filled($state) ? [$state] : []);
+                                                            ->afterStateHydrated(function (TagsInput $component, array|string|null $state): void {
+                                                                if (is_array($state)) {
+                                                                    $component->state(array_values(array_filter($state, fn (mixed $value): bool => filled($value))));
+
+                                                                    return;
+                                                                }
+
+                                                                $component->state(filled($state) ? [trim($state)] : []);
                                                             })
                                                             ->afterStateUpdated(function (Set $set, array $state): void {
                                                                 if (count($state) > 1) {
