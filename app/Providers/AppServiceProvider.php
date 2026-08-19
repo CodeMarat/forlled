@@ -30,12 +30,13 @@ class AppServiceProvider extends ServiceProvider
             app(UploadedFileCleanup::class)->rememberOriginalPaths($model);
         });
 
-        Model::updated(function (Model $model): void {
-            app(UploadedFileCleanup::class)->deleteRemovedFiles($model);
+        Model::created(function (Model $model): void {
+            app(VideoUploadDispatcher::class)->dispatch($model, $model->getAttributes());
         });
 
-        Model::saved(function (Model $model): void {
-            app(VideoUploadDispatcher::class)->dispatch($model);
+        Model::updated(function (Model $model): void {
+            app(UploadedFileCleanup::class)->deleteRemovedFiles($model);
+            app(VideoUploadDispatcher::class)->dispatch($model, $model->getChanges());
         });
 
         Model::deleted(function (Model $model): void {

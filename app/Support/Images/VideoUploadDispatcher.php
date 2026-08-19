@@ -4,26 +4,43 @@ namespace App\Support\Images;
 
 use App\Jobs\OptimizeUploadedVideo;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class VideoUploadDispatcher
 {
-    public function dispatch(Model $model): void
+    /**
+     * @param  array<string, mixed>  $attributes
+     */
+    public function dispatch(Model $model, array $attributes = []): void
     {
         $cleanup = app(UploadedFileCleanup::class);
+        $modelClass = $model::class;
+        $modelKey = $model->getKey();
+        $attributes = $attributes !== [] ? $attributes : $model->getChanges();
 
-        foreach ($model->getChanges() as $attribute => $value) {
+        foreach ($attributes as $attribute => $value) {
             foreach ($cleanup->collectFilePaths($value) as $path) {
                 if (! $this->isRawVideoPath($path)) {
                     continue;
                 }
 
-                OptimizeUploadedVideo::dispatch(
-                    $model::class,
-                    $model->getKey(),
-                    $attribute,
-                    'public',
-                    $path,
-                )->afterCommit();
+                $dispatch = static function () use ($modelClass, $modelKey, $attribute, $path): void {
+                    OptimizeUploadedVideo::dispatch(
+                        $modelClass,
+                        $modelKey,
+                        $attribute,
+                        'public',
+                        $path,
+                    );
+                };
+
+                if (DB::transactionLevel() > 0) {
+                    DB::afterCommit($dispatch);
+
+                    continue;
+                }
+
+                $dispatch();
             }
         }
     }
