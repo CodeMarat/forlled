@@ -69,6 +69,11 @@ class ImageUploadPipeline
             'image/jpg',
             'image/png',
             'image/webp',
+            'image/avif',
+            'image/heic',
+            'image/heif',
+            'image/bmp',
+            'image/tiff',
         ], true);
     }
 
@@ -133,7 +138,7 @@ class ImageUploadPipeline
         $image = $this->createImage($file)
             ->scaleDown(width: (int) config('image_pipeline.main_width'));
 
-        $temporaryPath = $this->writeEncodedImageToTemporaryFile($image, $mimeType);
+        $temporaryPath = $this->writeOptimizedImageToTemporaryFile($image, $mimeType, $file->getRealPath());
 
         $this->optimize($temporaryPath);
         $this->storeTemporaryFileOnDisk($component, $temporaryPath, $path);
@@ -144,25 +149,76 @@ class ImageUploadPipeline
         return Image::decodePath($file->getRealPath())->orient();
     }
 
-    protected function writeEncodedImageToTemporaryFile(mixed $image, string $mimeType): string
+    protected function writeOptimizedImageToTemporaryFile(mixed $image, string $mimeType, string $originalPath): string
     {
         $temporaryPath = tempnam(sys_get_temp_dir(), 'img-pipeline-');
 
+        if ($temporaryPath === false) {
+            throw new \RuntimeException('Unable to create a temporary file for image optimization.');
+        }
+
+        $qualityCandidates = $this->qualityCandidates();
+        $bestPath = null;
+        $bestSize = null;
+
+        foreach ($qualityCandidates as $quality) {
+            $candidatePath = $this->writeEncodedImageToTemporaryFile($image, $mimeType, $quality);
+            $candidateSize = @filesize($candidatePath) ?: PHP_INT_MAX;
+
+            if ($bestPath === null || $candidateSize < $bestSize) {
+                if ($bestPath !== null) {
+                    File::delete($bestPath);
+                }
+
+                $bestPath = $candidatePath;
+                $bestSize = $candidateSize;
+            } else {
+                File::delete($candidatePath);
+            }
+
+            if ($candidateSize > 0 && @filesize($originalPath) !== false && $candidateSize < filesize($originalPath)) {
+                break;
+            }
+        }
+
+        if ($bestPath === null) {
+            throw new \RuntimeException('Unable to optimize image.');
+        }
+
+        return $bestPath;
+    }
+
+    /**
+     * @param  array<int, int>  $qualityCandidates
+     */
+    protected function qualityCandidates(): array
+    {
+        return [
+            (int) config('image_pipeline.webp_quality'),
+            90,
+            85,
+            80,
+        ];
+    }
+
+    protected function writeEncodedImageToTemporaryFile(mixed $image, string $mimeType, int $quality): string
+    {
+        $temporaryPath = tempnam(sys_get_temp_dir(), 'img-pipeline-');
+
+        if ($temporaryPath === false) {
+            throw new \RuntimeException('Unable to create a temporary file for image encoding.');
+        }
+
         $encodedImage = match ($mimeType) {
             'image/jpeg', 'image/jpg' => $image->encodeUsingMediaType(
-                'image/jpeg',
-                progressive: true,
-                quality: (int) config('image_pipeline.jpeg_quality'),
-                strip: true,
-            ),
-            'image/png' => $image->encodeUsingMediaType(
                 'image/webp',
-                quality: (int) config('image_pipeline.webp_quality'),
+                progressive: true,
+                quality: $quality,
                 strip: true,
             ),
             default => $image->encodeUsingMediaType(
                 'image/webp',
-                quality: (int) config('image_pipeline.webp_quality'),
+                quality: $quality,
                 strip: true,
             ),
         };
@@ -264,7 +320,6 @@ class ImageUploadPipeline
     {
         return match ($mimeType) {
             'image/jpeg', 'image/jpg' => 'jpg',
-            'image/png' => 'png',
             default => 'webp',
         };
     }
