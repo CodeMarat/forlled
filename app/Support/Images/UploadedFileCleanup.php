@@ -138,7 +138,7 @@ class UploadedFileCleanup
     /**
      * @return array<int, string>
      */
-    protected function collectFilePaths(mixed $value): array
+    public function collectFilePaths(mixed $value): array
     {
         if (is_string($value)) {
             $trimmed = trim($value);
