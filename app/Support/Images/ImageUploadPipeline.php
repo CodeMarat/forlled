@@ -316,6 +316,15 @@ class ImageUploadPipeline
         return trim(collect([$directory, $path])->filter()->implode('/'), '/');
     }
 
+    protected function outputMimeType(string $sourceMimeType): string
+    {
+        if (in_array($sourceMimeType, ['image/gif', 'image/svg+xml'], true)) {
+            return $sourceMimeType;
+        }
+
+        return 'image/webp';
+    }
+
     protected function outputExtension(string $mimeType): string
     {
         return match ($mimeType) {
