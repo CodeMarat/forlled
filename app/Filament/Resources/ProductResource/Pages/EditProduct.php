@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\ProductResource\Pages;
 
 use App\Filament\Resources\ProductResource;
+use App\Support\Images\VideoUploadDispatcher;
 use Filament\Actions;
 use Filament\Actions\Action;
 use Filament\Resources\Pages\EditRecord;
@@ -47,5 +48,10 @@ class EditProduct extends EditRecord
         ])
             ->id('form')
             ->livewireSubmitHandler($this->getSubmitFormLivewireMethodName());
+    }
+
+    protected function afterSave(): void
+    {
+        app(VideoUploadDispatcher::class)->dispatch($this->record, $this->record->getAttributes());
     }
 }

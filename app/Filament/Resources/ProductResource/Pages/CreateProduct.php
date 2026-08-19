@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\ProductResource\Pages;
 
 use App\Filament\Resources\ProductResource;
+use App\Support\Images\VideoUploadDispatcher;
 use Filament\Resources\Pages\CreateRecord;
 use Filament\Schemas\Components\Component;
 use Filament\Schemas\Components\EmbeddedSchema;
@@ -26,5 +27,10 @@ class CreateProduct extends CreateRecord
         ])
             ->id('form')
             ->livewireSubmitHandler($this->getSubmitFormLivewireMethodName());
+    }
+
+    protected function afterCreate(): void
+    {
+        app(VideoUploadDispatcher::class)->dispatch($this->record, $this->record->getAttributes());
     }
 }

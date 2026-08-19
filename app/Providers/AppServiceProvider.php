@@ -4,7 +4,6 @@ namespace App\Providers;
 
 use App\Support\Images\UploadedFileCleanup;
 use App\Support\Images\ImageUploadPipeline;
-use App\Support\Images\VideoUploadDispatcher;
 use Illuminate\Database\Eloquent\Model;
 use Filament\Forms\Components\BaseFileUpload;
 use Filament\Forms\Components\FileUpload;
@@ -30,13 +29,8 @@ class AppServiceProvider extends ServiceProvider
             app(UploadedFileCleanup::class)->rememberOriginalPaths($model);
         });
 
-        Model::created(function (Model $model): void {
-            app(VideoUploadDispatcher::class)->dispatch($model, $model->getAttributes());
-        });
-
         Model::updated(function (Model $model): void {
             app(UploadedFileCleanup::class)->deleteRemovedFiles($model);
-            app(VideoUploadDispatcher::class)->dispatch($model, $model->getChanges());
         });
 
         Model::deleted(function (Model $model): void {
