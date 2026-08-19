@@ -91,7 +91,6 @@ class ImageUploadPipeline
 
         $this->deleteGeneratedVariants($component, $directory, $baseName);
         $this->storeMainVariant($component, $file, $mainPath, $outputMimeType);
-        $this->storeVariants($component, $file, $directory, $baseName, $outputMimeType);
 
         return $mainPath;
     }
@@ -107,44 +106,12 @@ class ImageUploadPipeline
         $this->storeTemporaryFileOnDisk($component, $temporaryPath, $path);
     }
 
-    protected function storeVariants(
-        BaseFileUpload $component,
-        TemporaryUploadedFile $file,
-        string $directory,
-        string $baseName,
-        string $mimeType,
-    ): void {
-        /** @var array<string, array<string, mixed>> $variants */
-        $variants = config('image_pipeline.variants', []);
-
-        foreach ($variants as $variantName => $variantConfig) {
-            $variantMimeType = $this->variantMimeType($mimeType, $variantConfig);
-            $variantExtension = $this->outputExtension($variantMimeType);
-            $variantPath = $this->variantPath($directory, $baseName, $variantName, $variantExtension);
-
-            $image = $this->createImage($file)
-                ->scaleDown(width: (int) $variantConfig['width']);
-
-            $temporaryPath = $this->writeEncodedImageToTemporaryFile(
-                $image,
-                $variantMimeType,
-                $variantConfig,
-            );
-
-            $this->optimize($temporaryPath);
-            $this->storeTemporaryFileOnDisk($component, $temporaryPath, $variantPath);
-        }
-    }
-
     protected function createImage(TemporaryUploadedFile $file): mixed
     {
         return Image::decodePath($file->getRealPath())->orient();
     }
 
-    /**
-     * @param  array<string, mixed>  $variantConfig
-     */
-    protected function writeEncodedImageToTemporaryFile(mixed $image, string $mimeType, array $variantConfig = []): string
+    protected function writeEncodedImageToTemporaryFile(mixed $image, string $mimeType): string
     {
         $temporaryPath = tempnam(sys_get_temp_dir(), 'img-pipeline-');
 
@@ -152,17 +119,17 @@ class ImageUploadPipeline
             'image/jpeg', 'image/jpg' => $image->encodeUsingMediaType(
                 'image/jpeg',
                 progressive: true,
-                quality: (int) ($variantConfig['jpeg_quality'] ?? config('image_pipeline.jpeg_quality')),
+                quality: (int) config('image_pipeline.jpeg_quality'),
                 strip: true,
             ),
             'image/png' => $image->encodeUsingMediaType(
                 'image/webp',
-                quality: (int) ($variantConfig['quality'] ?? $variantConfig['webp_quality'] ?? config('image_pipeline.webp_quality')),
+                quality: (int) config('image_pipeline.webp_quality'),
                 strip: true,
             ),
             default => $image->encodeUsingMediaType(
                 'image/webp',
-                quality: (int) ($variantConfig['quality'] ?? $variantConfig['webp_quality'] ?? config('image_pipeline.webp_quality')),
+                quality: (int) config('image_pipeline.webp_quality'),
                 strip: true,
             ),
         };
@@ -198,31 +165,6 @@ class ImageUploadPipeline
         return trim(collect([$directory, $path])->filter()->implode('/'), '/');
     }
 
-    /**
-     * @param  array<string, mixed>  $variantConfig
-     */
-    protected function variantMimeType(string $sourceMimeType, array $variantConfig): string
-    {
-        if (! str_starts_with($sourceMimeType, 'image/') || in_array($sourceMimeType, ['image/gif', 'image/svg+xml'], true)) {
-            return $sourceMimeType;
-        }
-
-        if (($variantConfig['format'] ?? 'source') === 'webp') {
-            return 'image/webp';
-        }
-
-        return 'image/webp';
-    }
-
-    protected function outputMimeType(string $sourceMimeType): string
-    {
-        if (in_array($sourceMimeType, ['image/gif', 'image/svg+xml'], true)) {
-            return $sourceMimeType;
-        }
-
-        return 'image/webp';
-    }
-
     protected function outputExtension(string $mimeType): string
     {
         return match ($mimeType) {
@@ -232,11 +174,4 @@ class ImageUploadPipeline
         };
     }
 
-    protected function variantPath(string $directory, string $baseName, string $variantName, string $extension): string
-    {
-        return $this->joinPath(
-            $directory,
-            trim((string) config('image_pipeline.variants_directory'), '/')."/{$baseName}-{$variantName}.{$extension}",
-        );
-    }
 }
