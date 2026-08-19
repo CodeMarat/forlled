@@ -19,13 +19,30 @@ class ApiResource extends JsonResource
 
     /**
      * @return array{
+     *     type: 'image'|'video',
      *     path: string,
      *     url: string,
      *     alt: string|null,
-     *     variants: array<string, array{path: string, url: string}>
+     *     variants: array<string, array{path: string, url: string}>,
+     *     manifest_url: string|null
      * }|null
      */
     protected function image(?string $path, ?string $preferredVariant = null, ?string $alt = null): ?array
+    {
+        return $this->media($path, $preferredVariant, $alt);
+    }
+
+    /**
+     * @return array{
+     *     type: 'image'|'video',
+     *     path: string,
+     *     url: string,
+     *     alt: string|null,
+     *     variants: array<string, array{path: string, url: string}>,
+     *     manifest_url: string|null
+     * }|null
+     */
+    protected function media(?string $path, ?string $preferredVariant = null, ?string $alt = null): ?array
     {
         if (blank($path)) {
             return null;
@@ -37,10 +54,25 @@ class ApiResource extends JsonResource
                 'url' => $path,
                 'alt' => $alt,
                 'variants' => [],
+                'manifest_url' => null,
+            ];
+        }
+
+        if ($this->isVideoPath($path)) {
+            $url = Storage::disk('public')->url($path);
+
+            return [
+                'type' => 'video',
+                'path' => $path,
+                'url' => $url,
+                'alt' => $alt,
+                'variants' => [],
+                'manifest_url' => $this->isHlsPath($path) ? $url : null,
             ];
         }
 
         $source = [
+            'type' => 'image',
             'path' => $path,
             'url' => Storage::disk('public')->url($path),
         ];
@@ -55,7 +87,18 @@ class ApiResource extends JsonResource
             'url' => $selected['url'],
             'alt' => $alt,
             'variants' => $variants,
+            'manifest_url' => null,
         ];
+    }
+
+    protected function isVideoPath(string $path): bool
+    {
+        return (bool) preg_match('/\.(mp4|mov|avi|wmv|webm|m4v|mkv|ogv|3gp|mpg|mpeg|m3u8)$/i', $path);
+    }
+
+    protected function isHlsPath(string $path): bool
+    {
+        return (bool) preg_match('/\.m3u8$/i', $path);
     }
 
     /**

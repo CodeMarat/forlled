@@ -48,6 +48,17 @@ class UploadedFileCleanup
         }
 
         $disk = Storage::disk($diskName);
+        $extension = strtolower(pathinfo($normalizedPath, PATHINFO_EXTENSION));
+
+        if ($extension === 'm3u8') {
+            $directory = trim(pathinfo($normalizedPath, PATHINFO_DIRNAME), './');
+
+            if ($directory !== '') {
+                rescue(fn (): bool => $disk->deleteDirectory($directory), report: false);
+            }
+
+            return;
+        }
 
         rescue(fn (): bool => $disk->delete($normalizedPath), report: false);
 
@@ -132,7 +143,7 @@ class UploadedFileCleanup
             return false;
         }
 
-        return (bool) preg_match('/\.(jpg|jpeg|png|webp|gif|bmp|svg|avif|heic|heif|tif|tiff|mp4|mov|avi|wmv|webm|m4v|mkv|ogv|3gp|mpg|mpeg)$/i', $path);
+        return (bool) preg_match('/\.(jpg|jpeg|png|webp|gif|bmp|svg|avif|heic|heif|tif|tiff|mp4|mov|avi|wmv|webm|m4v|mkv|ogv|3gp|mpg|mpeg|m3u8)$/i', $path);
     }
 
     /**
