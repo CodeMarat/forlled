@@ -132,7 +132,7 @@ class UploadedFileCleanup
             return false;
         }
 
-        return (bool) preg_match('/\.(jpg|jpeg|png|webp|gif|bmp|svg|avif|heic|heif|tif|tiff)$/i', $path);
+        return (bool) preg_match('/\.(jpg|jpeg|png|webp|gif|bmp|svg|avif|heic|heif|tif|tiff|mp4|mov|avi|wmv|webm|m4v|mkv|ogv|3gp|mpg|mpeg)$/i', $path);
     }
 
     /**

@@ -17,6 +17,10 @@ class ImageUploadPipeline
             return null;
         }
 
+        if ($this->isVideoUpload($file)) {
+            return $this->storeVideo($component, $file);
+        }
+
         if (! $this->isImageUpload($file)) {
             return $this->storeDefault($component, $file);
         }
@@ -51,6 +55,11 @@ class ImageUploadPipeline
     protected function isImageUpload(TemporaryUploadedFile $file): bool
     {
         return str_starts_with((string) $file->getMimeType(), 'image/');
+    }
+
+    protected function isVideoUpload(TemporaryUploadedFile $file): bool
+    {
+        return str_starts_with((string) $file->getMimeType(), 'video/');
     }
 
     protected function shouldTransform(TemporaryUploadedFile $file): bool
@@ -93,6 +102,30 @@ class ImageUploadPipeline
         $this->storeMainVariant($component, $file, $mainPath, $outputMimeType);
 
         return $mainPath;
+    }
+
+    protected function storeVideo(BaseFileUpload $component, TemporaryUploadedFile $file): string
+    {
+        $transcodedPath = $this->transcodeVideo($file);
+
+        if ($transcodedPath === null) {
+            return $this->storeDefault($component, $file);
+        }
+
+        $storageFileName = $component->getUploadedFileNameForStorage($file);
+        $directory = trim((string) $component->getDirectory(), '/');
+        $baseName = pathinfo($storageFileName, PATHINFO_FILENAME);
+        $destinationPath = $this->joinPath($directory, "{$baseName}.mp4");
+
+        if ($this->fileIsSmallerThanOriginal($transcodedPath, $file->getRealPath())) {
+            $this->storeTemporaryFileOnDisk($component, $transcodedPath, $destinationPath);
+
+            return $destinationPath;
+        }
+
+        File::delete($transcodedPath);
+
+        return $this->storeDefault($component, $file);
     }
 
     protected function storeMainVariant(BaseFileUpload $component, TemporaryUploadedFile $file, string $path, string $mimeType): void
@@ -147,6 +180,61 @@ class ImageUploadPipeline
         );
     }
 
+    protected function transcodeVideo(TemporaryUploadedFile $file): ?string
+    {
+        if (! $this->hasFfmpeg()) {
+            return null;
+        }
+
+        $inputPath = $file->getRealPath();
+        $temporaryPath = tempnam(sys_get_temp_dir(), 'video-pipeline-');
+
+        if ($temporaryPath === false) {
+            return null;
+        }
+
+        $outputPath = $temporaryPath.'.mp4';
+        File::delete($temporaryPath);
+
+        $command = sprintf(
+            '%s -y -i %s -vf %s -c:v libx264 -preset slow -crf 23 -pix_fmt yuv420p -movflags +faststart -c:a aac -b:a 128k -ar 48000 %s',
+            $this->binaryPath('ffmpeg'),
+            escapeshellarg($inputPath),
+            escapeshellarg("scale='min(1920,iw)':-2"),
+            escapeshellarg($outputPath),
+        );
+
+        $process = proc_open(
+            $command,
+            [
+                ['pipe', 'r'],
+                ['pipe', 'w'],
+                ['pipe', 'w'],
+            ],
+            $pipes,
+        );
+
+        if (! is_resource($process)) {
+            return null;
+        }
+
+        fclose($pipes[0]);
+        stream_get_contents($pipes[1]);
+        stream_get_contents($pipes[2]);
+        fclose($pipes[1]);
+        fclose($pipes[2]);
+
+        $exitCode = proc_close($process);
+
+        if ($exitCode !== 0 || ! is_file($outputPath)) {
+            File::delete($outputPath);
+
+            return null;
+        }
+
+        return $outputPath;
+    }
+
     protected function storeTemporaryFileOnDisk(BaseFileUpload $component, string $temporaryPath, string $destinationPath): void
     {
         $stream = fopen($temporaryPath, 'r');
@@ -158,6 +246,13 @@ class ImageUploadPipeline
         }
 
         File::delete($temporaryPath);
+    }
+
+    protected function fileIsSmallerThanOriginal(string $optimizedPath, string $originalPath): bool
+    {
+        return @filesize($optimizedPath) !== false
+            && @filesize($originalPath) !== false
+            && filesize($optimizedPath) < filesize($originalPath);
     }
 
     protected function joinPath(string $directory, string $path): string
@@ -172,6 +267,26 @@ class ImageUploadPipeline
             'image/png' => 'png',
             default => 'webp',
         };
+    }
+
+    protected function hasFfmpeg(): bool
+    {
+        return $this->binaryPath('ffmpeg') !== null;
+    }
+
+    protected function binaryPath(string $binary): ?string
+    {
+        $paths = explode(PATH_SEPARATOR, (string) getenv('PATH'));
+
+        foreach ($paths as $path) {
+            $candidate = rtrim($path, DIRECTORY_SEPARATOR).DIRECTORY_SEPARATOR.$binary;
+
+            if (is_file($candidate) && is_executable($candidate)) {
+                return $candidate;
+            }
+        }
+
+        return null;
     }
 
 }

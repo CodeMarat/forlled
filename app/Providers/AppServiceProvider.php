@@ -39,7 +39,10 @@ class AppServiceProvider extends ServiceProvider
 
         FileUpload::configureUsing(function (FileUpload $component): void {
             $component
-                ->maxSize(fn (BaseFileUpload $component): ?int => in_array('image/*', $component->getAcceptedFileTypes() ?? [], true)
+                ->maxSize(fn (BaseFileUpload $component): ?int => array_intersect(
+                    $component->getAcceptedFileTypes() ?? [],
+                    ['image/*', 'video/*'],
+                ) !== []
                     ? (int) config('image_pipeline.max_upload_kb')
                     : null);
 
