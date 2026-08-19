@@ -59,18 +59,20 @@ class OptimizeUploadedVideo implements ShouldQueue
 
         $optimizedPath = $this->optimizedPath($this->path);
 
-        if (! $this->fileIsSmallerThanOriginal($temporaryPath, $sourceDisk->path($this->path))) {
-            File::delete($temporaryPath);
-
-            return;
-        }
-
         $stream = fopen($temporaryPath, 'r');
 
-        $sourceDisk->put($optimizedPath, $stream, 'public');
+        $stored = $sourceDisk->put($optimizedPath, $stream, [
+            'visibility' => 'public',
+        ]);
 
         if (is_resource($stream)) {
             fclose($stream);
+        }
+
+        if (! $stored) {
+            File::delete($temporaryPath);
+
+            return;
         }
 
         File::delete($temporaryPath);
@@ -177,13 +179,6 @@ class OptimizeUploadedVideo implements ShouldQueue
         }
 
         return $outputPath;
-    }
-
-    protected function fileIsSmallerThanOriginal(string $optimizedPath, string $originalPath): bool
-    {
-        return @filesize($optimizedPath) !== false
-            && @filesize($originalPath) !== false
-            && filesize($optimizedPath) < filesize($originalPath);
     }
 
     protected function binaryPath(string $binary): ?string
