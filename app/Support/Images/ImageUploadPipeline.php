@@ -83,14 +83,15 @@ class ImageUploadPipeline
         $storageFileName = $component->getUploadedFileNameForStorage($file);
         $directory = trim((string) $component->getDirectory(), '/');
         $baseName = pathinfo($storageFileName, PATHINFO_FILENAME);
-        $extension = strtolower(pathinfo($storageFileName, PATHINFO_EXTENSION));
         $mimeType = strtolower((string) $file->getMimeType());
+        $outputMimeType = $this->outputMimeType($mimeType);
+        $outputExtension = $this->outputExtension($outputMimeType);
 
-        $mainPath = $this->joinPath($directory, "{$baseName}.{$extension}");
+        $mainPath = $this->joinPath($directory, "{$baseName}.{$outputExtension}");
 
         $this->deleteGeneratedVariants($component, $directory, $baseName);
-        $this->storeMainVariant($component, $file, $mainPath, $mimeType);
-        $this->storeVariants($component, $file, $directory, $baseName, $extension, $mimeType);
+        $this->storeMainVariant($component, $file, $mainPath, $outputMimeType);
+        $this->storeVariants($component, $file, $directory, $baseName, $outputMimeType);
 
         return $mainPath;
     }
@@ -111,7 +112,6 @@ class ImageUploadPipeline
         TemporaryUploadedFile $file,
         string $directory,
         string $baseName,
-        string $extension,
         string $mimeType,
     ): void {
         /** @var array<string, array<string, mixed>> $variants */
@@ -119,7 +119,7 @@ class ImageUploadPipeline
 
         foreach ($variants as $variantName => $variantConfig) {
             $variantMimeType = $this->variantMimeType($mimeType, $variantConfig);
-            $variantExtension = $this->variantExtension($extension, $variantMimeType);
+            $variantExtension = $this->outputExtension($variantMimeType);
             $variantPath = $this->variantPath($directory, $baseName, $variantName, $variantExtension);
 
             $image = $this->createImage($file)
@@ -153,11 +153,17 @@ class ImageUploadPipeline
                 'image/jpeg',
                 progressive: true,
                 quality: (int) ($variantConfig['jpeg_quality'] ?? config('image_pipeline.jpeg_quality')),
+                strip: true,
             ),
-            'image/png' => $image->encodeUsingMediaType('image/png'),
+            'image/png' => $image->encodeUsingMediaType(
+                'image/webp',
+                quality: (int) ($variantConfig['quality'] ?? $variantConfig['webp_quality'] ?? config('image_pipeline.webp_quality')),
+                strip: true,
+            ),
             default => $image->encodeUsingMediaType(
                 'image/webp',
                 quality: (int) ($variantConfig['quality'] ?? $variantConfig['webp_quality'] ?? config('image_pipeline.webp_quality')),
+                strip: true,
             ),
         };
 
@@ -197,17 +203,30 @@ class ImageUploadPipeline
      */
     protected function variantMimeType(string $sourceMimeType, array $variantConfig): string
     {
+        if (! str_starts_with($sourceMimeType, 'image/') || in_array($sourceMimeType, ['image/gif', 'image/svg+xml'], true)) {
+            return $sourceMimeType;
+        }
+
         if (($variantConfig['format'] ?? 'source') === 'webp') {
             return 'image/webp';
         }
 
-        return $sourceMimeType;
+        return 'image/webp';
     }
 
-    protected function variantExtension(string $sourceExtension, string $variantMimeType): string
+    protected function outputMimeType(string $sourceMimeType): string
     {
-        return match ($variantMimeType) {
-            'image/jpeg', 'image/jpg' => in_array($sourceExtension, ['jpeg', 'jpg'], true) ? $sourceExtension : 'jpg',
+        if (in_array($sourceMimeType, ['image/gif', 'image/svg+xml'], true)) {
+            return $sourceMimeType;
+        }
+
+        return 'image/webp';
+    }
+
+    protected function outputExtension(string $mimeType): string
+    {
+        return match ($mimeType) {
+            'image/jpeg', 'image/jpg' => 'jpg',
             'image/png' => 'png',
             default => 'webp',
         };

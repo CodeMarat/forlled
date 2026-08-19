@@ -2,7 +2,7 @@
 
 return [
     'max_upload_kb' => 102400,
-    'main_width' => 4200,
+    'main_width' => 3000,
     'jpeg_quality' => 90,
     'webp_quality' => 88,
     'variants_directory' => 'variants',
