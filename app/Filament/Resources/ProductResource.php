@@ -181,10 +181,10 @@ class ProductResource extends Resource
                                                     ->schema([
                                                         FileUpload::make('hero_image')
                                                             ->label('Main product image')
-                                                            ->image()
+                                                            ->acceptedFileTypes(['image/*', 'video/*'])
                                                             ->disk('public')
                                                             ->directory('products/items')
-                                                            ->helperText('Main product image shown on product and category pages.'),
+                                                            ->helperText('Upload an image or video shown on product and category pages.'),
                                                         TextInput::make('hero_image_alt')
                                                             ->label('Main product image alt text')
                                                             ->maxLength(255)
@@ -194,10 +194,10 @@ class ProductResource extends Resource
                                                     ->schema([
                                                         FileUpload::make('side_image')
                                                             ->label('Lifestyle image')
-                                                            ->image()
+                                                            ->acceptedFileTypes(['image/*', 'video/*'])
                                                             ->disk('public')
                                                             ->directory('products/items')
-                                                            ->helperText('Right-side supporting image shown next to the accordion section.'),
+                                                            ->helperText('Upload an image or video shown next to the accordion section.'),
                                                         TextInput::make('side_image_alt')
                                                             ->label('Lifestyle image alt text')
                                                             ->maxLength(255)
