@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 
 class OptimizeUploadedVideo implements ShouldQueue
@@ -29,31 +30,65 @@ class OptimizeUploadedVideo implements ShouldQueue
 
     public function handle(): void
     {
+        Log::info('Video optimization job started.', [
+            'model' => $this->modelClass,
+            'key' => $this->modelKey,
+            'attribute' => $this->attribute,
+            'path' => $this->path,
+        ]);
+
         $model = $this->resolveModel();
 
         if (! $model instanceof Model) {
+            Log::warning('Video optimization job skipped: model not found.', [
+                'model' => $this->modelClass,
+                'key' => $this->modelKey,
+                'path' => $this->path,
+            ]);
+
             $this->deleteSourceIfPresent();
 
             return;
         }
 
         if ((string) data_get($model, $this->attribute) !== $this->path) {
+            Log::warning('Video optimization job skipped: path changed before processing.', [
+                'model' => $this->modelClass,
+                'key' => $this->modelKey,
+                'attribute' => $this->attribute,
+                'expected' => $this->path,
+                'current' => data_get($model, $this->attribute),
+            ]);
+
             return;
         }
 
         if (! $this->isProcessableVideoPath($this->path)) {
+            Log::warning('Video optimization job skipped: unsupported path.', [
+                'path' => $this->path,
+            ]);
+
             return;
         }
 
         $sourceDisk = Storage::disk($this->disk);
 
         if (! $sourceDisk->exists($this->path)) {
+            Log::warning('Video optimization job skipped: source file missing.', [
+                'disk' => $this->disk,
+                'path' => $this->path,
+            ]);
+
             return;
         }
 
         $temporaryDirectory = $this->transcodeVideoToHls($sourceDisk->path($this->path));
 
         if ($temporaryDirectory === null) {
+            Log::warning('Video optimization job failed: ffmpeg transcode returned null.', [
+                'path' => $this->path,
+            ]);
+
             return;
         }
 
@@ -61,6 +96,11 @@ class OptimizeUploadedVideo implements ShouldQueue
         $playlistPath = $this->playlistPath($destinationDirectory);
 
         if (! $this->storeTemporaryDirectoryOnDisk($sourceDisk, $temporaryDirectory, $destinationDirectory)) {
+            Log::warning('Video optimization job failed: could not store HLS files.', [
+                'destination_directory' => $destinationDirectory,
+                'path' => $this->path,
+            ]);
+
             File::deleteDirectory($temporaryDirectory);
 
             return;
@@ -73,6 +113,13 @@ class OptimizeUploadedVideo implements ShouldQueue
             $model->forceFill([
                 $this->attribute => $playlistPath,
             ])->saveQuietly();
+
+            Log::info('Video optimization job completed.', [
+                'model' => $this->modelClass,
+                'key' => $this->modelKey,
+                'attribute' => $this->attribute,
+                'playlist' => $playlistPath,
+            ]);
         }
     }
 

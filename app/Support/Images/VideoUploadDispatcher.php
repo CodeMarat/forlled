@@ -5,6 +5,7 @@ namespace App\Support\Images;
 use App\Jobs\OptimizeUploadedVideo;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class VideoUploadDispatcher
 {
@@ -23,6 +24,13 @@ class VideoUploadDispatcher
                 if (! $this->isRawVideoPath($path)) {
                     continue;
                 }
+
+                Log::info('Dispatching video optimization job.', [
+                    'model' => $modelClass,
+                    'key' => $modelKey,
+                    'attribute' => $attribute,
+                    'path' => $path,
+                ]);
 
                 $dispatch = static function () use ($modelClass, $modelKey, $attribute, $path): void {
                     OptimizeUploadedVideo::dispatch(
