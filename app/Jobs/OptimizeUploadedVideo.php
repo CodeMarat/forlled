@@ -204,7 +204,7 @@ class OptimizeUploadedVideo implements ShouldQueue
             '-map',
             '0:a?',
             '-vf',
-            sprintf('scale=min(%d,iw):-2', (int) config('image_pipeline.video_max_width')),
+            sprintf("scale='min(%d\\,iw)':-2", (int) config('image_pipeline.video_max_width')),
             '-c:v',
             'libx264',
             '-preset',
