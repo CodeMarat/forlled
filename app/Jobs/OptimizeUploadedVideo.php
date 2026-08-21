@@ -219,13 +219,21 @@ class OptimizeUploadedVideo implements ShouldQueue
 
         fclose($pipes[0]);
         stream_get_contents($pipes[1]);
-        stream_get_contents($pipes[2]);
+        $stderr = stream_get_contents($pipes[2]);
         fclose($pipes[1]);
         fclose($pipes[2]);
 
         $exitCode = proc_close($process);
 
         if ($exitCode !== 0 || ! is_file($playlistPath)) {
+            Log::warning('Video optimization job failed: ffmpeg command did not produce a playlist.', [
+                'exit_code' => $exitCode,
+                'input_path' => $inputPath,
+                'playlist_path' => $playlistPath,
+                'stderr' => trim((string) $stderr),
+                'command' => $command,
+            ]);
+
             File::deleteDirectory($temporaryDirectory);
 
             return null;
