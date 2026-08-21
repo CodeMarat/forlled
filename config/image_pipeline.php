@@ -7,6 +7,8 @@ return [
     'webp_quality' => 95,
     'video_max_width' => 1920,
     'video_crf' => 22,
+    'video_preset' => 'veryfast',
+    'video_threads' => 1,
     'video_audio_bitrate' => '128k',
     'video_hls_segment_time' => 6,
     'video_hls_playlist_name' => 'master.m3u8',
