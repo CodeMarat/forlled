@@ -8,6 +8,7 @@ use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Foundation\Queue\Queueable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Process;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
@@ -189,49 +190,65 @@ class OptimizeUploadedVideo implements ShouldQueue
             return null;
         }
 
-        $command = sprintf(
-            '%s -y -i %s -map 0:v:0 -map 0:a? -vf %s -c:v libx264 -preset slow -crf %d -pix_fmt yuv420p -c:a aac -b:a %s -ar 48000 -f hls -hls_time %d -hls_playlist_type vod -hls_segment_type mpegts -hls_flags independent_segments -hls_segment_filename %s %s',
-            escapeshellarg($ffmpeg),
-            escapeshellarg($inputPath),
-            escapeshellarg(sprintf("scale='min(%d,iw)':-2", (int) config('image_pipeline.video_max_width'))),
-            (int) config('image_pipeline.video_crf'),
+        $command = [
+            $ffmpeg,
+            '-y',
+            '-nostdin',
+            '-hide_banner',
+            '-loglevel',
+            'error',
+            '-i',
+            $inputPath,
+            '-map',
+            '0:v:0',
+            '-map',
+            '0:a?',
+            '-vf',
+            sprintf("scale='min(%d,iw)':-2", (int) config('image_pipeline.video_max_width')),
+            '-c:v',
+            'libx264',
+            '-preset',
+            'slow',
+            '-crf',
+            (string) (int) config('image_pipeline.video_crf'),
+            '-pix_fmt',
+            'yuv420p',
+            '-c:a',
+            'aac',
+            '-b:a',
             (string) config('image_pipeline.video_audio_bitrate'),
-            (int) config('image_pipeline.video_hls_segment_time', 6),
-            escapeshellarg($segmentDirectory.'/segment_%03d.ts'),
-            escapeshellarg($playlistPath),
-        );
+            '-ar',
+            '48000',
+            '-f',
+            'hls',
+            '-hls_time',
+            (string) (int) config('image_pipeline.video_hls_segment_time', 6),
+            '-hls_playlist_type',
+            'vod',
+            '-hls_segment_type',
+            'mpegts',
+            '-hls_flags',
+            'independent_segments',
+            '-hls_segment_filename',
+            $segmentDirectory.'/segment_%03d.ts',
+            $playlistPath,
+        ];
 
-        $process = proc_open(
-            $command,
-            [
-                ['pipe', 'r'],
-                ['pipe', 'w'],
-                ['pipe', 'w'],
-            ],
-            $pipes,
-        );
+        $result = Process::path(dirname($inputPath))
+            ->forever()
+            ->run($command);
 
-        if (! is_resource($process)) {
-            File::deleteDirectory($temporaryDirectory);
-
-            return null;
-        }
-
-        fclose($pipes[0]);
-        stream_get_contents($pipes[1]);
-        $stderr = stream_get_contents($pipes[2]);
-        fclose($pipes[1]);
-        fclose($pipes[2]);
-
-        $exitCode = proc_close($process);
-
-        if ($exitCode !== 0 || ! is_file($playlistPath)) {
+        if (! $result->successful() || ! is_file($playlistPath)) {
             Log::warning('Video optimization job failed: ffmpeg command did not produce a playlist.', [
-                'exit_code' => $exitCode,
+                'exit_code' => $result->exitCode(),
                 'input_path' => $inputPath,
                 'playlist_path' => $playlistPath,
-                'stderr' => trim((string) $stderr),
-                'command' => $command,
+                'stderr' => trim($result->errorOutput()),
+                'stdout' => trim($result->output()),
+                'command' => implode(' ', array_map(
+                    static fn (string $argument): string => escapeshellarg($argument),
+                    $command,
+                )),
             ]);
 
             File::deleteDirectory($temporaryDirectory);
