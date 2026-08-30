@@ -87,24 +87,6 @@ class Product extends Model
                     $value,
                 );
             },
-            set: static function (mixed $value): ?array {
-                if (! is_array($value)) {
-                    return null;
-                }
-
-                return array_map(
-                    static function (mixed $section): mixed {
-                        if (! is_array($section)) {
-                            return $section;
-                        }
-
-                        $section['is_visible'] = (bool) ($section['is_visible'] ?? true);
-
-                        return $section;
-                    },
-                    $value,
-                );
-            },
         );
     }
 }
