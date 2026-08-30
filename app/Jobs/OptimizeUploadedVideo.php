@@ -6,12 +6,12 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Foundation\Queue\Queueable;
-use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Queue\SerializesModels;
-use Illuminate\Support\Facades\Process;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Process;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Queue\SerializesModels;
 
 class OptimizeUploadedVideo implements ShouldQueue
 {
@@ -83,9 +83,9 @@ class OptimizeUploadedVideo implements ShouldQueue
             return;
         }
 
-        $temporaryDirectory = $this->transcodeVideoToHls($sourceDisk->path($this->path));
+        $temporaryFile = $this->transcodeVideoToMp4($sourceDisk->path($this->path));
 
-        if ($temporaryDirectory === null) {
+        if ($temporaryFile === null) {
             Log::warning('Video optimization job failed: ffmpeg transcode returned null.', [
                 'path' => $this->path,
             ]);
@@ -93,33 +93,32 @@ class OptimizeUploadedVideo implements ShouldQueue
             return;
         }
 
-        $destinationDirectory = $this->destinationDirectory($this->path);
-        $playlistPath = $this->playlistPath($destinationDirectory);
+        $destinationPath = $this->destinationPath($this->path);
 
-        if (! $this->storeTemporaryDirectoryOnDisk($sourceDisk, $temporaryDirectory, $destinationDirectory)) {
-            Log::warning('Video optimization job failed: could not store HLS files.', [
-                'destination_directory' => $destinationDirectory,
+        if (! $this->storeTemporaryFileOnDisk($sourceDisk, $temporaryFile, $destinationPath)) {
+            Log::warning('Video optimization job failed: could not store optimized video file.', [
+                'destination_path' => $destinationPath,
                 'path' => $this->path,
             ]);
 
-            File::deleteDirectory($temporaryDirectory);
+            File::delete($temporaryFile);
 
             return;
         }
 
-        File::deleteDirectory($temporaryDirectory);
+        File::delete($temporaryFile);
         $sourceDisk->delete($this->path);
 
         if ((string) data_get($model, $this->attribute) === $this->path) {
             $model->forceFill([
-                $this->attribute => $playlistPath,
+                $this->attribute => $destinationPath,
             ])->saveQuietly();
 
             Log::info('Video optimization job completed.', [
                 'model' => $this->modelClass,
                 'key' => $this->modelKey,
                 'attribute' => $this->attribute,
-                'playlist' => $playlistPath,
+                'path' => $destinationPath,
             ]);
         }
     }
@@ -140,17 +139,13 @@ class OptimizeUploadedVideo implements ShouldQueue
         rescue(fn (): bool => Storage::disk($this->disk)->delete($this->path), report: false);
     }
 
-    protected function destinationDirectory(string $path): string
+    protected function destinationPath(string $path): string
     {
         $directory = trim(pathinfo($path, PATHINFO_DIRNAME), './');
         $baseName = pathinfo($path, PATHINFO_FILENAME);
+        $extension = (string) config('image_pipeline.video_output_extension', 'mp4');
 
-        return trim(collect([$directory, $baseName])->filter()->implode('/'), '/');
-    }
-
-    protected function playlistPath(string $destinationDirectory): string
-    {
-        return trim($destinationDirectory.'/'.(string) config('image_pipeline.video_hls_playlist_name', 'master.m3u8'), '/');
+        return trim(collect([$directory, "{$baseName}.{$extension}"])->filter()->implode('/'), '/');
     }
 
     protected function isProcessableVideoPath(string $path): bool
@@ -167,7 +162,7 @@ class OptimizeUploadedVideo implements ShouldQueue
         return (bool) preg_match('/\.('.implode('|', $extensions).')$/i', $path);
     }
 
-    protected function transcodeVideoToHls(string $inputPath): ?string
+    protected function transcodeVideoToMp4(string $inputPath): ?string
     {
         $ffmpeg = $this->binaryPath('ffmpeg');
 
@@ -175,22 +170,50 @@ class OptimizeUploadedVideo implements ShouldQueue
             return null;
         }
 
-        $temporaryDirectory = rtrim(sys_get_temp_dir(), DIRECTORY_SEPARATOR).DIRECTORY_SEPARATOR.'hls-pipeline-'.bin2hex(random_bytes(8));
+        $temporaryBasePath = tempnam(sys_get_temp_dir(), 'video-pipeline-');
 
-        if (! mkdir($temporaryDirectory, 0775, true) && ! is_dir($temporaryDirectory)) {
+        if ($temporaryBasePath === false) {
             return null;
         }
 
-        $playlistPath = $temporaryDirectory.'/'.(string) config('image_pipeline.video_hls_playlist_name', 'master.m3u8');
-        $segmentDirectory = $temporaryDirectory.'/'.(string) config('image_pipeline.video_hls_segment_directory', 'segments');
+        $outputPath = $temporaryBasePath.'.mp4';
 
-        if (! mkdir($segmentDirectory, 0775, true) && ! is_dir($segmentDirectory)) {
-            File::deleteDirectory($temporaryDirectory);
+        File::delete($temporaryBasePath);
+
+        $command = $this->buildTranscodeCommand($ffmpeg, $inputPath, $outputPath);
+
+        $result = Process::path(dirname($inputPath))
+            ->forever()
+            ->idleTimeout(3600)
+            ->run($command);
+
+        if (! $result->successful() || ! is_file($outputPath)) {
+            Log::warning('Video optimization job failed: ffmpeg command did not produce an output file.', [
+                'exit_code' => $result->exitCode(),
+                'input_path' => $inputPath,
+                'output_path' => $outputPath,
+                'stderr' => trim($result->errorOutput()),
+                'stdout' => trim($result->output()),
+                'command' => implode(' ', array_map(
+                    static fn (string $argument): string => escapeshellarg($argument),
+                    $command,
+                )),
+            ]);
+
+            File::delete($outputPath);
 
             return null;
         }
 
-        $command = [
+        return $outputPath;
+    }
+
+    /**
+     * @return array<int, string>
+     */
+    protected function buildTranscodeCommand(string $ffmpeg, string $inputPath, string $outputPath): array
+    {
+        return [
             $ffmpeg,
             '-y',
             '-nostdin',
@@ -204,101 +227,50 @@ class OptimizeUploadedVideo implements ShouldQueue
             '-map',
             '0:a?',
             '-vf',
-            sprintf("scale='min(%d\\,iw)':-2", (int) config('image_pipeline.video_max_width')),
+            sprintf('scale=min(%d\\,iw):-2', (int) config('image_pipeline.video_max_width', 960)),
             '-c:v',
             'libx264',
             '-preset',
-            (string) config('image_pipeline.video_preset', 'veryfast'),
+            (string) config('image_pipeline.video_preset', 'ultrafast'),
             '-crf',
-            (string) (int) config('image_pipeline.video_crf'),
+            (string) (int) config('image_pipeline.video_crf', 30),
             '-threads',
             (string) (int) config('image_pipeline.video_threads', 1),
             '-pix_fmt',
             'yuv420p',
+            '-movflags',
+            '+faststart',
             '-c:a',
             'aac',
             '-b:a',
-            (string) config('image_pipeline.video_audio_bitrate'),
+            (string) config('image_pipeline.video_audio_bitrate', '64k'),
             '-ar',
             '48000',
-            '-f',
-            'hls',
-            '-hls_time',
-            (string) (int) config('image_pipeline.video_hls_segment_time', 6),
-            '-hls_playlist_type',
-            'vod',
-            '-hls_segment_type',
-            'mpegts',
-            '-hls_flags',
-            'independent_segments',
-            '-hls_segment_filename',
-            $segmentDirectory.'/segment_%03d.ts',
-            $playlistPath,
+            $outputPath,
         ];
-
-        $result = Process::path(dirname($inputPath))
-            ->forever()
-            ->idleTimeout(3600)
-            ->run($command);
-
-        if (! $result->successful() || ! is_file($playlistPath)) {
-            Log::warning('Video optimization job failed: ffmpeg command did not produce a playlist.', [
-                'exit_code' => $result->exitCode(),
-                'input_path' => $inputPath,
-                'playlist_path' => $playlistPath,
-                'stderr' => trim($result->errorOutput()),
-                'stdout' => trim($result->output()),
-                'command' => implode(' ', array_map(
-                    static fn (string $argument): string => escapeshellarg($argument),
-                    $command,
-                )),
-            ]);
-
-            File::deleteDirectory($temporaryDirectory);
-
-            return null;
-        }
-
-        return $temporaryDirectory;
     }
 
-    protected function storeTemporaryDirectoryOnDisk($disk, string $temporaryDirectory, string $destinationDirectory): bool
+    protected function storeTemporaryFileOnDisk($disk, string $temporaryFile, string $destinationPath): bool
     {
-        $disk->makeDirectory($destinationDirectory);
+        $directory = trim(pathinfo($destinationPath, PATHINFO_DIRNAME), './');
 
-        $files = collect(File::allFiles($temporaryDirectory));
-
-        foreach ($files as $file) {
-            $relativePath = ltrim(str_replace($temporaryDirectory, '', $file->getPathname()), DIRECTORY_SEPARATOR);
-            $destinationPath = trim($destinationDirectory.'/'.$relativePath, '/');
-            $stream = fopen($file->getPathname(), 'r');
-
-            if (! is_resource($stream)) {
-                $disk->deleteDirectory($destinationDirectory);
-
-                return false;
-            }
-
-            $stored = $disk->put($destinationPath, $stream, [
-                'visibility' => 'public',
-            ]);
-
-            fclose($stream);
-
-            if (! $stored) {
-                $disk->deleteDirectory($destinationDirectory);
-
-                return false;
-            }
+        if ($directory !== '') {
+            $disk->makeDirectory($directory);
         }
 
-        if (! $disk->exists($this->playlistPath($destinationDirectory))) {
-            $disk->deleteDirectory($destinationDirectory);
+        $stream = fopen($temporaryFile, 'r');
 
+        if (! is_resource($stream)) {
             return false;
         }
 
-        return true;
+        $stored = $disk->put($destinationPath, $stream, [
+            'visibility' => 'public',
+        ]);
+
+        fclose($stream);
+
+        return (bool) $stored && $disk->exists($destinationPath);
     }
 
     protected function binaryPath(string $binary): ?string

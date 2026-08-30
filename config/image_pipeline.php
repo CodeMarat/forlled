@@ -10,9 +10,7 @@ return [
     'video_preset' => 'ultrafast',
     'video_threads' => 1,
     'video_audio_bitrate' => '64k',
-    'video_hls_segment_time' => 6,
-    'video_hls_playlist_name' => 'master.m3u8',
-    'video_hls_segment_directory' => 'segments',
+    'video_output_extension' => 'mp4',
     'video_extensions' => [
         'mov',
         'avi',
