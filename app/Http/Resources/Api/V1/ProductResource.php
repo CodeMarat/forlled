@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources\Api\V1;
 
+use Illuminate\Support\Arr;
 use Illuminate\Http\Request;
 
 class ProductResource extends ApiResource
@@ -16,7 +17,11 @@ class ProductResource extends ApiResource
             'description' => $this->description,
             'side_image' => $this->image($this->side_image, alt: $this->side_image_alt),
             'key_benefits' => $this->values($this->key_benefits, 'benefit'),
-            'sections' => $this->values($this->detail_sections, visibleKey: 'is_visible'),
+            'sections' => collect($this->detail_sections ?? [])
+                ->filter(fn (mixed $section): bool => ! is_array($section) || (bool) ($section['is_visible'] ?? true))
+                ->map(fn (array $section): array => Arr::except($section, ['is_visible']))
+                ->values()
+                ->all(),
             'recommendations_title' => $this->recommendations_title,
             'recommended_products' => $this->whenLoaded(
                 'recommendedProducts',
