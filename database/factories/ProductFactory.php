@@ -38,6 +38,7 @@ class ProductFactory extends Factory
                 [
                     'title' => 'Indications',
                     'content' => fake()->paragraph(),
+                    'is_visible' => true,
                 ],
             ],
             'recommendations_title' => 'HOME ROUTINE RECOMMENDATIONS',

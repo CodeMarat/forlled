@@ -233,10 +233,20 @@ class ProductResource extends Resource
                                         Repeater::make('detail_sections')
                                             ->label('Detail sections')
                                             ->schema([
-                                                TextInput::make('title')
-                                                    ->label('Section title')
-                                                    ->required()
-                                                    ->maxLength(255),
+                                                Grid::make(2)
+                                                    ->schema([
+                                                        TextInput::make('title')
+                                                            ->label('Section title')
+                                                            ->required()
+                                                            ->maxLength(255),
+                                                        Toggle::make('is_visible')
+                                                            ->label('Show section in product page')
+                                                            ->default(true)
+                                                            ->afterStateHydrated(function (Toggle $component, mixed $state): void {
+                                                                $component->state($state === null ? true : (bool) $state);
+                                                            })
+                                                            ->helperText('Disable this to hide the block from the product page and API response.'),
+                                                    ]),
                                                 RichEditor::make('content')
                                                     ->label('Section content')
                                                     ->required()
@@ -244,7 +254,7 @@ class ProductResource extends Resource
                                             ])
                                             ->defaultItems(0)
                                             ->addActionLabel('Add section')
-                                            ->helperText('Use this for Indications, Product density, Active ingredients, Before/after, How to use, and similar sections.')
+                                            ->helperText('Use this for Indications, Product density, Active ingredients, Before/after, How to use, and similar sections. You can disable any section without deleting it.')
                                             ->columnSpanFull(),
                                     ])
                                     ->columns(1),

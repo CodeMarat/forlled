@@ -16,7 +16,7 @@ class ProductResource extends ApiResource
             'description' => $this->description,
             'side_image' => $this->image($this->side_image, alt: $this->side_image_alt),
             'key_benefits' => $this->values($this->key_benefits, 'benefit'),
-            'sections' => $this->values($this->detail_sections),
+            'sections' => $this->values($this->detail_sections, visibleKey: 'is_visible'),
             'recommendations_title' => $this->recommendations_title,
             'recommended_products' => $this->whenLoaded(
                 'recommendedProducts',

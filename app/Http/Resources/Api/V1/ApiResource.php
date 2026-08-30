@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources\Api\V1;
 
+use Illuminate\Support\Arr;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Facades\Storage;
@@ -142,23 +143,45 @@ class ApiResource extends JsonResource
      * @param  array<int, array<string, mixed>>|string|null  $items
      * @return array<int, array<string, mixed>>
      */
-    protected function values(array|string|null $items, ?string $key = null): array
+    protected function values(array|string|null $items, ?string $key = null, ?string $visibleKey = null): array
     {
         if (! is_array($items)) {
             return [];
         }
 
         return array_values(array_filter(array_map(
-            function (mixed $item) use ($key): ?array {
+            function (mixed $item) use ($key, $visibleKey): ?array {
                 if ($key === null) {
-                    return is_array($item) ? $item : null;
+                    if (! is_array($item)) {
+                        return null;
+                    }
+
+                    if ($visibleKey !== null && array_key_exists($visibleKey, $item) && ! (bool) $item[$visibleKey]) {
+                        return null;
+                    }
+
+                    return $visibleKey !== null
+                        ? Arr::except($item, [$visibleKey])
+                        : $item;
                 }
 
-                if (! is_array($item) || blank($item[$key] ?? null)) {
+                if (! is_array($item)) {
                     return null;
                 }
 
-                return [$key => $item[$key]];
+                if ($visibleKey !== null && array_key_exists($visibleKey, $item) && ! (bool) $item[$visibleKey]) {
+                    return null;
+                }
+
+                if (blank($item[$key] ?? null)) {
+                    return null;
+                }
+
+                $value = [$key => $item[$key]];
+
+                return $visibleKey !== null
+                    ? Arr::except($value, [$visibleKey])
+                    : $value;
             },
             $items,
         )));
