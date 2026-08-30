@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Concerns\HasAdminAudit;
 use Database\Factories\ProductFactory;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -63,5 +64,47 @@ class Product extends Model
             'sort_order' => 'integer',
             'is_active' => 'boolean',
         ];
+    }
+
+    protected function detailSections(): Attribute
+    {
+        return Attribute::make(
+            get: static function (mixed $value): array {
+                if (! is_array($value)) {
+                    return [];
+                }
+
+                return array_map(
+                    static function (mixed $section): mixed {
+                        if (! is_array($section)) {
+                            return $section;
+                        }
+
+                        $section['is_visible'] = (bool) ($section['is_visible'] ?? true);
+
+                        return $section;
+                    },
+                    $value,
+                );
+            },
+            set: static function (mixed $value): ?array {
+                if (! is_array($value)) {
+                    return null;
+                }
+
+                return array_map(
+                    static function (mixed $section): mixed {
+                        if (! is_array($section)) {
+                            return $section;
+                        }
+
+                        $section['is_visible'] = (bool) ($section['is_visible'] ?? true);
+
+                        return $section;
+                    },
+                    $value,
+                );
+            },
+        );
     }
 }
