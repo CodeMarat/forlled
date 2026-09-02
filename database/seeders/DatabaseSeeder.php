@@ -28,6 +28,7 @@ class DatabaseSeeder extends Seeder
             FeaturedInSeeder::class,
             ProductCategoryNavigationSeeder::class,
             ProductCatalogSeeder::class,
+            ProductPagesTextSeeder::class,
             SocialMediaSeeder::class,
             TechnologyPageSeeder::class,
             TreatmentPageSeeder::class,
