@@ -35,15 +35,18 @@
                 "detail_sections": [
                     {
                         "title": "Indications",
-                        "content": "<ul><li>Dry, dehydrated, hypersensitive, redness-prone skin</li><li>Rosacea and couperose-prone skin</li></ul>"
+                        "content": "<ul><li>Dry, dehydrated, hypersensitive, redness-prone skin</li><li>Rosacea and couperose-prone skin</li></ul>",
+                        "is_visible": true
                     },
                     {
                         "title": "Product density",
-                        "content": "-"
+                        "content": "-",
+                        "is_visible": true
                     },
                     {
                         "title": "How to use",
-                        "content": "<ol><li>Press down to squeeze the foam onto your hands (2–3 pumps)</li><li>Spread evenly over face, eyelids, neck and décolleté</li><li>Massage with fingertips</li><li>Rinse off thoroughly with warm water or warm wet towel</li><li>Use every morning and/or evening</li></ol>"
+                        "content": "<ol><li>Press down to squeeze the foam onto your hands (2–3 pumps)</li><li>Spread evenly over face, eyelids, neck and décolleté</li><li>Massage with fingertips</li><li>Rinse off thoroughly with warm water or warm wet towel</li><li>Use every morning and/or evening</li></ol>",
+                        "is_visible": true
                     }
                 ],
                 "recommendations_title": "HOME ROUTINE RECOMMENDATIONS",
@@ -90,15 +93,18 @@
                 "detail_sections": [
                     {
                         "title": "Indications",
-                        "content": "<ul><li>All skin types, especially effective for rough, flaky skin</li><li>Skin with hyperkeratosis</li><li>Comedones</li></ul>"
+                        "content": "<ul><li>All skin types, especially effective for rough, flaky skin</li><li>Skin with hyperkeratosis</li><li>Comedones</li></ul>",
+                        "is_visible": true
                     },
                     {
                         "title": "Product density",
-                        "content": "-"
+                        "content": "-",
+                        "is_visible": true
                     },
                     {
                         "title": "How to use",
-                        "content": "<ol><li>Apply a small amount to dry hands and face;</li><li>Spread with circular motions over face, neck and décolleté</li><li>Massage gently for several minutes, focusing on areas with the most impurities</li><li>Always follow with the FORLLED Second Stage cleanser</li><li>Important: do not use it separately from the Second Stage cleanser.</li></ol>"
+                        "content": "<ol><li>Apply a small amount to dry hands and face;</li><li>Spread with circular motions over face, neck and décolleté</li><li>Massage gently for several minutes, focusing on areas with the most impurities</li><li>Always follow with the FORLLED Second Stage cleanser</li><li>Important: do not use it separately from the Second Stage cleanser.</li></ol>",
+                        "is_visible": true
                     }
                 ],
                 "recommendations_title": "HOME ROUTINE RECOMMENDATIONS",
@@ -145,15 +151,18 @@
                 "detail_sections": [
                     {
                         "title": "Indications",
-                        "content": "<ul><li>All skin types, including dry and oily skin</li></ul>"
+                        "content": "<ul><li>All skin types, including dry and oily skin</li></ul>",
+                        "is_visible": true
                     },
                     {
                         "title": "Product density",
-                        "content": "<p>Soft foam</p>"
+                        "content": "<p>Soft foam</p>",
+                        "is_visible": true
                     },
                     {
                         "title": "How to use",
-                        "content": "<ol><li>Whisk a small amount of foam with water</li><li>Spread evenly over face, eyelids and neck (on top of P-effect Clearance Cleansing)</li><li>Cleanse using lymphatic drainage massage with fingertips</li><li>Pay particular attention to areas with persistent impurities, comedones or hyperkeratosis</li><li>Rinse off with warm water or warm wet towel;</li><li>Use every morning and/or evening</li></ol>"
+                        "content": "<ol><li>Whisk a small amount of foam with water</li><li>Spread evenly over face, eyelids and neck (on top of P-effect Clearance Cleansing)</li><li>Cleanse using lymphatic drainage massage with fingertips</li><li>Pay particular attention to areas with persistent impurities, comedones or hyperkeratosis</li><li>Rinse off with warm water or warm wet towel;</li><li>Use every morning and/or evening</li></ol>",
+                        "is_visible": true
                     }
                 ],
                 "recommendations_title": "HOME ROUTINE RECOMMENDATIONS",
@@ -200,15 +209,18 @@
                 "detail_sections": [
                     {
                         "title": "Indications",
-                        "content": "<ul><li>Eye makeup, lip makeup</li><li>All skin types</li></ul>"
+                        "content": "<ul><li>Eye makeup, lip makeup</li><li>All skin types</li></ul>",
+                        "is_visible": true
                     },
                     {
                         "title": "Product density",
-                        "content": "-"
+                        "content": "-",
+                        "is_visible": true
                     },
                     {
                         "title": "How to use",
-                        "content": "<ol><li>Shake the bottle until the oil and water phases are mixed</li><li>Apply the lotion to a cotton pad</li><li>Remove impurities from the eyelid area and lips</li><li>Do not rinse off</li></ol>"
+                        "content": "<ol><li>Shake the bottle until the oil and water phases are mixed</li><li>Apply the lotion to a cotton pad</li><li>Remove impurities from the eyelid area and lips</li><li>Do not rinse off</li></ol>",
+                        "is_visible": true
                     }
                 ],
                 "recommendations_title": "HOME ROUTINE RECOMMENDATIONS",
@@ -255,15 +267,18 @@
                 "detail_sections": [
                     {
                         "title": "Indications",
-                        "content": "<ul><li>All skin types, especially oily &amp; combination skin with enlarged pores and comedone formation</li><li>As a preparatory stage before applying a mask (1–2 times/week); use with caution on hypersensitive skin</li></ul>"
+                        "content": "<ul><li>All skin types, especially oily &amp; combination skin with enlarged pores and comedone formation</li><li>As a preparatory stage before applying a mask (1–2 times/week); use with caution on hypersensitive skin</li></ul>",
+                        "is_visible": true
                     },
                     {
                         "title": "Product density",
-                        "content": "-"
+                        "content": "-",
+                        "is_visible": true
                     },
                     {
                         "title": "How to use",
-                        "content": "<ol><li>Take an appropriate amount of powder in your palm and add water little by little to create a foam</li><li>Apply with gentle spiral motions for up to 30 seconds</li><li>Rinse off with lukewarm water</li><li>Intended for use once or twice a week for removing impurities</li></ol>"
+                        "content": "<ol><li>Take an appropriate amount of powder in your palm and add water little by little to create a foam</li><li>Apply with gentle spiral motions for up to 30 seconds</li><li>Rinse off with lukewarm water</li><li>Intended for use once or twice a week for removing impurities</li></ol>",
+                        "is_visible": true
                     }
                 ],
                 "recommendations_title": "HOME ROUTINE RECOMMENDATIONS",
@@ -310,15 +325,18 @@
                 "detail_sections": [
                     {
                         "title": "Indications",
-                        "content": "<ul><li>Used at the end of deep-cleansing facials as a soothing, anti-inflammatory agent</li><li>Irritated skin after deep cleansing</li><li>Skin experiencing a high degree of inflammation after deep-cleansing treatments</li></ul>"
+                        "content": "<ul><li>Used at the end of deep-cleansing facials as a soothing, anti-inflammatory agent</li><li>Irritated skin after deep cleansing</li><li>Skin experiencing a high degree of inflammation after deep-cleansing treatments</li></ul>",
+                        "is_visible": true
                     },
                     {
                         "title": "Product density",
-                        "content": "-"
+                        "content": "-",
+                        "is_visible": true
                     },
                     {
                         "title": "How to use",
-                        "content": "<ol><li>Apply 5 ml of lotion to a cotton pad and gently smooth over face, neck and décolleté, avoiding the eye area</li><li>If using after makeup remover, first blot the skin with a tissue</li><li>Apply to a cotton pad and wipe over the face during a cleansing treatment to disinfect skin after extractions or device cleansing</li><li>Follow Forlle&#039;d&#039;s Deep Cleansing Treatment for All Ages protocol</li></ol>"
+                        "content": "<ol><li>Apply 5 ml of lotion to a cotton pad and gently smooth over face, neck and décolleté, avoiding the eye area</li><li>If using after makeup remover, first blot the skin with a tissue</li><li>Apply to a cotton pad and wipe over the face during a cleansing treatment to disinfect skin after extractions or device cleansing</li><li>Follow Forlle&#039;d&#039;s Deep Cleansing Treatment for All Ages protocol</li></ol>",
+                        "is_visible": true
                     }
                 ],
                 "recommendations_title": "HOME ROUTINE RECOMMENDATIONS",
@@ -365,15 +383,18 @@
                 "detail_sections": [
                     {
                         "title": "Indications",
-                        "content": "<ul><li>All skin types, including sensitive</li><li>Skin with signs of mechanical ptosis</li><li>Fine lines and wrinkles</li></ul>"
+                        "content": "<ul><li>All skin types, including sensitive</li><li>Skin with signs of mechanical ptosis</li><li>Fine lines and wrinkles</li></ul>",
+                        "is_visible": true
                     },
                     {
                         "title": "Product density",
-                        "content": "-"
+                        "content": "-",
+                        "is_visible": true
                     },
                     {
                         "title": "How to use",
-                        "content": "<ol><li>Pour 1 ml of lotion on your palm and apply to your face without the use of cotton pads</li><li>Spread evenly over the face (including eyelids and lips), neck and décolleté</li><li>Use every morning and/or evening, before serum or cream</li></ol>"
+                        "content": "<ol><li>Pour 1 ml of lotion on your palm and apply to your face without the use of cotton pads</li><li>Spread evenly over the face (including eyelids and lips), neck and décolleté</li><li>Use every morning and/or evening, before serum or cream</li></ol>",
+                        "is_visible": true
                     }
                 ],
                 "recommendations_title": "HOME ROUTINE RECOMMENDATIONS",
@@ -420,15 +441,18 @@
                 "detail_sections": [
                     {
                         "title": "Indications",
-                        "content": "<ul><li>Dull and stressed skin</li><li>Pigmented skin</li><li>Ideal complement to chemical peels, IPL, non-ablative laser, microdermabrasion, microneedling and injectables;</li><li>Post-aesthetic surgical care and procedures with risk of pigmentation</li><li>All skin types, including sensitive and fragile</li></ul>"
+                        "content": "<ul><li>Dull and stressed skin</li><li>Pigmented skin</li><li>Ideal complement to chemical peels, IPL, non-ablative laser, microdermabrasion, microneedling and injectables;</li><li>Post-aesthetic surgical care and procedures with risk of pigmentation</li><li>All skin types, including sensitive and fragile</li></ul>",
+                        "is_visible": true
                     },
                     {
                         "title": "Product density",
-                        "content": "<p>Lotion</p>"
+                        "content": "<p>Lotion</p>",
+                        "is_visible": true
                     },
                     {
                         "title": "How to use",
-                        "content": "<ol><li>Pour 1 ml of lotion on your palm and apply to your face without the use of cotton pads</li><li>Spread evenly over the face, neck and décolleté</li><li>Use every morning and/or evening, before serum or cream</li></ol>"
+                        "content": "<ol><li>Pour 1 ml of lotion on your palm and apply to your face without the use of cotton pads</li><li>Spread evenly over the face, neck and décolleté</li><li>Use every morning and/or evening, before serum or cream</li></ol>",
+                        "is_visible": true
                     }
                 ],
                 "recommendations_title": "HOME ROUTINE RECOMMENDATIONS",
@@ -475,15 +499,18 @@
                 "detail_sections": [
                     {
                         "title": "Indications",
-                        "content": "<ul><li>Oily and combination, blemish-prone skin</li><li>Sensitive dehydrated skin</li><li>Oily dehydrated skin</li><li>Improves healing after drug therapy and rehabilitation</li></ul>"
+                        "content": "<ul><li>Oily and combination, blemish-prone skin</li><li>Sensitive dehydrated skin</li><li>Oily dehydrated skin</li><li>Improves healing after drug therapy and rehabilitation</li></ul>",
+                        "is_visible": true
                     },
                     {
                         "title": "Product density",
-                        "content": "-"
+                        "content": "-",
+                        "is_visible": true
                     },
                     {
                         "title": "How to use",
-                        "content": "<ol><li>Pour 1 ml of lotion on your palm and apply to your face without the use of cotton pads</li><li>Spread evenly over face, neck and décolleté</li><li>Use daily in the morning and/or evening before serum or cream</li><li>Important: sunscreen is strongly recommended</li></ol>"
+                        "content": "<ol><li>Pour 1 ml of lotion on your palm and apply to your face without the use of cotton pads</li><li>Spread evenly over face, neck and décolleté</li><li>Use daily in the morning and/or evening before serum or cream</li><li>Important: sunscreen is strongly recommended</li></ol>",
+                        "is_visible": true
                     }
                 ],
                 "recommendations_title": "HOME ROUTINE RECOMMENDATIONS",
@@ -530,15 +557,18 @@
                 "detail_sections": [
                     {
                         "title": "Indications",
-                        "content": "<ul><li>Sensitive skin of all types</li><li>Couperose</li><li>Rosacea, eczema, psoriasis</li><li>For rehabilitation after aggressive procedures (peels, injections, laser treatment, RF-treatment, abrasive cleansing)</li></ul>"
+                        "content": "<ul><li>Sensitive skin of all types</li><li>Couperose</li><li>Rosacea, eczema, psoriasis</li><li>For rehabilitation after aggressive procedures (peels, injections, laser treatment, RF-treatment, abrasive cleansing)</li></ul>",
+                        "is_visible": true
                     },
                     {
                         "title": "Product density",
-                        "content": "-"
+                        "content": "-",
+                        "is_visible": true
                     },
                     {
                         "title": "How to use",
-                        "content": "<ol><li>Pour 1 ml of lotion on your palm and apply to your face without the use of cotton pads</li><li>Gently spread over the skin, pressing in with tapping movements</li><li>Use 2 times a day or more often if necessary</li><li>Use daily in the morning and/or evening, before serum or cream</li></ol>"
+                        "content": "<ol><li>Pour 1 ml of lotion on your palm and apply to your face without the use of cotton pads</li><li>Gently spread over the skin, pressing in with tapping movements</li><li>Use 2 times a day or more often if necessary</li><li>Use daily in the morning and/or evening, before serum or cream</li></ol>",
+                        "is_visible": true
                     }
                 ],
                 "recommendations_title": "HOME ROUTINE RECOMMENDATIONS",
@@ -585,15 +615,18 @@
                 "detail_sections": [
                     {
                         "title": "Indications",
-                        "content": "<ul><li>Mature skin</li></ul>"
+                        "content": "<ul><li>Mature skin</li></ul>",
+                        "is_visible": true
                     },
                     {
                         "title": "Product density",
-                        "content": "-"
+                        "content": "-",
+                        "is_visible": true
                     },
                     {
                         "title": "How to use",
-                        "content": "<ol><li>Pour 1 ml of lotion into the palm and apply to your face without using cotton pads</li><li>Apply to cleansed skin in the morning and evening, before serum and cream</li></ol>"
+                        "content": "<ol><li>Pour 1 ml of lotion into the palm and apply to your face without using cotton pads</li><li>Apply to cleansed skin in the morning and evening, before serum and cream</li></ol>",
+                        "is_visible": true
                     }
                 ],
                 "recommendations_title": "HOME ROUTINE RECOMMENDATIONS",
@@ -640,15 +673,18 @@
                 "detail_sections": [
                     {
                         "title": "Indications",
-                        "content": "<ul><li>Uneven skin tone, pigmentation concerns</li><li>Loss of skin elasticity and volume, sluggish skin</li><li>Addresses various depths of wrinkles</li><li>Ideal for urban dwellers exposed to toxins and pollutants resulting in dull, devitalized skin</li></ul>"
+                        "content": "<ul><li>Uneven skin tone, pigmentation concerns</li><li>Loss of skin elasticity and volume, sluggish skin</li><li>Addresses various depths of wrinkles</li><li>Ideal for urban dwellers exposed to toxins and pollutants resulting in dull, devitalized skin</li></ul>",
+                        "is_visible": true
                     },
                     {
                         "title": "Product density",
-                        "content": "-"
+                        "content": "-",
+                        "is_visible": true
                     },
                     {
                         "title": "How to use",
-                        "content": "<ol><li>Use every day in the evening, after cleansing and applying lotion (2 hours before bedtime)</li><li>Apply 5 drops of the serum to the face (avoiding the eye area), neck and décolleté</li><li>Help absorb with light patting movements</li><li>Follow with a cream suited to your skin type</li><li>Important: sunscreen use is essential</li></ol>"
+                        "content": "<ol><li>Use every day in the evening, after cleansing and applying lotion (2 hours before bedtime)</li><li>Apply 5 drops of the serum to the face (avoiding the eye area), neck and décolleté</li><li>Help absorb with light patting movements</li><li>Follow with a cream suited to your skin type</li><li>Important: sunscreen use is essential</li></ol>",
+                        "is_visible": true
                     }
                 ],
                 "recommendations_title": "HOME ROUTINE RECOMMENDATIONS",
@@ -695,15 +731,18 @@
                 "detail_sections": [
                     {
                         "title": "Indications",
-                        "content": "<ul><li>Dehydrated skin</li><li>Signs of premature aging</li><li>Fine lines and wrinkles</li><li>Ideal complement prior to in-office procedures (chemical peels, IPL, ablative/non-ablative laser, microdermabrasion, microneedling, injectables)</li><li>All skin types, including hypersensitive</li></ul>"
+                        "content": "<ul><li>Dehydrated skin</li><li>Signs of premature aging</li><li>Fine lines and wrinkles</li><li>Ideal complement prior to in-office procedures (chemical peels, IPL, ablative/non-ablative laser, microdermabrasion, microneedling, injectables)</li><li>All skin types, including hypersensitive</li></ul>",
+                        "is_visible": true
                     },
                     {
                         "title": "Product density",
-                        "content": "-"
+                        "content": "-",
+                        "is_visible": true
                     },
                     {
                         "title": "How to use",
-                        "content": "<ol><li>Apply 0.1–0.3 ml of essence to the palm of your hand</li><li>Spread evenly over the face (including eyelids and lips), neck and décolleté</li><li>Important: strongly recommended to apply onto the eyelid area and lips</li><li>Use every morning and/or evening after a FORLLED lotion</li><li>Minimum 2 months for best results</li></ol>"
+                        "content": "<ol><li>Apply 0.1–0.3 ml of essence to the palm of your hand</li><li>Spread evenly over the face (including eyelids and lips), neck and décolleté</li><li>Important: strongly recommended to apply onto the eyelid area and lips</li><li>Use every morning and/or evening after a FORLLED lotion</li><li>Minimum 2 months for best results</li></ol>",
+                        "is_visible": true
                     }
                 ],
                 "recommendations_title": "HOME ROUTINE RECOMMENDATIONS",
@@ -750,15 +789,18 @@
                 "detail_sections": [
                     {
                         "title": "Indications",
-                        "content": "<ul><li>Dull and stressed skin</li><li>Post-aesthetic surgery care</li><li>Ideal complement prior to in-office procedures (chemical peels, IPL, non-ablative laser, microdermabrasion, microneedling, injectables)</li><li>Unwanted pigmentation</li></ul>"
+                        "content": "<ul><li>Dull and stressed skin</li><li>Post-aesthetic surgery care</li><li>Ideal complement prior to in-office procedures (chemical peels, IPL, non-ablative laser, microdermabrasion, microneedling, injectables)</li><li>Unwanted pigmentation</li></ul>",
+                        "is_visible": true
                     },
                     {
                         "title": "Product density",
-                        "content": "-"
+                        "content": "-",
+                        "is_visible": true
                     },
                     {
                         "title": "How to use",
-                        "content": "<ol><li>Apply 0.1–0.3 ml of product to the palm of your hand and spread evenly over face, neck and décolleté</li><li>Also apply onto eyelids and lips</li><li>Use for a minimum of two months depending on skin condition; consult your esthetician regarding course duration</li><li>Use every morning and/or evening after FORLLED lotion</li></ol>"
+                        "content": "<ol><li>Apply 0.1–0.3 ml of product to the palm of your hand and spread evenly over face, neck and décolleté</li><li>Also apply onto eyelids and lips</li><li>Use for a minimum of two months depending on skin condition; consult your esthetician regarding course duration</li><li>Use every morning and/or evening after FORLLED lotion</li></ol>",
+                        "is_visible": true
                     }
                 ],
                 "recommendations_title": "HOME ROUTINE RECOMMENDATIONS",
@@ -805,15 +847,18 @@
                 "detail_sections": [
                     {
                         "title": "Indications",
-                        "content": "<ul><li>Acne spots</li><li>Pigmentations and discoloration</li><li>Oily skin</li><li>Dull and stressed skin</li><li>Atonic and weakened skin</li></ul>"
+                        "content": "<ul><li>Acne spots</li><li>Pigmentations and discoloration</li><li>Oily skin</li><li>Dull and stressed skin</li><li>Atonic and weakened skin</li></ul>",
+                        "is_visible": true
                     },
                     {
                         "title": "Product density",
-                        "content": "-"
+                        "content": "-",
+                        "is_visible": true
                     },
                     {
                         "title": "How to use",
-                        "content": "<ol><li>With FORLLED lotion or serum: pour 0.5 ml of lotion into a clean bowl, add 0.1 g of essence powder, and stir until granules melt down completely</li></ol>"
+                        "content": "<ol><li>With FORLLED lotion or serum: pour 0.5 ml of lotion into a clean bowl, add 0.1 g of essence powder, and stir until granules melt down completely</li></ol>",
+                        "is_visible": true
                     }
                 ],
                 "recommendations_title": "HOME ROUTINE RECOMMENDATIONS",
@@ -860,15 +905,18 @@
                 "detail_sections": [
                     {
                         "title": "Indications",
-                        "content": "<ul><li>Mature skin</li><li>Age-related redness and couperose</li><li>Lack of skin elasticity and uneven tone</li><li>Ideal as a complementary treatment before in-office procedures (chemical peels, microdermabrasion, microneedling, injectables)</li></ul>"
+                        "content": "<ul><li>Mature skin</li><li>Age-related redness and couperose</li><li>Lack of skin elasticity and uneven tone</li><li>Ideal as a complementary treatment before in-office procedures (chemical peels, microdermabrasion, microneedling, injectables)</li></ul>",
+                        "is_visible": true
                     },
                     {
                         "title": "Product density",
-                        "content": "-"
+                        "content": "-",
+                        "is_visible": true
                     },
                     {
                         "title": "How to use",
-                        "content": "<ol><li>Use only after hydrophilic skincare products</li><li>Dispense 0.1–0.3 ml into the palm of your hand and spread evenly over face, neck and décolleté</li><li>2-month treatment course every 6 months (clients over 55 may use continuously)</li><li>Use every morning and/or evening after FORLLED lotion</li></ol>"
+                        "content": "<ol><li>Use only after hydrophilic skincare products</li><li>Dispense 0.1–0.3 ml into the palm of your hand and spread evenly over face, neck and décolleté</li><li>2-month treatment course every 6 months (clients over 55 may use continuously)</li><li>Use every morning and/or evening after FORLLED lotion</li></ol>",
+                        "is_visible": true
                     }
                 ],
                 "recommendations_title": "HOME ROUTINE RECOMMENDATIONS",
@@ -915,15 +963,18 @@
                 "detail_sections": [
                     {
                         "title": "Indications",
-                        "content": "<ul><li>Aids in treating medical-grade acne</li><li>Treatment for combination blemish-prone skin</li><li>Oily dehydrated skin</li><li>Mature, blemish-prone skin</li><li>Additional remedy after drug therapy and rehabilitation</li></ul>"
+                        "content": "<ul><li>Aids in treating medical-grade acne</li><li>Treatment for combination blemish-prone skin</li><li>Oily dehydrated skin</li><li>Mature, blemish-prone skin</li><li>Additional remedy after drug therapy and rehabilitation</li></ul>",
+                        "is_visible": true
                     },
                     {
                         "title": "Product density",
-                        "content": "-"
+                        "content": "-",
+                        "is_visible": true
                     },
                     {
                         "title": "How to use",
-                        "content": "<ol><li>Dispense about 0.3–0.5 ml of product into the palm of your hand</li><li>Apply to the affected area or the whole face</li><li>Apply after FORLLED lotion, twice daily (morning and evening)</li><li>Use continuously for at least 2 months — early termination may cause withdrawal symptoms</li><li>Important: sunscreen is strongly recommended</li></ol>"
+                        "content": "<ol><li>Dispense about 0.3–0.5 ml of product into the palm of your hand</li><li>Apply to the affected area or the whole face</li><li>Apply after FORLLED lotion, twice daily (morning and evening)</li><li>Use continuously for at least 2 months — early termination may cause withdrawal symptoms</li><li>Important: sunscreen is strongly recommended</li></ol>",
+                        "is_visible": true
                     }
                 ],
                 "recommendations_title": "HOME ROUTINE RECOMMENDATIONS",
@@ -970,15 +1021,18 @@
                 "detail_sections": [
                     {
                         "title": "Indications",
-                        "content": "<ul><li>Grade 1-2 acne</li><li>Separate blemishes</li><li>Post acne (hyperpigmented spots and scars)</li><li>Can be combined with medications to minimize adverse effects</li><li>Can be used on all skin types and sensitivities</li></ul>"
+                        "content": "<ul><li>Grade 1-2 acne</li><li>Separate blemishes</li><li>Post acne (hyperpigmented spots and scars)</li><li>Can be combined with medications to minimize adverse effects</li><li>Can be used on all skin types and sensitivities</li></ul>",
+                        "is_visible": true
                     },
                     {
                         "title": "Product density",
-                        "content": "-"
+                        "content": "-",
+                        "is_visible": true
                     },
                     {
                         "title": "How to use",
-                        "content": "<ol><li>Apply locally on blemishes</li><li>Course: 2–3 months</li><li>SOS application: once or twice for separate blemishes</li><li>Twice a day, morning and evening, after cleansing and applying Hyalogy AC Clear lotion</li><li>Can be applied more than twice a day if recommended by your esthetician</li></ol>"
+                        "content": "<ol><li>Apply locally on blemishes</li><li>Course: 2–3 months</li><li>SOS application: once or twice for separate blemishes</li><li>Twice a day, morning and evening, after cleansing and applying Hyalogy AC Clear lotion</li><li>Can be applied more than twice a day if recommended by your esthetician</li></ol>",
+                        "is_visible": true
                     }
                 ],
                 "recommendations_title": "HOME ROUTINE RECOMMENDATIONS",
@@ -1025,15 +1079,18 @@
                 "detail_sections": [
                     {
                         "title": "Indications",
-                        "content": "<ul><li>All skin types</li><li>Mature skin</li><li>Lack of skin tone and elasticity</li><li>Ideal complement prior to in-office procedures (chemical peels, IPL, non-ablative laser, microdermabrasion, microneedling, injectables)</li></ul>"
+                        "content": "<ul><li>All skin types</li><li>Mature skin</li><li>Lack of skin tone and elasticity</li><li>Ideal complement prior to in-office procedures (chemical peels, IPL, non-ablative laser, microdermabrasion, microneedling, injectables)</li></ul>",
+                        "is_visible": true
                     },
                     {
                         "title": "Product density",
-                        "content": "-"
+                        "content": "-",
+                        "is_visible": true
                     },
                     {
                         "title": "How to use",
-                        "content": "<ol><li>Dispense 0.1–0.3 ml into the palm of your hands</li><li>Spread evenly over the face, neck and décolleté</li><li>Use every morning and/or evening after FORLLED lotion</li><li>Recommended use: 2.5–3 months every 7–9–12 month period, per your esthetician&#039;s recommendation</li></ol>"
+                        "content": "<ol><li>Dispense 0.1–0.3 ml into the palm of your hands</li><li>Spread evenly over the face, neck and décolleté</li><li>Use every morning and/or evening after FORLLED lotion</li><li>Recommended use: 2.5–3 months every 7–9–12 month period, per your esthetician&#039;s recommendation</li></ol>",
+                        "is_visible": true
                     }
                 ],
                 "recommendations_title": "HOME ROUTINE RECOMMENDATIONS",
@@ -1080,15 +1137,18 @@
                 "detail_sections": [
                     {
                         "title": "Indications",
-                        "content": "<ul><li>Wrinkles connected with mimic activities</li><li>All skin types</li></ul>"
+                        "content": "<ul><li>Wrinkles connected with mimic activities</li><li>All skin types</li></ul>",
+                        "is_visible": true
                     },
                     {
                         "title": "Product density",
-                        "content": "-"
+                        "content": "-",
+                        "is_visible": true
                     },
                     {
                         "title": "How to use",
-                        "content": "<ol><li>Dispense 0.1–0.2 ml to the palm of your hands and apply to expression wrinkles</li><li>Can be used as an alternative to botulotoxin injections</li><li>To prolong the effect of botox/fillers, apply starting one month after injectables; 1.5–2 month course recommended</li><li>Minimum course duration is 2 months</li><li>Use every morning and evening after Forlle&#039;d lotion; apply with essence and finish with cream</li></ol>"
+                        "content": "<ol><li>Dispense 0.1–0.2 ml to the palm of your hands and apply to expression wrinkles</li><li>Can be used as an alternative to botulotoxin injections</li><li>To prolong the effect of botox/fillers, apply starting one month after injectables; 1.5–2 month course recommended</li><li>Minimum course duration is 2 months</li><li>Use every morning and evening after Forlle&#039;d lotion; apply with essence and finish with cream</li></ol>",
+                        "is_visible": true
                     }
                 ],
                 "recommendations_title": "HOME ROUTINE RECOMMENDATIONS",
@@ -1135,15 +1195,18 @@
                 "detail_sections": [
                     {
                         "title": "Indications",
-                        "content": "<ul><li>Sensitive skin of all types</li><li>Rosacea, eczema, psoriasis — to prolong and stabilize remission</li><li>For rehabilitation after aggressive procedures (peels, injections, laser treatment, RF-treatment, abrasive cleansing)</li></ul>"
+                        "content": "<ul><li>Sensitive skin of all types</li><li>Rosacea, eczema, psoriasis — to prolong and stabilize remission</li><li>For rehabilitation after aggressive procedures (peels, injections, laser treatment, RF-treatment, abrasive cleansing)</li></ul>",
+                        "is_visible": true
                     },
                     {
                         "title": "Product density",
-                        "content": "-"
+                        "content": "-",
+                        "is_visible": true
                     },
                     {
                         "title": "How to use",
-                        "content": "<ol><li>Gently spread 3–5 drops of the serum over the skin, focusing on problem areas</li><li>Help the serum absorb by tapping and smoothing gently — do not rub</li><li>Use twice a day after lotion</li><li>Use for a minimum of two months depending on skin condition; consult your esthetician regarding course duration</li><li>Use every morning and/or evening after FORLLED lotion</li></ol>"
+                        "content": "<ol><li>Gently spread 3–5 drops of the serum over the skin, focusing on problem areas</li><li>Help the serum absorb by tapping and smoothing gently — do not rub</li><li>Use twice a day after lotion</li><li>Use for a minimum of two months depending on skin condition; consult your esthetician regarding course duration</li><li>Use every morning and/or evening after FORLLED lotion</li></ol>",
+                        "is_visible": true
                     }
                 ],
                 "recommendations_title": "HOME ROUTINE RECOMMENDATIONS",
@@ -1190,15 +1253,18 @@
                 "detail_sections": [
                     {
                         "title": "Indications",
-                        "content": "<ul><li>Skin showing signs of premature aging</li><li>Loss of elasticity and tone</li><li>Skin rehabilitation after plastic surgery</li><li>Dermatoses in remission — supports prolonged remission</li><li>Dehydrated and dry skin</li><li>For all skin types, including sensitive</li></ul>"
+                        "content": "<ul><li>Skin showing signs of premature aging</li><li>Loss of elasticity and tone</li><li>Skin rehabilitation after plastic surgery</li><li>Dermatoses in remission — supports prolonged remission</li><li>Dehydrated and dry skin</li><li>For all skin types, including sensitive</li></ul>",
+                        "is_visible": true
                     },
                     {
                         "title": "Product density",
-                        "content": "-"
+                        "content": "-",
+                        "is_visible": true
                     },
                     {
                         "title": "How to use",
-                        "content": "<ol><li>Dispense 0.1–0.3 ml into the palm of your hands</li><li>Spread evenly over the face, neck and décolleté</li></ol>"
+                        "content": "<ol><li>Dispense 0.1–0.3 ml into the palm of your hands</li><li>Spread evenly over the face, neck and décolleté</li></ol>",
+                        "is_visible": true
                     }
                 ],
                 "recommendations_title": "HOME ROUTINE RECOMMENDATIONS",
@@ -1245,15 +1311,18 @@
                 "detail_sections": [
                     {
                         "title": "Indications",
-                        "content": "<ul><li>Loss of firmness, elasticity, and contour definition in the neck and décolletage</li><li>Visible signs of skin fatigue, stress, and a lack of radiance</li><li>Presence of fine lines, wrinkles, crepey skin texture</li><li>Skin dehydration, dryness</li><li>Dull, uneven skin tone and the appearance of hyperpigmentation or age spots</li></ul>"
+                        "content": "<ul><li>Loss of firmness, elasticity, and contour definition in the neck and décolletage</li><li>Visible signs of skin fatigue, stress, and a lack of radiance</li><li>Presence of fine lines, wrinkles, crepey skin texture</li><li>Skin dehydration, dryness</li><li>Dull, uneven skin tone and the appearance of hyperpigmentation or age spots</li></ul>",
+                        "is_visible": true
                     },
                     {
                         "title": "Product density",
-                        "content": "-"
+                        "content": "-",
+                        "is_visible": true
                     },
                     {
                         "title": "How to use",
-                        "content": "<ol><li>Apply essence to cleansed skin of the neck and décolleté area</li><li>Follow with cream, massaging gently until fully absorbed</li><li>Use twice daily, morning and evening, as part of your regular skincare routine</li><li>For best results, complete your routine with a broad-spectrum sunscreen</li></ol>"
+                        "content": "<ol><li>Apply essence to cleansed skin of the neck and décolleté area</li><li>Follow with cream, massaging gently until fully absorbed</li><li>Use twice daily, morning and evening, as part of your regular skincare routine</li><li>For best results, complete your routine with a broad-spectrum sunscreen</li></ol>",
+                        "is_visible": true
                     }
                 ],
                 "recommendations_title": "HOME ROUTINE RECOMMENDATIONS",
@@ -1300,15 +1369,18 @@
                 "detail_sections": [
                     {
                         "title": "Indications",
-                        "content": "<ul><li>Dehydrated skin of all types</li><li>Most suitable for very dry and atopic-prone skin</li><li>Suitable for allergy-prone, intolerant and reactive skin</li><li>Premature aging</li></ul>"
+                        "content": "<ul><li>Dehydrated skin of all types</li><li>Most suitable for very dry and atopic-prone skin</li><li>Suitable for allergy-prone, intolerant and reactive skin</li><li>Premature aging</li></ul>",
+                        "is_visible": true
                     },
                     {
                         "title": "Product density",
-                        "content": "-"
+                        "content": "-",
+                        "is_visible": true
                     },
                     {
                         "title": "How to use",
-                        "content": "<ol><li>Professional treatment use — for prevention of premature aging, intensive hydration, and wrinkle correction</li><li>Suitable for all treatments with derma-rollers and microneedling</li><li>Improves results of mesotherapy, intradermal injections, and fillers</li><li>Promotes skin healing after peels, skin-resurfacing procedures, laser treatments, microdermabrasion</li><li>Used in pre- and post-plastic surgical care; follow treatment protocol</li></ol>"
+                        "content": "<ol><li>Professional treatment use — for prevention of premature aging, intensive hydration, and wrinkle correction</li><li>Suitable for all treatments with derma-rollers and microneedling</li><li>Improves results of mesotherapy, intradermal injections, and fillers</li><li>Promotes skin healing after peels, skin-resurfacing procedures, laser treatments, microdermabrasion</li><li>Used in pre- and post-plastic surgical care; follow treatment protocol</li></ol>",
+                        "is_visible": true
                     }
                 ],
                 "recommendations_title": "HOME ROUTINE RECOMMENDATIONS",
@@ -1355,15 +1427,18 @@
                 "detail_sections": [
                     {
                         "title": "Indications",
-                        "content": "<ul><li>Signs of photo- and chrono-aging</li><li>Recovery treatments for aging skin, after chemical peels, dermabrasion, plastic surgery</li><li>Suitable for all phototypes</li></ul>"
+                        "content": "<ul><li>Signs of photo- and chrono-aging</li><li>Recovery treatments for aging skin, after chemical peels, dermabrasion, plastic surgery</li><li>Suitable for all phototypes</li></ul>",
+                        "is_visible": true
                     },
                     {
                         "title": "Product density",
-                        "content": "-"
+                        "content": "-",
+                        "is_visible": true
                     },
                     {
                         "title": "How to use",
-                        "content": "<ol><li>Professional treatment use — prevention of premature aging, healing and recovery treatments, biostimulation for aged skin</li><li>All treatments with derma-rollers and microneedling</li><li>Hyperpigmentation treatments; skin care after IPL treatments</li><li>Skin healing after peels, skin-resurfacing procedures, laser treatments, microdermabrasion</li><li>Pre- and post-plastic surgical care; follow treatment protocol</li></ol>"
+                        "content": "<ol><li>Professional treatment use — prevention of premature aging, healing and recovery treatments, biostimulation for aged skin</li><li>All treatments with derma-rollers and microneedling</li><li>Hyperpigmentation treatments; skin care after IPL treatments</li><li>Skin healing after peels, skin-resurfacing procedures, laser treatments, microdermabrasion</li><li>Pre- and post-plastic surgical care; follow treatment protocol</li></ol>",
+                        "is_visible": true
                     }
                 ],
                 "recommendations_title": "HOME ROUTINE RECOMMENDATIONS",
@@ -1410,15 +1485,18 @@
                 "detail_sections": [
                     {
                         "title": "Indications",
-                        "content": "<ul><li>Skin after abrasive procedures, chemical peels, lasers, burns or plastic surgery</li><li>Suitable for allergy-prone skin and skin with dermatitis</li><li>Suitable for all phototypes</li><li>Treatment of post acne and oily skin to prevent post-inflammatory hyperpigmentation, spots and scars</li></ul>"
+                        "content": "<ul><li>Skin after abrasive procedures, chemical peels, lasers, burns or plastic surgery</li><li>Suitable for allergy-prone skin and skin with dermatitis</li><li>Suitable for all phototypes</li><li>Treatment of post acne and oily skin to prevent post-inflammatory hyperpigmentation, spots and scars</li></ul>",
+                        "is_visible": true
                     },
                     {
                         "title": "Product density",
-                        "content": "-"
+                        "content": "-",
+                        "is_visible": true
                     },
                     {
                         "title": "How to use",
-                        "content": "<ol><li>Professional treatment use — prevention of premature aging, soothing, anti-inflammatory and anti-redness care</li><li>Soothing care for sensitive and allergy-prone skin</li><li>Healing of inflammation, acne, scratches, irritation, burns</li><li>All treatments with derma-rollers and microneedling</li><li>Skin healing after peels, skin-resurfacing procedures, laser treatments, microdermabrasion</li><li>Pre- and post-plastic surgical care; follow treatment protocol</li></ol>"
+                        "content": "<ol><li>Professional treatment use — prevention of premature aging, soothing, anti-inflammatory and anti-redness care</li><li>Soothing care for sensitive and allergy-prone skin</li><li>Healing of inflammation, acne, scratches, irritation, burns</li><li>All treatments with derma-rollers and microneedling</li><li>Skin healing after peels, skin-resurfacing procedures, laser treatments, microdermabrasion</li><li>Pre- and post-plastic surgical care; follow treatment protocol</li></ol>",
+                        "is_visible": true
                     }
                 ],
                 "recommendations_title": "HOME ROUTINE RECOMMENDATIONS",
@@ -1465,15 +1543,18 @@
                 "detail_sections": [
                     {
                         "title": "Indications",
-                        "content": "<ul><li>Premature aging</li><li>Dull and uneven complexion</li><li>Pigment spots and post-acne pigmentation</li><li>Oily skin and combination skin with imperfections</li></ul>"
+                        "content": "<ul><li>Premature aging</li><li>Dull and uneven complexion</li><li>Pigment spots and post-acne pigmentation</li><li>Oily skin and combination skin with imperfections</li></ul>",
+                        "is_visible": true
                     },
                     {
                         "title": "Product density",
-                        "content": "-"
+                        "content": "-",
+                        "is_visible": true
                     },
                     {
                         "title": "How to use",
-                        "content": "<ol><li>Professional use only — prevention of premature aging, immune defense; follow treatment protocol</li><li>Skin healing after peels, skin-resurfacing procedures, laser treatments, microdermabrasion</li><li>Compatible with laser treatment, iontophoresis, sonophoresis and microcurrent facial</li><li>Efficient improvement of mesotherapy, intradermal injections, fillers</li><li>Pre- and post-plastic surgical care</li></ol>"
+                        "content": "<ol><li>Professional use only — prevention of premature aging, immune defense; follow treatment protocol</li><li>Skin healing after peels, skin-resurfacing procedures, laser treatments, microdermabrasion</li><li>Compatible with laser treatment, iontophoresis, sonophoresis and microcurrent facial</li><li>Efficient improvement of mesotherapy, intradermal injections, fillers</li><li>Pre- and post-plastic surgical care</li></ol>",
+                        "is_visible": true
                     }
                 ],
                 "recommendations_title": "HOME ROUTINE RECOMMENDATIONS",
@@ -1520,15 +1601,18 @@
                 "detail_sections": [
                     {
                         "title": "Indications",
-                        "content": "<ul><li>Heavily dehydrated and dry skin of any age</li><li>Allergic, hypersensitive, reactive and intolerant skin</li><li>Skin with irritation and scaling</li><li>Couperose and rosacea</li><li>Suitable for all phototypes</li></ul>"
+                        "content": "<ul><li>Heavily dehydrated and dry skin of any age</li><li>Allergic, hypersensitive, reactive and intolerant skin</li><li>Skin with irritation and scaling</li><li>Couperose and rosacea</li><li>Suitable for all phototypes</li></ul>",
+                        "is_visible": true
                     },
                     {
                         "title": "Product density",
-                        "content": "-"
+                        "content": "-",
+                        "is_visible": true
                     },
                     {
                         "title": "How to use",
-                        "content": "<ol><li>Professional treatment use — prevention of premature aging, intensive nutrition, protection</li><li>Skin healing after peelings, abrasive procedures, lasers, microdermabrasion</li><li>Pre- and post-therapy in plastic surgery</li><li>Follow treatment protocol</li></ol>"
+                        "content": "<ol><li>Professional treatment use — prevention of premature aging, intensive nutrition, protection</li><li>Skin healing after peelings, abrasive procedures, lasers, microdermabrasion</li><li>Pre- and post-therapy in plastic surgery</li><li>Follow treatment protocol</li></ol>",
+                        "is_visible": true
                     }
                 ],
                 "recommendations_title": "HOME ROUTINE RECOMMENDATIONS",
@@ -1575,15 +1659,18 @@
                 "detail_sections": [
                     {
                         "title": "Indications",
-                        "content": "<ul><li>Facial sagging, gravitational and trophic wrinkles, jowls</li><li>Pathological skin thickening, compressed skin with slow lymph flow, fibrotic skin</li><li>Dull, grey colour of swollen skin</li><li>Hyperkeratosis, uneven skin tone</li><li>For all skin types (caution for sensitive skin)</li></ul>"
+                        "content": "<ul><li>Facial sagging, gravitational and trophic wrinkles, jowls</li><li>Pathological skin thickening, compressed skin with slow lymph flow, fibrotic skin</li><li>Dull, grey colour of swollen skin</li><li>Hyperkeratosis, uneven skin tone</li><li>For all skin types (caution for sensitive skin)</li></ul>",
+                        "is_visible": true
                     },
                     {
                         "title": "Product density",
-                        "content": "-"
+                        "content": "-",
+                        "is_visible": true
                     },
                     {
                         "title": "How to use",
-                        "content": "<ol><li>Apply to cleansed skin</li><li>To reduce erythema, apply a superfine ceramide layer (Hyalogy BioPure CE 100 serum) before the mask</li><li>Apply a visible layer of the mask (5 g) to face, neck and décolleté, avoiding the eye area</li><li>To increase the modelling effect, place gauze over the mask</li><li>Exposure time: 15 minutes — moisten gauze with water if the mask dries out</li><li>After exposure, gently remove the gauze and rinse the mask thoroughly</li><li>Apply lotion, serum, and cream according to the Treatment Protocol</li><li>Massage after the mask if skin is swollen, or before the mask if not swollen</li></ol>"
+                        "content": "<ol><li>Apply to cleansed skin</li><li>To reduce erythema, apply a superfine ceramide layer (Hyalogy BioPure CE 100 serum) before the mask</li><li>Apply a visible layer of the mask (5 g) to face, neck and décolleté, avoiding the eye area</li><li>To increase the modelling effect, place gauze over the mask</li><li>Exposure time: 15 minutes — moisten gauze with water if the mask dries out</li><li>After exposure, gently remove the gauze and rinse the mask thoroughly</li><li>Apply lotion, serum, and cream according to the Treatment Protocol</li><li>Massage after the mask if skin is swollen, or before the mask if not swollen</li></ol>",
+                        "is_visible": true
                     }
                 ],
                 "recommendations_title": "HOME ROUTINE RECOMMENDATIONS",
@@ -1630,15 +1717,18 @@
                 "detail_sections": [
                     {
                         "title": "Indications",
-                        "content": "<ul><li>Decreased skin tone and elasticity</li><li>Wrinkles of different origins, depths, and lengths</li><li>Volume loss and asymmetrical facial contours</li><li>Dry, dehydrated skin with loss of elasticity</li><li>Enhances the results of collagen-stimulating procedures</li></ul>"
+                        "content": "<ul><li>Decreased skin tone and elasticity</li><li>Wrinkles of different origins, depths, and lengths</li><li>Volume loss and asymmetrical facial contours</li><li>Dry, dehydrated skin with loss of elasticity</li><li>Enhances the results of collagen-stimulating procedures</li></ul>",
+                        "is_visible": true
                     },
                     {
                         "title": "Product density",
-                        "content": "-"
+                        "content": "-",
+                        "is_visible": true
                     },
                     {
                         "title": "How to use",
-                        "content": "<ol><li>Apply the mask to cleansed skin after FORLLED lotion (Hyalogy Refining lotion for all ages; Hyalogy Re-Dify lotion for 50+)</li><li>Leave on for 15 minutes, then remove</li><li>Gently massage any remaining collagen serum into the skin</li><li>Apply FORLLED cream according to skin type, followed by Hyalogy UV Intense protector</li></ol>"
+                        "content": "<ol><li>Apply the mask to cleansed skin after FORLLED lotion (Hyalogy Refining lotion for all ages; Hyalogy Re-Dify lotion for 50+)</li><li>Leave on for 15 minutes, then remove</li><li>Gently massage any remaining collagen serum into the skin</li><li>Apply FORLLED cream according to skin type, followed by Hyalogy UV Intense protector</li></ol>",
+                        "is_visible": true
                     }
                 ],
                 "recommendations_title": "HOME ROUTINE RECOMMENDATIONS",
@@ -1685,15 +1775,18 @@
                 "detail_sections": [
                     {
                         "title": "Indications",
-                        "content": "<ul><li>Skin displaying signs of photoaging, sun-exposed skin, and skin of individuals living in metropolitan areas</li><li>Existing hyperpigmentation and prevention of dyschromia development</li><li>Dull and uneven complexion</li><li>Premature appearance of fine wrinkles</li><li>Loss of skin tone, firmness, and elasticity</li></ul>"
+                        "content": "<ul><li>Skin displaying signs of photoaging, sun-exposed skin, and skin of individuals living in metropolitan areas</li><li>Existing hyperpigmentation and prevention of dyschromia development</li><li>Dull and uneven complexion</li><li>Premature appearance of fine wrinkles</li><li>Loss of skin tone, firmness, and elasticity</li></ul>",
+                        "is_visible": true
                     },
                     {
                         "title": "Product density",
-                        "content": "-"
+                        "content": "-",
+                        "is_visible": true
                     },
                     {
                         "title": "How to use",
-                        "content": "<ol><li>Apply a generous layer (3–5 ml) to cover the entire face, neck and décolleté</li><li>Leave on for 15–20 minutes</li><li>Carefully remove the mask with a wet warm compress</li><li>Follow treatment protocols: Basic Antioxidant Treatment, Intensive Treatment with Precious Platinum, Sparkling Platinum</li><li>Can be used as a single session or as part of a treatment course (typically 3–8 sessions) targeting photoaging, chronoaging, and age spots</li></ol>"
+                        "content": "<ol><li>Apply a generous layer (3–5 ml) to cover the entire face, neck and décolleté</li><li>Leave on for 15–20 minutes</li><li>Carefully remove the mask with a wet warm compress</li><li>Follow treatment protocols: Basic Antioxidant Treatment, Intensive Treatment with Precious Platinum, Sparkling Platinum</li><li>Can be used as a single session or as part of a treatment course (typically 3–8 sessions) targeting photoaging, chronoaging, and age spots</li></ol>",
+                        "is_visible": true
                     }
                 ],
                 "recommendations_title": "HOME ROUTINE RECOMMENDATIONS",
@@ -1740,15 +1833,18 @@
                 "detail_sections": [
                     {
                         "title": "Indications",
-                        "content": "<ul><li>Skin with signs of premature aging</li><li>Pigmentations and blotches</li><li>Urban skin with intoxication signs</li><li>Skin with signs of mechanical ptosis</li><li>All skin types, especially oily</li></ul>"
+                        "content": "<ul><li>Skin with signs of premature aging</li><li>Pigmentations and blotches</li><li>Urban skin with intoxication signs</li><li>Skin with signs of mechanical ptosis</li><li>All skin types, especially oily</li></ul>",
+                        "is_visible": true
                     },
                     {
                         "title": "Product density",
-                        "content": "-"
+                        "content": "-",
+                        "is_visible": true
                     },
                     {
                         "title": "How to use",
-                        "content": "<ol><li>With Hyalogy Essence Powder: mix 1 pouch of gel pack per 1 pouch of essence powder until particles dissolve completely, then immediately apply a thin layer to face, neck and décolleté</li><li>Optionally sculpt the face contour with a gauze bandage; leave on 10–15 minutes; remove carefully with a wet warm compress</li><li>When used alone: apply a thick layer to cleansed, prepared skin of face, neck and décolleté; leave for 15 minutes; remove carefully with a wet compress</li><li>Important: use immediately after opening; follow treatment protocol</li></ol>"
+                        "content": "<ol><li>With Hyalogy Essence Powder: mix 1 pouch of gel pack per 1 pouch of essence powder until particles dissolve completely, then immediately apply a thin layer to face, neck and décolleté</li><li>Optionally sculpt the face contour with a gauze bandage; leave on 10–15 minutes; remove carefully with a wet warm compress</li><li>When used alone: apply a thick layer to cleansed, prepared skin of face, neck and décolleté; leave for 15 minutes; remove carefully with a wet compress</li><li>Important: use immediately after opening; follow treatment protocol</li></ol>",
+                        "is_visible": true
                     }
                 ],
                 "recommendations_title": "HOME ROUTINE RECOMMENDATIONS",
@@ -1795,15 +1891,18 @@
                 "detail_sections": [
                     {
                         "title": "Indications",
-                        "content": "<ul><li>Skin with signs of premature aging</li><li>Skin with signs of mechanical ptosis</li><li>Loss of elasticity and tone</li><li>Thinning skin</li><li>Dehydrated and dry skin</li><li>All skin types, including sensitive</li></ul>"
+                        "content": "<ul><li>Skin with signs of premature aging</li><li>Skin with signs of mechanical ptosis</li><li>Loss of elasticity and tone</li><li>Thinning skin</li><li>Dehydrated and dry skin</li><li>All skin types, including sensitive</li></ul>",
+                        "is_visible": true
                     },
                     {
                         "title": "Product density",
-                        "content": "-"
+                        "content": "-",
+                        "is_visible": true
                     },
                     {
                         "title": "How to use",
-                        "content": "<ol><li>Place the mask on the skin and use fingertips to smooth it out so it&#039;s properly fixed</li><li>Tightly press the mask to the neck</li><li>Leave on for 20–25 minutes</li><li>Remove mask remnants with a warm compress if needed</li><li>Follow treatment protocol; use immediately after opening</li></ol>"
+                        "content": "<ol><li>Place the mask on the skin and use fingertips to smooth it out so it&#039;s properly fixed</li><li>Tightly press the mask to the neck</li><li>Leave on for 20–25 minutes</li><li>Remove mask remnants with a warm compress if needed</li><li>Follow treatment protocol; use immediately after opening</li></ol>",
+                        "is_visible": true
                     }
                 ],
                 "recommendations_title": "HOME ROUTINE RECOMMENDATIONS",
@@ -1850,15 +1949,18 @@
                 "detail_sections": [
                     {
                         "title": "Indications",
-                        "content": "<ul><li>Contaminated and toxic skin</li><li>Oily skin as well as skin with different comedones</li><li>Gentle cleansing for sensitive skin</li></ul>"
+                        "content": "<ul><li>Contaminated and toxic skin</li><li>Oily skin as well as skin with different comedones</li><li>Gentle cleansing for sensitive skin</li></ul>",
+                        "is_visible": true
                     },
                     {
                         "title": "Product density",
-                        "content": "-"
+                        "content": "-",
+                        "is_visible": true
                     },
                     {
                         "title": "How to use",
-                        "content": "<ol><li>Measure a small portion of the mask (no more than 2 g)</li><li>Spread a very thin layer onto cleansed or purified face, avoiding the eye area</li><li>Allow to dry completely until a thin film forms</li><li>Pick up the edge of the mask and peel it off the face</li><li>Remove mask remnants with a wet compress</li><li>Follow treatment procedure; can also be performed as part of detoxification treatments</li></ol>"
+                        "content": "<ol><li>Measure a small portion of the mask (no more than 2 g)</li><li>Spread a very thin layer onto cleansed or purified face, avoiding the eye area</li><li>Allow to dry completely until a thin film forms</li><li>Pick up the edge of the mask and peel it off the face</li><li>Remove mask remnants with a wet compress</li><li>Follow treatment procedure; can also be performed as part of detoxification treatments</li></ol>",
+                        "is_visible": true
                     }
                 ],
                 "recommendations_title": "HOME ROUTINE RECOMMENDATIONS",
@@ -1905,15 +2007,18 @@
                 "detail_sections": [
                     {
                         "title": "Indications",
-                        "content": "<ul><li>Hypersensitive, intolerant and reactive skin</li><li>Redness-prone skin</li><li>Dry and atopic skin</li><li>Skin swelling, itching and irritations</li><li>Couperose, rosacea</li></ul>"
+                        "content": "<ul><li>Hypersensitive, intolerant and reactive skin</li><li>Redness-prone skin</li><li>Dry and atopic skin</li><li>Skin swelling, itching and irritations</li><li>Couperose, rosacea</li></ul>",
+                        "is_visible": true
                     },
                     {
                         "title": "Product density",
-                        "content": "-"
+                        "content": "-",
+                        "is_visible": true
                     },
                     {
                         "title": "How to use",
-                        "content": "<ol><li>As a mask: apply 3–4 g on the skin using cosmetic brushes or a spatula; leave on 10–20 minutes; carefully remove with a wet warm compress</li><li>As a cream (especially in windy or cold weather): apply 0.7–1 g to the face; tap in gently, do not rub</li></ol>"
+                        "content": "<ol><li>As a mask: apply 3–4 g on the skin using cosmetic brushes or a spatula; leave on 10–20 minutes; carefully remove with a wet warm compress</li><li>As a cream (especially in windy or cold weather): apply 0.7–1 g to the face; tap in gently, do not rub</li></ol>",
+                        "is_visible": true
                     }
                 ],
                 "recommendations_title": "HOME ROUTINE RECOMMENDATIONS",
@@ -1960,15 +2065,18 @@
                 "detail_sections": [
                     {
                         "title": "Indications",
-                        "content": "<ul><li>Mature skin</li><li>Loss of elasticity</li><li>Skin with signs of mechanical ptosis</li><li>Dehydrated and dry skin</li></ul>"
+                        "content": "<ul><li>Mature skin</li><li>Loss of elasticity</li><li>Skin with signs of mechanical ptosis</li><li>Dehydrated and dry skin</li></ul>",
+                        "is_visible": true
                     },
                     {
                         "title": "Product density",
-                        "content": "-"
+                        "content": "-",
+                        "is_visible": true
                     },
                     {
                         "title": "How to use",
-                        "content": "<ol><li>As a mask: apply 5 ml in an even layer to face, neck and décolleté using a spatula or brush; massage along massage lines (optional); leave for 15 minutes; remove with a warm wet compress; use 2–3 times a week</li><li>As a cream: apply 0.7–1 g to the face; tap gently, do not rub in; use every morning and/or evening</li></ol>"
+                        "content": "<ol><li>As a mask: apply 5 ml in an even layer to face, neck and décolleté using a spatula or brush; massage along massage lines (optional); leave for 15 minutes; remove with a warm wet compress; use 2–3 times a week</li><li>As a cream: apply 0.7–1 g to the face; tap gently, do not rub in; use every morning and/or evening</li></ol>",
+                        "is_visible": true
                     }
                 ],
                 "recommendations_title": "HOME ROUTINE RECOMMENDATIONS",
@@ -2015,15 +2123,18 @@
                 "detail_sections": [
                     {
                         "title": "Indications",
-                        "content": "<ul><li>Sensitive skin of all types</li><li>Couperose</li><li>Rosacea, eczema, psoriasis — to prolong and stabilize remission; for rehabilitation after aggressive procedures (peels, injections, laser treatment, RF-treatment, abrasive cleansing)</li></ul>"
+                        "content": "<ul><li>Sensitive skin of all types</li><li>Couperose</li><li>Rosacea, eczema, psoriasis — to prolong and stabilize remission; for rehabilitation after aggressive procedures (peels, injections, laser treatment, RF-treatment, abrasive cleansing)</li></ul>",
+                        "is_visible": true
                     },
                     {
                         "title": "Product density",
-                        "content": "-"
+                        "content": "-",
+                        "is_visible": true
                     },
                     {
                         "title": "How to use",
-                        "content": "<ol><li>Spread 4.0–5.0 g of the mask on clean skin treated with lotion</li><li>Leave on for 25 minutes</li><li>Do not remove the mask, dab with a damp cloth</li><li>Apply a cream afterwards</li><li>Frequency: 3–4 times a week</li><li>Follow treatment protocol; can be used for home care upon esthetician&#039;s recommendation</li></ol>"
+                        "content": "<ol><li>Spread 4.0–5.0 g of the mask on clean skin treated with lotion</li><li>Leave on for 25 minutes</li><li>Do not remove the mask, dab with a damp cloth</li><li>Apply a cream afterwards</li><li>Frequency: 3–4 times a week</li><li>Follow treatment protocol; can be used for home care upon esthetician&#039;s recommendation</li></ol>",
+                        "is_visible": true
                     }
                 ],
                 "recommendations_title": "HOME ROUTINE RECOMMENDATIONS",
@@ -2070,15 +2181,18 @@
                 "detail_sections": [
                     {
                         "title": "Indications",
-                        "content": "<ul><li>Dull skin</li><li>Skin with uneven tone</li><li>Skin with dyschromia</li><li>Pigment spots</li></ul>"
+                        "content": "<ul><li>Dull skin</li><li>Skin with uneven tone</li><li>Skin with dyschromia</li><li>Pigment spots</li></ul>",
+                        "is_visible": true
                     },
                     {
                         "title": "Product density",
-                        "content": "-"
+                        "content": "-",
+                        "is_visible": true
                     },
                     {
                         "title": "How to use",
-                        "content": "<ol><li>One-time use; the mask is sterilized and can be used after injections or machine treatments</li><li>Tear open the pouch, remove the mask and unfold it</li><li>Put the mask onto pre-cleansed face, aligning mouth and eyes; leave on for 15 minutes</li><li>Soak excess essence into the skin with light massage over face and neck</li><li>Apply a sunscreen cream immediately afterward</li><li>Home care: use 1–3 times per week (once weekly with BW concentrate; 2–3 times weekly without); cleanse and apply lotion first</li><li>For comprehensive results, use together with BW Night Cream</li></ol>"
+                        "content": "<ol><li>One-time use; the mask is sterilized and can be used after injections or machine treatments</li><li>Tear open the pouch, remove the mask and unfold it</li><li>Put the mask onto pre-cleansed face, aligning mouth and eyes; leave on for 15 minutes</li><li>Soak excess essence into the skin with light massage over face and neck</li><li>Apply a sunscreen cream immediately afterward</li><li>Home care: use 1–3 times per week (once weekly with BW concentrate; 2–3 times weekly without); cleanse and apply lotion first</li><li>For comprehensive results, use together with BW Night Cream</li></ol>",
+                        "is_visible": true
                     }
                 ],
                 "recommendations_title": "HOME ROUTINE RECOMMENDATIONS",
@@ -2125,15 +2239,18 @@
                 "detail_sections": [
                     {
                         "title": "Indications",
-                        "content": "<ul><li>Urban skin, dull and stressed</li></ul>"
+                        "content": "<ul><li>Urban skin, dull and stressed</li></ul>",
+                        "is_visible": true
                     },
                     {
                         "title": "Product density",
-                        "content": "-"
+                        "content": "-",
+                        "is_visible": true
                     },
                     {
                         "title": "How to use",
-                        "content": "<ol><li>Single use only</li><li>Use 1–2 times a week for a cleansing, astringent effect on oily skin</li><li>Use 1–2 times a week, alternating with BW Intense mask, to align skin tone</li><li>Use 2–3 times a week for a modelling effect, or 2 times a week for a rejuvenating effect</li><li>Gently apply to cleansed skin, avoiding the eye area; leave on 5–15 minutes</li><li>Carefully remove with a spatula, then wipe away excess product with a wet towel</li><li>Apply lotion, serum and cream as needed</li></ol>"
+                        "content": "<ol><li>Single use only</li><li>Use 1–2 times a week for a cleansing, astringent effect on oily skin</li><li>Use 1–2 times a week, alternating with BW Intense mask, to align skin tone</li><li>Use 2–3 times a week for a modelling effect, or 2 times a week for a rejuvenating effect</li><li>Gently apply to cleansed skin, avoiding the eye area; leave on 5–15 minutes</li><li>Carefully remove with a spatula, then wipe away excess product with a wet towel</li><li>Apply lotion, serum and cream as needed</li></ol>",
+                        "is_visible": true
                     }
                 ],
                 "recommendations_title": "HOME ROUTINE RECOMMENDATIONS",
@@ -2180,15 +2297,18 @@
                 "detail_sections": [
                     {
                         "title": "Indications",
-                        "content": "<ul><li>Mature skin</li></ul>"
+                        "content": "<ul><li>Mature skin</li></ul>",
+                        "is_visible": true
                     },
                     {
                         "title": "Product density",
-                        "content": "-"
+                        "content": "-",
+                        "is_visible": true
                     },
                     {
                         "title": "How to use",
-                        "content": "<ol><li>Follow treatment protocol</li><li>Important: do not combine with any low-pH products; do not use on the skin around the eyes and mouth</li><li>Can be repeated up to twice a week depending on skin condition</li></ol>"
+                        "content": "<ol><li>Follow treatment protocol</li><li>Important: do not combine with any low-pH products; do not use on the skin around the eyes and mouth</li><li>Can be repeated up to twice a week depending on skin condition</li></ol>",
+                        "is_visible": true
                     }
                 ],
                 "recommendations_title": "HOME ROUTINE RECOMMENDATIONS",
@@ -2445,15 +2565,18 @@
                 "detail_sections": [
                     {
                         "title": "Indications",
-                        "content": "<ul><li>Dull and stressed skin</li><li>Pigmented skin</li><li>Uneven skin tone</li><li>All skin types</li><li>All skin types</li><li>Day cream in cold weather, night cream for daily use; especially recommended for dry, dehydrated and sensitive skin</li><li>Dehydrated skin</li><li>Premature aging</li><li>Redness-prone skin</li><li>Efficient improvement of mesotherapy and dermal fillers; for rehabilitation after aggressive procedures (peels, injections, laser treatment, RF-treatment, abrasive cleansing) and after sunburn</li><li>Can be used as an additional moisturizing base with any creams</li><li>Mature and aging skin</li><li>Pigmented skin</li><li>Skin with signs of photoaging</li><li>Rehabilitation period after aggressive aesthetic procedures</li><li>Preparation for aesthetic procedures that can boost melanocyte activity</li><li>Preparation for active skin insolation (sun exposure)</li><li>Dehydrated skin</li><li>Skin with decreased tone, turgor and elasticity</li><li>Aging prevention</li><li>Skin with signs of photoaging</li><li>Pigmentation</li><li>Dark spots</li><li>Uneven skin tone</li><li>Normal/combination/oily skin types</li><li>Atonic skin</li><li>Skin with mechanical ptosis signs</li><li>Multiple fine lines and wrinkles</li><li>Sensitive skin of all types</li><li>Couperose</li><li>Rosacea, eczema, psoriasis — to prolong and stabilize remission</li><li>Rehabilitation after aggressive procedures</li><li>Oily and combination blemish-prone skin</li><li>Oily dehydrated skin</li><li>Mature blemish-prone skin</li><li>Skin with excessive sebum production</li><li>Shiny skin</li><li>Oily and combination and blemish-prone skin</li><li>Large pores, skin imperfections (acne scars)</li><li>Skin with pigment spots and uneven complexion</li><li>Effective and safe home care after professional brightening treatments</li><li>Dull skin</li><li>Mature skin</li><li>Skin showing signs of premature aging</li><li>Loss of elasticity and tone</li><li>Thinning skin</li><li>Skin rehabilitation following plastic surgery</li><li>Dermatoses in remission — supports prolonged remission; active stage of dermatoses — promotes healing during flare-ups</li><li>Dehydrated and dry skin</li><li>For all skin types, including sensitive</li><li>Loss of firmness, elasticity, and contour definition in the neck and décolletage</li><li>Presence of fine lines, wrinkles, crepey skin texture</li><li>Dull, uneven skin tone and the appearance of hyperpigmentation or age spots</li></ul>"
+                        "content": "<ul><li>Dull and stressed skin</li><li>Pigmented skin</li><li>Uneven skin tone</li><li>All skin types</li><li>All skin types</li><li>Day cream in cold weather, night cream for daily use; especially recommended for dry, dehydrated and sensitive skin</li><li>Dehydrated skin</li><li>Premature aging</li><li>Redness-prone skin</li><li>Efficient improvement of mesotherapy and dermal fillers; for rehabilitation after aggressive procedures (peels, injections, laser treatment, RF-treatment, abrasive cleansing) and after sunburn</li><li>Can be used as an additional moisturizing base with any creams</li><li>Mature and aging skin</li><li>Pigmented skin</li><li>Skin with signs of photoaging</li><li>Rehabilitation period after aggressive aesthetic procedures</li><li>Preparation for aesthetic procedures that can boost melanocyte activity</li><li>Preparation for active skin insolation (sun exposure)</li><li>Dehydrated skin</li><li>Skin with decreased tone, turgor and elasticity</li><li>Aging prevention</li><li>Skin with signs of photoaging</li><li>Pigmentation</li><li>Dark spots</li><li>Uneven skin tone</li><li>Normal/combination/oily skin types</li><li>Atonic skin</li><li>Skin with mechanical ptosis signs</li><li>Multiple fine lines and wrinkles</li><li>Sensitive skin of all types</li><li>Couperose</li><li>Rosacea, eczema, psoriasis — to prolong and stabilize remission</li><li>Rehabilitation after aggressive procedures</li><li>Oily and combination blemish-prone skin</li><li>Oily dehydrated skin</li><li>Mature blemish-prone skin</li><li>Skin with excessive sebum production</li><li>Shiny skin</li><li>Oily and combination and blemish-prone skin</li><li>Large pores, skin imperfections (acne scars)</li><li>Skin with pigment spots and uneven complexion</li><li>Effective and safe home care after professional brightening treatments</li><li>Dull skin</li><li>Mature skin</li><li>Skin showing signs of premature aging</li><li>Loss of elasticity and tone</li><li>Thinning skin</li><li>Skin rehabilitation following plastic surgery</li><li>Dermatoses in remission — supports prolonged remission; active stage of dermatoses — promotes healing during flare-ups</li><li>Dehydrated and dry skin</li><li>For all skin types, including sensitive</li><li>Loss of firmness, elasticity, and contour definition in the neck and décolletage</li><li>Presence of fine lines, wrinkles, crepey skin texture</li><li>Dull, uneven skin tone and the appearance of hyperpigmentation or age spots</li></ul>",
+                        "is_visible": true
                     },
                     {
                         "title": "Product density",
-                        "content": "<p>-</p><p>Fluid emulsion — density level 2 of 6 on FORLLED&#039;s face cream texture scale</p><p>Cream — density level 4 of 6 on FORLLED&#039;s face cream texture scale</p><p>Gel — density level 1 of 6 (lightest) on Forlle&#039;d&#039;s face cream texture scale</p><p>Cream — density level 5 of 6 on FORLLED&#039;s face cream texture scale</p><p>Cream — density level 3 of 6 on FORLLED&#039;s face cream texture scale</p><p>Ultra-light cream — density level 1 of 6 (lightest) on FORLLED&#039;s face cream texture scale</p><p>Cream — density level 4 of 6 on FORLLED&#039;s face cream texture scale</p><p>Cream — density level 3 of 6 on FORLLED&#039;s face cream texture scale</p><p>Cream — density level 3 of 6 on FORLLED&#039;s face cream texture scale</p><p>Light emulsion — density level 2 of 6 on FORLLED&#039;s face cream texture scale</p><p>Cream — density level 3 of 6 on FORLLED&#039;s face cream texture scale</p><p>Rich cream — density level 6 of 6 (richest) on FORLLED&#039;s face cream texture scale</p><p>-</p><p>-</p>"
+                        "content": "<p>-</p><p>Fluid emulsion — density level 2 of 6 on FORLLED&#039;s face cream texture scale</p><p>Cream — density level 4 of 6 on FORLLED&#039;s face cream texture scale</p><p>Gel — density level 1 of 6 (lightest) on Forlle&#039;d&#039;s face cream texture scale</p><p>Cream — density level 5 of 6 on FORLLED&#039;s face cream texture scale</p><p>Cream — density level 3 of 6 on FORLLED&#039;s face cream texture scale</p><p>Ultra-light cream — density level 1 of 6 (lightest) on FORLLED&#039;s face cream texture scale</p><p>Cream — density level 4 of 6 on FORLLED&#039;s face cream texture scale</p><p>Cream — density level 3 of 6 on FORLLED&#039;s face cream texture scale</p><p>Cream — density level 3 of 6 on FORLLED&#039;s face cream texture scale</p><p>Light emulsion — density level 2 of 6 on FORLLED&#039;s face cream texture scale</p><p>Cream — density level 3 of 6 on FORLLED&#039;s face cream texture scale</p><p>Rich cream — density level 6 of 6 (richest) on FORLLED&#039;s face cream texture scale</p><p>-</p><p>-</p>",
+                        "is_visible": true
                     },
                     {
                         "title": "How to use",
-                        "content": "<ol><li>Use immediately after opening</li><li>Cut the mask along perforations so it fits tightly to the skin</li><li>Apply the lower part of the mask around the mouth, and the upper part to the upper face</li><li>Do not let the mask crease</li><li>Leave on for 20 minutes</li><li>Slowly remove the mask upwards from the bottom</li><li>CREAMS AND EMULSIONS</li><li>Hyalogy P-effect Basing Emulsion</li><li>Professional 250 ml, Home 100 ml</li><li>Dispense 1 ml of product into the palm of your hand</li><li>Spread evenly over the face, neck and décolleté</li><li>Use every morning and/or evening</li><li>CREAMS AND EMULSIONS</li><li>Hyalogy P-effect Nourishing Cream</li><li>Professional 100 g, Home 40 g</li><li>Dispense 1 ml of cream into the palm of your hand</li><li>Spread evenly over the face, neck and décolleté</li><li>Use every morning and/or evening</li><li>CREAMS AND EMULSIONS</li><li>Hyalogy P-effect Reliance Gel</li><li>Professional 100 g, Home 50 g</li><li>Dispense 1 ml of product and spread evenly over face, eyelids, neck and décolleté</li><li>Use every morning and/or evening</li><li>Can be used as a face mask 2–3 times a week: spread a thick layer over face, eyelids, neck and décolleté, leave for 15 minutes, then carefully remove residue with a wet warm compress or disposable towel</li><li>CREAMS AND EMULSIONS</li><li>Hyalogy Platinum Face Cream</li><li>Professional 100 g, Home 50 g</li><li>Dispense 1 ml of product</li><li>Spread evenly over the face, neck and décolleté</li><li>Use every morning and/or evening</li><li>CREAMS AND EMULSIONS</li><li>Hyalogy P-effect Deep Moisturizer</li><li>100 g</li><li>Evenly spread 1 ml of the cream over face, neck and décolleté, including eye and lip areas</li><li>Use gentle tapping and patting motions until completely absorbed</li><li>Use every morning and/or evening, before FORLLED lotion or serum</li><li>CREAMS AND EMULSIONS</li><li>Hyalogy VCIP Cream</li><li>50 g</li><li>Take the required amount of product (about 1 ml)</li><li>Spread evenly over the face, neck and décolleté</li><li>Use every morning and/or evening</li><li>CREAMS AND EMULSIONS</li><li>Hyalogy Lift Cream</li><li>50 g</li><li>Dispense 1 ml of cream</li><li>Spread evenly over the face, neck and décolleté, avoiding the eye area</li><li>Use every morning and/or evening</li><li>CREAMS AND EMULSIONS</li><li>Hyalogy SensiSkin Cream</li><li>50 g</li><li>Apply 1.0–1.5 g of cream on top of lotion (if not using serum) or over the serum</li><li>Allow the cream to soak in; do not rub it in</li><li>Use 1–2 times a day or more often if necessary</li><li>Use every morning and/or evening</li><li>CREAMS AND EMULSIONS</li><li>Hyalogy AC Clear Cream</li><li>50 g</li><li>The cream soothes and moisturizes blemish-prone skin, restoring elasticity and firmness for a healthy, fresh look</li><li>Use daily in the morning and/or evening after AC Clear lotion and/or serum</li><li>For very oily skin, use only in the evening</li><li>Important: sunscreen is strongly recommended</li><li>CREAMS AND EMULSIONS</li><li>Hyalogy AC Clear Mattifier</li><li>50 ml</li><li>Dispense 2–3 pumps into the palm of your hand</li><li>Apply thoroughly to the face</li><li>Use in the morning after your usual skincare products as a finishing layer to mattify the skin</li><li>CREAMS AND EMULSIONS</li><li>Hyalogy BW Night Cream</li><li>50 g</li><li>Since this cream doesn&#039;t contain sunscreen, apply it in the evening</li><li>Apply 1.0 ml of cream to the skin after any lotion and brightening serum</li><li>Use gentle tapping and pressing motions until completely absorbed, do not rub in</li><li>For maximum effect, use together with a brightening serum</li><li>Important: during the day, use sunscreen with SPF not below 30 (50 optimal)</li><li>CREAMS AND EMULSIONS</li><li>Hyalogy Re-Dify Cream</li><li>50 g</li><li>Apply in the evening and/or morning after the rejuvenating lotion and serums recommended by your esthetician</li><li>Apply 1 g of cream (pea-sized amount) to face, neck and décolleté with gentle massaging motions</li><li>Important: do not combine with any low pH-value products</li><li>CREAMS AND EMULSIONS</li><li>Hyalogy CLG Cream</li><li>50 g</li><li>Dispense 1 ml of the cream into the palm of your hand</li><li>Spread evenly over the face, neck and décolleté</li><li>CREAMS AND EMULSIONS</li><li>Hyalogy Neck and Décolleté Cream</li><li>50 g</li><li>Apply the cream over the Neck and Décolleté serum, gently massaging until fully absorbed — using them together provides a synergistic effect</li><li>Use twice daily, morning and evening, as part of your regular skincare routine</li><li>For best results, complete your routine with a broad-spectrum sunscreen during the day</li></ol>"
+                        "content": "<ol><li>Use immediately after opening</li><li>Cut the mask along perforations so it fits tightly to the skin</li><li>Apply the lower part of the mask around the mouth, and the upper part to the upper face</li><li>Do not let the mask crease</li><li>Leave on for 20 minutes</li><li>Slowly remove the mask upwards from the bottom</li><li>CREAMS AND EMULSIONS</li><li>Hyalogy P-effect Basing Emulsion</li><li>Professional 250 ml, Home 100 ml</li><li>Dispense 1 ml of product into the palm of your hand</li><li>Spread evenly over the face, neck and décolleté</li><li>Use every morning and/or evening</li><li>CREAMS AND EMULSIONS</li><li>Hyalogy P-effect Nourishing Cream</li><li>Professional 100 g, Home 40 g</li><li>Dispense 1 ml of cream into the palm of your hand</li><li>Spread evenly over the face, neck and décolleté</li><li>Use every morning and/or evening</li><li>CREAMS AND EMULSIONS</li><li>Hyalogy P-effect Reliance Gel</li><li>Professional 100 g, Home 50 g</li><li>Dispense 1 ml of product and spread evenly over face, eyelids, neck and décolleté</li><li>Use every morning and/or evening</li><li>Can be used as a face mask 2–3 times a week: spread a thick layer over face, eyelids, neck and décolleté, leave for 15 minutes, then carefully remove residue with a wet warm compress or disposable towel</li><li>CREAMS AND EMULSIONS</li><li>Hyalogy Platinum Face Cream</li><li>Professional 100 g, Home 50 g</li><li>Dispense 1 ml of product</li><li>Spread evenly over the face, neck and décolleté</li><li>Use every morning and/or evening</li><li>CREAMS AND EMULSIONS</li><li>Hyalogy P-effect Deep Moisturizer</li><li>100 g</li><li>Evenly spread 1 ml of the cream over face, neck and décolleté, including eye and lip areas</li><li>Use gentle tapping and patting motions until completely absorbed</li><li>Use every morning and/or evening, before FORLLED lotion or serum</li><li>CREAMS AND EMULSIONS</li><li>Hyalogy VCIP Cream</li><li>50 g</li><li>Take the required amount of product (about 1 ml)</li><li>Spread evenly over the face, neck and décolleté</li><li>Use every morning and/or evening</li><li>CREAMS AND EMULSIONS</li><li>Hyalogy Lift Cream</li><li>50 g</li><li>Dispense 1 ml of cream</li><li>Spread evenly over the face, neck and décolleté, avoiding the eye area</li><li>Use every morning and/or evening</li><li>CREAMS AND EMULSIONS</li><li>Hyalogy SensiSkin Cream</li><li>50 g</li><li>Apply 1.0–1.5 g of cream on top of lotion (if not using serum) or over the serum</li><li>Allow the cream to soak in; do not rub it in</li><li>Use 1–2 times a day or more often if necessary</li><li>Use every morning and/or evening</li><li>CREAMS AND EMULSIONS</li><li>Hyalogy AC Clear Cream</li><li>50 g</li><li>The cream soothes and moisturizes blemish-prone skin, restoring elasticity and firmness for a healthy, fresh look</li><li>Use daily in the morning and/or evening after AC Clear lotion and/or serum</li><li>For very oily skin, use only in the evening</li><li>Important: sunscreen is strongly recommended</li><li>CREAMS AND EMULSIONS</li><li>Hyalogy AC Clear Mattifier</li><li>50 ml</li><li>Dispense 2–3 pumps into the palm of your hand</li><li>Apply thoroughly to the face</li><li>Use in the morning after your usual skincare products as a finishing layer to mattify the skin</li><li>CREAMS AND EMULSIONS</li><li>Hyalogy BW Night Cream</li><li>50 g</li><li>Since this cream doesn&#039;t contain sunscreen, apply it in the evening</li><li>Apply 1.0 ml of cream to the skin after any lotion and brightening serum</li><li>Use gentle tapping and pressing motions until completely absorbed, do not rub in</li><li>For maximum effect, use together with a brightening serum</li><li>Important: during the day, use sunscreen with SPF not below 30 (50 optimal)</li><li>CREAMS AND EMULSIONS</li><li>Hyalogy Re-Dify Cream</li><li>50 g</li><li>Apply in the evening and/or morning after the rejuvenating lotion and serums recommended by your esthetician</li><li>Apply 1 g of cream (pea-sized amount) to face, neck and décolleté with gentle massaging motions</li><li>Important: do not combine with any low pH-value products</li><li>CREAMS AND EMULSIONS</li><li>Hyalogy CLG Cream</li><li>50 g</li><li>Dispense 1 ml of the cream into the palm of your hand</li><li>Spread evenly over the face, neck and décolleté</li><li>CREAMS AND EMULSIONS</li><li>Hyalogy Neck and Décolleté Cream</li><li>50 g</li><li>Apply the cream over the Neck and Décolleté serum, gently massaging until fully absorbed — using them together provides a synergistic effect</li><li>Use twice daily, morning and evening, as part of your regular skincare routine</li><li>For best results, complete your routine with a broad-spectrum sunscreen during the day</li></ol>",
+                        "is_visible": true
                     }
                 ],
                 "recommendations_title": "HOME ROUTINE RECOMMENDATIONS",
@@ -2500,15 +2623,18 @@
                 "detail_sections": [
                     {
                         "title": "Indications",
-                        "content": "<ul><li>All skin types, especially dry and dehydrated skin, skin with first signs of aging</li><li>Crow&#039;s feet</li></ul>"
+                        "content": "<ul><li>All skin types, especially dry and dehydrated skin, skin with first signs of aging</li><li>Crow&#039;s feet</li></ul>",
+                        "is_visible": true
                     },
                     {
                         "title": "Product density",
-                        "content": "-"
+                        "content": "-",
+                        "is_visible": true
                     },
                     {
                         "title": "How to use",
-                        "content": "<ol><li>Apply 0.2–0.4 ml to the eye area</li><li>Tap gently into the eye area</li><li>Use every morning and/or evening</li></ol>"
+                        "content": "<ol><li>Apply 0.2–0.4 ml to the eye area</li><li>Tap gently into the eye area</li><li>Use every morning and/or evening</li></ol>",
+                        "is_visible": true
                     }
                 ],
                 "recommendations_title": "HOME ROUTINE RECOMMENDATIONS",
@@ -2555,15 +2681,18 @@
                 "detail_sections": [
                     {
                         "title": "Indications",
-                        "content": "<ul><li>Skin around eyes with signs of photo-aging</li><li>Dark circles around eyes, eyelid swelling</li></ul>"
+                        "content": "<ul><li>Skin around eyes with signs of photo-aging</li><li>Dark circles around eyes, eyelid swelling</li></ul>",
+                        "is_visible": true
                     },
                     {
                         "title": "Product density",
-                        "content": "-"
+                        "content": "-",
+                        "is_visible": true
                     },
                     {
                         "title": "How to use",
-                        "content": "<ol><li>Dispense 0.2–0.4 ml to the eye area</li><li>Spread on the periorbital area with gentle motions</li><li>Use every morning and/or evening</li></ol>"
+                        "content": "<ol><li>Dispense 0.2–0.4 ml to the eye area</li><li>Spread on the periorbital area with gentle motions</li><li>Use every morning and/or evening</li></ol>",
+                        "is_visible": true
                     }
                 ],
                 "recommendations_title": "HOME ROUTINE RECOMMENDATIONS",
@@ -2610,15 +2739,18 @@
                 "detail_sections": [
                     {
                         "title": "Indications",
-                        "content": "<ul><li>Aging skin around eyes</li><li>Dark circles</li><li>Fine lines and wrinkles</li><li>Puffiness</li><li>Pigmentation</li><li>All skin types</li></ul>"
+                        "content": "<ul><li>Aging skin around eyes</li><li>Dark circles</li><li>Fine lines and wrinkles</li><li>Puffiness</li><li>Pigmentation</li><li>All skin types</li></ul>",
+                        "is_visible": true
                     },
                     {
                         "title": "Product density",
-                        "content": "-"
+                        "content": "-",
+                        "is_visible": true
                     },
                     {
                         "title": "How to use",
-                        "content": "<ol><li>Use immediately after opening</li><li>Remove each sheet from its paper base</li><li>Sculpt the skin of the eye area, applying the sheet on the lower eyelid</li><li>Leave for 8–10 minutes, then remove carefully</li><li>For mature skin use 1–2 times a week; for young skin upon occasion</li><li>Store in a cold area for increased anti-puffiness effect</li></ol>"
+                        "content": "<ol><li>Use immediately after opening</li><li>Remove each sheet from its paper base</li><li>Sculpt the skin of the eye area, applying the sheet on the lower eyelid</li><li>Leave for 8–10 minutes, then remove carefully</li><li>For mature skin use 1–2 times a week; for young skin upon occasion</li><li>Store in a cold area for increased anti-puffiness effect</li></ol>",
+                        "is_visible": true
                     }
                 ],
                 "recommendations_title": "HOME ROUTINE RECOMMENDATIONS",
@@ -2665,15 +2797,18 @@
                 "detail_sections": [
                     {
                         "title": "Indications",
-                        "content": "<ul><li>Thin, dull, atonic, wrinkled skin in the eye area</li><li>Preparation and rehabilitation period of blepharoplasty (surgery, laser)</li></ul>"
+                        "content": "<ul><li>Thin, dull, atonic, wrinkled skin in the eye area</li><li>Preparation and rehabilitation period of blepharoplasty (surgery, laser)</li></ul>",
+                        "is_visible": true
                     },
                     {
                         "title": "Product density",
-                        "content": "-"
+                        "content": "-",
+                        "is_visible": true
                     },
                     {
                         "title": "How to use",
-                        "content": "<ol><li>Use the essence every morning and evening after cleansing and applying lotion</li><li>Apply a thin layer (about 0.1 ml) to the periorbital eye area, tapping gently with fingertips</li><li>In the evening, apply the essence 2 hours before sleep</li><li>After the essence, apply a FORLLED eye cream: Hyalogy Daily and Nightly Cream for Eyes or Hyalogy Platinum Eye Cream</li></ol>"
+                        "content": "<ol><li>Use the essence every morning and evening after cleansing and applying lotion</li><li>Apply a thin layer (about 0.1 ml) to the periorbital eye area, tapping gently with fingertips</li><li>In the evening, apply the essence 2 hours before sleep</li><li>After the essence, apply a FORLLED eye cream: Hyalogy Daily and Nightly Cream for Eyes or Hyalogy Platinum Eye Cream</li></ol>",
+                        "is_visible": true
                     }
                 ],
                 "recommendations_title": "HOME ROUTINE RECOMMENDATIONS",
@@ -2720,15 +2855,18 @@
                 "detail_sections": [
                     {
                         "title": "Indications",
-                        "content": "<ul><li>Mature skin</li></ul>"
+                        "content": "<ul><li>Mature skin</li></ul>",
+                        "is_visible": true
                     },
                     {
                         "title": "Product density",
-                        "content": "-"
+                        "content": "-",
+                        "is_visible": true
                     },
                     {
                         "title": "How to use",
-                        "content": "<ol><li>Take the mask out of the pouch</li><li>Apply to cleansed eyelids for 15 minutes, then remove</li><li>Gently massage the excess essence into the skin</li><li>Important: use immediately after opening the pouch; do not reuse the mask; do not combine with other products</li></ol>"
+                        "content": "<ol><li>Take the mask out of the pouch</li><li>Apply to cleansed eyelids for 15 minutes, then remove</li><li>Gently massage the excess essence into the skin</li><li>Important: use immediately after opening the pouch; do not reuse the mask; do not combine with other products</li></ol>",
+                        "is_visible": true
                     }
                 ],
                 "recommendations_title": "HOME ROUTINE RECOMMENDATIONS",
@@ -2775,15 +2913,18 @@
                 "detail_sections": [
                     {
                         "title": "Indications",
-                        "content": "<ul><li>Mature skin</li><li>Dehydrated and dry skin</li><li>Tired and atonic skin</li><li>Dull and stressed skin</li></ul>"
+                        "content": "<ul><li>Mature skin</li><li>Dehydrated and dry skin</li><li>Tired and atonic skin</li><li>Dull and stressed skin</li></ul>",
+                        "is_visible": true
                     },
                     {
                         "title": "Product density",
-                        "content": "-"
+                        "content": "-",
+                        "is_visible": true
                     },
                     {
                         "title": "How to use",
-                        "content": "<ol><li>Use approximately 8 ml of the cream, depending on massage type and duration</li><li>Spread evenly over the face, neck and décolleté</li><li>Perform a massage along the massage lines</li><li>Carefully remove excess product with a wet warm compress</li><li>Follow treatment protocol</li></ol>"
+                        "content": "<ol><li>Use approximately 8 ml of the cream, depending on massage type and duration</li><li>Spread evenly over the face, neck and décolleté</li><li>Perform a massage along the massage lines</li><li>Carefully remove excess product with a wet warm compress</li><li>Follow treatment protocol</li></ol>",
+                        "is_visible": true
                     }
                 ],
                 "recommendations_title": "HOME ROUTINE RECOMMENDATIONS",
@@ -2830,15 +2971,18 @@
                 "detail_sections": [
                     {
                         "title": "Indications",
-                        "content": "<ul><li>Lack of skin tone and elasticity</li><li>Sagging skin</li><li>Stressed skin</li><li>All skin types</li></ul>"
+                        "content": "<ul><li>Lack of skin tone and elasticity</li><li>Sagging skin</li><li>Stressed skin</li><li>All skin types</li></ul>",
+                        "is_visible": true
                     },
                     {
                         "title": "Product density",
-                        "content": "-"
+                        "content": "-",
+                        "is_visible": true
                     },
                     {
                         "title": "How to use",
-                        "content": "<ol><li>Take the required amount of product (depending on massage type, duration and treatment area) and spread evenly over the face, neck and décolleté (or body area)</li><li>Perform a massage along the massage lines</li><li>Remove excess product carefully using a wet warm compress</li><li>Follow treatment protocol</li></ol>"
+                        "content": "<ol><li>Take the required amount of product (depending on massage type, duration and treatment area) and spread evenly over the face, neck and décolleté (or body area)</li><li>Perform a massage along the massage lines</li><li>Remove excess product carefully using a wet warm compress</li><li>Follow treatment protocol</li></ol>",
+                        "is_visible": true
                     }
                 ],
                 "recommendations_title": "HOME ROUTINE RECOMMENDATIONS",
@@ -2885,15 +3029,18 @@
                 "detail_sections": [
                     {
                         "title": "Indications",
-                        "content": "<ul><li>Dehydrated and dry skin</li><li>Narrow and thin lips</li></ul>"
+                        "content": "<ul><li>Dehydrated and dry skin</li><li>Narrow and thin lips</li></ul>",
+                        "is_visible": true
                     },
                     {
                         "title": "Product density",
-                        "content": "-"
+                        "content": "-",
+                        "is_visible": true
                     },
                     {
                         "title": "How to use",
-                        "content": "<ol><li>Apply 0.1 ml of cream evenly over the lips</li><li>Rub the cream into the vermilion border thoroughly</li><li>Use daily</li></ol>"
+                        "content": "<ol><li>Apply 0.1 ml of cream evenly over the lips</li><li>Rub the cream into the vermilion border thoroughly</li><li>Use daily</li></ol>",
+                        "is_visible": true
                     }
                 ],
                 "recommendations_title": "HOME ROUTINE RECOMMENDATIONS",
@@ -2940,15 +3087,18 @@
                 "detail_sections": [
                     {
                         "title": "Indications",
-                        "content": "<ul><li>Complex body care for all skin types</li></ul>"
+                        "content": "<ul><li>Complex body care for all skin types</li></ul>",
+                        "is_visible": true
                     },
                     {
                         "title": "Product density",
-                        "content": "-"
+                        "content": "-",
+                        "is_visible": true
                     },
                     {
                         "title": "How to use",
-                        "content": "<ol><li>Apply 5–10 ml of cream to required areas</li><li>Spread evenly on problem areas</li><li>Use daily after a shower or bath</li></ol>"
+                        "content": "<ol><li>Apply 5–10 ml of cream to required areas</li><li>Spread evenly on problem areas</li><li>Use daily after a shower or bath</li></ol>",
+                        "is_visible": true
                     }
                 ],
                 "recommendations_title": "HOME ROUTINE RECOMMENDATIONS",
@@ -2995,15 +3145,18 @@
                 "detail_sections": [
                     {
                         "title": "Indications",
-                        "content": "<ul><li>This sunscreen should be recommended after intensive cosmetic procedures (lasers, IPL, peelings, injections, esthetic operations, esthetic procedures)</li></ul>"
+                        "content": "<ul><li>This sunscreen should be recommended after intensive cosmetic procedures (lasers, IPL, peelings, injections, esthetic operations, esthetic procedures)</li></ul>",
+                        "is_visible": true
                     },
                     {
                         "title": "Product density",
-                        "content": "-"
+                        "content": "-",
+                        "is_visible": true
                     },
                     {
                         "title": "How to use",
-                        "content": "<ol><li>Use daily</li><li>Reapply every 2 hours or after excessive sweating and/or swimming</li><li>Apply after moisturizer, before makeup application</li><li>Important: sunscreen emulsion is neither a face nor eye finishing cream</li></ol>"
+                        "content": "<ol><li>Use daily</li><li>Reapply every 2 hours or after excessive sweating and/or swimming</li><li>Apply after moisturizer, before makeup application</li><li>Important: sunscreen emulsion is neither a face nor eye finishing cream</li></ol>",
+                        "is_visible": true
                     }
                 ],
                 "recommendations_title": "HOME ROUTINE RECOMMENDATIONS",
@@ -3050,15 +3203,18 @@
                 "detail_sections": [
                     {
                         "title": "Indications",
-                        "content": "<ul><li>All skin types, including sensitive skin</li><li>Blemish-prone skin</li><li>Aging skin</li></ul>"
+                        "content": "<ul><li>All skin types, including sensitive skin</li><li>Blemish-prone skin</li><li>Aging skin</li></ul>",
+                        "is_visible": true
                     },
                     {
                         "title": "Product density",
-                        "content": "-"
+                        "content": "-",
+                        "is_visible": true
                     },
                     {
                         "title": "How to use",
-                        "content": "<ol><li>Dispense 1–2 ml of lotion into your palms, spread evenly over face (including eye area), neck and décolleté using gentle patting motions; allow to absorb for 5–7 minutes before applying the next product</li><li>Use every morning after cleansing for 2–3 months</li></ol>"
+                        "content": "<ol><li>Dispense 1–2 ml of lotion into your palms, spread evenly over face (including eye area), neck and décolleté using gentle patting motions; allow to absorb for 5–7 minutes before applying the next product</li><li>Use every morning after cleansing for 2–3 months</li></ol>",
+                        "is_visible": true
                     }
                 ],
                 "recommendations_title": "HOME ROUTINE RECOMMENDATIONS",
@@ -3105,15 +3261,18 @@
                 "detail_sections": [
                     {
                         "title": "Indications",
-                        "content": "<ul><li>Skin showing signs of premature aging</li><li>Loss of elasticity and tone</li><li>Thinning skin</li><li>Skin rehabilitation after plastic surgery</li><li>Significant improvement from collagen-stimulating treatments</li><li>Dermatoses in remission — helps prolong remission; active stage of dermatoses — supports healing</li><li>Dehydrated and dry skin</li><li>For all skin types, including sensitive</li></ul>"
+                        "content": "<ul><li>Skin showing signs of premature aging</li><li>Loss of elasticity and tone</li><li>Thinning skin</li><li>Skin rehabilitation after plastic surgery</li><li>Significant improvement from collagen-stimulating treatments</li><li>Dermatoses in remission — helps prolong remission; active stage of dermatoses — supports healing</li><li>Dehydrated and dry skin</li><li>For all skin types, including sensitive</li></ul>",
+                        "is_visible": true
                     },
                     {
                         "title": "Product density",
-                        "content": "-"
+                        "content": "-",
+                        "is_visible": true
                     },
                     {
                         "title": "How to use",
-                        "content": "<ol><li>Use approximately 5 g of the cream, depending on massage duration and absorption of the product into the skin</li><li>Spread evenly over the face, neck and décolleté</li></ol>"
+                        "content": "<ol><li>Use approximately 5 g of the cream, depending on massage duration and absorption of the product into the skin</li><li>Spread evenly over the face, neck and décolleté</li></ol>",
+                        "is_visible": true
                     }
                 ],
                 "recommendations_title": "HOME ROUTINE RECOMMENDATIONS",

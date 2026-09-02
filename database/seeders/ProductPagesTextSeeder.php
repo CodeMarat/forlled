@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Product;
 use App\Models\ProductCategory;
 use App\Support\Products\ProductCategoryNavigationDefaults;
+use App\Support\Products\ProductDetailSections;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Schema;
 
@@ -57,6 +58,7 @@ class ProductPagesTextSeeder extends Seeder
             Product::query()->updateOrCreate(
                 ['slug' => $slug],
                 array_merge($attributes, [
+                    'detail_sections' => ProductDetailSections::makeVisible((array) ($attributes['detail_sections'] ?? [])),
                     'product_category_id' => $category->id,
                 ]),
             );

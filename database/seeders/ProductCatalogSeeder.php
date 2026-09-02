@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Product;
 use App\Models\ProductCategory;
 use App\Models\ProductRecommendation;
+use App\Support\Products\ProductDetailSections;
 use App\Support\Products\ProductCategoryNavigationDefaults;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Collection;
@@ -46,13 +47,13 @@ class ProductCatalogSeeder extends Seeder
                     ['benefit' => 'Prevents whiteheads, dark circles and swelling'],
                     ['benefit' => 'Provides anti-inflammatory effect'],
                 ],
-                'detail_sections' => [
+                'detail_sections' => ProductDetailSections::makeVisible([
                     ['title' => 'Indications', 'content' => '<p>Designed for gentle yet effective cleansing around the eyes and lips, especially when removing long-wear or waterproof makeup.</p>'],
                     ['title' => 'Product density', 'content' => '<p>Lightweight two-phase liquid texture that spreads evenly and lifts impurities without friction.</p>'],
                     ['title' => 'Active ingredients', 'content' => '<p>Includes soothing components that help reduce irritation while supporting skin comfort and clarity.</p>'],
                     ['title' => 'Before/after', 'content' => '<p>Leaves the delicate eye area visibly cleaner, softer and more refreshed after use.</p>'],
                     ['title' => 'How to use', 'content' => '<p>Apply to a cotton pad, place onto the eye or lip area for a few seconds, then gently wipe away makeup.</p>'],
-                ],
+                ]),
                 'recommendations_title' => 'HOME ROUTINE RECOMMENDATIONS',
                 'combine_with_title' => 'COMBINE WITH A TREATMENT',
                 'combine_left_title' => 'Recommended with professional treatments',
@@ -77,10 +78,10 @@ class ProductCatalogSeeder extends Seeder
                     ['benefit' => 'Supports skin comfort'],
                     ['benefit' => 'Prepares the skin for the next care step'],
                 ],
-                'detail_sections' => [
+                'detail_sections' => ProductDetailSections::makeVisible([
                     ['title' => 'Indications', 'content' => '<p>Suitable for stressed, dull, urban skin exposed to pollution and environmental aggressors.</p>'],
                     ['title' => 'How to use', 'content' => '<p>Apply to dry skin, massage gently, then rinse or remove with damp cotton pads.</p>'],
-                ],
+                ]),
                 'recommendations_title' => 'HOME ROUTINE RECOMMENDATIONS',
                 'combine_with_title' => 'COMBINE WITH A TREATMENT',
                 'combine_left_title' => 'Recommended with professional treatments',
@@ -105,10 +106,10 @@ class ProductCatalogSeeder extends Seeder
                     ['benefit' => 'Supports microcirculation'],
                     ['benefit' => 'Leaves skin feeling soft and fresh'],
                 ],
-                'detail_sections' => [
+                'detail_sections' => ProductDetailSections::makeVisible([
                     ['title' => 'Indications', 'content' => '<p>Use as a second cleansing stage when the skin needs a refreshed, thoroughly purified finish.</p>'],
                     ['title' => 'How to use', 'content' => '<p>Lather with water, apply to the face using circular movements, then rinse thoroughly.</p>'],
-                ],
+                ]),
                 'recommendations_title' => 'HOME ROUTINE RECOMMENDATIONS',
                 'combine_with_title' => 'COMBINE WITH A TREATMENT',
                 'combine_left_title' => 'Recommended with professional treatments',
@@ -133,10 +134,10 @@ class ProductCatalogSeeder extends Seeder
                     ['benefit' => 'Helps maintain softness and comfort'],
                     ['benefit' => 'Suitable for daily use'],
                 ],
-                'detail_sections' => [
+                'detail_sections' => ProductDetailSections::makeVisible([
                     ['title' => 'Indications', 'content' => '<p>Recommended for sensitive, reactive or irritation-prone skin that requires a soft cleansing routine.</p>'],
                     ['title' => 'How to use', 'content' => '<p>Use morning and evening on damp skin, massage gently and rinse well.</p>'],
-                ],
+                ]),
                 'recommendations_title' => 'HOME ROUTINE RECOMMENDATIONS',
                 'combine_with_title' => 'COMBINE WITH A TREATMENT',
                 'combine_left_title' => 'Recommended with professional treatments',
@@ -160,9 +161,9 @@ class ProductCatalogSeeder extends Seeder
                     ['benefit' => 'Balances the skin after cleansing'],
                     ['benefit' => 'Improves comfort'],
                 ],
-                'detail_sections' => [
+                'detail_sections' => ProductDetailSections::makeVisible([
                     ['title' => 'How to use', 'content' => '<p>Apply with hands or a cotton pad after cleansing and before serum or cream.</p>'],
-                ],
+                ]),
                 'recommendations_title' => 'HOME ROUTINE RECOMMENDATIONS',
                 'combine_with_title' => 'COMBINE WITH A TREATMENT',
                 'combine_left_title' => 'Recommended with professional treatments',
@@ -186,9 +187,9 @@ class ProductCatalogSeeder extends Seeder
                     ['benefit' => 'Supports radiance'],
                     ['benefit' => 'Helps smooth texture'],
                 ],
-                'detail_sections' => [
+                'detail_sections' => ProductDetailSections::makeVisible([
                     ['title' => 'How to use', 'content' => '<p>Apply after lotion and before cream, morning and evening.</p>'],
-                ],
+                ]),
                 'recommendations_title' => 'HOME ROUTINE RECOMMENDATIONS',
                 'combine_with_title' => 'COMBINE WITH A TREATMENT',
                 'combine_left_title' => 'Recommended with professional treatments',
