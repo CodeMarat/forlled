@@ -22,6 +22,16 @@
       "type": "string"
     },
     {
+      "key": "treatment_product_slug",
+      "value": "hydra-treatment",
+      "type": "string"
+    },
+    {
+      "key": "treatment_product_category_slug",
+      "value": "treatment-skin-care",
+      "type": "string"
+    },
+    {
       "key": "product_category_slug",
       "value": "cleansers",
       "type": "string"
@@ -303,6 +313,102 @@
               "path": [
                 "products",
                 "{{product_slug}}"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Treatment Products",
+      "item": [
+        {
+          "name": "List Treatment Products",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/treatment-products?page=1&per_page=12",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "treatment-products"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "per_page",
+                  "value": "12"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Show Treatment Product",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/treatment-products/{{treatment_product_slug}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "treatment-products",
+                "{{treatment_product_slug}}"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Treatment Product Categories",
+      "item": [
+        {
+          "name": "List Treatment Product Categories",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/treatment-product-categories?page=1&per_page=12",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "treatment-product-categories"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "per_page",
+                  "value": "12"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Show Treatment Product Category",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/treatment-product-categories/{{treatment_product_category_slug}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "treatment-product-categories",
+                "{{treatment_product_category_slug}}"
               ]
             }
           }

@@ -9,13 +9,13 @@ use App\Http\Resources\Api\V1\ProductListResource;
 use App\Http\Resources\Api\V1\ProductResource;
 use App\Models\Product;
 use App\Models\ProductCategory;
+use App\Support\Products\ProductCategoryNavigationGrouper;
 use App\Support\Products\ProductCatalogQuery;
 use App\Support\Products\ProductType;
-use App\Support\Products\ProductCategoryNavigationGrouper;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\Support\Facades\Schema as DatabaseSchema;
 
-class ProductController extends Controller
+class TreatmentProductController extends Controller
 {
     public function __construct(
         protected ProductCategoryNavigationGrouper $navigationGrouper,
@@ -32,7 +32,7 @@ class ProductController extends Controller
             ->with('productCategory');
 
         if ($hasCatalogsColumn || DatabaseSchema::hasColumn('products', 'type')) {
-            ProductCatalogQuery::forCatalog($productsQuery, ProductType::Product->value);
+            ProductCatalogQuery::forCatalog($productsQuery, ProductType::Treatment->value);
         }
 
         $products = $productsQuery
@@ -43,7 +43,7 @@ class ProductController extends Controller
         return ProductListResource::collection($products);
     }
 
-    public function show(string $product): ProductResource
+    public function show(string $slug): ProductResource
     {
         $hasCatalogsColumn = DatabaseSchema::hasColumn('products', 'catalogs');
 
@@ -53,7 +53,7 @@ class ProductController extends Controller
             ->get();
 
         $productQuery = Product::query()
-            ->where('slug', $product)
+            ->where('slug', $slug)
             ->where('is_active', true)
             ->whereHas('productCategory', fn ($query) => $query->where('is_active', true))
             ->with([
@@ -62,14 +62,14 @@ class ProductController extends Controller
             ]);
 
         if ($hasCatalogsColumn || DatabaseSchema::hasColumn('products', 'type')) {
-            ProductCatalogQuery::forCatalog($productQuery, ProductType::Product->value);
+            ProductCatalogQuery::forCatalog($productQuery, ProductType::Treatment->value);
         }
 
         $product = $productQuery->firstOrFail();
 
         $recommendedProducts = $product->productRecommendations
             ->pluck('relatedProduct')
-            ->filter(fn ($relatedProduct) => $relatedProduct?->is_active && (! $hasCatalogsColumn || $relatedProduct?->isCatalogEnabled(ProductType::Product->value)))
+            ->filter(fn ($relatedProduct) => $relatedProduct?->is_active && (! $hasCatalogsColumn || $relatedProduct?->isCatalogEnabled(ProductType::Treatment->value)))
             ->values();
 
         $product->setRelation('recommendedProducts', $recommendedProducts);

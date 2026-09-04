@@ -307,6 +307,98 @@
         }
       }
     },
+    "/treatment-products": {
+      "get": {
+        "summary": "List visible treatment products",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Page"
+          },
+          {
+            "$ref": "#/components/parameters/PerPage"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Paginated treatment products",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductPagination"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/treatment-products/{slug}": {
+      "get": {
+        "summary": "Get a visible treatment product by slug",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Slug"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Treatment product payload",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductDetail"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Treatment product not found"
+          }
+        }
+      }
+    },
+    "/treatment-product-categories": {
+      "get": {
+        "summary": "List visible treatment product categories",
+        "responses": {
+          "200": {
+            "description": "Grouped treatment product categories for navigation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductCategoryGroupsResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/treatment-product-categories/{slug}": {
+      "get": {
+        "summary": "Get a visible treatment product category by slug",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Slug"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Treatment product category payload",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductCategoryDetail"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Category not found"
+          }
+        }
+      }
+    },
     "/product-categories": {
       "get": {
         "summary": "List visible product categories",

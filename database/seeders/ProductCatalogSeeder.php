@@ -7,6 +7,7 @@ use App\Models\ProductCategory;
 use App\Models\ProductRecommendation;
 use App\Support\Products\ProductDetailSections;
 use App\Support\Products\ProductCategoryNavigationDefaults;
+use App\Support\Products\ProductType;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Schema;
@@ -206,6 +207,7 @@ class ProductCatalogSeeder extends Seeder
             unset($product['category']);
 
             $product['product_category_id'] = $category?->id;
+            $product['catalogs'] = [ProductType::Product->value];
 
             return [
                 $product['slug'] => Product::query()->updateOrCreate(

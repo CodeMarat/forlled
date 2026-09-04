@@ -7,6 +7,8 @@ use App\Filament\Resources\ProductResource\Pages\EditProduct;
 use App\Filament\Resources\ProductResource\Pages\ListProducts;
 use App\Models\Product;
 use App\Models\ProductCategory;
+use App\Support\Products\ProductCatalogQuery;
+use App\Support\Products\ProductType;
 use App\Support\Slugs\SlugGenerator;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
@@ -29,6 +31,7 @@ use Filament\Tables\Columns\CheckboxColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Schema as DatabaseSchema;
 
 class ProductResource extends Resource
@@ -43,6 +46,7 @@ class ProductResource extends Resource
     {
         $hasProductCategoriesTable = self::hasTable('product_categories');
         $hasProductCategoryColumn = self::hasColumn('products', 'product_category_id');
+        $hasCatalogsColumn = self::hasColumn('products', 'catalogs');
         $hasProductRelatedTable = self::hasTable('product_related');
 
         return $schema
@@ -53,8 +57,22 @@ class ProductResource extends Resource
                             ->schema([
                                 Section::make('Product details')
                                     ->schema([
-                                        Grid::make(2)
+                                        Grid::make(3)
                                             ->schema([
+                                                Select::make('catalogs')
+                                                    ->label('Show in')
+                                                    ->multiple()
+                                                    ->options(ProductType::options())
+                                                    ->default([ProductType::Product->value])
+                                                    ->required($hasCatalogsColumn)
+                                                    ->visible($hasCatalogsColumn)
+                                                    ->preload()
+                                                    ->afterStateHydrated(function (Select $component, mixed $state): void {
+                                                        if (! is_array($state) || $state === []) {
+                                                            $component->state([ProductType::Product->value]);
+                                                        }
+                                                    })
+                                                    ->helperText('Select one or both catalogs where this product should appear.'),
                                                 Select::make('product_category_id')
                                                     ->label('Category')
                                                     ->relationship(name: 'productCategory', titleAttribute: 'name')
@@ -357,6 +375,12 @@ class ProductResource extends Resource
                 ->sortable();
         }
 
+        if (self::hasColumn('products', 'catalogs') || self::hasColumn('products', 'type')) {
+            $columns[] = TextColumn::make('catalogs_display')
+                ->label('Show in')
+                ->badge();
+        }
+
         if (self::hasColumn('products', 'size')) {
             $columns[] = TextColumn::make('size')
                 ->label('Size')
@@ -385,6 +409,21 @@ class ProductResource extends Resource
             $filters[] = SelectFilter::make('product_category_id')
                 ->label('Category')
                 ->relationship('productCategory', 'name');
+        }
+
+        if (self::hasColumn('products', 'catalogs') || self::hasColumn('products', 'type')) {
+            $filters[] = SelectFilter::make('catalogs')
+                ->label('Show in')
+                ->options(ProductType::options())
+                ->query(function (Builder $query, array $data): Builder {
+                    $catalog = $data['value'] ?? null;
+
+                    if (! is_string($catalog) || blank($catalog)) {
+                        return $query;
+                    }
+
+                    return ProductCatalogQuery::forCatalog($query, $catalog);
+                });
         }
 
         $table = $table

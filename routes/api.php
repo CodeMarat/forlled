@@ -17,6 +17,8 @@ use App\Http\Controllers\Api\V1\PartnerRequestController;
 use App\Http\Controllers\Api\V1\ProductCategoryController;
 use App\Http\Controllers\Api\V1\ProductController;
 use App\Http\Controllers\Api\V1\TreatmentController;
+use App\Http\Controllers\Api\V1\TreatmentProductCategoryController;
+use App\Http\Controllers\Api\V1\TreatmentProductController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('v1')
@@ -44,6 +46,12 @@ Route::prefix('v1')
         Route::post('contact-us-requests', ContactUsRequestController::class)->name('contact-us-requests.store');
         Route::apiResource('products', ProductController::class)
             ->parameters(['products' => 'slug'])
+            ->only(['index', 'show']);
+        Route::apiResource('treatment-products', TreatmentProductController::class)
+            ->parameters(['treatment-products' => 'slug'])
+            ->only(['index', 'show']);
+        Route::apiResource('treatment-product-categories', TreatmentProductCategoryController::class)
+            ->parameters(['treatment-product-categories' => 'slug'])
             ->only(['index', 'show']);
         Route::apiResource('product-categories', ProductCategoryController::class)
             ->parameters(['product-categories' => 'slug'])
