@@ -10,6 +10,7 @@ use App\Models\ProductCategory;
 use App\Support\Products\ProductCatalogQuery;
 use App\Support\Products\ProductType;
 use App\Support\Slugs\SlugGenerator;
+use Filament\Actions\Action;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
@@ -41,6 +42,13 @@ class ProductResource extends Resource
     protected static ?int $navigationSort = -90;
 
     protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-beaker';
+
+    public static function getFrontendProductUrl(Product $product): string
+    {
+        return is_string($product->slug) && $product->slug !== ''
+            ? sprintf('/products/%s', $product->slug)
+            : '/products';
+    }
 
     public static function form(Schema $schema): Schema
     {
@@ -430,6 +438,10 @@ class ProductResource extends Resource
             ->columns($columns)
             ->filters($filters)
             ->actions([
+                Action::make('viewProduct')
+                    ->label('View product')
+                    ->icon('heroicon-o-arrow-top-right-on-square')
+                    ->url(fn (Product $record): string => self::getFrontendProductUrl($record), shouldOpenInNewTab: true),
                 EditAction::make(),
             ])
             ->bulkActions([

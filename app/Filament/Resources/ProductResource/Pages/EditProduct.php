@@ -23,7 +23,12 @@ class EditProduct extends EditRecord
 
     protected function getHeaderActions(): array
     {
-        return [];
+        return [
+            Action::make('viewProduct')
+                ->label('View product')
+                ->icon('heroicon-o-arrow-top-right-on-square')
+                ->url(fn (): string => ProductResource::getFrontendProductUrl($this->record), shouldOpenInNewTab: true),
+        ];
     }
 
     /**
