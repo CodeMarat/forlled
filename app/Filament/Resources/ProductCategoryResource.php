@@ -64,7 +64,6 @@ class ProductCategoryResource extends Resource
                                     ->maxLength(255),
                                 TagsInput::make('group_name')
                                     ->label('Category group')
-                                    ->required()
                                     ->suggestions(fn (): array => static::groupOptions())
                                     ->splitKeys(['Tab', 'Enter', ','])
                                     ->separator(',')
@@ -84,7 +83,7 @@ class ProductCategoryResource extends Resource
                                     })
                                     ->dehydrateStateUsing(fn (array $state): ?string => filled($state[0] ?? null) ? trim((string) $state[0]) : null)
                                     ->nestedRecursiveRules(['min:1', 'max:255'])
-                                    ->helperText('Start typing to reuse an existing group, or press Enter to create a new one. Only one group should be assigned.'),
+                                    ->helperText('Optional. Start typing to reuse an existing group, or press Enter to create a new one. Only one group can be assigned.'),
                                 Select::make('type')
                                     ->label('Type')
                                     ->options(ProductType::options())

@@ -19,21 +19,6 @@ return new class extends Migration {
         });
 
         if (Schema::hasColumn('products', 'catalogs')) {
-            DB::table('product_categories')
-                ->whereExists(function ($query): void {
-                    $query->selectRaw('1')
-                        ->from('products')
-                        ->whereColumn('products.product_category_id', 'product_categories.id')
-                        ->whereJsonContains('products.catalogs', 'treatment');
-                })
-                ->whereNotExists(function ($query): void {
-                    $query->selectRaw('1')
-                        ->from('products')
-                        ->whereColumn('products.product_category_id', 'product_categories.id')
-                        ->whereJsonContains('products.catalogs', 'product');
-                })
-                ->update(['type' => 'treatment']);
-
             Schema::table('products', function (Blueprint $table) {
                 $table->dropColumn('catalogs');
             });

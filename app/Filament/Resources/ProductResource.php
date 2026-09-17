@@ -105,7 +105,6 @@ class ProductResource extends Resource
                                                             ->native(false),
                                                         TagsInput::make('group_name')
                                                             ->label('Category group')
-                                                            ->required()
                                                             ->suggestions(fn (): array => ProductCategory::query()
                                                                 ->whereNotNull('group_name')
                                                                 ->where('group_name', '!=', '')
@@ -131,7 +130,8 @@ class ProductResource extends Resource
                                                                 }
                                                             })
                                                             ->dehydrateStateUsing(fn (array $state): ?string => filled($state[0] ?? null) ? trim((string) $state[0]) : null)
-                                                            ->nestedRecursiveRules(['min:1', 'max:255']),
+                                                            ->nestedRecursiveRules(['min:1', 'max:255'])
+                                                            ->helperText('Optional. Leave empty if this category should not belong to a navigation group.'),
                                                         TextInput::make('hero_title')
                                                             ->label('Hero title')
                                                             ->required()
