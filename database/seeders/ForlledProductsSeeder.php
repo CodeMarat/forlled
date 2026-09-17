@@ -1,0 +1,338 @@
+<?php
+
+namespace Database\Seeders;
+
+use App\Models\Product;
+use App\Models\ProductCategory;
+use App\Support\Products\ProductDetailSections;
+use App\Support\Products\ProductType;
+use App\Support\Slugs\SlugGenerator;
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
+use RuntimeException;
+
+class ForlledProductsSeeder extends Seeder
+{
+    /** @var array<string, string> */
+    protected array $categoryAliases = [
+        'creams and emulsions' => 'creams & emulsions',
+        'special care' => 'special care products',
+    ];
+
+    public function run(): void
+    {
+        $products = $this->loadProducts();
+        $statistics = [
+            'categories_existing' => 0,
+            'categories_added' => [],
+            'products_existing' => 0,
+            'products_added' => [],
+            'products_recategorized' => 0,
+        ];
+
+        DB::transaction(function () use ($products, &$statistics): void {
+            $categories = ProductCategory::query()
+                ->get()
+                ->keyBy(fn (ProductCategory $category): string => $this->normalizeName($category->name));
+            $categoryMap = [];
+
+            foreach ($this->uniqueCategoryNames($products) as $categoryName) {
+                $category = $this->resolveCategory($categoryName, $categories);
+                $categoryMap[$this->normalizeName($categoryName)] = $category;
+
+                if ($category->wasRecentlyCreated) {
+                    $statistics['categories_added'][] = $category->name;
+                } else {
+                    $statistics['categories_existing']++;
+                }
+            }
+
+            $existingProducts = Product::query()
+                ->get()
+                ->keyBy(fn (Product $product): string => $this->normalizeName($product->name));
+            $categoryPositions = [];
+
+            foreach ($products as $sourceProduct) {
+                $normalizedCategory = $this->normalizeName($sourceProduct['category']);
+                $category = $categoryMap[$normalizedCategory];
+                $normalizedProduct = $this->normalizeName($sourceProduct['name']);
+                $existingProduct = $existingProducts->get($normalizedProduct);
+                $sortOrder = $categoryPositions[$normalizedCategory] ?? 0;
+                $categoryPositions[$normalizedCategory] = $sortOrder + 1;
+
+                if ($existingProduct instanceof Product) {
+                    $statistics['products_existing']++;
+
+                    if ((int) $existingProduct->product_category_id !== (int) $category->getKey()) {
+                        $existingProduct->update(['product_category_id' => $category->getKey()]);
+                        $statistics['products_recategorized']++;
+                    }
+
+                    continue;
+                }
+
+                $product = Product::query()->create($this->productAttributes(
+                    $sourceProduct,
+                    $category,
+                    $sortOrder,
+                ));
+
+                $existingProducts->put($normalizedProduct, $product);
+                $statistics['products_added'][] = $product->name;
+            }
+        });
+
+        $this->report($statistics);
+    }
+
+    /** @return array<int, array<string, mixed>> */
+    protected function loadProducts(): array
+    {
+        $path = base_path('forlled_products.json');
+
+        if (! is_file($path)) {
+            throw new RuntimeException("Forlle'd products source file does not exist: {$path}");
+        }
+
+        $payload = json_decode((string) file_get_contents($path), true, 512, JSON_THROW_ON_ERROR);
+        $products = $payload['products'] ?? null;
+
+        if (! is_array($products)) {
+            throw new RuntimeException("Forlle'd products source file must contain a products array.");
+        }
+
+        return array_values(array_filter($products, fn (mixed $product): bool => is_array($product)));
+    }
+
+    /**
+     * @param  array<int, array<string, mixed>>  $products
+     * @return array<int, string>
+     */
+    protected function uniqueCategoryNames(array $products): array
+    {
+        $categories = [];
+
+        foreach ($products as $product) {
+            $categoryName = trim((string) ($product['category'] ?? ''));
+
+            if ($categoryName === '') {
+                throw new RuntimeException('Every Forlle\'d product must have a category.');
+            }
+
+            $categories[$this->normalizeName($categoryName)] ??= $categoryName;
+        }
+
+        return array_values($categories);
+    }
+
+    /** @param  Collection<string, ProductCategory>  $categories */
+    protected function resolveCategory(string $sourceName, Collection $categories): ProductCategory
+    {
+        $normalizedName = $this->normalizeName($sourceName);
+        $lookupName = $this->categoryAliases[$normalizedName] ?? $normalizedName;
+        $existingCategory = $categories->get($lookupName) ?? $categories->get($normalizedName);
+
+        if ($existingCategory instanceof ProductCategory) {
+            return $existingCategory;
+        }
+
+        $name = Str::title(mb_strtolower(trim($sourceName)));
+        $category = ProductCategory::query()->create([
+            'name' => $name,
+            'slug' => SlugGenerator::uniqueFromParts(ProductCategory::class, [$name]),
+            'group_name' => 'type',
+            'type_label' => 'TYPE',
+            'hero_title' => mb_strtoupper($name),
+            'hero_image' => null,
+            'hero_image_alt' => null,
+            'sort_order' => $this->nextCategorySortOrder(),
+            'is_active' => true,
+        ]);
+
+        $categories->put($normalizedName, $category);
+
+        return $category;
+    }
+
+    protected function nextCategorySortOrder(): int
+    {
+        return ((int) ProductCategory::query()
+            ->where('group_name', 'type')
+            ->max('sort_order')) + 1;
+    }
+
+    /**
+     * @param  array<string, mixed>  $sourceProduct
+     * @return array<string, mixed>
+     */
+    protected function productAttributes(array $sourceProduct, ProductCategory $category, int $sortOrder): array
+    {
+        $name = trim((string) ($sourceProduct['name'] ?? ''));
+        $description = trim((string) ($sourceProduct['description'] ?? ''));
+
+        if ($name === '' || $description === '') {
+            throw new RuntimeException('Every Forlle\'d product must have a name and description.');
+        }
+
+        return [
+            'product_category_id' => $category->getKey(),
+            'catalogs' => [ProductType::Product->value],
+            'name' => $name,
+            'slug' => SlugGenerator::uniqueFromParts(Product::class, [$name]),
+            'description' => $this->paragraph($description),
+            'listing_description' => Str::limit($description, 180),
+            'size' => $this->nullableString($sourceProduct['size_or_packaging'] ?? null),
+            'hero_image' => null,
+            'hero_image_alt' => null,
+            'side_image' => null,
+            'side_image_alt' => null,
+            'key_benefits' => $this->benefits($sourceProduct['key_benefits'] ?? []),
+            'detail_sections' => ProductDetailSections::makeVisible([
+                ['title' => 'Indications', 'content' => $this->list($sourceProduct['indications'] ?? [])],
+                ['title' => 'Product density', 'content' => $this->paragraph((string) ($sourceProduct['product_density'] ?? ''))],
+                ['title' => 'Active ingredients', 'content' => $this->activeIngredients($sourceProduct)],
+                ['title' => 'How to use', 'content' => $this->list($sourceProduct['how_to_use'] ?? [], ordered: true)],
+            ]),
+            'recommendations_title' => 'HOME ROUTINE RECOMMENDATIONS',
+            'combine_with_title' => 'COMBINE WITH A TREATMENT',
+            'combine_left_title' => null,
+            'combine_left_text' => null,
+            'combine_right_title' => null,
+            'combine_right_text' => null,
+            'is_favorite' => false,
+            'sort_order' => $sortOrder,
+            'is_active' => true,
+        ];
+    }
+
+    /** @return array<int, array{benefit: string}> */
+    protected function benefits(mixed $benefits): array
+    {
+        if (! is_array($benefits)) {
+            return [];
+        }
+
+        return collect($benefits)
+            ->filter(fn (mixed $benefit): bool => is_string($benefit) && filled(trim($benefit)))
+            ->map(fn (string $benefit): array => ['benefit' => trim($benefit)])
+            ->values()
+            ->all();
+    }
+
+    /** @param  array<string, mixed>  $sourceProduct */
+    protected function activeIngredients(array $sourceProduct): string
+    {
+        $table = $sourceProduct['active_ingredients_table'] ?? null;
+
+        if (is_array($table) && $table !== []) {
+            $rows = collect($table)
+                ->filter(fn (mixed $row): bool => is_array($row))
+                ->map(function (array $row): string {
+                    $cells = collect($row)
+                        ->filter(fn (mixed $cell): bool => is_string($cell) && filled(trim($cell)))
+                        ->map(fn (string $cell): string => '<td>'.$this->ingredientCell($cell).'</td>')
+                        ->implode('');
+
+                    return $cells === '' ? '' : "<tr>{$cells}</tr>";
+                })
+                ->filter()
+                ->implode('');
+
+            if ($rows !== '') {
+                return "<table><tbody>{$rows}</tbody></table>";
+            }
+        }
+
+        $groups = $sourceProduct['active_ingredients'] ?? null;
+
+        if (! is_array($groups)) {
+            return '';
+        }
+
+        return collect($groups)
+            ->filter(fn (mixed $group): bool => is_array($group))
+            ->map(function (array $group): string {
+                $title = trim((string) ($group['group'] ?? ''));
+
+                return '<p><strong>'.e($title).'</strong></p>'.$this->list($group['ingredients'] ?? []);
+            })
+            ->implode('');
+    }
+
+    protected function ingredientCell(string $cell): string
+    {
+        $lines = preg_split('/\R/u', trim($cell)) ?: [];
+        $title = array_shift($lines);
+
+        return '<p><strong>'.e((string) $title).'</strong></p>'.$this->list($lines);
+    }
+
+    protected function paragraph(string $value): string
+    {
+        $value = trim($value);
+
+        return $value === '' ? '' : '<p>'.e($value).'</p>';
+    }
+
+    protected function list(mixed $items, bool $ordered = false): string
+    {
+        if (! is_array($items)) {
+            return '';
+        }
+
+        $content = collect($items)
+            ->filter(fn (mixed $item): bool => is_string($item) && filled(trim($item)))
+            ->map(fn (string $item): string => '<li>'.e(trim($item)).'</li>')
+            ->implode('');
+
+        if ($content === '') {
+            return '';
+        }
+
+        $tag = $ordered ? 'ol' : 'ul';
+
+        return "<{$tag}>{$content}</{$tag}>";
+    }
+
+    protected function nullableString(mixed $value): ?string
+    {
+        if (! is_string($value) || blank(trim($value))) {
+            return null;
+        }
+
+        return trim($value);
+    }
+
+    protected function normalizeName(string $name): string
+    {
+        return mb_strtolower(trim($name));
+    }
+
+    /**
+     * @param  array{categories_existing: int, categories_added: array<int, string>, products_existing: int, products_added: array<int, string>, products_recategorized: int}  $statistics
+     */
+    protected function report(array $statistics): void
+    {
+        if (! $this->command) {
+            return;
+        }
+
+        $this->command->table(['Result', 'Count'], [
+            ['Categories already existed', $statistics['categories_existing']],
+            ['Categories added', count($statistics['categories_added'])],
+            ['Products already existed', $statistics['products_existing']],
+            ['Products added', count($statistics['products_added'])],
+            ['Products recategorized', $statistics['products_recategorized']],
+        ]);
+
+        if ($statistics['categories_added'] !== []) {
+            $this->command->line('Added categories: '.implode(', ', $statistics['categories_added']));
+        }
+
+        if ($statistics['products_added'] !== []) {
+            $this->command->line('Added products: '.implode(', ', $statistics['products_added']));
+        }
+    }
+}

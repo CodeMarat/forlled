@@ -42,6 +42,11 @@ class Product extends Model
         'is_active',
     ];
 
+    public function getRouteKeyName(): string
+    {
+        return 'slug';
+    }
+
     public function productCategory(): BelongsTo
     {
         return $this->belongsTo(ProductCategory::class);

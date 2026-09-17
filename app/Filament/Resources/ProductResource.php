@@ -39,6 +39,8 @@ class ProductResource extends Resource
 {
     protected static ?string $model = Product::class;
 
+    protected static ?string $recordRouteKeyName = 'slug';
+
     protected static ?int $navigationSort = -90;
 
     protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-beaker';

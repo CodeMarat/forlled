@@ -59,4 +59,9 @@ class EditProduct extends EditRecord
     {
         app(VideoUploadDispatcher::class)->dispatch($this->record, $this->record->getAttributes());
     }
+
+    protected function getRedirectUrl(): string
+    {
+        return ProductResource::getUrl('edit', ['record' => $this->record]);
+    }
 }

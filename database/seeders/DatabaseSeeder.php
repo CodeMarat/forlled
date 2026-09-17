@@ -29,6 +29,7 @@ class DatabaseSeeder extends Seeder
             ProductCategoryNavigationSeeder::class,
             ProductCatalogSeeder::class,
             ProductPagesTextSeeder::class,
+            ForlledProductsSeeder::class,
             SocialMediaSeeder::class,
             TechnologyPageSeeder::class,
             TreatmentPageSeeder::class,
