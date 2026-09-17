@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources\Api\V1;
 
+use App\Support\Products\ProductType;
 use Illuminate\Http\Request;
 
 class ProductCategoryListResource extends ApiResource
@@ -14,6 +15,7 @@ class ProductCategoryListResource extends ApiResource
         return [
             'name' => $this->name,
             'group_name' => $this->group_name,
+            'type' => $this->type instanceof ProductType ? $this->type->value : $this->type,
             'slug' => $this->slug,
             'type_label' => $this->type_label,
             'hero_title' => $this->hero_title,

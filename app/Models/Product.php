@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use App\Models\Concerns\HasAdminAudit;
-use App\Support\Products\ProductType;
 use Database\Factories\ProductFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -19,7 +18,6 @@ class Product extends Model
 
     protected $fillable = [
         'product_category_id',
-        'catalogs',
         'name',
         'slug',
         'description',
@@ -62,64 +60,11 @@ class Product extends Model
     protected function casts(): array
     {
         return [
-            'catalogs' => 'array',
             'key_benefits' => 'array',
             'detail_sections' => 'array',
             'is_favorite' => 'boolean',
             'sort_order' => 'integer',
             'is_active' => 'boolean',
         ];
-    }
-
-    /**
-     * @return array<int, string>
-     */
-    public function catalogSelections(): array
-    {
-        $catalogs = array_values(array_filter(array_map(
-            static fn (mixed $catalog): ?string => is_string($catalog) && filled($catalog) ? $catalog : null,
-            $this->catalogs ?? [],
-        )));
-
-        if ($catalogs !== []) {
-            return $catalogs;
-        }
-
-        return $this->legacyCatalogSelections($this->getRawOriginal('type'));
-    }
-
-    public function isCatalogEnabled(string $catalog): bool
-    {
-        return in_array($catalog, $this->catalogSelections(), true);
-    }
-
-    public function getCatalogsDisplayAttribute(): string
-    {
-        return collect($this->catalogSelections())
-            ->map(fn (string $catalog): string => ProductType::tryFrom($catalog)?->label() ?? $catalog)
-            ->implode(', ');
-    }
-
-    /**
-     * @return array<int, string>
-     */
-    protected function legacyCatalogSelections(mixed $value): array
-    {
-        if ($value === ProductType::Product->value) {
-            return [ProductType::Product->value];
-        }
-
-        if ($value === ProductType::Treatment->value) {
-            return [ProductType::Treatment->value];
-        }
-
-        if ($value === 'both') {
-            return [
-                ProductType::Product->value,
-                ProductType::Treatment->value,
-            ];
-        }
-
-        return [ProductType::Product->value];
     }
 }

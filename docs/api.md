@@ -59,7 +59,7 @@ These endpoints return a single structured payload per page, grouped by sections
 ### Products
 
 - `GET /products`
-  - Returns visible products only.
+  - Returns visible products whose category type is `product`.
   - Supports `page` and `per_page`.
 - `GET /products/{slug}`
   - Returns a single visible product by slug.
@@ -68,11 +68,22 @@ These endpoints return a single structured payload per page, grouped by sections
 ### Product Categories
 
 - `GET /product-categories`
-  - Returns visible categories only.
+  - Returns visible categories whose type is `product`.
   - Supports `page` and `per_page`.
 - `GET /product-categories/{slug}`
   - Returns a single visible category by slug.
   - Includes `products` and `navigation_categories`.
+
+### Treatment Products
+
+- `GET /treatment-products`
+  - Returns visible products whose category type is `treatment`.
+- `GET /treatment-products/{slug}`
+  - Returns a single visible treatment product by slug.
+- `GET /treatment-product-categories`
+  - Returns visible categories whose type is `treatment`.
+- `GET /treatment-product-categories/{slug}`
+  - Returns a single visible treatment category and its products.
 
 ### Locations
 

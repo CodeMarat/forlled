@@ -7,6 +7,7 @@ use App\Http\Resources\Api\V1\ProductCategoryGroupResource;
 use App\Http\Resources\Api\V1\ProductCategoryResource;
 use App\Models\ProductCategory;
 use App\Support\Products\ProductCategoryNavigationGrouper;
+use App\Support\Products\ProductType;
 use Illuminate\Http\JsonResponse;
 
 class ProductCategoryController extends Controller
@@ -19,6 +20,7 @@ class ProductCategoryController extends Controller
     {
         $categories = ProductCategory::query()
             ->where('is_active', true)
+            ->where('type', ProductType::Product->value)
             ->orderBy('sort_order')
             ->get();
 
@@ -33,12 +35,14 @@ class ProductCategoryController extends Controller
     {
         $navigationCategories = ProductCategory::query()
             ->where('is_active', true)
+            ->where('type', ProductType::Product->value)
             ->orderBy('sort_order')
             ->get();
 
         $category = ProductCategory::query()
             ->where('slug', $productCategory)
             ->where('is_active', true)
+            ->where('type', ProductType::Product->value)
             ->with([
                 'products' => fn ($query) => $query
                     ->where('is_active', true)

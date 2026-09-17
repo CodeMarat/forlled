@@ -143,6 +143,7 @@ class ForlledProductsSeeder extends Seeder
             'name' => $name,
             'slug' => SlugGenerator::uniqueFromParts(ProductCategory::class, [$name]),
             'group_name' => 'type',
+            'type' => ProductType::Product->value,
             'type_label' => 'TYPE',
             'hero_title' => mb_strtoupper($name),
             'hero_image' => null,
@@ -177,7 +178,6 @@ class ForlledProductsSeeder extends Seeder
 
         return [
             'product_category_id' => $category->getKey(),
-            'catalogs' => [ProductType::Product->value],
             'name' => $name,
             'slug' => SlugGenerator::uniqueFromParts(Product::class, [$name]),
             'description' => $this->paragraph($description),

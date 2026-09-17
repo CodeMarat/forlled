@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Concerns\HasAdminAudit;
+use App\Support\Products\ProductType;
 use Database\Factories\ProductCategoryFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -18,6 +19,7 @@ class ProductCategory extends Model
     protected $fillable = [
         'name',
         'group_name',
+        'type',
         'slug',
         'type_label',
         'hero_title',
@@ -37,6 +39,7 @@ class ProductCategory extends Model
     protected function casts(): array
     {
         return [
+            'type' => ProductType::class,
             'sort_order' => 'integer',
             'is_active' => 'boolean',
         ];

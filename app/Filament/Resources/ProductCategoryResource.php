@@ -6,11 +6,13 @@ use App\Filament\Resources\ProductCategoryResource\Pages\CreateProductCategory;
 use App\Filament\Resources\ProductCategoryResource\Pages\EditProductCategory;
 use App\Filament\Resources\ProductCategoryResource\Pages\ListProductCategories;
 use App\Models\ProductCategory;
+use App\Support\Products\ProductType;
 use App\Support\Slugs\SlugGenerator;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TagsInput;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
@@ -21,6 +23,7 @@ use Filament\Schemas\Components\Utilities\Set;
 use Filament\Schemas\Schema;
 use Filament\Tables\Columns\CheckboxColumn;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 use Illuminate\Support\Facades\Schema as DatabaseSchema;
 
@@ -82,6 +85,13 @@ class ProductCategoryResource extends Resource
                                     ->dehydrateStateUsing(fn (array $state): ?string => filled($state[0] ?? null) ? trim((string) $state[0]) : null)
                                     ->nestedRecursiveRules(['min:1', 'max:255'])
                                     ->helperText('Start typing to reuse an existing group, or press Enter to create a new one. Only one group should be assigned.'),
+                                Select::make('type')
+                                    ->label('Type')
+                                    ->options(ProductType::options())
+                                    ->default(ProductType::Product->value)
+                                    ->required()
+                                    ->native(false)
+                                    ->helperText('Determines which public API catalog contains this category and its products.'),
                                 TextInput::make('slug')
                                     ->label('Slug')
                                     ->required()
@@ -141,6 +151,13 @@ class ProductCategoryResource extends Resource
                     ->searchable()
                     ->sortable()
                     ->toggleable(),
+                TextColumn::make('type')
+                    ->label('Type')
+                    ->badge()
+                    ->formatStateUsing(fn (ProductType|string $state): string => $state instanceof ProductType
+                        ? $state->label()
+                        : (ProductType::tryFrom($state)?->label() ?? $state))
+                    ->sortable(),
                 TextColumn::make('slug')
                     ->searchable()
                     ->sortable(),
@@ -153,6 +170,10 @@ class ProductCategoryResource extends Resource
                     ->sortable(),
                 CheckboxColumn::make('is_active')
                     ->label('Visible'),
+            ])
+            ->filters([
+                SelectFilter::make('type')
+                    ->options(ProductType::options()),
             ])
             ->actions([
                 EditAction::make(),

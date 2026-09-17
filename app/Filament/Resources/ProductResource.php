@@ -7,7 +7,6 @@ use App\Filament\Resources\ProductResource\Pages\EditProduct;
 use App\Filament\Resources\ProductResource\Pages\ListProducts;
 use App\Models\Product;
 use App\Models\ProductCategory;
-use App\Support\Products\ProductCatalogQuery;
 use App\Support\Products\ProductType;
 use App\Support\Slugs\SlugGenerator;
 use Filament\Actions\Action;
@@ -56,7 +55,6 @@ class ProductResource extends Resource
     {
         $hasProductCategoriesTable = self::hasTable('product_categories');
         $hasProductCategoryColumn = self::hasColumn('products', 'product_category_id');
-        $hasCatalogsColumn = self::hasColumn('products', 'catalogs');
         $hasProductRelatedTable = self::hasTable('product_related');
 
         return $schema
@@ -67,22 +65,8 @@ class ProductResource extends Resource
                             ->schema([
                                 Section::make('Product details')
                                     ->schema([
-                                        Grid::make(3)
+                                        Grid::make(2)
                                             ->schema([
-                                                Select::make('catalogs')
-                                                    ->label('Show in')
-                                                    ->multiple()
-                                                    ->options(ProductType::options())
-                                                    ->default([ProductType::Product->value])
-                                                    ->required($hasCatalogsColumn)
-                                                    ->visible($hasCatalogsColumn)
-                                                    ->preload()
-                                                    ->afterStateHydrated(function (Select $component, mixed $state): void {
-                                                        if (! is_array($state) || $state === []) {
-                                                            $component->state([ProductType::Product->value]);
-                                                        }
-                                                    })
-                                                    ->helperText('Select one or both catalogs where this product should appear.'),
                                                 Select::make('product_category_id')
                                                     ->label('Category')
                                                     ->relationship(name: 'productCategory', titleAttribute: 'name')
@@ -113,6 +97,12 @@ class ProductResource extends Resource
                                                             ->required()
                                                             ->default('TYPE')
                                                             ->maxLength(255),
+                                                        Select::make('type')
+                                                            ->label('Type')
+                                                            ->options(ProductType::options())
+                                                            ->default(ProductType::Product->value)
+                                                            ->required()
+                                                            ->native(false),
                                                         TagsInput::make('group_name')
                                                             ->label('Category group')
                                                             ->required()
@@ -370,11 +360,13 @@ class ProductResource extends Resource
                 ->sortable();
         }
 
-        if (self::hasColumn('products', 'catalogs') || self::hasColumn('products', 'type')) {
-            $columns[] = TextColumn::make('catalogs_display')
-                ->label('Show in')
-                ->badge();
-        }
+        $columns[] = TextColumn::make('productCategory.type')
+            ->label('Type')
+            ->badge()
+            ->formatStateUsing(fn (ProductType|string $state): string => $state instanceof ProductType
+                ? $state->label()
+                : (ProductType::tryFrom($state)?->label() ?? $state))
+            ->sortable();
 
         if (self::hasColumn('products', 'size')) {
             $columns[] = TextColumn::make('size')
@@ -406,20 +398,21 @@ class ProductResource extends Resource
                 ->relationship('productCategory', 'name');
         }
 
-        if (self::hasColumn('products', 'catalogs') || self::hasColumn('products', 'type')) {
-            $filters[] = SelectFilter::make('catalogs')
-                ->label('Show in')
-                ->options(ProductType::options())
-                ->query(function (Builder $query, array $data): Builder {
-                    $catalog = $data['value'] ?? null;
+        $filters[] = SelectFilter::make('category_type')
+            ->label('Type')
+            ->options(ProductType::options())
+            ->query(function (Builder $query, array $data): Builder {
+                $type = $data['value'] ?? null;
 
-                    if (! is_string($catalog) || blank($catalog)) {
-                        return $query;
-                    }
+                if (! is_string($type) || blank($type)) {
+                    return $query;
+                }
 
-                    return ProductCatalogQuery::forCatalog($query, $catalog);
-                });
-        }
+                return $query->whereHas(
+                    'productCategory',
+                    fn (Builder $categoryQuery): Builder => $categoryQuery->where('type', $type),
+                );
+            });
 
         $table = $table
             ->columns($columns)

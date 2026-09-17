@@ -14,7 +14,7 @@ enum ProductType: string
     {
         return [
             self::Product->value => 'Products',
-            self::Treatment->value => 'Treatment',
+            self::Treatment->value => 'Treatments',
         ];
     }
 
@@ -22,7 +22,7 @@ enum ProductType: string
     {
         return match ($this) {
             self::Product => 'Products',
-            self::Treatment => 'Treatment',
+            self::Treatment => 'Treatments',
         };
     }
 }

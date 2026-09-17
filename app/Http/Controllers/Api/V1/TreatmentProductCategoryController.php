@@ -7,10 +7,7 @@ use App\Http\Resources\Api\V1\ProductCategoryGroupResource;
 use App\Http\Resources\Api\V1\ProductCategoryResource;
 use App\Models\ProductCategory;
 use App\Support\Products\ProductCategoryNavigationGrouper;
-use App\Support\Products\ProductCatalogQuery;
 use App\Support\Products\ProductType;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Http\JsonResponse;
 
 class TreatmentProductCategoryController extends Controller
@@ -23,7 +20,7 @@ class TreatmentProductCategoryController extends Controller
     {
         $categories = ProductCategory::query()
             ->where('is_active', true)
-            ->whereHas('products', fn ($query) => $this->filterTreatmentProducts($query))
+            ->where('type', ProductType::Treatment->value)
             ->orderBy('sort_order')
             ->get();
 
@@ -38,16 +35,17 @@ class TreatmentProductCategoryController extends Controller
     {
         $navigationCategories = ProductCategory::query()
             ->where('is_active', true)
-            ->whereHas('products', fn ($query) => $this->filterTreatmentProducts($query))
+            ->where('type', ProductType::Treatment->value)
             ->orderBy('sort_order')
             ->get();
 
         $category = ProductCategory::query()
             ->where('slug', $productCategory)
             ->where('is_active', true)
-            ->whereHas('products', fn ($query) => $this->filterTreatmentProducts($query))
+            ->where('type', ProductType::Treatment->value)
             ->with([
-                'products' => fn ($query) => $this->filterTreatmentProducts($query)
+                'products' => fn ($query) => $query
+                    ->where('is_active', true)
                     ->with('productCategory')
                     ->orderBy('sort_order'),
             ])
@@ -61,16 +59,5 @@ class TreatmentProductCategoryController extends Controller
         );
 
         return ProductCategoryResource::make($category);
-    }
-
-    /**
-     * @param  Builder|HasMany  $query
-     * @return Builder|HasMany
-     */
-    protected function filterTreatmentProducts(Builder|HasMany $query): Builder|HasMany
-    {
-        $query->where('is_active', true);
-
-        return ProductCatalogQuery::forCatalog($query, ProductType::Treatment->value);
     }
 }

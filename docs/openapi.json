@@ -667,6 +667,13 @@
               "null"
             ]
           },
+          "type": {
+            "type": "string",
+            "enum": [
+              "product",
+              "treatment"
+            ]
+          },
           "slug": {
             "type": "string"
           },
