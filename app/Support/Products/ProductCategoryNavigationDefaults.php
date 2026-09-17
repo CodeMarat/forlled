@@ -27,25 +27,6 @@ class ProductCategoryNavigationDefaults
                 ['name' => 'Wrinkles & Fine Lines', 'slug' => 'wrinkles-fine-lines'],
                 ['name' => 'Dark Circles', 'slug' => 'dark-circles'],
             ], 100),
-            ...self::group('series', [
-                ['name' => 'Platinum Line', 'slug' => 'platinum-line'],
-                ['name' => 'AC Clear Line', 'slug' => 'ac-clear-line'],
-                ['name' => 'BW Line', 'slug' => 'bw-line'],
-                ['name' => 'P-Effect Line', 'slug' => 'p-effect-line'],
-                ['name' => 'Re-Dify Line', 'slug' => 're-dify-line'],
-            ], 200),
-            ...self::group('skincare system', [
-                ['name' => 'Nourishing Skincare', 'slug' => 'nourishing-skincare'],
-                ['name' => 'Moisturising Skincare', 'slug' => 'moisturising-skincare'],
-                ['name' => 'Antioxidant Skincare', 'slug' => 'antioxidant-skincare'],
-                ['name' => 'Calming Skincare', 'slug' => 'calming-skincare'],
-                ['name' => 'Age Control Skincare 35+', 'slug' => 'age-control-skincare-35-plus'],
-                ['name' => 'Pigmentation Skincare', 'slug' => 'pigmentation-skincare'],
-                ['name' => 'Purifying Skincare', 'slug' => 'purifying-skincare'],
-                ['name' => 'Lifting Skincare', 'slug' => 'lifting-skincare'],
-                ['name' => 'Eyes Skincare', 'slug' => 'eyes-skincare'],
-                ['name' => 'Special Products', 'slug' => 'special-products'],
-            ], 300),
         ];
     }
 
@@ -63,7 +44,6 @@ class ProductCategoryNavigationDefaults
                 'type_label' => mb_strtoupper($groupName),
                 'hero_title' => mb_strtoupper($item['name']),
                 'hero_image' => null,
-                'hero_image_alt' => null,
                 'sort_order' => $baseOrder + $index,
                 'is_active' => true,
             ],

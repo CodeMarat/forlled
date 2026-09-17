@@ -77,10 +77,6 @@ class TechnologyPage extends Page
                                                             ->disk('public')
                                                             ->directory('technology/overview')
                                                             ->helperText('Main visual shown next to the delivery system content block.'),
-                                                        TextInput::make('delivery_system_image_alt')
-                                                            ->label('Illustration alt text')
-                                                            ->maxLength(255)
-                                                            ->helperText('Describe the image to improve SEO and accessibility.'),
                                                     ]),
                                                 Grid::make(1)
                                                     ->schema([
@@ -142,10 +138,6 @@ class TechnologyPage extends Page
                                                             ->disk('public')
                                                             ->directory('technology/overview')
                                                             ->helperText('Visual used on the right side of the method section.'),
-                                                        TextInput::make('method_image_alt')
-                                                            ->label('Method illustration alt text')
-                                                            ->maxLength(255)
-                                                            ->helperText('Describe the image to improve SEO and accessibility.'),
                                                     ]),
                                             ]),
                                     ]),

@@ -21,12 +21,12 @@ class TechnologyPageResource extends ApiResource
                 'title' => $this->delivery_system_title,
                 'description' => $this->delivery_system_description,
                 'secondary_text' => $this->delivery_system_secondary_text,
-                'image' => $this->image($this->delivery_system_image, alt: $this->delivery_system_image_alt),
+                'image' => $this->image($this->delivery_system_image),
             ],
             'method' => [
                 'title' => $this->method_title,
                 'description' => $this->method_description,
-                'image' => $this->image($this->method_image, alt: $this->method_image_alt),
+                'image' => $this->image($this->method_image),
                 'benefits' => array_values(array_filter(array_map(
                     fn (mixed $item): ?array => is_array($item)
                         ? [

@@ -156,10 +156,6 @@ class TreatmentResource extends Resource
                                         ->disk('public')
                                         ->directory('treatments/hero')
                                         ->helperText('Large image displayed below the top content block.'),
-                                    TextInput::make('hero_image_alt')
-                                        ->label('Hero image alt text')
-                                        ->maxLength(255)
-                                        ->helperText('Describe the image to improve SEO and accessibility.'),
                                 ]),
                         ]),
                     Textarea::make('hero_description')

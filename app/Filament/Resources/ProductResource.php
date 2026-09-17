@@ -213,10 +213,6 @@ class ProductResource extends Resource
                                                             ->disk('public')
                                                             ->directory('products/items')
                                                             ->helperText('Upload an image or video shown on product and category pages.'),
-                                                        TextInput::make('hero_image_alt')
-                                                            ->label('Main product image alt text')
-                                                            ->maxLength(255)
-                                                            ->helperText('Describe the image to improve SEO and accessibility.'),
                                                     ]),
                                                 Grid::make(1)
                                                     ->schema([
@@ -226,10 +222,6 @@ class ProductResource extends Resource
                                                             ->disk('public')
                                                             ->directory('products/items')
                                                             ->helperText('Upload an image or video shown next to the accordion section.'),
-                                                        TextInput::make('side_image_alt')
-                                                            ->label('Lifestyle image alt text')
-                                                            ->maxLength(255)
-                                                            ->helperText('Describe the image to improve SEO and accessibility.'),
                                                     ]),
                                             ]),
                                     ])
@@ -294,9 +286,7 @@ class ProductResource extends Resource
                                     ->schema([
                                         TextInput::make('recommendations_title')
                                             ->label('Recommendations title')
-                                            ->required()
-                                            ->maxLength(255)
-                                            ->helperText('Example: HOME ROUTINE RECOMMENDATIONS'),
+                                            ->maxLength(255),
                                         Repeater::make('productRecommendations')
                                             ->label('Recommended products')
                                             ->relationship()
@@ -324,7 +314,6 @@ class ProductResource extends Resource
                                     ->schema([
                                         TextInput::make('combine_with_title')
                                             ->label('Section title')
-                                            ->required()
                                             ->maxLength(255),
                                         Grid::make(2)
                                             ->schema([
@@ -332,21 +321,17 @@ class ProductResource extends Resource
                                                     ->schema([
                                                         TextInput::make('combine_left_title')
                                                             ->label('Title')
-                                                            ->required()
                                                             ->maxLength(255),
                                                         RichEditor::make('combine_left_text')
-                                                            ->label('Text')
-                                                            ->required(),
+                                                            ->label('Text'),
                                                     ]),
                                                 Section::make('Right block')
                                                     ->schema([
                                                         TextInput::make('combine_right_title')
                                                             ->label('Title')
-                                                            ->required()
                                                             ->maxLength(255),
                                                         RichEditor::make('combine_right_text')
-                                                            ->label('Text')
-                                                            ->required(),
+                                                            ->label('Text'),
                                                     ]),
                                             ]),
                                     ])

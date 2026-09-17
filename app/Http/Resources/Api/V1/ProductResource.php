@@ -2,8 +2,8 @@
 
 namespace App\Http\Resources\Api\V1;
 
-use Illuminate\Support\Arr;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 
 class ProductResource extends ApiResource
 {
@@ -15,29 +15,38 @@ class ProductResource extends ApiResource
         return [
             ...ProductCardResource::make($this->resource)->resolve($request),
             'description' => $this->description,
-            'side_image' => $this->image($this->side_image, alt: $this->side_image_alt),
+            'side_image' => $this->image($this->side_image),
             'key_benefits' => $this->values($this->key_benefits, 'benefit'),
             'sections' => collect($this->detail_sections ?? [])
                 ->filter(fn (mixed $section): bool => ! is_array($section) || (bool) ($section['is_visible'] ?? true))
                 ->map(fn (array $section): array => Arr::except($section, ['is_visible']))
                 ->values()
                 ->all(),
-            'recommendations_title' => $this->recommendations_title,
+            'recommendations_title' => $this->when(filled($this->recommendations_title), $this->recommendations_title),
             'recommended_products' => $this->whenLoaded(
                 'recommendedProducts',
                 fn (): array => ProductCardResource::collection($this->recommendedProducts)->resolve($request),
             ),
-            'combine_with_treatment' => [
-                'title' => $this->combine_with_title,
-                'left' => [
-                    'title' => $this->combine_left_title,
-                    'text' => $this->combine_left_text,
+            'combine_with_treatment' => $this->when(
+                collect([
+                    $this->combine_with_title,
+                    $this->combine_left_title,
+                    $this->combine_left_text,
+                    $this->combine_right_title,
+                    $this->combine_right_text,
+                ])->contains(fn (mixed $value): bool => filled($value)),
+                fn (): array => [
+                    'title' => $this->combine_with_title,
+                    'left' => [
+                        'title' => $this->combine_left_title,
+                        'text' => $this->combine_left_text,
+                    ],
+                    'right' => [
+                        'title' => $this->combine_right_title,
+                        'text' => $this->combine_right_text,
+                    ],
                 ],
-                'right' => [
-                    'title' => $this->combine_right_title,
-                    'text' => $this->combine_right_text,
-                ],
-            ],
+            ),
             'navigation_groups' => $this->when(
                 filled($this->navigation_groups ?? null),
                 fn (): array => $this->navigation_groups,

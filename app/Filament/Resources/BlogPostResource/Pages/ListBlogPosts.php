@@ -70,10 +70,6 @@ class ListBlogPosts extends ListRecords
                                             ->disk('public')
                                             ->directory('blog/hero')
                                             ->helperText('Recommended for the image block shown on the left side.'),
-                                        TextInput::make('hero_image_alt')
-                                            ->label('Left image alt text')
-                                            ->maxLength(255)
-                                            ->helperText('Describe the image to improve SEO and accessibility.'),
                                     ]),
                                 Grid::make(1)
                                     ->schema([

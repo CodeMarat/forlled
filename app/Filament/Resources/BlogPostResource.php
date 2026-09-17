@@ -105,10 +105,6 @@ class BlogPostResource extends Resource
                                     ->disk('public')
                                     ->directory('blog/posts')
                                     ->helperText('Optional cover image for listings and article headers.'),
-                                TextInput::make('featured_image_alt')
-                                    ->label('Featured image alt text')
-                                    ->maxLength(255)
-                                    ->helperText('Describe the image to improve SEO and accessibility.'),
                             ]),
                     ]),
             ]);

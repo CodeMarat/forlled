@@ -74,10 +74,6 @@ class AboutUsPage extends Page
                                             ->disk('public')
                                             ->directory('about-us')
                                             ->helperText('Top-right image block.'),
-                                        TextInput::make('hero_image_alt')
-                                            ->label('Hero image alt text')
-                                            ->maxLength(255)
-                                            ->helperText('Describe the image to improve SEO and accessibility.'),
                                     ]),
                             ]),
                     ]),
@@ -94,10 +90,6 @@ class AboutUsPage extends Page
                                             ->disk('public')
                                             ->directory('about-us')
                                             ->helperText('Large image shown on the left side of the story block.'),
-                                        TextInput::make('story_image_alt')
-                                            ->label('Story image alt text')
-                                            ->maxLength(255)
-                                            ->helperText('Describe the image to improve SEO and accessibility.'),
                                     ]),
                                 Grid::make(1)
                                     ->schema([
@@ -141,10 +133,6 @@ class AboutUsPage extends Page
                                             ->disk('public')
                                             ->directory('about-us')
                                             ->helperText('Bottom-right decorative image block.'),
-                                        TextInput::make('bottom_image_alt')
-                                            ->label('Bottom image alt text')
-                                            ->maxLength(255)
-                                            ->helperText('Describe the image to improve SEO and accessibility.'),
                                     ]),
                             ]),
                     ]),

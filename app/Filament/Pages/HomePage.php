@@ -58,11 +58,6 @@ class HomePage extends Page
                                             ->disk('public')
                                             ->directory('home/hero')
                                             ->columnSpanFull(),
-                                        TextInput::make('hero_image_alt')
-                                            ->label('Hero image alt text')
-                                            ->maxLength(255)
-                                            ->helperText('Describe the image to improve SEO and accessibility.')
-                                            ->columnSpanFull(),
                                         Textarea::make('intro_text')
                                             ->rows(5)
                                             ->columnSpanFull(),
@@ -86,10 +81,6 @@ class HomePage extends Page
                                                     ->image()
                                                     ->disk('public')
                                                     ->directory('home/duo'),
-                                                TextInput::make('duo_left_image_alt')
-                                                    ->label('Left image alt text')
-                                                    ->maxLength(255)
-                                                    ->helperText('Describe the image to improve SEO and accessibility.'),
                                                 TextInput::make('duo_left_caption')
                                                     ->label('Left caption')
                                                     ->maxLength(255),
@@ -101,10 +92,6 @@ class HomePage extends Page
                                                     ->image()
                                                     ->disk('public')
                                                     ->directory('home/duo'),
-                                                TextInput::make('duo_right_image_alt')
-                                                    ->label('Right image alt text')
-                                                    ->maxLength(255)
-                                                    ->helperText('Describe the image to improve SEO and accessibility.'),
                                                 TextInput::make('duo_right_caption')
                                                     ->label('Right caption')
                                                     ->maxLength(255),
@@ -123,10 +110,6 @@ class HomePage extends Page
                                                     ->image()
                                                     ->disk('public')
                                                     ->directory('home/person'),
-                                                TextInput::make('person_photo_alt')
-                                                    ->label('Photo alt text')
-                                                    ->maxLength(255)
-                                                    ->helperText('Describe the image to improve SEO and accessibility.'),
                                             ]),
                                         Grid::make(1)
                                             ->schema([
@@ -182,10 +165,6 @@ class HomePage extends Page
                                                             ->image()
                                                             ->disk('public')
                                                             ->directory('home/gallery'),
-                                                        TextInput::make('gallery_image_1_alt')
-                                                            ->label('Gallery image 1 alt text')
-                                                            ->maxLength(255)
-                                                            ->helperText('Describe the image to improve SEO and accessibility.'),
                                                     ]),
                                                 Grid::make(1)
                                                     ->schema([
@@ -194,10 +173,6 @@ class HomePage extends Page
                                                             ->image()
                                                             ->disk('public')
                                                             ->directory('home/gallery'),
-                                                        TextInput::make('gallery_image_2_alt')
-                                                            ->label('Gallery image 2 alt text')
-                                                            ->maxLength(255)
-                                                            ->helperText('Describe the image to improve SEO and accessibility.'),
                                                     ]),
                                                 Grid::make(1)
                                                     ->schema([
@@ -206,10 +181,6 @@ class HomePage extends Page
                                                             ->image()
                                                             ->disk('public')
                                                             ->directory('home/gallery'),
-                                                        TextInput::make('gallery_image_3_alt')
-                                                            ->label('Gallery image 3 alt text')
-                                                            ->maxLength(255)
-                                                            ->helperText('Describe the image to improve SEO and accessibility.'),
                                                     ]),
                                                 Grid::make(1)
                                                     ->schema([
@@ -218,10 +189,6 @@ class HomePage extends Page
                                                             ->image()
                                                             ->disk('public')
                                                             ->directory('home/gallery'),
-                                                        TextInput::make('gallery_image_4_alt')
-                                                            ->label('Gallery image 4 alt text')
-                                                            ->maxLength(255)
-                                                            ->helperText('Describe the image to improve SEO and accessibility.'),
                                                     ]),
                                             ])
                                             ->columnSpanFull(),

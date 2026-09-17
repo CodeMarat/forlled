@@ -27,8 +27,6 @@ class DatabaseSeeder extends Seeder
             AboutUsSeeder::class,
             FeaturedInSeeder::class,
             ProductCategoryNavigationSeeder::class,
-            ProductCatalogSeeder::class,
-            ProductPagesTextSeeder::class,
             ForlledProductsSeeder::class,
             SocialMediaSeeder::class,
             TechnologyPageSeeder::class,
