@@ -25,6 +25,7 @@ use Filament\Schemas\Components\Grid;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Components\Tabs;
 use Filament\Schemas\Components\Tabs\Tab;
+use Filament\Schemas\Components\Utilities\Get;
 use Filament\Schemas\Components\Utilities\Set;
 use Filament\Schemas\Schema;
 use Filament\Tables\Columns\CheckboxColumn;
@@ -67,14 +68,40 @@ class ProductResource extends Resource
                                     ->schema([
                                         Grid::make(2)
                                             ->schema([
+                                                Select::make('category_type')
+                                                    ->label('Type')
+                                                    ->options(ProductType::options())
+                                                    ->default(ProductType::Product->value)
+                                                    ->dehydrated(false)
+                                                    ->live()
+                                                    ->afterStateHydrated(function (Select $component, ?Product $record): void {
+                                                        $type = $record?->productCategory?->type;
+
+                                                        $component->state(
+                                                            $type instanceof ProductType
+                                                                ? $type->value
+                                                                : ProductType::Product->value,
+                                                        );
+                                                    })
+                                                    ->afterStateUpdated(function (Set $set): void {
+                                                        $set('product_category_id', null);
+                                                    })
+                                                    ->required()
+                                                    ->native(false)
+                                                    ->helperText('Choose which catalog this product belongs to.'),
                                                 Select::make('product_category_id')
                                                     ->label('Category')
-                                                    ->relationship(name: 'productCategory', titleAttribute: 'name')
+                                                    ->relationship(
+                                                        name: 'productCategory',
+                                                        titleAttribute: 'name',
+                                                        modifyQueryUsing: fn (Builder $query, Get $get): Builder => $query
+                                                            ->where('type', $get('category_type') ?: ProductType::Product->value),
+                                                    )
                                                     ->searchable()
                                                     ->preload()
                                                     ->required($hasProductCategoriesTable && $hasProductCategoryColumn)
                                                     ->visible($hasProductCategoriesTable && $hasProductCategoryColumn)
-                                                    ->helperText('This product will appear on the selected category page.')
+                                                    ->helperText('Only categories matching the selected type are shown.')
                                                     ->createOptionForm([
                                                         TextInput::make('name')
                                                             ->label('Category name')
@@ -97,12 +124,6 @@ class ProductResource extends Resource
                                                             ->required()
                                                             ->default('TYPE')
                                                             ->maxLength(255),
-                                                        Select::make('type')
-                                                            ->label('Type')
-                                                            ->options(ProductType::options())
-                                                            ->default(ProductType::Product->value)
-                                                            ->required()
-                                                            ->native(false),
                                                         TagsInput::make('group_name')
                                                             ->label('Category group')
                                                             ->suggestions(fn (): array => ProductCategory::query()
@@ -136,7 +157,12 @@ class ProductResource extends Resource
                                                             ->label('Hero title')
                                                             ->required()
                                                             ->maxLength(255),
-                                                    ]),
+                                                    ])
+                                                    ->createOptionUsing(function (array $data, Get $get): int {
+                                                        $data['type'] = $get('category_type') ?: ProductType::Product->value;
+
+                                                        return (int) ProductCategory::query()->create($data)->getKey();
+                                                    }),
                                                 TextInput::make('sort_order')
                                                     ->label('Display order')
                                                     ->required(self::hasColumn('products', 'sort_order'))
