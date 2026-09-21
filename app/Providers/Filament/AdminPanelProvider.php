@@ -31,7 +31,7 @@ class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->path('admin')
             ->login()
-            ->favicon(asset('favicon.svg'))
+            ->favicon($this->favicon())
             ->maxContentWidth(Width::Full)
             ->colors([
                 'primary' => Color::Gray,
@@ -61,5 +61,16 @@ class AdminPanelProvider extends PanelProvider
             ->authMiddleware([
                 Authenticate::class,
             ]);
+    }
+
+    private function favicon(): string
+    {
+        $path = public_path('favicon.svg');
+
+        if (! is_file($path)) {
+            return asset('favicon.ico');
+        }
+
+        return 'data:image/svg+xml;base64,'.base64_encode((string) file_get_contents($path));
     }
 }
