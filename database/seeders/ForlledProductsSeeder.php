@@ -279,7 +279,10 @@ class ForlledProductsSeeder extends Seeder
      */
     protected function mergeDetailSections(array $existingSections, array $sourceSections): array
     {
-        $mergedSections = array_values($existingSections);
+        $mergedSections = array_map(
+            fn (mixed $section): mixed => $this->alignIngredientTableCells($section),
+            array_values($existingSections),
+        );
         $existingTitles = collect($existingSections)
             ->filter(fn (mixed $section): bool => is_array($section))
             ->map(fn (array $section): string => $this->normalizeName((string) ($section['title'] ?? '')))
@@ -302,6 +305,25 @@ class ForlledProductsSeeder extends Seeder
         }
 
         return $mergedSections;
+    }
+
+    protected function alignIngredientTableCells(mixed $section): mixed
+    {
+        if (
+            ! is_array($section)
+            || $this->normalizeName((string) ($section['title'] ?? '')) !== 'active ingredients'
+            || ! is_string($section['content'] ?? null)
+        ) {
+            return $section;
+        }
+
+        $section['content'] = str_replace(
+            '<td>',
+            '<td style="vertical-align: top;">',
+            $section['content'],
+        );
+
+        return $section;
     }
 
     /**
@@ -348,7 +370,7 @@ class ForlledProductsSeeder extends Seeder
                 ->map(function (array $row): string {
                     $cells = collect($row)
                         ->filter(fn (mixed $cell): bool => is_string($cell) && filled(trim($cell)))
-                        ->map(fn (string $cell): string => '<td>'.$this->ingredientCell($cell).'</td>')
+                        ->map(fn (string $cell): string => '<td style="vertical-align: top;">'.$this->ingredientCell($cell).'</td>')
                         ->implode('');
 
                     return $cells === '' ? '' : "<tr>{$cells}</tr>";
