@@ -46,6 +46,7 @@ class TreatmentProductCategoryController extends Controller
             ->with([
                 'products' => fn ($query) => $query
                     ->where('is_active', true)
+                    ->where('type', ProductType::Treatment->value)
                     ->with([
                         'productCategories' => fn ($query) => $query
                             ->where('is_active', true)

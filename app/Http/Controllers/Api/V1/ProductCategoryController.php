@@ -46,6 +46,7 @@ class ProductCategoryController extends Controller
             ->with([
                 'products' => fn ($query) => $query
                     ->where('is_active', true)
+                    ->where('type', ProductType::Product->value)
                     ->with([
                         'productCategories' => fn ($query) => $query
                             ->where('is_active', true)

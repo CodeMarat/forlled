@@ -34,6 +34,7 @@ use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Schema as DatabaseSchema;
+use Illuminate\Validation\Rule;
 
 class ProductResource extends Resource
 {
@@ -68,21 +69,11 @@ class ProductResource extends Resource
                                     ->schema([
                                         Grid::make(2)
                                             ->schema([
-                                                Select::make('category_type')
+                                                Select::make('type')
                                                     ->label('Type')
                                                     ->options(ProductType::options())
-                                                    ->default(ProductType::Product->value)
-                                                    ->dehydrated(false)
+                                                    ->default(fn (): string => ProductType::resolve(request()->query('type'))->value)
                                                     ->live()
-                                                    ->afterStateHydrated(function (Select $component, ?Product $record): void {
-                                                        $type = $record?->productCategories->first()?->type;
-
-                                                        $component->state(
-                                                            $type instanceof ProductType
-                                                                ? $type->value
-                                                                : ProductType::Product->value,
-                                                        );
-                                                    })
                                                     ->afterStateUpdated(function (Set $set): void {
                                                         $set('productCategories', []);
                                                     })
@@ -96,10 +87,14 @@ class ProductResource extends Resource
                                                         name: 'productCategories',
                                                         titleAttribute: 'name',
                                                         modifyQueryUsing: fn (Builder $query, Get $get): Builder => $query
-                                                            ->where('type', $get('category_type') ?: ProductType::Product->value),
+                                                            ->where('type', ProductType::resolve($get('type'))->value),
                                                     )
                                                     ->searchable()
                                                     ->preload()
+                                                    ->nestedRecursiveRule(
+                                                        fn (Get $get) => Rule::exists('product_categories', 'id')
+                                                            ->where('type', ProductType::resolve($get('type'))->value),
+                                                    )
                                                     ->required($hasProductCategoriesTable && $hasProductCategoryPivot)
                                                     ->visible($hasProductCategoriesTable && $hasProductCategoryPivot)
                                                     ->helperText('Only categories matching the selected type are shown.')
@@ -160,7 +155,7 @@ class ProductResource extends Resource
                                                             ->maxLength(255),
                                                     ])
                                                     ->createOptionUsing(function (array $data, Get $get): int {
-                                                        $data['type'] = $get('category_type') ?: ProductType::Product->value;
+                                                        $data['type'] = ProductType::resolve($get('type'))->value;
 
                                                         return (int) ProductCategory::query()->create($data)->getKey();
                                                     }),
@@ -387,10 +382,10 @@ class ProductResource extends Resource
                 ->searchable();
         }
 
-        $columns[] = TextColumn::make('category_type')
+        $columns[] = TextColumn::make('type')
             ->label('Type')
             ->badge()
-            ->state(fn (Product $record): ?string => $record->productCategories->first()?->type?->label());
+            ->formatStateUsing(fn (ProductType|string $state): string => ProductType::resolve($state)->label());
 
         if (self::hasColumn('products', 'size')) {
             $columns[] = TextColumn::make('size')
@@ -422,22 +417,6 @@ class ProductResource extends Resource
                 ->multiple()
                 ->relationship('productCategories', 'name');
         }
-
-        $filters[] = SelectFilter::make('category_type')
-            ->label('Type')
-            ->options(ProductType::options())
-            ->query(function (Builder $query, array $data): Builder {
-                $type = $data['value'] ?? null;
-
-                if (! is_string($type) || blank($type)) {
-                    return $query;
-                }
-
-                return $query->whereHas(
-                    'productCategories',
-                    fn (Builder $categoryQuery): Builder => $categoryQuery->where('type', $type),
-                );
-            });
 
         $table = $table
             ->columns($columns)

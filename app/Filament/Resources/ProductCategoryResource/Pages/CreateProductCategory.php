@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\ProductCategoryResource\Pages;
 
 use App\Filament\Resources\ProductCategoryResource;
+use App\Support\Products\ProductType;
 use Filament\Resources\Pages\CreateRecord;
 use Filament\Schemas\Components\Component;
 use Filament\Schemas\Components\EmbeddedSchema;
@@ -26,5 +27,13 @@ class CreateProductCategory extends CreateRecord
         ])
             ->id('form')
             ->livewireSubmitHandler($this->getSubmitFormLivewireMethodName());
+    }
+
+    protected function getRedirectUrl(): string
+    {
+        return ProductCategoryResource::getUrl('edit', [
+            'record' => $this->record,
+            'type' => ProductType::resolve($this->record->type)->value,
+        ]);
     }
 }

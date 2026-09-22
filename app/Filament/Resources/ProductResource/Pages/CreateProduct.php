@@ -4,6 +4,7 @@ namespace App\Filament\Resources\ProductResource\Pages;
 
 use App\Filament\Resources\ProductResource;
 use App\Support\Images\VideoUploadDispatcher;
+use App\Support\Products\ProductType;
 use Filament\Resources\Pages\CreateRecord;
 use Filament\Schemas\Components\Component;
 use Filament\Schemas\Components\EmbeddedSchema;
@@ -32,5 +33,13 @@ class CreateProduct extends CreateRecord
     protected function afterCreate(): void
     {
         app(VideoUploadDispatcher::class)->dispatch($this->record, $this->record->getAttributes());
+    }
+
+    protected function getRedirectUrl(): string
+    {
+        return ProductResource::getUrl('edit', [
+            'record' => $this->record,
+            'type' => ProductType::resolve($this->record->type)->value,
+        ]);
     }
 }

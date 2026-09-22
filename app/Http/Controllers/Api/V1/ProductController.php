@@ -24,6 +24,7 @@ class ProductController extends Controller
         $perPage = $request->perPage();
         $productsQuery = Product::query()
             ->where('is_active', true)
+            ->where('type', ProductType::Product->value)
             ->whereHas('productCategories', fn ($query) => $query
                 ->where('is_active', true)
                 ->where('type', ProductType::Product->value))
@@ -53,6 +54,7 @@ class ProductController extends Controller
         $productQuery = Product::query()
             ->where('slug', $product)
             ->where('is_active', true)
+            ->where('type', ProductType::Product->value)
             ->whereHas('productCategories', fn ($query) => $query
                 ->where('is_active', true)
                 ->where('type', ProductType::Product->value))
@@ -72,6 +74,7 @@ class ProductController extends Controller
         $recommendedProducts = $product->productRecommendations
             ->pluck('relatedProduct')
             ->filter(fn ($relatedProduct) => $relatedProduct?->is_active
+                && $relatedProduct->type === ProductType::Product
                 && $relatedProduct->productCategories->contains(
                     fn (ProductCategory $category): bool => $category->is_active
                         && $category->type === ProductType::Product,

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Concerns\HasAdminAudit;
+use App\Support\Products\ProductType;
 use Database\Factories\ProductFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -19,6 +20,7 @@ class Product extends Model
     protected $fillable = [
         'name',
         'slug',
+        'type',
         'description',
         'listing_description',
         'size',
@@ -60,6 +62,7 @@ class Product extends Model
     protected function casts(): array
     {
         return [
+            'type' => ProductType::class,
             'key_benefits' => 'array',
             'detail_sections' => 'array',
             'is_favorite' => 'boolean',

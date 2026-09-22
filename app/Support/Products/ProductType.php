@@ -7,6 +7,15 @@ enum ProductType: string
     case Product = 'product';
     case Treatment = 'treatment';
 
+    public static function resolve(mixed $value): self
+    {
+        if ($value instanceof self) {
+            return $value;
+        }
+
+        return is_string($value) ? (self::tryFrom($value) ?? self::Product) : self::Product;
+    }
+
     /**
      * @return array<string, string>
      */

@@ -4,6 +4,7 @@ namespace App\Filament\Resources\ProductResource\Pages;
 
 use App\Filament\Resources\ProductResource;
 use App\Support\Images\VideoUploadDispatcher;
+use App\Support\Products\ProductType;
 use Filament\Actions;
 use Filament\Actions\Action;
 use Filament\Resources\Pages\EditRecord;
@@ -62,6 +63,9 @@ class EditProduct extends EditRecord
 
     protected function getRedirectUrl(): string
     {
-        return ProductResource::getUrl('edit', ['record' => $this->record]);
+        return ProductResource::getUrl('edit', [
+            'record' => $this->record,
+            'type' => ProductType::resolve($this->record->type)->value,
+        ]);
     }
 }

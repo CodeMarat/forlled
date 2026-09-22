@@ -23,7 +23,6 @@ use Filament\Schemas\Components\Utilities\Set;
 use Filament\Schemas\Schema;
 use Filament\Tables\Columns\CheckboxColumn;
 use Filament\Tables\Columns\TextColumn;
-use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 use Illuminate\Support\Facades\Schema as DatabaseSchema;
 
@@ -87,7 +86,9 @@ class ProductCategoryResource extends Resource
                                 Select::make('type')
                                     ->label('Type')
                                     ->options(ProductType::options())
-                                    ->default(ProductType::Product->value)
+                                    ->default(fn (): string => ProductType::resolve(request()->query('type'))->value)
+                                    ->disabled(fn (?ProductCategory $record): bool => $record?->products()->exists() ?? false)
+                                    ->dehydrated()
                                     ->required()
                                     ->native(false)
                                     ->helperText('Determines which public API catalog contains this category and its products.'),
@@ -170,10 +171,7 @@ class ProductCategoryResource extends Resource
                 CheckboxColumn::make('is_active')
                     ->label('Visible'),
             ])
-            ->filters([
-                SelectFilter::make('type')
-                    ->options(ProductType::options()),
-            ])
+            ->filters([])
             ->actions([
                 EditAction::make(),
             ])

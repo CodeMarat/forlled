@@ -35,6 +35,7 @@ class ForlledProductsSeeder extends Seeder
 
         DB::transaction(function () use ($products, &$statistics): void {
             $categories = ProductCategory::query()
+                ->where('type', ProductType::Product->value)
                 ->get()
                 ->keyBy(fn (ProductCategory $category): string => $this->normalizeName($category->name));
             $categoryMap = [];
@@ -51,6 +52,7 @@ class ForlledProductsSeeder extends Seeder
             }
 
             $existingProducts = Product::query()
+                ->where('type', ProductType::Product->value)
                 ->get()
                 ->keyBy(fn (Product $product): string => $this->normalizeName($product->name));
             $categoryPositions = [];
@@ -184,6 +186,7 @@ class ForlledProductsSeeder extends Seeder
         return [
             'name' => $name,
             'slug' => SlugGenerator::uniqueFromParts(Product::class, [$name]),
+            'type' => ProductType::Product->value,
             'description' => $this->paragraph($description),
             'listing_description' => null,
             'size' => $this->nullableString($sourceProduct['size_or_packaging'] ?? null),
@@ -302,6 +305,28 @@ class ForlledProductsSeeder extends Seeder
 
             $mergedSections[] = $sourceSection;
             $existingTitles->put($normalizedTitle, true);
+        }
+
+        $ingredientsIndex = null;
+        $howToUseIndex = null;
+
+        foreach ($mergedSections as $index => $section) {
+            if (! is_array($section)) {
+                continue;
+            }
+
+            $title = $this->normalizeName((string) ($section['title'] ?? ''));
+
+            if ($title === 'active ingredients' && $ingredientsIndex === null) {
+                $ingredientsIndex = $index;
+            } elseif ($title === 'how to use' && $howToUseIndex === null) {
+                $howToUseIndex = $index;
+            }
+        }
+
+        if ($ingredientsIndex !== null && $howToUseIndex !== null && $ingredientsIndex > $howToUseIndex) {
+            [$ingredientsSection] = array_splice($mergedSections, $ingredientsIndex, 1);
+            array_splice($mergedSections, $howToUseIndex, 0, [$ingredientsSection]);
         }
 
         return $mergedSections;

@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\ProductCategoryResource\Pages;
 
 use App\Filament\Resources\ProductCategoryResource;
+use App\Support\Products\ProductType;
 use Filament\Actions;
 use Filament\Actions\Action;
 use Filament\Resources\Pages\EditRecord;
@@ -47,5 +48,13 @@ class EditProductCategory extends EditRecord
         ])
             ->id('form')
             ->livewireSubmitHandler($this->getSubmitFormLivewireMethodName());
+    }
+
+    protected function getRedirectUrl(): string
+    {
+        return ProductCategoryResource::getUrl('edit', [
+            'record' => $this->record,
+            'type' => ProductType::resolve($this->record->type)->value,
+        ]);
     }
 }

@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Product;
+use App\Support\Products\ProductType;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
@@ -23,6 +24,7 @@ class ProductFactory extends Factory
         return [
             'name' => Str::title($name),
             'slug' => Str::slug($name),
+            'type' => ProductType::Product->value,
             'description' => fake()->paragraph(),
             'listing_description' => fake()->sentence(),
             'size' => '150 ml / 5 fl oz',
