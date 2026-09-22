@@ -1,0 +1,1091 @@
+{
+    "products": [
+        {
+            "name": "Hyalogy Remover for Point Make-up",
+            "category": "cleansers",
+            "size_or_packaging": "150 ml",
+            "description": "A bi-phase makeup remover designed for fast, effective removal of resistant and waterproof makeup around the eyes and lips, without disturbing the skin's natural protective barrier. Gentle enough for daily use, it dissolves makeup and impurities while helping to calm and protect delicate, sensitive areas.",
+            "key_benefits": [
+                "Prevents dark circles around eyes",
+                "Strengthens the capillary walls",
+                "Prevents skin swelling",
+                "Prevents whiteheads",
+                "Improves the appearance of lines and wrinkles"
+            ],
+            "indications": [
+                "Eye makeup, lip makeup",
+                "All skin types"
+            ],
+            "active_ingredients_table": [
+                [
+                    "Cleansing\nIsohexadecane",
+                    "Hydration & moisture balance\nHydrolyzed hyaluronic acid\nHydrolysed eggshell membrane\nHydrolysed conchiolin protein (Pearl protein)\nSodium chondroitin sulfate"
+                ],
+                [
+                    "Skin restructuring & regeneration\nHydrolysed elastin & collagen\nCamellia sinensis extract\nBelamcanda chinensis extract\nHydrolyzed elastin and keratin\nSaxifraga sarmentosa extract\nRosmarinus officinalis extract",
+                    "Anti-inflammatory, brightening & antioxidant\nChamomilla recutita extract"
+                ],
+                [
+                    "Anti-puffiness\nSambucus nigra flower extract",
+                    "Calming & keratoprotection\nAllantoin"
+                ],
+                [
+                    "Mineral balance & pH regulation\nAmino acids (incl. Taurine)\nIonized minerals (Ca²⁺, K⁺, Zn²⁺, Na⁺, Mg²⁺)",
+                    ""
+                ]
+            ]
+        },
+        {
+            "name": "Hyalogy P-effect Clearance Cleansing",
+            "category": "cleansers",
+            "size_or_packaging": "200 g",
+            "description": "A cleansing emulsion formulated with Squalane, identical to the skin's own lipids, designed as the first stage of the classical Japanese cleansing system. It dissolves oily impurities while the patented P-effect complex helps prevent comedones from reappearing, restoring the skin's hydrolipid mantle and cell membranes for a balanced, healthy-looking complexion.",
+            "key_benefits": [
+                "The first cleansing stage that dissolves oil-soluble dirt",
+                "Removes face makeup",
+                "Provides mild exfoliation of dead skin cells",
+                "Helps prevent blackheads from reappearing",
+                "Restores the skin's hydrolipid mantle"
+            ],
+            "indications": [
+                "All skin types, especially effective for rough, flaky skin",
+                "Skin with hyperkeratosis",
+                "Comedones"
+            ],
+            "active_ingredients_table": [
+                [
+                    "Cleansing\nSqualane\nTriethylhexanoin",
+                    "Hydration & moisture loss protection\nHydrolyzed sodium hyaluronate\nHydrolyzed egg shell membrane\nHydrolyzed conchiolin protein (Pearl protein)\nLysolecithin"
+                ],
+                [
+                    "Mineral balance\nIonized minerals (Ca²⁺, K⁺, Na⁺, Mg²⁺)",
+                    ""
+                ]
+            ]
+        },
+        {
+            "name": "Hyalogy P-effect Re-purerance Wash",
+            "category": "cleansers",
+            "size_or_packaging": "200 g",
+            "description": "A soft foam cleanser for the second step of the classical Japanese cleansing system, combining myristic acid derived from coconut oil with patented low-molecular weight microelements to remove surface impurities. This sulfate-free formula helps maintain the integrity of the stratum corneum and the skin's hydro-lipid mantle.",
+            "key_benefits": [
+                "Eliminates water-soluble dirt",
+                "Maintains the hydro-lipid mantle",
+                "Stimulates oxygenation of the skin",
+                "Removes surface impurities with a sulfate-free formula",
+                "Helps maintain the integrity of the skin"
+            ],
+            "indications": [
+                "All skin types, including dry and oily skin"
+            ],
+            "active_ingredients_table": [
+                [
+                    "Cleansing\nMyristic acid (derivative of coconut and palm oils)\nPotassium cocoyl glycinate (derivative of coconut oil)",
+                    "Hydration & moisture balance\nGlycosyl trehalose\nSodium hyaluronate\nHydrolysed eggshell membrane\nHydrolysed conchiolin protein (Pearl protein)"
+                ],
+                [
+                    "Skin restructuring & regeneration\nArginine, alanine, serine, valine and other amino acids",
+                    "Mineral balance\nIonized minerals (Ca²⁺, K⁺, Zn²⁺, Na⁺, Mg²⁺)"
+                ]
+            ]
+        },
+        {
+            "name": "Hyalogy P-effect Refining Lotion",
+            "category": "lotions",
+            "size_or_packaging": "250 ml",
+            "description": "An activating lotion powered by sodium hyaluronate and a patent-pending complex of low-molecular ingredients, delivering long-lasting hydration deep into the skin layers. This replenishing, resurfacing formula helps reinforce the skin's barrier and improve permeability, supporting a healthier, more radiant complexion,  including as prep before serums or post-procedure care.",
+            "key_benefits": [
+                "Intensively and deeply hydrates",
+                "Promotes skin renewal by increasing cell turnover",
+                "Delivers active components of serums to the dermis",
+                "Ideal complement to peels, laser, microdermabrasion & microneedling",
+                "Supports post-surgical recovery and helps prevent scar formation"
+            ],
+            "indications": [
+                "All skin types, including sensitive",
+                "Skin with signs of mechanical ptosis",
+                "Fine lines and wrinkles"
+            ],
+            "active_ingredients_table": [
+                [
+                    "Hydration & moisture balance\nSodium hyaluronate\nHydrolysed egg shell membrane\nHydrolysed conchiolin protein (Pearl protein)",
+                    "Skin restructuring & mineral balance\nAmino acids\nIonized minerals (Ca²⁺, K⁺, Zn²⁺, Na⁺, Mg²⁺)"
+                ]
+            ]
+        },
+        {
+            "name": "Hyalogy Purifying Lotion",
+            "category": "lotions",
+            "size_or_packaging": "250 ml",
+            "description": "An active anti-inflammatory AHA & BHA lotion enriched with botanical extracts and probiotics. Formulated to support deep-cleansing facial treatments, including manual blackhead extraction and device-assisted cleansing, it calms and soothes the skin post-treatment while helping to restore the skin's natural microbiome.",
+            "key_benefits": [
+                "Effectively cleanses the skin with a mild antibacterial effect",
+                "Works as an astringent",
+                "Controls sebum production with anti-inflammatory action",
+                "Prevents dehydration without drying out the skin",
+                "Calms and soothes skin after deep-cleansing treatments"
+            ],
+            "indications": [
+                "Used at the end of deep-cleansing facials as a soothing, anti-inflammatory agent",
+                "Irritated skin after deep cleansing",
+                "Skin experiencing a high degree of inflammation after deep-cleansing treatments"
+            ],
+            "active_ingredients_table": [
+                [
+                    "Astringent effect\nAlcohol",
+                    "Mild exfoliating, anti-inflammatory action\nSalicylic acid"
+                ],
+                [
+                    "Regulation of sebum secretion, anti-inflammatory action\nEucalyptus globulus leaf extract\nDipotassium glycyrrhizate\nTrifolium pratense (clover) flower extract",
+                    "Antioxidant & skin regeneration accelerator\nRetinyl palmitate\nHamamelis virginiana (witch hazel) leaf extract"
+                ],
+                [
+                    "Calming\nChamomilla recutita (matricaria) flower extract\nAllantoin",
+                    "Microcirculation enhancement\nArnica montana flower extract"
+                ],
+                [
+                    "Microbiome recovery\nLactobacillus/pear juice ferment filtrate\nSaccharomyces cerevisiae extract",
+                    "Moisturization, biostimulation, prebiotic action\nLactic acid\nRibose"
+                ],
+                [
+                    "Forlle'd complex\nHydrolyzed hyaluronic acid\nHydrolyzed eggshell membrane\nHydrolyzed conchiolin protein\nAmino acids\nMinerals",
+                    ""
+                ]
+            ]
+        },
+        {
+            "name": "Hyalogy Platinum Lotion",
+            "category": "lotions",
+            "size_or_packaging": "250 ml",
+            "description": "An antioxidant activating lotion powered by patented low-molecular Platinum, Hydrolysed prunus domestica and Vitamin E, formulated to defend skin against environmental damage and free radicals. Proven to reduce oxidative damage from UVA/UVB rays and pollution, it also helps calm inflammation and boost skin immunity — ideal for dull, stressed, or sun-exposed skin in need of a healthy, glowing radiance.",
+            "key_benefits": [
+                "Prevents pigmentation",
+                "Reduces the appearance of discoloration and blotchiness",
+                "Improves lines, wrinkles and firmness, brightens complexion",
+                "Provides an anti-inflammatory effect",
+                "Helps reduce oxidative damage from UV rays and pollution"
+            ],
+            "indications": [
+                "Dull and stressed skin",
+                "Pigmented skin",
+                "Ideal complement to chemical peels, IPL, non-ablative laser, microdermabrasion, microneedling and injectables;",
+                "Post-aesthetic surgical care and procedures with risk of pigmentation",
+                "All skin types, including sensitive and fragile"
+            ],
+            "active_ingredients_table": [
+                [
+                    "Antioxidant protection & anti-pigmentation\nPlatinum powder\nHydrolysed prunus domestica\nArbutin",
+                    "Skin regeneration & restructuring\nCeramide NP"
+                ],
+                [
+                    "Anti-inflammatory & sebum regulator\nAloe barbadensis extract\nPueraria thunbergiana root extract\nDipotassium glycyrrhizate",
+                    "Hydration & moisture balance\nHydrolyzed hyaluronic acid\nHydrolysed eggshell membrane\nHydrolysed conchiolin protein (Pearl protein)\nChlorella vulgaris extract"
+                ],
+                [
+                    "Skin restructuring & mineral balance\nAmino acids\nIonized minerals (Ca²⁺, K⁺, Zn²⁺, Na⁺, Mg²⁺)",
+                    ""
+                ]
+            ]
+        },
+        {
+            "name": "Hyalogy P-effect Essence",
+            "category": "serums",
+            "size_or_packaging": "50 ml",
+            "description": "An age-preventing serum powered by patented low-molecular weight ionized hyaluronic acid for non-invasive skin biorevitalization. It penetrates the skin's basal membrane to deliver firming benefits and replenish moisture deep within, while stimulating collagen, elastin, and the skin's own hyaluronic acid production to strengthen the extracellular matrix.",
+            "key_benefits": [
+                "Regenerates the dermal matrix and normalizes skin pH",
+                "Diminishes fine lines, wrinkles and signs of premature aging",
+                "Intensively hydrates",
+                "Provides a lifting effect",
+                "Boosts skin metabolism"
+            ],
+            "indications": [
+                "Dehydrated skin",
+                "Signs of premature aging",
+                "Fine lines and wrinkles",
+                "Ideal complement prior to in-office procedures (chemical peels, IPL, ablative/non-ablative laser, microdermabrasion, microneedling, injectables)",
+                "All skin types, including hypersensitive"
+            ],
+            "active_ingredients_table": [
+                [
+                    "Hydration & moisture balance\nSodium hyaluronate\nHydrolysed egg shell membrane\nHydrolysed conchiolin protein (Pearl protein)",
+                    "Mineral balance & pH regulation\nIonized minerals (Ca²⁺, K⁺, Zn²⁺, Na⁺, Mg²⁺)"
+                ]
+            ]
+        },
+        {
+            "name": "Hyalogy Platinum Essence",
+            "category": "serums",
+            "size_or_packaging": "30 ml",
+            "description": "An antioxidant activating serum powered by patented low-molecular Platinum, Arbutin and Vitamin E, formulated to help reverse the visible signs of photoaging. This antioxidant cocktail defends against environmental damage and free radicals while botanical elements calm inflammation and boost skin immunity — ideal for dull, stressed, or sun-exposed skin seeking a healthy, glowing radiance.",
+            "key_benefits": [
+                "Prevents pigmentation",
+                "Reduces the appearance of discoloration and blotchiness",
+                "Improves lines, wrinkles, firmness and brightens complexion",
+                "Improves skin radiance, firmness, and density",
+                "Provides an anti-inflammatory effect"
+            ],
+            "indications": [
+                "Dull and stressed skin",
+                "Post-aesthetic surgery care",
+                "Ideal complement prior to in-office procedures (chemical peels, IPL, non-ablative laser, microdermabrasion, microneedling, injectables)",
+                "Unwanted pigmentation"
+            ],
+            "active_ingredients_table": [
+                [
+                    "Antioxidant protection & anti-pigmentation\nPlatinum powder\nArbutin\nHydrolysed prunus domestica\nTocopheryl acetate\nPueraria lobata (Kudzu) root extract",
+                    "Hydration & moisture balance\nHydrolyzed hyaluronic acid\nHydrolysed egg shell membrane\nHydrolysed conchiolin protein (Pearl protein)\nChlorella vulgaris extract"
+                ],
+                [
+                    "Anti-inflammatory & antibacterial effect\nAloe barbadensis extract\nDipotassium glycyrrhizate (Licorice root extract)",
+                    "Skin restructuring & protection\nCeramide NP"
+                ],
+                [
+                    "Mineral balance & pH regulation\nAmino acids\nIonized minerals (Ca²⁺, K⁺, Zn²⁺, Na⁺, Mg²⁺)",
+                    ""
+                ]
+            ]
+        },
+        {
+            "name": "Hyalogy Essence Powder",
+            "category": "serums",
+            "size_or_packaging": "10 pouches (1.5 g each)",
+            "description": "A highly concentrated dry serum powder with 30% stable Vitamin C, formulated for optimized anti-aging and antioxidant performance. Can be mixed with any Forlle'd lotion or serum to boost its anti-aging effect, or combined with the Oxygenic gel pack as a CO2 mask activator. Solanum tuberosum starch stimulates collagen synthesis, corrects pigmentation, brightens skin and improves regenerative capabilities.",
+            "key_benefits": [
+                "Provides a detoxifying effect and anti-inflammatory action",
+                "Improves the appearance of discoloration and overall skin tone",
+                "Diminishes aging signs; improves radiance, firmness, density",
+                "Neutralizes free radicals; supports natural antioxidant defenses",
+                "Boosts cellular regeneration"
+            ],
+            "indications": [
+                "Acne spots",
+                "Pigmentations and discoloration",
+                "Oily skin",
+                "Dull and stressed skin",
+                "Atonic and weakened skin"
+            ],
+            "active_ingredients_table": [
+                [
+                    "Whitening & cell regeneration\nAscorbic acid (vitamin C) — 30%\nCitric acid",
+                    ""
+                ]
+            ]
+        },
+        {
+            "name": "Biopure HA 100 Essence",
+            "category": "biopure professional serums",
+            "size_or_packaging": "15 ml",
+            "description": "A professional serum based on low-molecular weight ionized hyaluronic acid, formulated to amplify the skin's own hyaluronic acid synthesis and hydrate every layer. Combining patented low- and high-molecular weight HA, it nourishes and reduces surface dryness while restoring the dermal matrix, visibly improving firmness, smoothness, and facial plumpness.",
+            "key_benefits": [
+                "Delivers long-lasting hydration to visibly improve skin texture",
+                "Reduces fine lines and wrinkles",
+                "Improves firmness, smoothness, and facial plumpness",
+                "Boosts results of mesotherapy and dermal filler injections",
+                "Restores the structure of the dermal matrix"
+            ],
+            "indications": [
+                "Dehydrated skin of all types",
+                "Most suitable for very dry and atopic-prone skin",
+                "Suitable for allergy-prone, intolerant and reactive skin",
+                "Premature aging"
+            ],
+            "active_ingredients_table": [
+                [
+                    "Key ingredients (no sub-categories listed in source)\nSodium hyaluronate\nHydrolyzed hyaluronic acid\nTrehalose\nDipotassium glycyrrhizate\nGlucosamine HCL\nIonized minerals (Ca²⁺, K⁺, Zn²⁺, Na⁺, Mg²⁺)",
+                    ""
+                ]
+            ]
+        },
+        {
+            "name": "Biopure PL 100 Essence",
+            "category": "biopure professional serums",
+            "size_or_packaging": "15 ml",
+            "description": "A regenerating placenta serum rich in proteins, minerals, and amino acids, formulated to reduce skin flaws caused by aging. Clinically shown to enhance collagen synthesis by activating fibroblasts and boost the synthesis of all intracellular matrix components, it helps defend against visible signs of aging while deeply nourishing and repairing skin tissue.",
+            "key_benefits": [
+                "Stimulates reparative processes",
+                "Deeply nourishes skin tissue",
+                "Provides anti-inflammatory, antioxidant and radioprotective effects",
+                "Diminishes the appearance of imperfections caused by acne",
+                "Evens out skin tone while controlling melanin production"
+            ],
+            "indications": [
+                "Signs of photo- and chrono-aging",
+                "Recovery treatments for aging skin, after chemical peels, dermabrasion, plastic surgery",
+                "Suitable for all phototypes"
+            ],
+            "active_ingredients_table": [
+                [
+                    "Key ingredients (no sub-categories listed in source)\nPlacental protein\nDipotassium glycyrrhizate\nIonized minerals (Ca²⁺, Mg²⁺)",
+                    ""
+                ]
+            ]
+        },
+        {
+            "name": "Biopure EM 100 Essence",
+            "category": "biopure professional serums",
+            "size_or_packaging": "15 ml",
+            "description": "A powerful skin-regeneration serum enriched with a high concentration of eggshell membrane protein, formulated to stimulate the synthesis of native protein responsible for fibroblast activity. It amplifies cell renewal, boosts skin's immunity, and increases elasticity and firmness while helping to prevent the formation of scars.",
+            "key_benefits": [
+                "Helps to amplify cell renewal",
+                "Works as an immunity protector",
+                "Provides an anti-inflammatory effect",
+                "Provides antioxidant properties",
+                "Prevents scars formation"
+            ],
+            "indications": [
+                "Skin after abrasive procedures, chemical peels, lasers, burns or plastic surgery",
+                "Suitable for allergy-prone skin and skin with dermatitis",
+                "Suitable for all phototypes",
+                "Treatment of post acne and oily skin to prevent post-inflammatory hyperpigmentation, spots and scars"
+            ],
+            "active_ingredients_table": [
+                [
+                    "Key ingredients (no sub-categories listed in source)\nHydrolysed eggshell membrane\nDipotassium glycyrrhizate\nIonized minerals (Ca²⁺, Mg²⁺)",
+                    ""
+                ]
+            ]
+        },
+        {
+            "name": "Biopure VC 100 Essence",
+            "category": "biopure professional serums",
+            "size_or_packaging": "15 ml",
+            "description": "An antioxidant-booster serum combining water-soluble active forms of Vitamin C to target signs of aging and photodamage. This clinically proven, stable formula boosts keratinocyte recovery and the removal of damaged cells, visibly improving lines, wrinkles, firmness, and skin brightness.",
+            "key_benefits": [
+                "Works as an immunity protector",
+                "Stimulates collagen synthesis",
+                "Strengthens capillaries",
+                "Provides inflammation and acne prevention effects",
+                "Provides visible anti-aging and firming benefits, brightens complexion"
+            ],
+            "indications": [
+                "Premature aging",
+                "Dull and uneven complexion",
+                "Pigment spots and post-acne pigmentation",
+                "Oily skin and combination skin with imperfections"
+            ],
+            "active_ingredients_table": [
+                [
+                    "Key ingredients (no sub-categories listed in source)\nAscorbyl glucoside (vitamin C) – 1.5%\nMagnesium ascorbyl phosphate (vitamin C) – 1.5%\nHydrolysed silk\nSodium hyaluronate\nDipotassium glycyrrhizate (licorice root extract)\nGlucosylrutin\nUbiquinone\nHydrolysed collagen\nArbutin\nPinus pinaster bark extract\nIonized minerals (Ca²⁺, K⁺, Zn²⁺, Na⁺, Mg²⁺)",
+                    ""
+                ]
+            ]
+        },
+        {
+            "name": "Biopure CE 100 Essence",
+            "category": "biopure professional serums",
+            "size_or_packaging": "15 ml",
+            "description": "A serum powered by low-molecular weight patented Type III ceramides, formulated to restore cell membrane structure and amplify the skin's barrier properties. With maximum authenticity to human-type ceramides and biological compatibility with skin cells, combined with fermented soya bean technology, it repairs the external barrier and supports natural epidermal self-repair.",
+            "key_benefits": [
+                "Provides epidermal activity",
+                "Provides anti-couperose activity",
+                "Repairs the hydrolipid mantle",
+                "Soothes and softens the skin",
+                "Supports the skin's natural epidermal self-repair"
+            ],
+            "indications": [
+                "Heavily dehydrated and dry skin of any age",
+                "Allergic, hypersensitive, reactive and intolerant skin",
+                "Skin with irritation and scaling",
+                "Couperose and rosacea",
+                "Suitable for all phototypes"
+            ],
+            "active_ingredients_table": [
+                [
+                    "Key ingredients (no sub-categories listed in source)\nCeramide-3\nSimmondsia chinensis (jojoba) seed oil\nIonized minerals (Ca²⁺, Mg²⁺)",
+                    ""
+                ]
+            ]
+        },
+        {
+            "name": "Hyalogy P-effect Reliance Gel",
+            "category": "creams and emulsions",
+            "size_or_packaging": "100 g",
+            "description": "A hydrating, soothing gel-mask powered by a patented low-molecular complex of hydrolyzed egg shell membrane, conchiolin protein and ionized minerals, formulated for deep moisturizing and SOS skin recovery. Hydrolyzed collagen and elastin support rapid skin recovery while boosting moisture retention, versatile enough to use daily as a moisturizer or as a mask for dehydrated skin.",
+            "key_benefits": [
+                "Leaves skin feeling supple and smooth",
+                "Enhances the benefits of a daily moisturizer",
+                "Works as an antioxidant activator",
+                "Helps restore a healthy, radiant complexion",
+                "Boosts moisture retention in dermal and epidermal layers"
+            ],
+            "indications": [
+                "Dehydrated skin",
+                "Premature aging",
+                "Redness-prone skin",
+                "Efficient improvement of mesotherapy and dermal fillers; for rehabilitation after aggressive procedures (peels, injections, laser treatment, RF-treatment, abrasive cleansing) and after sunburn",
+                "Can be used as an additional moisturizing base with any creams"
+            ],
+            "active_ingredients_table": [
+                [
+                    "Hydration & moisture balance\nSodium hyaluronate\nHydrolysed eggshell membrane\nHydrolysed conchiolin protein (Pearl protein)\nAmino acids (arginine)",
+                    "Antioxidant protection & brightening\nUbiquinone (coenzyme Q10)\nMagnesium ascorbyl phosphate (vitamin C)\nDipotassium glycyrrhizate (licorice root extract)\nArctostaphylos uva ursi leaf extract"
+                ],
+                [
+                    "Skin regenerating & restructuring\nHydrogenated lecithin\nHydrolysed collagen and elastin",
+                    "Mineral balance\nIonized minerals (Ca²⁺, K⁺, Zn²⁺, Na⁺, Mg²⁺)"
+                ]
+            ]
+        },
+        {
+            "name": "Hyalogy P-effect Basing Emulsion",
+            "category": "creams and emulsions",
+            "size_or_packaging": "250 ml",
+            "description": "A fluid finishing emulsion powered by the patented P-effect complex and Squalane, identical to the skin's own lipids, formulated to lock in moisture and maintain hydration levels. It creates a breathable protective film that shields skin from dehydration while nourishing and regulating moisture balance; an ideal base for makeup.",
+            "key_benefits": [
+                "Works as perfect makeup primer",
+                "Provides water loss protection",
+                "Ensures rapid recovery of the hydrolipid protective layer",
+                "Accelerates skin regeneration",
+                "Regulates tissue metabolism"
+            ],
+            "indications": [
+                "All skin types"
+            ],
+            "active_ingredients_table": [
+                [
+                    "Softening & nourishing\nSqualane",
+                    "Hydration & moisture balance\nSodium hyaluronate\nHydrolysed eggshell membrane\nHydrolysed conchiolin protein (Pearl protein)"
+                ],
+                [
+                    "Immunomodulation & protection\nThymus serpillum extract\nPanax ginseng root extract\nOriganum majorana leaf extract",
+                    "Skin restructuring & mineral balance\nAmino acids\nIonized minerals (Ca²⁺, K⁺, Zn²⁺, Na⁺, Mg²⁺)"
+                ]
+            ]
+        },
+        {
+            "name": "Hyalogy P-effect Nourishing Cream",
+            "category": "creams and emulsions",
+            "size_or_packaging": "100 g",
+            "description": "A nourishing facial moisturizer powered by the patented P-effect complex, formulated to boost skin regeneration and reverse visible signs of aging. Hydrogenated lecithin combined with antioxidant-rich Ubiquinone (Coenzyme Q10) and Retinyl palmitate (Vitamin A) reveal radiance and firmness, while the low-molecular anti-aging complex refills cellular lipids to deeply nourish dry skin.",
+            "key_benefits": [
+                "Boosts cell regeneration",
+                "Protects from transdermal water loss",
+                "Softens the skin",
+                "Reveals visible radiance and firmness",
+                "Refills cellular lipids to nourish dry skin"
+            ],
+            "indications": [
+                "All skin types",
+                "Day cream in cold weather, night cream for daily use; especially recommended for dry, dehydrated and sensitive skin"
+            ],
+            "active_ingredients_table": [
+                [
+                    "Softening & nourishing\nSqualane\nLanolin",
+                    "Hydration & moisture balance\nSodium hyaluronate\nHydrogenated lecithin\nHydrolysed eggshell membrane\nHydrolysed conchiolin protein (Pearl protein)\nHydrolysed elastin & collagen"
+                ],
+                [
+                    "Antioxidant protection\nUbiquinon (Coenzyme Q10)\nRetinyl palmitate (Vitamin A)",
+                    "Mineral balance\nIonized minerals (Ca²⁺, K⁺, Zn²⁺, Na⁺, Mg²⁺)"
+                ]
+            ]
+        },
+        {
+            "name": "Hyalogy Platinum Face Cream",
+            "category": "creams and emulsions",
+            "size_or_packaging": "100 g",
+            "description": "An antioxidant corrective cream powered by low-molecular weight ionized Platinum, formulated to reverse visible signs of aging caused by glycation and photoaging. This powerful antioxidant protects skin from free radical aggressors, while Plantago major seed extract combined with a peptide complex slows glycation processes that break down collagen fibers.",
+            "key_benefits": [
+                "Prevents and reduces pigmentation, discoloration, blotchiness",
+                "Prevents lines and wrinkles with visible anti-aging benefits",
+                "Provides an anti-inflammatory effect",
+                "Californian Plum extract helps prevent melanin transfer",
+                "Protects skin from moisture loss"
+            ],
+            "indications": [
+                "Mature and aging skin",
+                "Pigmented skin",
+                "Skin with signs of photoaging",
+                "Rehabilitation period after aggressive aesthetic procedures",
+                "Preparation for aesthetic procedures that can boost melanocyte activity",
+                "Preparation for active skin insolation (sun exposure)"
+            ],
+            "active_ingredients_table": [
+                [
+                    "Wrinkle reduction\nAcetyl hexapeptide-8\nHydrolyzed collagen, elastin, keratin",
+                    "Antioxidant protection & glycation reduction\nPlatinum powder\nPlantago major seed extract\nOriganum majorana leaf extract\nThymus serpillum extract\nRehmannia glutinosa root extract\nPanax ginseng extract"
+                ],
+                [
+                    "Brightening & anti-pigmentation\nHydrolysed prunus domestica\nSalix alba (willow) bark extract",
+                    "Softening, nourishing & skin protection\nSqualane\nButyrospermum parkii (shea) butter\nPetrolatum\nHelianthus annuus (sunflower) seed oil"
+                ],
+                [
+                    "Hydration & moisture balance\nSodium hyaluronate\nHydrolysed eggshell membrane\nHydrolysed conchiolin protein (Pearl protein)\nSodium chondroitin sulfate",
+                    "Skin restructuring & mineral balance\nAmino acids\nPalmitoyl tripeptide-1\nPalmitoyl pentapeptide-4"
+                ]
+            ]
+        },
+        {
+            "name": "Hyalogy P-effect Deep Moisturizer",
+            "category": "creams and emulsions",
+            "size_or_packaging": "100 g",
+            "description": "A deep hydration cream with antioxidant properties, formulated with an exclusive combination of Fullerene — 172 times more powerful than Vitamin C — and Sakura extract. Clinically proven for its antiglycation effect, the unique patented P-effect complex delivers long-lasting moisturizing and soothing benefits.",
+            "key_benefits": [
+                "Intensely hydrates",
+                "Works as an antioxidant",
+                "Stimulates collagen synthesis",
+                "Suppresses melanin production",
+                "Provides a clinically proven antiglycation effect"
+            ],
+            "indications": [
+                "Dehydrated skin",
+                "Skin with decreased tone, turgor and elasticity",
+                "Aging prevention"
+            ],
+            "active_ingredients_table": [
+                [
+                    "Hydration & maintenance of water balance, prevention of moisture loss\nCombination of hydrolysed and low-molecular weight hyaluronic acids\nHydrolysed egg shell membrane protein\nSodium chondroitin sulfate\nSqualane",
+                    "Protection from free radicals & glycation, complexion improvement\nFullerene\nAscorbyl tetraisopalmitate (Vitamin C)\nPrunus lannesiana flower extract\nPotassium glycyrrhizate\nCherry blossom extract"
+                ],
+                [
+                    "Renewal of epidermis structure, stimulation of collagen synthesis, reduction of wrinkles\nKeratin hydrolysates\nElastin hydrolysates\nLeontopodium alpinum meristem cell culture\nGlycine soja\nAllantoin\nAmino acids (incl. Taurine)\nDipeptide diaminobutyroyl benzylamide diacetate",
+                    ""
+                ]
+            ]
+        },
+        {
+            "name": "Hyalogy PT Gel Mask",
+            "category": "masks",
+            "size_or_packaging": "200 g",
+            "description": "An antioxidant-infused booster mask powered by a patented micronised platinum complex, artichoke extract, hydrolyzed conchiolin protein and egg shell membrane. This blend delivers a consistent antioxidant effect and helps regulate melanin production, effectively combating signs of photoaging while delaying the onset of chronoaging.",
+            "key_benefits": [
+                "Helps remove environmental toxins, boosting antioxidant function",
+                "Stimulates collagen synthesis for enhanced skin elasticity",
+                "Alleviates puffiness for a well-defined, lifted facial contour",
+                "Suitable for all skin types, ideal for urban environments",
+                "Provides a velvety sensation, enhancing texture and feel"
+            ],
+            "indications": [
+                "Skin displaying signs of photoaging, sun-exposed skin, and skin of individuals living in metropolitan areas",
+                "Existing hyperpigmentation and prevention of dyschromia development",
+                "Dull and uneven complexion",
+                "Premature appearance of fine wrinkles",
+                "Loss of skin tone, firmness, and elasticity"
+            ],
+            "active_ingredients_table": [
+                [
+                    "Antioxidant action\nPlatinum powder",
+                    "Cell regeneration & removal of irritation\nAllantoin\nAmino acids (incl. Taurine)"
+                ],
+                [
+                    "Biostimulation, regeneration & immunomodulation\nHydrolyzed hyaluronic acid\nHydrolyzed egg shell membrane\nHydrolyzed conchiolin protein",
+                    "Hydration, prevention of moisture loss, skin pH normalization\nHydrolyzed conchiolin protein\nAloe barbadensis leaf extract\nHydrolyzed egg shell membrane\nMinerals"
+                ],
+                [
+                    "Brightening, prevention of hyperpigmentation\nHydrolyzed prunus domestica\nCynara scolymus (artichoke) leaf extract",
+                    ""
+                ]
+            ]
+        },
+        {
+            "name": "Hyalogy Royal Clay Pack",
+            "category": "masks",
+            "size_or_packaging": "200 ml",
+            "description": "A modelling mask formulated to sculpt and define the oval face shape with a mineral blend of three clays and scientifically proven botanical ingredients. It delivers a rapid modelling effect on facial contour through effective lymphatic drainage and detoxification, while immediately stimulating the skin and promoting collagen production.",
+            "key_benefits": [
+                "Improves skin turgor, elasticity and firmness",
+                "Improves skin smoothness and overall texture",
+                "Provides a rapid modeling effect on face contour",
+                "Supports lymphatic drainage and detoxification",
+                "Promotes collagen production"
+            ],
+            "indications": [
+                "Facial sagging, gravitational and trophic wrinkles, jowls",
+                "Pathological skin thickening, compressed skin with slow lymph flow, fibrotic skin",
+                "Dull, grey colour of swollen skin",
+                "Hyperkeratosis, uneven skin tone",
+                "For all skin types (caution for sensitive skin)"
+            ],
+            "active_ingredients_table": [
+                [
+                    "Face contour modelling, anti-swelling effect, stimulation of collagen production\nBentonite\nPhonolite\nMoroccan lava clay",
+                    "Moisturisation, enhancement of moisture retention & regeneration\nHydrolysed hyaluronic acid\nHydrolysed eggshell membrane\nHydrolysed conchiolin protein\nAmino acids\nSodium PCA\nMicro- and Macro elements"
+                ],
+                [
+                    "Improvement of microcirculation, anti-inflammatory reduction of swelling\nGlucosil hesperidin\nSodium dextran sulfate",
+                    "Evens out skin tone, improvement of regeneration\nSaxifraga sarmentosa extract"
+                ],
+                [
+                    "Antioxidant, soothing, conditioning effect\nPassiflora edulis fruit extract",
+                    "Improves cell turnover, anti-inflammatory effect\nSalix alba (willow) bark extract"
+                ]
+            ]
+        },
+        {
+            "name": "Hyalogy Oxygenic Gel Pack",
+            "category": "masks",
+            "size_or_packaging": "10 pouches (25 g each)",
+            "description": "A biostimulating CO2 gel mask developed to protect skin from oxidative stress and boost cell metabolism. Formulated with Artemisia capillaries flower extract, Caffeine, Cordyceps sinensis and Swertia japonica extracts to prevent dark spots and brighten skin. Combined with Hyalogy Essence Powder, it delivers a carboxytherapy effect and provides long-term hyperoxygenation, even for very sensitive skin.",
+            "key_benefits": [
+                "Provides a skin-breathing effect",
+                "Works as an antioxidant protector",
+                "Combats hyperpigmentation",
+                "Stimulates collagen synthesis",
+                "Provides an immediate lifting effect"
+            ],
+            "indications": [
+                "Skin with signs of premature aging",
+                "Pigmentations and blotches",
+                "Urban skin with intoxication signs",
+                "Skin with signs of mechanical ptosis",
+                "All skin types, especially oily"
+            ],
+            "active_ingredients_table": [
+                [
+                    "Hydration & moisture balance\nHydrolysed hyaluronic acid\nHydrolysed egg shell membrane\nHydrolysed conchiolin protein (Pearl protein)",
+                    "Skin regeneration & strengthening\nBupleurum falcatum root extract\nPanax ginseng\nAmino acids (incl. Taurine)"
+                ],
+                [
+                    "Calming\nAllantoin",
+                    "Anti-inflammatory effect & skin lightening\nGlycyrrhiza glabra (licorice) leaf extract\nMorus alba root extract\nCurcuma longa (turmeric) root extract\nPueraria thunbergiana root extract"
+                ],
+                [
+                    "Anti-aging & cell activation\nGlycine soja (soybean) seed extract\nCordyceps sinensis extract\nSwertia japonica extract",
+                    "Antioxidant protection & microcirculation enhancement\nArtemisia capillaries flower extract\nCaffeine\nSodium bicarbonate"
+                ],
+                [
+                    "Ionized minerals\nCa²⁺, K⁺, Zn²⁺, Na⁺, Mg²⁺",
+                    ""
+                ]
+            ]
+        },
+        {
+            "name": "Hyalogy Lift Mask",
+            "category": "masks",
+            "size_or_packaging": "5 pieces (33 ml each)",
+            "description": "An instant 3D lifting face mask powered by a peptide complex, sweet almond seed extract, oat kernel extract, saccharomyces lysate and hyaluronic acid. This professional formula delivers an immediate lifting effect, restoring skin elasticity and firmness while revealing more harmonious facial volumes and contours through biostimulation of the extracellular dermal matrix.",
+            "key_benefits": [
+                "Protects from signs of skin aging",
+                "Visibly smooths five key wrinkle types (forehead to crow's feet)",
+                "Improves the appearance of skin radiance, firmness, and density",
+                "Creates an immediate lifting effect",
+                "Improves facial contour harmony and definition"
+            ],
+            "indications": [
+                "Skin with signs of premature aging",
+                "Skin with signs of mechanical ptosis",
+                "Loss of elasticity and tone",
+                "Thinning skin",
+                "Dehydrated and dry skin",
+                "All skin types, including sensitive"
+            ],
+            "active_ingredients_table": [
+                [
+                    "Hydration & moisture balance\nBetaine\nGlycosyl trehalose\nHydrolysed hyaluronic acid\nHydrolysed egg shell membrane\nHydrolysed conchiolin protein (Pearl protein)\nAlgin",
+                    "Nutrition & softening\nAvena sativa (oat) kernel extract\nHydrogenated lecithin\nCholesterol\nCeramide NP"
+                ],
+                [
+                    "Anti-aging & strengthening of skin structure\nAcetyl decapeptide-3\nCaprooyl tetrapeptide-3\nOligopeptide-20",
+                    "Lifting & firming\nSaccharomyces lysate extract\nPrunus amygdalus dulcis (sweet almond) seed extract\nXanthan gum"
+                ],
+                [
+                    "Antioxidant protection, anti-inflammatory, anti-glycation\nPrunus yedoensis leaf extract\nDipotassium glycyrrhizate",
+                    "Mineral balance\nIonized minerals (Ca²⁺, K⁺, Na⁺, Mg²⁺)"
+                ]
+            ]
+        },
+        {
+            "name": "Hyalogy Deep Purifying Mask",
+            "category": "masks",
+            "size_or_packaging": "100 g",
+            "description": "A deep purifying gel mask formulated with three types of clay — Ghassoul, Bentonite, and Kaolin — combined with calming botanical extracts and sebum-normalizing Nordihydroguaiaretic and Oleanolic acids. It delivers deep detoxifying cleansing while soothing the skin, promoting clarity and priming skin effectively for further cosmeceutical treatment.",
+            "key_benefits": [
+                "Absorbs excess sebum",
+                "Works as an antibacterial treatment without disturbing microflora",
+                "Eliminates comedones and prevents their formation",
+                "Works as an antioxidant activator",
+                "Suitable for cleansing extra-sensitive and rosacea-prone skin"
+            ],
+            "indications": [
+                "Contaminated and toxic skin",
+                "Oily skin as well as skin with different comedones",
+                "Gentle cleansing for sensitive skin"
+            ],
+            "active_ingredients_table": [
+                [
+                    "Sorbent agents\nKaolin\nBentonite",
+                    "Anti-inflammatory agents\nNordihydroguaiaretic acid"
+                ],
+                [
+                    "Components normalizing sebum secretion & composition\nOleanolic acid\nRosa multiflora fruit extract",
+                    "Antioxidant agent & regeneration boosters, soothing agents\nMalus domestica fruit cell culture extract\nRosa canina fruit extract\nHydrolysed hyaluronic acid\nHydrolysed eggshell membrane\nHydrolysed conchiolin protein"
+                ],
+                [
+                    "Moisturizers, regeneration boosters\nAmino acids (incl. Taurine)",
+                    "Corneum layer & dermis compactors, fibroblast activators\nMoroccan lava clay"
+                ],
+                [
+                    "Mineral balance\nIonized minerals (Ca²⁺, K⁺, Na⁺, Mg²⁺)",
+                    ""
+                ]
+            ]
+        },
+        {
+            "name": "Hyalogy SensiSkin Mask",
+            "category": "masks",
+            "size_or_packaging": "200 g",
+            "description": "A calming, soothing gel mask formulated with Izumo Yumura thermal water — used in dermatological therapy for over 1,200 years — for sensitive skin of all types. This mask soothes skin instantly while reducing inflammation, heals and normalizes skin metabolism, while supporting an optimal microbiome.",
+            "key_benefits": [
+                "Instantly heals the skin",
+                "Reduces inflammation",
+                "Restores and maintains skin moisture levels",
+                "Strengthens the skin's moisture barrier",
+                "Restores the skin's microbiota"
+            ],
+            "indications": [
+                "Sensitive skin of all types",
+                "Couperose",
+                "Rosacea, eczema, psoriasis — to prolong and stabilize remission; for rehabilitation after aggressive procedures (peels, injections, laser treatment, RF-treatment, abrasive cleansing)"
+            ],
+            "active_ingredients_table": [
+                [
+                    "Antiallergic, regenerative & anti-inflammatory components\nNiacinamide\nPanthenol\nCalendula officinalis flower extract\nAloe barbadensis leaf extract\nEucalyptus globulus leaf extract\nAllantoin\nBisabolol\nSymphytum officinale leaf extract\nBiotin",
+                    "Moisturizing & conditioning\nHydrolysed hyaluronic acid\nHydrolysed egg shell membrane\nHydrolysed conchiolin protein\nSodium chondroitin sulfate\nAmino acids (incl. Taurine)\nIonized minerals"
+                ],
+                [
+                    "Skin microbiome restoring\nAlpha-glucan oligosaccharide",
+                    "Controlling sebum production & composition, native microbiota preservation\n10-Hydroxydecanoic acid\n1,10-Decanediol\nNordihydroguaiaretic acid\nSebacic acid\nOleanolic acid\nBidens pilosa extract"
+                ],
+                [
+                    "Antioxidant action\nCamellia sinensis leaf extract",
+                    "Wrinkling prevention\nHydrolysed collagen\nHydrolysed elastin"
+                ]
+            ]
+        },
+        {
+            "name": "Hyalogy Re-Dify Face Mask",
+            "category": "masks",
+            "size_or_packaging": "250 ml",
+            "description": "A revitalizing gommage face mask with peptides, formulated to correct visible signs of age-related skin damage for 50+. Packed with Tremella fuciformis polysaccharide, Globularia Cordifolia callus culture extract, and biomimetic peptides, it prevents future damage while correcting existing signs of aging, boosting sirtuin activity and stem cell vitality to maintain a healthy epidermal structure.",
+            "key_benefits": [
+                "Stimulates collagen, hyaluronic acid and matrix synthesis",
+                "Provides powerful firming benefits and replenishes moisture",
+                "Stimulates ceramide synthesis",
+                "Activates cell regeneration and metabolism",
+                "Boosts sirtuin activity, a key regulator of cell life"
+            ],
+            "indications": [
+                "Mature skin"
+            ],
+            "active_ingredients_table": [
+                [
+                    "Smoothing the stratum corneum (due to the formation of a low pH value)\nAcrylates/C10-30 alkyl acrylate crosspolymer\nDicocodimonium chloride",
+                    "Protection of skin stem cells, regeneration activation\nGlobularia cordifolia callus culture extract"
+                ],
+                [
+                    "Cellular activation\nSaccharomyces lysate extract\nOligopeptide-20",
+                    "Restoration of the extracellular matrix of the dermis\nAcetyl decapeptide-3\nPalmitoyl tetrapeptide-7\nPalmitoyl tripeptide-1\nSoluble proteoglycan"
+                ],
+                [
+                    "Anti-wrinkle action\nPalmitoyl tripeptide-5",
+                    "Detoxification\nTremella fuciformis polysaccharide"
+                ],
+                [
+                    "Lifting\nPrunus amygdalus dulcis (sweet almond) seed extract\nAvena sativa (oat) kernel extract",
+                    "Improvement of microcirculation\nNiacinamide"
+                ],
+                [
+                    "Anti-inflammation & glycation control, soothing effect\nPrunus yedoensis leaf extract\nAllantoin",
+                    "Moisturisation, biostimulation\nHydrolyzed hyaluronic acid\nHydrolyzed egg shell membrane\nHydrolyzed conchiolin protein\nAmino acids\nMinerals"
+                ]
+            ]
+        },
+        {
+            "name": "Hyalogy Daily and Nightly Cream for Eyes",
+            "category": "eyes and lips care",
+            "size_or_packaging": "30 g",
+            "description": "A moisturizing eye cream formulated to reduce puffiness and improve visible signs of aging. Built on a patented squalane-ceramide complex that recreates the skin's own lipid structure, it nourishes and moisturizes the delicate eye area while helping correct discoloration. Low-molecular hyaluronic acid, hydrolyzed egg-shell membrane and pearl proteins deliver deep moisturizing and rejuvenation, while Saxifraga and Alpha-Arbutin improve microcirculation and normalize pigmentation.",
+            "key_benefits": [
+                "Japanese Swertia extract stimulates eyelash growth",
+                "Brightens and evens the skin complexion",
+                "Improves fine lines, wrinkles, and laxity around the eyes",
+                "Restores essential lipids to nourish dry, delicate skin",
+                "Helps relieve the appearance of under-eye puffiness"
+            ],
+            "indications": [
+                "All skin types, especially dry and dehydrated skin, skin with first signs of aging",
+                "Crow's feet"
+            ],
+            "active_ingredients_table": [
+                [
+                    "Nourishing & protection\nSqualane",
+                    "Hydration & moisture balance\nSodium hyaluronate\nHydrolysed eggshell membrane\nHydrolysed conchiolin protein (Pearl protein)\nSodium chondroitin sulfate\nHydroxylated lecithin"
+                ],
+                [
+                    "Skin tone evening\nAlpha-arbutin\nSaxifraga sarmentosa extract",
+                    "Skin restructuring & cell stimulation\nSoluble collagen\nCeramide-3\nSwertia japonica extract"
+                ],
+                [
+                    "Anti-inflammatory & antibacterial agents\nLuffa cylindrical extract\nDipotassium glycyrrhizate (Licorice root extract)",
+                    "Mineral balance\nIonized minerals (Ca²⁺, K⁺, Zn²⁺, Na⁺, Mg²⁺)"
+                ]
+            ]
+        },
+        {
+            "name": "Hyalogy Platinum Eye Cream",
+            "category": "eyes and lips care",
+            "size_or_packaging": "30 g",
+            "description": "An antioxidant eye cream powered by patented low-molecular weight ionized Platinum, one of the most powerful antioxidants, formulated to combat stress, tiredness and strain around the eyes. Hydrolysed prunus domestica combined with Plantago major seed extract targets visible pigmentation and discoloration for brighter, more even-looking skin.",
+            "key_benefits": [
+                "Reduces dark circles around the eye area",
+                "Prevents puffiness",
+                "Nourishes, soothes and moisturizes",
+                "Strengthens the walls of blood vessels",
+                "Provides an anti-glycation effect"
+            ],
+            "indications": [
+                "Skin around eyes with signs of photo-aging",
+                "Dark circles around eyes, eyelid swelling"
+            ],
+            "active_ingredients_table": [
+                [
+                    "Nourishing & protection\nSqualane",
+                    "Hydration & moisture balance\nSodium chondroitin sulfate\nSodium hyaluronate\nHydrolysed egg shell membrane\nHydrolysed conchiolin protein (Pearl protein)\nGlycosyl trehalosa"
+                ],
+                [
+                    "Antioxidant protection, anti-aging, anti-glycation\nPlatinum powder\nPlantago major seed extract\nPanax ginseng extract\nEriobotrya japonica leaf extract\nLavandula angustifolia (lavender) flower extract\nTocopherol",
+                    "Lifting & cell turnover enhancement, wrinkles prevention\nAcetyl hexapeptide-8\nPalmitoyl tripeptide-1\nPalmitoyl pentapeptide-4\nPalmitoyl tetrapeptide-7\nHydrolyzed collagen, elastin, keratin\nCarnosine"
+                ],
+                [
+                    "Anti-puffiness, microcirculation enhancement\nRuscus aculeatus root extract\nCentella asiatica leaf extract\nAesculus hippocastanum (horse chestnut) seed extract",
+                    "Lightening & anti-pigmentation\nHydrolysed prunus domestica"
+                ],
+                [
+                    "Anti-inflammation & soothing\nSalix alba (willow) bark extract\nOriganum majorana leaf extract\nThymus serpillum extract\nCalendula officinalis flower extract\nEucalyptus globulus leaf extract\nChamomilla recutita (matricaria) flower extract",
+                    "Skin restructuring & pH regulation\nCeramide-3\nSaccharomyces lysate extract\nPanthenol\nAmino acids"
+                ],
+                [
+                    "Mineral balance\nIonized minerals (Ca²⁺, K⁺, Zn²⁺, Na⁺, Mg²⁺)",
+                    ""
+                ]
+            ]
+        },
+        {
+            "name": "Hyalogy P-effect Sheet",
+            "category": "eyes and lips care",
+            "size_or_packaging": "8 pouches",
+            "description": "An eye mask based on the patented P-effect complex, formulated for an immediate smoothing and lymphatic drainage effect. Enriched with Glycosyl trehalose and anti-puffiness, anti-dark circles and anti-wrinkle ingredients, it immediately reduces puffiness and smooths the skin, making fine lines less visible for an instantly rested look.",
+            "key_benefits": [
+                "Provides lifting and anti-swelling effects",
+                "Reduces wrinkles and crow's feet",
+                "Works as an antioxidant protector",
+                "Prevents dark circles",
+                "Provides immediate smoothing and lymphatic drainage"
+            ],
+            "indications": [
+                "Aging skin around eyes",
+                "Dark circles",
+                "Fine lines and wrinkles",
+                "Puffiness",
+                "Pigmentation",
+                "All skin types"
+            ],
+            "active_ingredients_table": [
+                [
+                    "Hydration & moisture balance\nGlycosyl trehalosa\nSodium hyaluronate\nHydrolysed eggshell membrane\nHydrolysed conchiolin protein (Pearl protein)",
+                    "Mineral balance & pH regulation\nIonized minerals (Ca²⁺, K⁺, Zn²⁺, Na⁺, Mg²⁺)"
+                ]
+            ]
+        },
+        {
+            "name": "Hyalogy Re-Dify Eye Mask",
+            "category": "eyes and lips care",
+            "size_or_packaging": "8 pouches",
+            "description": "A rejuvenating eyelid mask with thick serum patches, formulated with peptides to correct visible signs of age-related skin damage for 50+. It rejuvenates the delicate eye area by stimulating collagen, hyaluronic acid and extracellular matrix synthesis, while Tremella fuciformis polysaccharide and biomimetic peptides activate cell growth, regulate elastin and fibronectin production, and help thicken the epidermal layer.",
+            "key_benefits": [
+                "Improves the surface of the skin around eyes",
+                "Fights wrinkles and puffiness",
+                "Tightens the skin around the eyes",
+                "Combats hyperpigmentation of the skin around the eyes",
+                "Deeply moisturizes the skin"
+            ],
+            "indications": [
+                "Mature skin"
+            ],
+            "active_ingredients_table": [
+                [
+                    "Protection of skin stem cells, regeneration activation\nGlobularia cordifolia callus culture extract",
+                    "Improvement of microcirculation\nNiacinamide"
+                ],
+                [
+                    "Cellular activation\nSaccharomyces lysate extract\nOligopeptide-20",
+                    "Restoration of the extracellular matrix of the dermis\nAcetyl decapeptide-3\nPalmitoyl tetrapeptide-7\nPalmitoyl tripeptide-1\nSoluble proteoglycan\nGlycyrrhiza glabra (licorice) leaf extract"
+                ],
+                [
+                    "Anti-wrinkle action\nPalmitoyl tripeptide-5",
+                    "Detoxification\nTremella fuciformis polysaccharide"
+                ],
+                [
+                    "Lifting\nPrunus amygdalus dulcis (sweet almond) seed extract\nAvena sativa (oat) kernel extract",
+                    "Anti-inflammation & glycation control, soothing effect\nPrunus yedoensis leaf extract\nAllantoin"
+                ],
+                [
+                    "Moisturisation, biostimulation\nHydrolyzed hyaluronic acid\nHydrolyzed egg shell membrane\nHydrolyzed conchiolin protein\nAmino acids\nMinerals",
+                    ""
+                ]
+            ]
+        },
+        {
+            "name": "Hyalogy Eye Moistlift",
+            "category": "eyes and lips care",
+            "size_or_packaging": "10 ml",
+            "description": "A lifting serum for eyelids, formulated with a complete complex of sweet almond seed extract, hydrolysed elastin, and hydrolysed keratin combined with high-performance peptides. Specifically designed to reduce the appearance of fine lines and wrinkles with an immediate firming effect, it regenerates the entire eye area for visibly smoother, more youthful-looking skin.",
+            "key_benefits": [
+                "Reduces the depth and length of wrinkles",
+                "Moisturizes skin around eyes",
+                "Protects from free radicals (antioxidant protection)",
+                "Provides an immediate firming effect",
+                "Regenerates the eye area for a smoother, more youthful appearance"
+            ],
+            "indications": [
+                "Thin, dull, atonic, wrinkled skin in the eye area",
+                "Preparation and rehabilitation period of blepharoplasty (surgery, laser)"
+            ],
+            "active_ingredients_table": [
+                [
+                    "Lifting\nPrunus amygdalus dulcis (sweet almond) seed extract\nHydrolysed elastin\nHydrolysed keratin\nXantan gum crosspolymer\nPolyquaternium-51",
+                    "Anti-mimic wrinkles\nDipeptide diaminobutyroyl benzyamide diacetate"
+                ],
+                [
+                    "Hydration & moisturizing balance\nSodium hyaluronate\nHydrolysed hyaluronic acid\nHydrolysed eggshell membrane\nGlycosyl trehalose\nSodium chondroitin sulfate\nPullulan",
+                    "Immunomodulation\nUncaria tomentosa extract"
+                ],
+                [
+                    "Collagen synthesis stimulation\nHumulus lupulus hops flower extract\nEquisetum arvense extract",
+                    "Mineral balance\nAmino acids (incl. Taurine)\nPalmitoyl tripeptide-5\nIonized minerals (Ca²⁺, K⁺, Na⁺, Mg²⁺)"
+                ],
+                [
+                    "Anti-inflammatory\nPinus sylvestris cone extract\nRosmarinus officinalis (rosemary) leaf extract\nCitrus medica limonum (lemon) fruit extract",
+                    "Antioxidants\nDunaliella salina extract\nFullerenes\nPantolactone"
+                ],
+                [
+                    "Hydrolipidic mantle renewal\nSqualane\nPanthenol\nHydrogenated lecithin\nGlycosphingolipids\nAllantoin",
+                    ""
+                ]
+            ]
+        },
+        {
+            "name": "Hyalogy Protective Cream for Lips",
+            "category": "eyes and lips care",
+            "size_or_packaging": "9 g",
+            "description": "A lip repair cream with an antioxidant effect, formulated to help repair environmental damage while smoothing and refining the surface of the lips. Rich in active antioxidant ingredients, it protects against environmental damage and cutaneous aging, reshaping and replenishing lip tissue for softer, more supple, fuller-looking lips.",
+            "key_benefits": [
+                "Effectively promotes skin regeneration",
+                "Reshapes and replenishes lip tissue",
+                "Intensively softens and nourishes",
+                "Helps lips regain suppleness and volume",
+                "Improves the effect of dermal fillers"
+            ],
+            "indications": [
+                "Dehydrated and dry skin",
+                "Narrow and thin lips"
+            ],
+            "active_ingredients_table": [
+                [
+                    "Soothing & nourishing\nSqualane\nPetrolatum\nMineral oil",
+                    "Hydration & moisture balance\nSodium hyaluronate\nHydrolyzed hyaluronic acid\nHydrolyzed egg shell membrane\nHydrolyzed conchiolin protein (Pearl protein)"
+                ],
+                [
+                    "Keratoprotection, anti-inflammatory effect & antioxidant protection\nAllantoin\nOriganum majorana leaf extract\nThymus serpillum extract\nAloe barbadensis extract",
+                    "Cell regeneration & immunomodulation\nPanax ginseng extract\nTocopherol\nPalmitoyl tripeptide-1\nBisabolol\nAmino acids (incl. Taurine)"
+                ],
+                [
+                    "Mineral balance\nIonized minerals (Ca²⁺, K⁺, Zn²⁺, Na⁺, Mg²⁺)",
+                    ""
+                ]
+            ]
+        },
+        {
+            "name": "Hyalogy UV Intense Protector (SPF 50)",
+            "category": "sun care",
+            "size_or_packaging": "30 g",
+            "description": "An intense, broad-spectrum SPF 50 sunscreen that allows a natural tanning process while protecting skin from sunlight and toxins. Rich in titanium dioxide — one of the most effective mineral filters — combined with organic chemical filters, it delivers high-level broad-spectrum protection ideal for sensitive skin. A unique complex of low-molecular hyaluronic acid, Conchiolin and EM protein makes it suitable for skin prone to acne, couperose, inflammation and redness.",
+            "key_benefits": [
+                "Provides high antioxidant protection",
+                "Helps reduce the risk of premature skin aging",
+                "Suitable for all skin types, including sensitive skin",
+                "Boosts skin's natural defenses to environmental stress",
+                "Provides a high level of broad-spectrum protection"
+            ],
+            "indications": [
+                "This sunscreen should be recommended after intensive cosmetic procedures (lasers, IPL, peelings, injections, esthetic operations, esthetic procedures)"
+            ],
+            "active_ingredients_table": [
+                [
+                    "UVA, UVB spectrum physical filter\nTitanium dioxide",
+                    "Chemical filter with UVA-1 activator\nDiethylamino hydroxybenzoyl hexyl benzoate"
+                ],
+                [
+                    "Chemical filter with UVB activator\nEthylhexyl methoxycinnamate",
+                    "Antioxidant effect\nCamellia chinensis leaf extract\nPrunus yedoensis leaf extract"
+                ],
+                [
+                    "Moisturising & antioxidant effect, detoxification\nTremella fuciformis polysaccharide",
+                    "Moisturising effect, stimulation of cell regeneration\nHydrolyzed hyaluronic acid\nHydrolyzed egg shell membrane\nHydrolyzed conchiolin protein"
+                ]
+            ]
+        },
+        {
+            "name": "Hyalogy Peeling Lotion",
+            "category": "special care",
+            "size_or_packaging": "100 ml",
+            "description": "An immunomodulating, biostimulating lotion based on lactic acids, specifically designed to recover and maintain the skin's microbiome and balance its immunity. With daily use, it stimulates cell turnover to resurface skin, visibly improving early signs of photo-aging, helping to reclarify and even skin tone while preventing wrinkles and improving elasticity.",
+            "key_benefits": [
+                "Promotes skin renewal by increasing cell turnover",
+                "Strengthens the skin's moisture barrier",
+                "Provides anti-inflammatory and antibacterial effects",
+                "Helps reclarify and even out skin tone",
+                "Prevents wrinkles while improving skin elasticity"
+            ],
+            "indications": [
+                "All skin types, including sensitive skin",
+                "Blemish-prone skin",
+                "Aging skin"
+            ],
+            "active_ingredients_table": [
+                [
+                    "Microbiome protection\nLactobacillus/milk ferment filtrate (whey)\nLactobacillus/grape juice ferment filtrate\nArginine",
+                    "Hydration & moisture balance\nSodium hyaluronate\nHydrolysed eggshell membrane\nHydrolysed conchiolin protein (Pearl protein)\nGlycosyl trehalose"
+                ],
+                [
+                    "Anti-inflammatory & antibacterial effect\nDipotassium glycyrrhizate (Licorice root extract)",
+                    "Mineral balance & pH regulation\nIonized minerals (Ca²⁺, K⁺, Zn²⁺, Na⁺, Mg²⁺)"
+                ]
+            ]
+        },
+        {
+            "name": "Hyalogy Body Treatment Cream",
+            "category": "special care",
+            "size_or_packaging": "200 g",
+            "description": "A moisturizing body cream providing intense hydration, formulated with active hydrating and protective ingredients that help maintain the integrity of the skin's hydrolipidic barrier. It shields skin from dehydration and daily environmental aggressions, while helping tighten, firm and lift sagging skin for a smoother, more radiant complexion.",
+            "key_benefits": [
+                "Helps to tighten, firm and lift sagging skin",
+                "Improves radiance and smoothness",
+                "Provides long-lasting hydration and biostimulation",
+                "Provides strengthening and antioxidant effects",
+                "Stimulates cells"
+            ],
+            "indications": [
+                "Complex body care for all skin types"
+            ],
+            "active_ingredients_table": [
+                [
+                    "Hydration & moisture balance\nSodium hyaluronate\nHydrolysed eggshell membrane\nHydrolysed conchiolin protein (Pearl protein)\nClematis vitalba leaf extract\nSilk powder\nGlycosyl trehalose",
+                    "Soothing & nourishing\nLanolin\nSqualane\nEquisetum arvense extract"
+                ],
+                [
+                    "Microbiome protection\nHydrolyzed yeast extract",
+                    "Anti-inflammatory effect\nMelia azadirachta leaf extract"
+                ],
+                [
+                    "Anti-pigmentation & antioxidant protection\nAscorbyl tetraisopalmitate (vitamin C)\nHydrolysed prunus domestica\nGlycyrrhiza glabra (licorice) root extract\nSpiraea ulmaria flower extract",
+                    "Anti-cellulite\nFucus vesiculosus extract (seaweed extract)\nHedera helix (ivy) leaf/stem extract"
+                ],
+                [
+                    "Mineral balance\nIonized minerals (Ca²⁺, K⁺, Zn²⁺, Na⁺, Mg²⁺)",
+                    ""
+                ]
+            ]
+        }
+    ]
+}
