@@ -93,6 +93,13 @@ class UploadedFileCleanup
 
         $disk = Storage::disk('public');
 
+        if (str_ends_with(strtolower($normalizedPath), '.m3u8')
+            && str_starts_with($normalizedPath, 'products/items/professional/')) {
+            rescue(fn (): bool => $disk->deleteDirectory(dirname($normalizedPath)), report: false);
+
+            return;
+        }
+
         rescue(fn (): bool => $disk->delete($normalizedPath), report: false);
 
         $directory = trim(pathinfo($normalizedPath, PATHINFO_DIRNAME), './');
