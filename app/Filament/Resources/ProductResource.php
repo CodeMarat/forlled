@@ -270,6 +270,7 @@ class ProductResource extends Resource
                                                         TextInput::make('title')
                                                             ->label('Section title')
                                                             ->required()
+                                                            ->live(onBlur: true)
                                                             ->maxLength(255),
                                                         Toggle::make('is_visible')
                                                             ->label('Show section in product page')
@@ -284,6 +285,8 @@ class ProductResource extends Resource
                                                     ->required()
                                                     ->columnSpanFull(),
                                             ])
+                                            ->itemLabel(fn (array $state): ?string => $state['title'] ?? null)
+                                            ->collapsed(fn (Schema $item): bool => $item->getStatePath(false) !== array_key_first($item->getParentComponent()?->getRawState() ?? []))
                                             ->defaultItems(0)
                                             ->addActionLabel('Add section')
                                             ->helperText('Use this for Indications, Product density, Active ingredients, Before/after, How to use, and similar sections. You can disable any section without deleting it.')
