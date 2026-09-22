@@ -63,7 +63,8 @@ These endpoints return a single structured payload per page, grouped by sections
   - Supports `page` and `per_page`.
 - `GET /products/{slug}`
   - Returns a single visible product by slug.
-  - Includes `recommended_products` and `navigation_categories`.
+  - Includes `categories`, `recommended_products`, and `navigation_categories`.
+  - `category` remains the first category for backward compatibility.
 
 ### Product Categories
 

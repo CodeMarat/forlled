@@ -46,7 +46,12 @@ class ProductCategoryController extends Controller
             ->with([
                 'products' => fn ($query) => $query
                     ->where('is_active', true)
-                    ->with('productCategory')
+                    ->with([
+                        'productCategories' => fn ($query) => $query
+                            ->where('is_active', true)
+                            ->where('type', ProductType::Product->value)
+                            ->orderBy('sort_order'),
+                    ])
                     ->orderBy('sort_order'),
             ])
             ->firstOrFail();

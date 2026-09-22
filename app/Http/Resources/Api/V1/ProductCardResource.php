@@ -19,8 +19,14 @@ class ProductCardResource extends ApiResource
             'hero_image' => $this->image($this->hero_image, 'card'),
             'is_favorite' => (bool) $this->is_favorite,
             'category' => $this->whenLoaded(
-                'productCategory',
-                fn (): ProductCategoryListResource => ProductCategoryListResource::make($this->productCategory),
+                'productCategories',
+                fn (): ?ProductCategoryListResource => $this->productCategories->isNotEmpty()
+                    ? ProductCategoryListResource::make($this->productCategories->first())
+                    : null,
+            ),
+            'categories' => $this->whenLoaded(
+                'productCategories',
+                fn (): array => ProductCategoryListResource::collection($this->productCategories)->resolve($request),
             ),
         ];
     }

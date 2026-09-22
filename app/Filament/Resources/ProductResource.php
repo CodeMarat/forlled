@@ -55,7 +55,7 @@ class ProductResource extends Resource
     public static function form(Schema $schema): Schema
     {
         $hasProductCategoriesTable = self::hasTable('product_categories');
-        $hasProductCategoryColumn = self::hasColumn('products', 'product_category_id');
+        $hasProductCategoryPivot = self::hasTable('product_category_product');
         $hasProductRelatedTable = self::hasTable('product_related');
 
         return $schema
@@ -75,7 +75,7 @@ class ProductResource extends Resource
                                                     ->dehydrated(false)
                                                     ->live()
                                                     ->afterStateHydrated(function (Select $component, ?Product $record): void {
-                                                        $type = $record?->productCategory?->type;
+                                                        $type = $record?->productCategories->first()?->type;
 
                                                         $component->state(
                                                             $type instanceof ProductType
@@ -84,23 +84,24 @@ class ProductResource extends Resource
                                                         );
                                                     })
                                                     ->afterStateUpdated(function (Set $set): void {
-                                                        $set('product_category_id', null);
+                                                        $set('productCategories', []);
                                                     })
                                                     ->required()
                                                     ->native(false)
                                                     ->helperText('Choose which catalog this product belongs to.'),
-                                                Select::make('product_category_id')
-                                                    ->label('Category')
+                                                Select::make('productCategories')
+                                                    ->label('Categories')
+                                                    ->multiple()
                                                     ->relationship(
-                                                        name: 'productCategory',
+                                                        name: 'productCategories',
                                                         titleAttribute: 'name',
                                                         modifyQueryUsing: fn (Builder $query, Get $get): Builder => $query
                                                             ->where('type', $get('category_type') ?: ProductType::Product->value),
                                                     )
                                                     ->searchable()
                                                     ->preload()
-                                                    ->required($hasProductCategoriesTable && $hasProductCategoryColumn)
-                                                    ->visible($hasProductCategoriesTable && $hasProductCategoryColumn)
+                                                    ->required($hasProductCategoriesTable && $hasProductCategoryPivot)
+                                                    ->visible($hasProductCategoriesTable && $hasProductCategoryPivot)
                                                     ->helperText('Only categories matching the selected type are shown.')
                                                     ->createOptionForm([
                                                         TextInput::make('name')
@@ -379,20 +380,17 @@ class ProductResource extends Resource
                 ->sortable(),
         ];
 
-        if (self::hasTable('product_categories') && self::hasColumn('products', 'product_category_id')) {
-            $columns[] = TextColumn::make('productCategory.name')
-                ->label('Category')
-                ->searchable()
-                ->sortable();
+        if (self::hasTable('product_categories') && self::hasTable('product_category_product')) {
+            $columns[] = TextColumn::make('productCategories.name')
+                ->label('Categories')
+                ->badge()
+                ->searchable();
         }
 
-        $columns[] = TextColumn::make('productCategory.type')
+        $columns[] = TextColumn::make('category_type')
             ->label('Type')
             ->badge()
-            ->formatStateUsing(fn (ProductType|string $state): string => $state instanceof ProductType
-                ? $state->label()
-                : (ProductType::tryFrom($state)?->label() ?? $state))
-            ->sortable();
+            ->state(fn (Product $record): ?string => $record->productCategories->first()?->type?->label());
 
         if (self::hasColumn('products', 'size')) {
             $columns[] = TextColumn::make('size')
@@ -418,10 +416,11 @@ class ProductResource extends Resource
 
         $filters = [];
 
-        if (self::hasTable('product_categories') && self::hasColumn('products', 'product_category_id')) {
-            $filters[] = SelectFilter::make('product_category_id')
+        if (self::hasTable('product_categories') && self::hasTable('product_category_product')) {
+            $filters[] = SelectFilter::make('productCategories')
                 ->label('Category')
-                ->relationship('productCategory', 'name');
+                ->multiple()
+                ->relationship('productCategories', 'name');
         }
 
         $filters[] = SelectFilter::make('category_type')
@@ -435,7 +434,7 @@ class ProductResource extends Resource
                 }
 
                 return $query->whereHas(
-                    'productCategory',
+                    'productCategories',
                     fn (Builder $categoryQuery): Builder => $categoryQuery->where('type', $type),
                 );
             });

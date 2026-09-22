@@ -6,7 +6,7 @@ use App\Models\Concerns\HasAdminAudit;
 use Database\Factories\ProductFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Product extends Model
@@ -17,7 +17,6 @@ class Product extends Model
     use HasFactory;
 
     protected $fillable = [
-        'product_category_id',
         'name',
         'slug',
         'description',
@@ -43,9 +42,10 @@ class Product extends Model
         return 'slug';
     }
 
-    public function productCategory(): BelongsTo
+    public function productCategories(): BelongsToMany
     {
-        return $this->belongsTo(ProductCategory::class);
+        return $this->belongsToMany(ProductCategory::class, 'product_category_product')
+            ->withTimestamps();
     }
 
     public function productRecommendations(): HasMany

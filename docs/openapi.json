@@ -803,6 +803,12 @@
           },
           "category": {
             "$ref": "#/components/schemas/ProductCategoryCard"
+          },
+          "categories": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProductCategoryCard"
+            }
           }
         }
       },

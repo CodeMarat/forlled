@@ -24,10 +24,15 @@ class TreatmentProductController extends Controller
         $perPage = $request->perPage();
         $productsQuery = Product::query()
             ->where('is_active', true)
-            ->whereHas('productCategory', fn ($query) => $query
+            ->whereHas('productCategories', fn ($query) => $query
                 ->where('is_active', true)
                 ->where('type', ProductType::Treatment->value))
-            ->with('productCategory');
+            ->with([
+                'productCategories' => fn ($query) => $query
+                    ->where('is_active', true)
+                    ->where('type', ProductType::Treatment->value)
+                    ->orderBy('sort_order'),
+            ]);
 
         $products = $productsQuery
             ->orderBy('sort_order')
@@ -48,12 +53,18 @@ class TreatmentProductController extends Controller
         $productQuery = Product::query()
             ->where('slug', $slug)
             ->where('is_active', true)
-            ->whereHas('productCategory', fn ($query) => $query
+            ->whereHas('productCategories', fn ($query) => $query
                 ->where('is_active', true)
                 ->where('type', ProductType::Treatment->value))
             ->with([
-                'productCategory',
-                'productRecommendations.relatedProduct.productCategory',
+                'productCategories' => fn ($query) => $query
+                    ->where('is_active', true)
+                    ->where('type', ProductType::Treatment->value)
+                    ->orderBy('sort_order'),
+                'productRecommendations.relatedProduct.productCategories' => fn ($query) => $query
+                    ->where('is_active', true)
+                    ->where('type', ProductType::Treatment->value)
+                    ->orderBy('sort_order'),
             ]);
 
         $product = $productQuery->firstOrFail();
@@ -61,8 +72,10 @@ class TreatmentProductController extends Controller
         $recommendedProducts = $product->productRecommendations
             ->pluck('relatedProduct')
             ->filter(fn ($relatedProduct) => $relatedProduct?->is_active
-                && $relatedProduct->productCategory?->is_active
-                && $relatedProduct->productCategory?->type === ProductType::Treatment)
+                && $relatedProduct->productCategories->contains(
+                    fn (ProductCategory $category): bool => $category->is_active
+                        && $category->type === ProductType::Treatment,
+                ))
             ->values();
 
         $product->setRelation('recommendedProducts', $recommendedProducts);

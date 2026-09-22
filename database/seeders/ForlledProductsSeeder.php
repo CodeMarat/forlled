@@ -29,7 +29,8 @@ class ForlledProductsSeeder extends Seeder
             'categories_added' => [],
             'products_existing' => 0,
             'products_added' => [],
-            'products_recategorized' => 0,
+            'products_completed' => 0,
+            'category_assignments_added' => 0,
         ];
 
         DB::transaction(function () use ($products, &$statistics): void {
@@ -65,9 +66,13 @@ class ForlledProductsSeeder extends Seeder
                 if ($existingProduct instanceof Product) {
                     $statistics['products_existing']++;
 
-                    if ((int) $existingProduct->product_category_id !== (int) $category->getKey()) {
-                        $existingProduct->update(['product_category_id' => $category->getKey()]);
-                        $statistics['products_recategorized']++;
+                    if ($this->completeExistingProduct($existingProduct, $sourceProduct)) {
+                        $statistics['products_completed']++;
+                    }
+
+                    if (! $existingProduct->productCategories()->whereKey($category->getKey())->exists()) {
+                        $existingProduct->productCategories()->attach($category);
+                        $statistics['category_assignments_added']++;
                     }
 
                     continue;
@@ -75,9 +80,9 @@ class ForlledProductsSeeder extends Seeder
 
                 $product = Product::query()->create($this->productAttributes(
                     $sourceProduct,
-                    $category,
                     $sortOrder,
                 ));
+                $product->productCategories()->attach($category);
 
                 $existingProducts->put($normalizedProduct, $product);
                 $statistics['products_added'][] = $product->name;
@@ -167,7 +172,7 @@ class ForlledProductsSeeder extends Seeder
      * @param  array<string, mixed>  $sourceProduct
      * @return array<string, mixed>
      */
-    protected function productAttributes(array $sourceProduct, ProductCategory $category, int $sortOrder): array
+    protected function productAttributes(array $sourceProduct, int $sortOrder): array
     {
         $name = trim((string) ($sourceProduct['name'] ?? ''));
         $description = trim((string) ($sourceProduct['description'] ?? ''));
@@ -177,7 +182,6 @@ class ForlledProductsSeeder extends Seeder
         }
 
         return [
-            'product_category_id' => $category->getKey(),
             'name' => $name,
             'slug' => SlugGenerator::uniqueFromParts(Product::class, [$name]),
             'description' => $this->paragraph($description),
@@ -186,12 +190,7 @@ class ForlledProductsSeeder extends Seeder
             'hero_image' => null,
             'side_image' => null,
             'key_benefits' => $this->benefits($sourceProduct['key_benefits'] ?? []),
-            'detail_sections' => ProductDetailSections::makeVisible([
-                ['title' => 'Indications', 'content' => $this->list($sourceProduct['indications'] ?? [])],
-                ['title' => 'Product density', 'content' => $this->paragraph((string) ($sourceProduct['product_density'] ?? ''))],
-                ['title' => 'Active ingredients', 'content' => $this->activeIngredients($sourceProduct)],
-                ['title' => 'How to use', 'content' => $this->list($sourceProduct['how_to_use'] ?? [], ordered: true)],
-            ]),
+            'detail_sections' => $this->detailSections($sourceProduct),
             'recommendations_title' => null,
             'combine_with_title' => null,
             'combine_left_title' => null,
@@ -202,6 +201,126 @@ class ForlledProductsSeeder extends Seeder
             'sort_order' => $sortOrder,
             'is_active' => true,
         ];
+    }
+
+    /** @param  array<string, mixed>  $sourceProduct */
+    protected function completeExistingProduct(Product $product, array $sourceProduct): bool
+    {
+        $attributes = [];
+
+        if (blank($product->description) && filled($sourceProduct['description'] ?? null)) {
+            $attributes['description'] = $this->paragraph((string) $sourceProduct['description']);
+        }
+
+        if (blank($product->size) && filled($sourceProduct['size_or_packaging'] ?? null)) {
+            $attributes['size'] = $this->nullableString($sourceProduct['size_or_packaging']);
+        }
+
+        $keyBenefits = $this->mergeBenefits(
+            is_array($product->key_benefits) ? $product->key_benefits : [],
+            $this->benefits($sourceProduct['key_benefits'] ?? []),
+        );
+
+        if ($keyBenefits !== ($product->key_benefits ?? [])) {
+            $attributes['key_benefits'] = $keyBenefits;
+        }
+
+        $detailSections = $this->mergeDetailSections(
+            is_array($product->detail_sections) ? $product->detail_sections : [],
+            $this->detailSections($sourceProduct),
+        );
+
+        if ($detailSections !== ($product->detail_sections ?? [])) {
+            $attributes['detail_sections'] = $detailSections;
+        }
+
+        if ($attributes === []) {
+            return false;
+        }
+
+        $product->update($attributes);
+
+        return true;
+    }
+
+    /**
+     * @param  array<int, mixed>  $existingBenefits
+     * @param  array<int, array{benefit: string}>  $sourceBenefits
+     * @return array<int, mixed>
+     */
+    protected function mergeBenefits(array $existingBenefits, array $sourceBenefits): array
+    {
+        $mergedBenefits = array_values($existingBenefits);
+        $existingNames = collect($existingBenefits)
+            ->map(fn (mixed $benefit): string => $this->normalizeName(
+                is_array($benefit) ? (string) ($benefit['benefit'] ?? '') : (string) $benefit,
+            ))
+            ->filter()
+            ->flip();
+
+        foreach ($sourceBenefits as $sourceBenefit) {
+            $normalizedBenefit = $this->normalizeName($sourceBenefit['benefit']);
+
+            if ($existingNames->has($normalizedBenefit)) {
+                continue;
+            }
+
+            $mergedBenefits[] = $sourceBenefit;
+            $existingNames->put($normalizedBenefit, true);
+        }
+
+        return $mergedBenefits;
+    }
+
+    /**
+     * @param  array<int, mixed>  $existingSections
+     * @param  array<int, mixed>  $sourceSections
+     * @return array<int, mixed>
+     */
+    protected function mergeDetailSections(array $existingSections, array $sourceSections): array
+    {
+        $mergedSections = array_values($existingSections);
+        $existingTitles = collect($existingSections)
+            ->filter(fn (mixed $section): bool => is_array($section))
+            ->map(fn (array $section): string => $this->normalizeName((string) ($section['title'] ?? '')))
+            ->filter()
+            ->flip();
+
+        foreach ($sourceSections as $sourceSection) {
+            if (! is_array($sourceSection)) {
+                continue;
+            }
+
+            $normalizedTitle = $this->normalizeName((string) ($sourceSection['title'] ?? ''));
+
+            if ($normalizedTitle === '' || $existingTitles->has($normalizedTitle)) {
+                continue;
+            }
+
+            $mergedSections[] = $sourceSection;
+            $existingTitles->put($normalizedTitle, true);
+        }
+
+        return $mergedSections;
+    }
+
+    /**
+     * @param  array<string, mixed>  $sourceProduct
+     * @return array<int, array{title: string, content: string, is_visible: bool}>
+     */
+    protected function detailSections(array $sourceProduct): array
+    {
+        $sections = [
+            ['title' => 'Indications', 'content' => $this->list($sourceProduct['indications'] ?? [])],
+            ['title' => 'Product density', 'content' => $this->paragraph((string) ($sourceProduct['product_density'] ?? ''))],
+            ['title' => 'Active ingredients', 'content' => $this->activeIngredients($sourceProduct)],
+            ['title' => 'How to use', 'content' => $this->list($sourceProduct['how_to_use'] ?? [], ordered: true)],
+        ];
+
+        return ProductDetailSections::makeVisible(array_values(array_filter(
+            $sections,
+            fn (array $section): bool => filled($section['content']),
+        )));
     }
 
     /** @return array<int, array{benefit: string}> */
@@ -308,7 +427,7 @@ class ForlledProductsSeeder extends Seeder
     }
 
     /**
-     * @param  array{categories_existing: int, categories_added: array<int, string>, products_existing: int, products_added: array<int, string>, products_recategorized: int}  $statistics
+     * @param  array{categories_existing: int, categories_added: array<int, string>, products_existing: int, products_added: array<int, string>, products_completed: int, category_assignments_added: int}  $statistics
      */
     protected function report(array $statistics): void
     {
@@ -321,7 +440,8 @@ class ForlledProductsSeeder extends Seeder
             ['Categories added', count($statistics['categories_added'])],
             ['Products already existed', $statistics['products_existing']],
             ['Products added', count($statistics['products_added'])],
-            ['Products recategorized', $statistics['products_recategorized']],
+            ['Existing products completed', $statistics['products_completed']],
+            ['Category assignments added', $statistics['category_assignments_added']],
         ]);
 
         if ($statistics['categories_added'] !== []) {
