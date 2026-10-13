@@ -67,11 +67,6 @@ class FeaturedInPage extends Page
                                     ->disk('public')
                                     ->directory('featured-in/logos')
                                     ->required(),
-                                TextInput::make('alt')
-                                    ->label('Logo alt text')
-                                    ->maxLength(255)
-                                    ->helperText('Describe the image to improve SEO and accessibility.')
-                                    ->required(),
                             ])
                             ->defaultItems(0)
                             ->collapsible()

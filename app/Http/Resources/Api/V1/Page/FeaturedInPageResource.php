@@ -16,7 +16,7 @@ class FeaturedInPageResource extends ApiResource
             'title' => $this->title,
             'logos' => array_values(array_filter(array_map(
                 fn (mixed $logo): ?array => is_array($logo) && filled($logo['image'] ?? null)
-                    ? $this->image($logo['image'], 'card', $logo['alt'] ?? null)
+                    ? $this->image($logo['image'], 'card')
                     : null,
                 is_array($this->logos) ? $this->logos : [],
             ))),

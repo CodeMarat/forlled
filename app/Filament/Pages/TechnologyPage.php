@@ -168,17 +168,17 @@ class TechnologyPage extends Page
                                                             ->rows(5)
                                                             ->required()
                                                             ->columnSpanFull(),
+                                                        TextInput::make('patent_text')
+                                                            ->label('Patent text')
+                                                            ->maxLength(500)
+                                                            ->helperText('Optional patent or technology reference shown below the description.')
+                                                            ->columnSpanFull(),
                                                         FileUpload::make('icon')
                                                             ->label('Icon image')
                                                             ->image()
                                                             ->disk('public')
                                                             ->directory('technology/ingredients')
                                                             ->helperText('Optional image if the frontend uses a custom icon instead of text badge.')
-                                                            ->columnSpanFull(),
-                                                        TextInput::make('icon_alt')
-                                                            ->label('Icon alt text')
-                                                            ->maxLength(255)
-                                                            ->helperText('Describe the image to improve SEO and accessibility.')
                                                             ->columnSpanFull(),
                                                     ]),
                                             ])
@@ -244,10 +244,6 @@ class TechnologyPage extends Page
                                                                     ->disk('public')
                                                                     ->directory('technology/case-studies')
                                                                     ->required(),
-                                                                TextInput::make('before_image_alt')
-                                                                    ->label('Before image alt text')
-                                                                    ->maxLength(255)
-                                                                    ->helperText('Describe the image to improve SEO and accessibility.'),
                                                             ]),
                                                         Grid::make(1)
                                                             ->schema([
@@ -257,10 +253,6 @@ class TechnologyPage extends Page
                                                                     ->disk('public')
                                                                     ->directory('technology/case-studies')
                                                                     ->required(),
-                                                                TextInput::make('after_image_alt')
-                                                                    ->label('After image alt text')
-                                                                    ->maxLength(255)
-                                                                    ->helperText('Describe the image to improve SEO and accessibility.'),
                                                             ]),
                                                         TextInput::make('duration')
                                                             ->label('Duration')

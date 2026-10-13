@@ -45,7 +45,8 @@ class TechnologyPageResource extends ApiResource
                             'title' => $item['title'] ?? null,
                             'badge' => $item['badge'] ?? null,
                             'description' => $item['description'] ?? null,
-                            'icon' => $this->image($item['icon'] ?? null, alt: $item['icon_alt'] ?? null),
+                            'patent_text' => $item['patent_text'] ?? null,
+                            'icon' => $this->image($item['icon'] ?? null),
                         ]
                         : null,
                     is_array($this->ingredient_cards) ? $this->ingredient_cards : [],
@@ -64,11 +65,9 @@ class TechnologyPageResource extends ApiResource
                     fn (mixed $item): array => [
                         'before_image' => $this->image(
                             is_array($item) ? $item['before_image'] ?? null : null,
-                            alt: is_array($item) ? ($item['before_image_alt'] ?? null) : null,
                         ),
                         'after_image' => $this->image(
                             is_array($item) ? $item['after_image'] ?? null : null,
-                            alt: is_array($item) ? ($item['after_image_alt'] ?? null) : null,
                         ),
                         'duration' => is_array($item) ? ($item['duration'] ?? null) : null,
                         'result_text' => is_array($item) ? ($item['result_text'] ?? null) : null,
