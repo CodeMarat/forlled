@@ -26,6 +26,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             AboutUsSeeder::class,
             FeaturedInSeeder::class,
+            PrivacyPolicyPageSeeder::class,
             ProductCategoryNavigationSeeder::class,
             ForlledProductsSeeder::class,
             SocialMediaSeeder::class,

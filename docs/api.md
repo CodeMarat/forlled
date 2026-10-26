@@ -38,6 +38,7 @@ Postman collection: [docs/forlled-public-api.postman_collection.json](/home/mara
 - `GET /pages/home`
 - `GET /pages/about-us`
 - `GET /pages/technology`
+- `GET /pages/privacy` - returns `title`, `last_edited_at` (`YYYY-MM-DD`), and `content` (HTML).
 - `GET /pages/contact-us`
 - `GET /pages/become-partner`
 - `GET /pages/featured-in`
