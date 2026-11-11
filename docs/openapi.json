@@ -234,13 +234,23 @@
     },
     "/locations": {
       "get": {
-        "summary": "List visible locations",
+        "summary": "List visible USA salons",
         "parameters": [
           {
             "$ref": "#/components/parameters/Page"
           },
           {
             "$ref": "#/components/parameters/PerPage"
+          },
+          {
+            "name": "state",
+            "in": "query",
+            "schema": { "type": "string", "minLength": 2, "maxLength": 2 }
+          },
+          {
+            "name": "search",
+            "in": "query",
+            "schema": { "type": "string" }
           }
         ],
         "responses": {
@@ -250,6 +260,50 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/LocationPagination"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/represented-countries": {
+      "get": {
+        "summary": "List visible countries represented worldwide",
+        "responses": {
+          "200": {
+            "description": "Country list in display order",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": { "$ref": "#/components/schemas/RepresentedCountry" }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/visitor-region": {
+      "get": {
+        "summary": "Resolve visitor page variant from IP",
+        "responses": {
+          "200": {
+            "description": "Null region indicates that lookup failed and should not be cached",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "region": { "type": ["string", "null"], "enum": ["us", "world", null] },
+                    "cache_ttl_seconds": { "type": "integer" }
+                  }
                 }
               }
             }
@@ -712,6 +766,9 @@
           "city": {
             "type": "string"
           },
+          "state": {
+            "type": "string"
+          },
           "company": {
             "type": "string"
           },
@@ -731,6 +788,31 @@
             ],
             "format": "email"
           },
+          "website": {
+            "type": ["string", "null"],
+            "format": "uri"
+          },
+          "latitude": {
+            "type": ["number", "null"]
+          },
+          "longitude": {
+            "type": ["number", "null"]
+          },
+          "google_address_place_id": {
+            "type": ["string", "null"]
+          },
+          "is_active": {
+            "type": "boolean"
+          }
+        }
+      },
+      "RepresentedCountry": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "integer" },
+          "name": { "type": "string" },
+          "slug": { "type": "string" },
+          "sort_order": { "type": "integer" },
           "map_pin_x": {
             "type": [
               "integer",
@@ -742,9 +824,6 @@
               "integer",
               "null"
             ]
-          },
-          "is_active": {
-            "type": "boolean"
           }
         }
       },
@@ -1206,6 +1285,27 @@
                   "string",
                   "null"
                 ]
+              }
+            }
+          },
+          "us": {
+            "type": "object",
+            "properties": {
+              "hero": {
+                "type": "object",
+                "properties": {
+                  "eyebrow": { "type": ["string", "null"] },
+                  "title": { "type": ["string", "null"] },
+                  "description": { "type": ["string", "null"] },
+                  "image": { "$ref": "#/components/schemas/Image" }
+                }
+              },
+              "locations": {
+                "type": "object",
+                "properties": {
+                  "title": { "type": ["string", "null"] },
+                  "description": { "type": ["string", "null"] }
+                }
               }
             }
           }

@@ -12,6 +12,7 @@ use Filament\Actions\Action;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
@@ -53,7 +54,7 @@ class LocationResource extends Resource
                                     ->alphaDash()
                                     ->unique(ignoreRecord: true)
                                     ->maxLength(255)
-                                    ->helperText('Generated automatically from the country, city, and company.'),
+                                    ->helperText('Generated automatically from the state, city, and salon name.'),
                                 TextInput::make('sort_order')
                                     ->required()
                                     ->numeric()
@@ -63,39 +64,38 @@ class LocationResource extends Resource
                             ]),
                         Grid::make(2)
                             ->schema([
-                                TextInput::make('country')
+                                TextInput::make('state')
+                                    ->label('State code')
                                     ->required()
                                     ->live(onBlur: true)
                                     ->afterStateUpdated(function (Get $get, Set $set, ?Location $record): void {
                                         $set('slug', SlugGenerator::uniqueFromParts(
                                             Location::class,
-                                            [$get('country_key') ?: $get('country'), $get('city'), $get('company')],
+                                            [$get('state'), $get('city'), $get('company')],
                                             $record,
                                         ));
                                     })
-                                    ->maxLength(255),
-                                TextInput::make('country_key')
-                                    ->required()
-                                    ->maxLength(255)
-                                    ->helperText('Machine-friendly country key, for example: russia'),
+                                    ->maxLength(2)
+                                    ->helperText('Two-letter US state code, for example: NY.'),
                                 TextInput::make('city')
                                     ->required()
                                     ->live(onBlur: true)
                                     ->afterStateUpdated(function (Get $get, Set $set, ?Location $record): void {
                                         $set('slug', SlugGenerator::uniqueFromParts(
                                             Location::class,
-                                            [$get('country_key') ?: $get('country'), $get('city'), $get('company')],
+                                            [$get('state'), $get('city'), $get('company')],
                                             $record,
                                         ));
                                     })
                                     ->maxLength(255),
                                 TextInput::make('company')
+                                    ->label('Salon name')
                                     ->required()
                                     ->live(onBlur: true)
                                     ->afterStateUpdated(function (Get $get, Set $set, ?Location $record): void {
                                         $set('slug', SlugGenerator::uniqueFromParts(
                                             Location::class,
-                                            [$get('country_key') ?: $get('country'), $get('city'), $get('company')],
+                                            [$get('state'), $get('city'), $get('company')],
                                             $record,
                                         ));
                                     })
@@ -110,25 +110,29 @@ class LocationResource extends Resource
                                 TextInput::make('email')
                                     ->email()
                                     ->maxLength(255),
+                                TextInput::make('website')
+                                    ->url()
+                                    ->maxLength(255),
                                 Toggle::make('is_active')
                                     ->label('Visible on website')
                                     ->default(true),
                             ]),
                         Grid::make(2)
                             ->schema([
-                                TextInput::make('map_pin_x')
-                                    ->label('Map pin X')
+                                TextInput::make('latitude')
                                     ->numeric()
-                                    ->minValue(0)
-                                    ->maxValue(100)
-                                    ->helperText('Horizontal map position in percent.'),
-                                TextInput::make('map_pin_y')
-                                    ->label('Map pin Y')
+                                    ->minValue(-90)
+                                    ->maxValue(90)
+                                    ->helperText('Required to show the salon as a Google Maps marker.'),
+                                TextInput::make('longitude')
                                     ->numeric()
-                                    ->minValue(0)
-                                    ->maxValue(100)
-                                    ->helperText('Vertical map position in percent.'),
+                                    ->minValue(-180)
+                                    ->maxValue(180),
                             ]),
+                        TextInput::make('google_address_place_id')
+                            ->label('Google address Place ID')
+                            ->maxLength(255)
+                            ->helperText('Used to locate this salon on Google Maps when manual coordinates are empty.'),
                         Repeater::make('phones')
                             ->label('Phone numbers')
                             ->simple(
@@ -149,13 +153,14 @@ class LocationResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('country')
+                TextColumn::make('state')
                     ->searchable()
                     ->sortable(),
                 TextColumn::make('city')
                     ->searchable()
                     ->sortable(),
                 TextColumn::make('company')
+                    ->label('Salon')
                     ->searchable()
                     ->sortable(),
                 TextColumn::make('slug')
@@ -203,7 +208,7 @@ class LocationResource extends Resource
     {
         return [
             Section::make('Page settings')
-                ->description('Controls SEO fields and the hero content shown on the public locations page.')
+                ->description('Controls both public Locations page variants.')
                 ->collapsible()
                 ->collapsed()
                 ->schema([
@@ -223,6 +228,26 @@ class LocationResource extends Resource
                         ->label('Hero description')
                         ->rows(4)
                         ->required(),
+                    TextInput::make('us_hero_eyebrow')
+                        ->label('USA hero eyebrow')
+                        ->maxLength(255),
+                    TextInput::make('us_hero_title')
+                        ->label('USA hero title')
+                        ->maxLength(255),
+                    Textarea::make('us_hero_description')
+                        ->label('USA hero description')
+                        ->rows(4),
+                    FileUpload::make('us_hero_image')
+                        ->label('USA hero image')
+                        ->image()
+                        ->disk('public')
+                        ->directory('pages/locations'),
+                    TextInput::make('us_locations_title')
+                        ->label('USA locations title')
+                        ->maxLength(255),
+                    Textarea::make('us_locations_description')
+                        ->label('USA locations description')
+                        ->rows(3),
                     Actions::make([
                         Action::make('saveLocationsPage')
                             ->label('Save')

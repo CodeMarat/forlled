@@ -17,15 +17,18 @@ class Location extends Model
     protected $fillable = [
         'slug',
         'sort_order',
-        'country',
-        'country_key',
         'city',
+        'state',
         'company',
         'address',
         'phones',
         'email',
-        'map_pin_x',
-        'map_pin_y',
+        'website',
+        'source_key',
+        'latitude',
+        'longitude',
+        'google_address_place_id',
+        'place_lookup_attempted_at',
         'is_active',
     ];
 
@@ -37,8 +40,9 @@ class Location extends Model
         return [
             'phones' => 'array',
             'sort_order' => 'integer',
-            'map_pin_x' => 'integer',
-            'map_pin_y' => 'integer',
+            'latitude' => 'decimal:7',
+            'longitude' => 'decimal:7',
+            'place_lookup_attempted_at' => 'datetime',
             'is_active' => 'boolean',
         ];
     }

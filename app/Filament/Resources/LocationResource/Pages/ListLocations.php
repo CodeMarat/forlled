@@ -12,6 +12,7 @@ use Filament\Schemas\Components\EmbeddedSchema;
 use Filament\Schemas\Components\EmbeddedTable;
 use Filament\Schemas\Components\Form;
 use Filament\Schemas\Components\RenderHook;
+use Filament\Schemas\Components\View;
 use Filament\Schemas\Schema;
 use Filament\Support\Enums\Alignment;
 use Filament\View\PanelsRenderHook;
@@ -56,6 +57,7 @@ class ListLocations extends ListRecords
     {
         return $schema
             ->components([
+                View::make('filament.pages.locations-tabs'),
                 $this->getLocationsPageFormContentComponent(),
                 $this->getTabsContentComponent(),
                 RenderHook::make(PanelsRenderHook::RESOURCE_PAGES_LIST_RECORDS_TABLE_BEFORE),

@@ -90,10 +90,18 @@ These endpoints return a single structured payload per page, grouped by sections
 ### Locations
 
 - `GET /locations`
-  - Returns visible locations only.
-  - Supports `page` and `per_page`.
+  - Returns visible USA salons only, with state, website, optional independently sourced coordinates, and optional Google address Place ID (not a verified business ID).
+  - Supports `page`, `per_page`, `state` (two-letter code), and `search` (name, city, state, or address).
+- `GET /represented-countries`
+  - Returns the visible worldwide country list in menu order. Optional world-map pin percentages are null until assigned.
+- `GET /visitor-region`
+  - Resolves the visitor IP on the backend and returns `region: "us"` or `region: "world"`, plus `cache_ttl_seconds: 86400`.
+  - On lookup failure, returns `region: null` and TTL `0`; the frontend should show the world version without caching that failure.
+  - Request this endpoint from the visitor's browser, not through a server-side frontend proxy. If the backend is behind a trusted reverse proxy, set `TRUSTED_PROXIES` to its IP/CIDR; never trust arbitrary forwarded headers.
 - `GET /pages/locations`
-  - Returns singleton page settings for the public locations page.
+  - Returns singleton page settings for both variants: the existing `hero` and the new `us.hero` / `us.locations` blocks.
+
+Run `php artisan db:seed --class='Database\Seeders\LocationsCatalogSeeder'` after migrations to import 48 countries and 54 USA salons. Set `IPINFO_TOKEN` for IP lookup. To resolve missing salon address Place IDs, set `GOOGLE_MAPS_GEOCODING_KEY` and run `php artisan locations:geocode-us-salons`; this command stores address Place IDs, not Google-derived coordinates. Review unmatched addresses manually. The frontend must resolve address Place IDs with Google Maps; it must not treat them as verified salon business records.
 
 ### Treatments
 

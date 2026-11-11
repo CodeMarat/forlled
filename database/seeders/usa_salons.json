@@ -1,0 +1,488 @@
+[
+  {
+    "name": "RESCUE SPA NYC",
+    "state": "NY",
+    "city": "NEW YORK, NY",
+    "address": "29 East 19th St, New York, NY 10003",
+    "website": "https://www.rescuespa.com/",
+    "phone": "866-772-2766",
+    "email": null
+  },
+  {
+    "name": "RESCUE SPA PHILADELPHIA",
+    "state": "PA",
+    "city": "PHILADELPHIA, PA",
+    "address": "1811 Walnut Street, Philadelphia, PA 19103",
+    "website": "https://www.rescuespa.com/",
+    "phone": "866-772-2766",
+    "email": null
+  },
+  {
+    "name": "Aida Bicaj Spa - Upper East Side",
+    "state": "NY",
+    "city": "NEW YORK, NY",
+    "address": "30 East 67th Street, 5th Floor, New York, NY 10065",
+    "website": "https://aidabicaj.com/",
+    "phone": "212-861-1007",
+    "email": null
+  },
+  {
+    "name": "Aida Bicaj Spa - Tribeca",
+    "state": "NY",
+    "city": "NEW YORK, NY",
+    "address": "64 N Moore St, New York, NY 10013, United States",
+    "website": "https://aidabicaj.com/",
+    "phone": "917-472-7743",
+    "email": null
+  },
+  {
+    "name": "LA SUITE SKINCARE",
+    "state": "CT",
+    "city": "GREENWICH, CT",
+    "address": "270 Mason Street, Greenwich, CT 06830",
+    "website": "https://lasuiteskincare.com/",
+    "phone": "203-861-7338",
+    "email": null
+  },
+  {
+    "name": "La Suite Skincare UnionDerm",
+    "state": "NY",
+    "city": "NEW YORK, NY",
+    "address": "19 Union Square W, New York, NY 10003, United States",
+    "website": "https://www.unionderm.com/skincare/about-la-suite-skincare/",
+    "phone": "212-366-5400",
+    "email": null
+  },
+  {
+    "name": "LUXE ATELIER SPA",
+    "state": "OR",
+    "city": "PORTLAND / LAKE OSWEGO, OR",
+    "address": "101 S. State Street #4110, Lake Oswego, OR 97034",
+    "website": "https://luxeatelierspa.com/",
+    "phone": "503-303-7187",
+    "email": null
+  },
+  {
+    "name": "JOANNA CZECH NY STUDIO",
+    "state": "NY",
+    "city": "NEW YORK, NY",
+    "address": "34 Howard St, 2nd Floor, New York, NY 10013",
+    "website": "https://www.joannaczech.com/",
+    "phone": "212-464-7303",
+    "email": null
+  },
+  {
+    "name": "JOANNA CZECH SKINCARE DALLAS",
+    "state": "TX",
+    "city": "DALLAS, TX",
+    "address": "2410 Victory Park Ln, Dallas, TX 75219",
+    "website": "https://www.joannaczech.com/",
+    "phone": "214-812-9488",
+    "email": null
+  },
+  {
+    "name": "JOANNA CZECH LA STUDIO",
+    "state": "CA",
+    "city": "BEVERLY HILLS, CA",
+    "address": "9291 Burton Way, Beverly Hills, CA 90210",
+    "website": "https://www.joannaczech.com/",
+    "phone": "310-492-2990",
+    "email": null
+  },
+  {
+    "name": "CANDACE MARINO THE LA FACIALIST",
+    "state": "CA",
+    "city": "LA / BEVERLY HILLS, CA",
+    "address": "416 N Bedford Dr, Suite 311, Beverly Hills, CA 90210",
+    "website": "https://thelafacialist.com/",
+    "phone": "310-739-9997",
+    "email": null
+  },
+  {
+    "name": "HEAL SPA BY KATARYNA",
+    "state": "CT",
+    "city": "WESTPORT, CT",
+    "address": "243 Greens Farms Rd, Westport, CT 06880",
+    "website": "https://heal-spa.com/",
+    "phone": "203-644-9513",
+    "email": null
+  },
+  {
+    "name": "BLUE WATER SPA OYSTER BAY",
+    "state": "NY",
+    "city": "OYSTER BAY, NY",
+    "address": "21 W Main St, Oyster Bay, NY 11771",
+    "website": "https://bluewaterspany.com/",
+    "phone": "516-518-4904",
+    "email": null
+  },
+  {
+    "name": "BLUE WATER SPA SOUTHAMPTON",
+    "state": "NY",
+    "city": "SOUTHAMPTON, NY",
+    "address": "40 W Main St, Southampton, NY 11968",
+    "website": "https://bluewaterspany.com/",
+    "phone": "631-528-2496",
+    "email": null
+  },
+  {
+    "name": "STRAUHS STUDIOS",
+    "state": "NY",
+    "city": "NEW YORK, NY",
+    "address": "401 Broadway, Suite 213, New York, NY 10013",
+    "website": "https://strauhsstudios.com/",
+    "phone": null,
+    "email": "info@strauhsstudios.com"
+  },
+  {
+    "name": "Skincare By Amy Peterson",
+    "state": "FL",
+    "city": "MIAMI BEACH, FL",
+    "address": "1560 Lenox Ave. Unit 201, 202 & 203, Miami Beach, FL 33139, United States",
+    "website": "https://www.skincarebyamypeterson.com/",
+    "phone": "786-502-1818",
+    "email": null
+  },
+  {
+    "name": "BEAUTY MARK",
+    "state": "ME",
+    "city": "PORTLAND, ME",
+    "address": "250 Commercial Street, 2nd Floor, Portland, ME 04101",
+    "website": "https://beautymarkco.com/",
+    "phone": "207-808-5999",
+    "email": null
+  },
+  {
+    "name": "TASHA MARC",
+    "state": "NY",
+    "city": "NEW YORK, NY",
+    "address": "16 East 79th St, Suite 31, New York, NY 10075",
+    "website": "https://tashamarc.com/",
+    "phone": null,
+    "email": null
+  },
+  {
+    "name": "Camille Fields-Restorative Skin Therapy",
+    "state": "CA",
+    "city": "STUDIO CITY, CA",
+    "address": "13201 Ventura Blvd, Studio City, CA 91604",
+    "website": "https://camillefields.com/",
+    "phone": "818-450-5929",
+    "email": null
+  },
+  {
+    "name": "ESTHETICS BY SANDRA VELANDIA",
+    "state": "NY",
+    "city": "FOREST HILLS, NY",
+    "address": "107-06 71st Rd Suite 302, Forest Hills, NY 11375, United States",
+    "website": "https://www.sandravelandia.com/",
+    "phone": "718-487-3400",
+    "email": null
+  },
+  {
+    "name": "KATRINATIQUE SPA",
+    "state": "FL",
+    "city": "BOCA RATON, FL",
+    "address": "807 E Palmetto Park Rd, Boca Raton, FL 33432",
+    "website": "https://katrinatique.com/",
+    "phone": "561-931-2156",
+    "email": null
+  },
+  {
+    "name": "ALEXANDRA SKIN ATELIER",
+    "state": "PA",
+    "city": "NEW HOPE, PA",
+    "address": "5667 York Rd, Unit 3, New Hope, PA",
+    "website": "https://www.alexandraskinatelier.com/",
+    "phone": "267- 293-9340",
+    "email": null
+  },
+  {
+    "name": "BEAUTIFUL SKIN COLORADO BY REBECCA JOHNSTON",
+    "state": "CO",
+    "city": "COLORADO SPRINGS, CO",
+    "address": "320 S. Cascade Ave, 2nd Floor, Colorado Springs, CO 80903",
+    "website": "https://www.beautifulskincolorado.com/",
+    "phone": "719-465-2586",
+    "email": null
+  },
+  {
+    "name": "DIONYSIA BEAUTY",
+    "state": "TX",
+    "city": "HOUSTON, TX",
+    "address": "4119 Montrose Blvd, Suite 450, Houston, Texas 77006",
+    "website": "https://dionysiabeauty.square.site/",
+    "phone": "414-852-8033",
+    "email": null
+  },
+  {
+    "name": "ANNA BABAYAN SKINCARE",
+    "state": "MA",
+    "city": "BOSTON / BROOKLINE, MA",
+    "address": "1018 Beacon St, Suite 101, Brookline, MA 02446",
+    "website": "https://annababayanskincare.com/",
+    "phone": "617-992-1908",
+    "email": null
+  },
+  {
+    "name": "LA BELLE PEAU SPA",
+    "state": "FL",
+    "city": "MIAMI BEACH, FL",
+    "address": "421 Washington Ave, Suite 203, Miami Beach, FL 33139",
+    "website": "https://labellepeauparis.com/",
+    "phone": "645-214-1210",
+    "email": null
+  },
+  {
+    "name": "ATELIER BEAUTE SPA",
+    "state": "NY",
+    "city": "BROOKLYN, NY",
+    "address": "428 Wythe Ave Unit 104, Brooklyn, NY 11249, United States",
+    "website": "https://atelierbeautespa.com/",
+    "phone": "6484-2100",
+    "email": null
+  },
+  {
+    "name": "AgeWell Internal Medicine, Wellness & Aesthetics",
+    "state": "NY",
+    "city": "GLEN COVE, NY",
+    "address": "3 School St, Suite 204, Glen Cove, NY 11542",
+    "website": "https://agewellmedicalcenter.com/",
+    "phone": "516-759-5011",
+    "email": null
+  },
+  {
+    "name": "FEED YOUR SKIN",
+    "state": "NY",
+    "city": "NEW YORK, NY",
+    "address": "53 West 28th Street\n 3rd Floor\n New York, New York 10001",
+    "website": "https://feedyourskin.com/",
+    "phone": "347-463-4507",
+    "email": null
+  },
+  {
+    "name": "LILA ZOIS AESTHETICS",
+    "state": "FL",
+    "city": "TAMPA, FL",
+    "address": "3433 S West Shore Blvd, Tampa, FL 33629",
+    "website": "https://www.lilazoisaesthetics.com/",
+    "phone": "813-505-4720",
+    "email": null
+  },
+  {
+    "name": "SARAH BUCHANAN SAGE SPA",
+    "state": "VA",
+    "city": "CHARLOTTESVILLE, VA",
+    "address": "134 10th St. NW, Suite 6, Charlottesville, VA",
+    "website": "https://www.sagevirginia.com/",
+    "phone": "434-825-1693",
+    "email": null
+  },
+  {
+    "name": "SUNESSE STUDIO",
+    "state": "NY",
+    "city": "NEW YORK, NY",
+    "address": "6 East 45th Street, Floor 4, Suite 2, New York, NY 10017",
+    "website": "https://www.sunessestudio.com/",
+    "phone": "516-606-0266",
+    "email": null
+  },
+  {
+    "name": "ALEXANDA ACCARO STUDIO",
+    "state": "NY",
+    "city": "HUNTINGTON, NY",
+    "address": "802 Fort Salonga Rd, Northport, NY 11768",
+    "website": "https://alexandraaccardo.com/",
+    "phone": "631-452-2023",
+    "email": null
+  },
+  {
+    "name": "BLACKBERRY FARM HOTEL & SPA",
+    "state": "TN",
+    "city": "MARYVILLE / WALLAND, TN",
+    "address": "1471 West Millers Cove Road, Walland, TN 37886",
+    "website": "https://www.blackberryfarm.com/",
+    "phone": "800-557-8864",
+    "email": null
+  },
+  {
+    "name": "ONDINE SKIN BY MARIA VERA",
+    "state": "NY",
+    "city": "KINGSTON, NY",
+    "address": "36 John Street\n Kingston, NY 12401\n 917.406.5654",
+    "website": "Ondineskin.com",
+    "phone": "917-406-5654",
+    "email": null
+  },
+  {
+    "name": "MB SKINCARE SALON",
+    "state": "CT",
+    "city": "STAMFORD, CT",
+    "address": "37 Belltown Road, Stamford, CT 06905",
+    "website": "https://mbskincaresalon.com/",
+    "phone": "203-325-1054",
+    "email": null
+  },
+  {
+    "name": "OLIVEAUX SKINCARE",
+    "state": "CA",
+    "city": "LOS ANGELES, CA",
+    "address": "5601 N Figueroa St Ste 210B, Los Angeles, CA 90042, United States",
+    "website": "https://www.oliveaux.co/",
+    "phone": "323-207-8606",
+    "email": null
+  },
+  {
+    "name": "SALON OPULENCE",
+    "state": "NJ",
+    "city": "FREEHOLD, NJ",
+    "address": "3443 US-9, Suite 4, Freehold, NJ 07728",
+    "website": "https://www.vagaro.com/salonopulence1/services",
+    "phone": "908-936-5186",
+    "email": null
+  },
+  {
+    "name": "SKIN CONCEPT AND LASER",
+    "state": "NY",
+    "city": "NEW YORK, NY",
+    "address": "133 E 58th Street, Suite 1101, New York, NY 10022",
+    "website": "https://skinconceptandlaser.com/",
+    "phone": "646-719-1111",
+    "email": null
+  },
+  {
+    "name": "CLOUD 9 AESTHETICS NYC",
+    "state": "NY",
+    "city": "NEW YORK, NY",
+    "address": "207 E 37th St BG, New York, NY 10016",
+    "website": "https://cloud9-aesthetics.com/",
+    "phone": "646-370-1775",
+    "email": null
+  },
+  {
+    "name": "Alisa G Skin Studio  (ex Alisa Gukailo)",
+    "state": "FL",
+    "city": "WINTER PARK, FL",
+    "address": "2180 N. Park Ave, #326, Winter Park, FL 32789",
+    "website": "https://www.alisag.com/about",
+    "phone": "866-225-4724",
+    "email": null
+  },
+  {
+    "name": "GLAMVIE SPA",
+    "state": "NY",
+    "city": "BROOKLYN, NY",
+    "address": "2905 Ocean Ave, Brooklyn, NY 11235",
+    "website": "https://www.glamvie.com/",
+    "phone": "718-743-2374",
+    "email": null
+  },
+  {
+    "name": "IRYNA GEKKER SKINCARE SPA",
+    "state": "CA",
+    "city": "SHERMAN OAKS, CA",
+    "address": "15206 Ventura Blvd, Suit 200B, Los Angeles, CA, United States, 91403",
+    "website": "https://www.facebook.com/irynagekker/",
+    "phone": "310- 810-5280",
+    "email": null
+  },
+  {
+    "name": "RESTORATIVE INJECTABLES & SKIN",
+    "state": "CO",
+    "city": "DENVER, CO",
+    "address": "6981 E Belleview Ave, Denver, CO 80237",
+    "website": "https://restorativeinjectables.com/",
+    "phone": "303-350-9065",
+    "email": null
+  },
+  {
+    "name": "Anastasia Skin Care Studio",
+    "state": "NY",
+    "city": "NEW YORK, NY",
+    "address": "237 East 59th Street, New York, NY 10022",
+    "website": "https://anastasiaskincare.com/",
+    "phone": "(212) 931-0277",
+    "email": null
+  },
+  {
+    "name": "Natalia Baieva Skincare & Facial Esthetician",
+    "state": "WA",
+    "city": "BELLEVUE, WA",
+    "address": "11153 NE 11th St, Bellevue, WA 98004, United States",
+    "website": "https://baieva.glossgenius.com/",
+    "phone": "425-785-8500",
+    "email": null
+  },
+  {
+    "name": "MED SPA BY ALANA",
+    "state": "CA",
+    "city": "SAN JUAN CAPISTRANO, CA",
+    "address": "27131 Calle Arroyo, Building 1700, Suite 1702, San Juan Capistrano, CA 92675",
+    "website": "https://www.skincarebyalana.com/",
+    "phone": "949-276-5827",
+    "email": null
+  },
+  {
+    "name": "NIKOLE JAYMS ESTHETICS",
+    "state": "WA",
+    "city": "KENNEWICK, WA",
+    "address": "4309B W 27th Pl, Suite 105, Kennewick, WA 99338",
+    "website": "https://nikolejaymsesthetics.com/",
+    "phone": "253-448-1336",
+    "email": null
+  },
+  {
+    "name": "NOBLE BEAUTY",
+    "state": "ID",
+    "city": "LEWISTON, ID",
+    "address": "525 Main St, Lewiston, ID",
+    "website": "https://noble-beauty-33.square.site/",
+    "phone": "208-305-0183",
+    "email": null
+  },
+  {
+    "name": "Allure Skin, Body & Brows",
+    "state": "IA",
+    "city": "CEDAR RAPIDS, IA",
+    "address": "222 3rd Avenue Southeast, Suite 105, Cedar Rapids, IA 52401",
+    "website": "https://allurebeautycr.com/",
+    "phone": "319-362-0779",
+    "email": null
+  },
+  {
+    "name": "MAR SKIN HEALTH AND WELLNESS",
+    "state": "GA",
+    "city": "ATLANTA, GA",
+    "address": "378 Oakdale Rd NE, Atlanta, GA 30307, United States",
+    "website": "https://www.mar-skin.com/",
+    "phone": "404-436-6791",
+    "email": null
+  },
+  {
+    "name": "MERAKI ADVANCED AESTHETICS",
+    "state": "TX",
+    "city": "WILLIS, TX",
+    "address": "10672 FM 1097 W, Suite 200, Willis, TX 77318",
+    "website": "https://www.relaxatmeraki.com/",
+    "phone": "936-577-1771",
+    "email": null
+  },
+  {
+    "name": "ASA WELLNESS LAB",
+    "state": "GA",
+    "city": "Alpharetta, GA",
+    "address": "5755 North Point Pkwy Unit 16, Alpharetta, GA 30022, United States",
+    "website": "https://www.asawellnesslab.com/",
+    "phone": "770-370-5681",
+    "email": null
+  },
+  {
+    "name": "LIANE SKIN TOUCH",
+    "state": "NY",
+    "city": "NEW YORK, NY",
+    "address": "116 Central Park S, New York, NY 10019, United States",
+    "website": "https://www.facebook.com/lianeskintouch/",
+    "phone": "212-961-6336",
+    "email": null
+  }
+]

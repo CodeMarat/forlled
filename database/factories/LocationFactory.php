@@ -20,15 +20,15 @@ class LocationFactory extends Factory
         return [
             'slug' => fake()->unique()->slug(3),
             'sort_order' => fake()->numberBetween(0, 20),
-            'country' => fake()->country(),
-            'country_key' => fake()->slug(1),
             'city' => fake()->city(),
+            'state' => fake()->stateAbbr(),
             'company' => fake()->company(),
             'address' => fake()->streetAddress(),
             'phones' => [fake()->phoneNumber()],
             'email' => fake()->safeEmail(),
-            'map_pin_x' => fake()->numberBetween(0, 100),
-            'map_pin_y' => fake()->numberBetween(0, 100),
+            'website' => fake()->url(),
+            'latitude' => fake()->latitude(),
+            'longitude' => fake()->longitude(),
             'is_active' => true,
         ];
     }

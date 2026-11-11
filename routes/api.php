@@ -17,9 +17,11 @@ use App\Http\Controllers\Api\V1\Page\TreatmentPageController;
 use App\Http\Controllers\Api\V1\PartnerRequestController;
 use App\Http\Controllers\Api\V1\ProductCategoryController;
 use App\Http\Controllers\Api\V1\ProductController;
+use App\Http\Controllers\Api\V1\RepresentedCountryController;
 use App\Http\Controllers\Api\V1\TreatmentController;
 use App\Http\Controllers\Api\V1\TreatmentProductCategoryController;
 use App\Http\Controllers\Api\V1\TreatmentProductController;
+use App\Http\Controllers\Api\V1\VisitorRegionController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('v1')
@@ -45,6 +47,8 @@ Route::prefix('v1')
             ->parameters(['blog-posts' => 'slug'])
             ->only(['index', 'show']);
         Route::apiResource('locations', LocationController::class)->only(['index']);
+        Route::get('represented-countries', [RepresentedCountryController::class, 'index'])->name('represented-countries.index');
+        Route::get('visitor-region', VisitorRegionController::class)->name('visitor-region');
         Route::post('contact-us-requests', ContactUsRequestController::class)->name('contact-us-requests.store');
         Route::apiResource('products', ProductController::class)
             ->parameters(['products' => 'slug'])

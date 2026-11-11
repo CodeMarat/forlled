@@ -18,6 +18,14 @@ return [
         'key' => env('POSTMARK_API_KEY'),
     ],
 
+    'ipinfo' => [
+        'token' => env('IPINFO_TOKEN'),
+    ],
+
+    'google_maps' => [
+        'geocoding_key' => env('GOOGLE_MAPS_GEOCODING_KEY'),
+    ],
+
     'resend' => [
         'key' => env('RESEND_API_KEY'),
     ],

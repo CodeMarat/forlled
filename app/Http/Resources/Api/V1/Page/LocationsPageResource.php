@@ -20,6 +20,18 @@ class LocationsPageResource extends ApiResource
                 'title' => $this->hero_title,
                 'description' => $this->hero_description,
             ],
+            'us' => [
+                'hero' => [
+                    'eyebrow' => $this->us_hero_eyebrow,
+                    'title' => $this->us_hero_title,
+                    'description' => $this->us_hero_description,
+                    'image' => $this->image($this->us_hero_image),
+                ],
+                'locations' => [
+                    'title' => $this->us_locations_title,
+                    'description' => $this->us_locations_description,
+                ],
+            ],
         ];
     }
 }
