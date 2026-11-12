@@ -4,14 +4,14 @@ namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StorePartnerRequest;
-use App\Models\PartnerRequest;
+use App\Support\PartnerRequestSubmission;
 use Illuminate\Http\JsonResponse;
 
 class PartnerRequestController extends Controller
 {
-    public function __invoke(StorePartnerRequest $request): JsonResponse
+    public function __invoke(StorePartnerRequest $request, PartnerRequestSubmission $submission): JsonResponse
     {
-        $partnerRequest = PartnerRequest::query()->create($request->validated());
+        $partnerRequest = $submission->submit($request->validated());
 
         return response()->json([
             'message' => 'Partner request submitted successfully.',

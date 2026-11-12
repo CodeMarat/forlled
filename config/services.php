@@ -22,6 +22,10 @@ return [
         'token' => env('IPINFO_TOKEN'),
     ],
 
+    'partner_requests' => [
+        'recipient' => env('PARTNER_REQUEST_RECIPIENT'),
+    ],
+
     'google_maps' => [
         'geocoding_key' => env('GOOGLE_MAPS_GEOCODING_KEY'),
     ],
