@@ -2,6 +2,8 @@
 
 namespace App\Providers\Filament;
 
+use App\Filament\Pages\MailNotificationSettingsPage;
+use Filament\Actions\Action;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -31,6 +33,13 @@ class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->path('admin')
             ->login()
+            ->userMenuItems([
+                Action::make('mail-settings')
+                    ->label('Mail settings')
+                    ->icon('heroicon-o-envelope')
+                    ->url(fn (): string => MailNotificationSettingsPage::getUrl())
+                    ->sort(1),
+            ])
             ->favicon($this->favicon())
             ->maxContentWidth(Width::Full)
             ->colors([

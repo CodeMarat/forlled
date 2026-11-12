@@ -26,6 +26,10 @@ return [
         'recipient' => env('PARTNER_REQUEST_RECIPIENT'),
     ],
 
+    'contact_us_requests' => [
+        'recipient' => env('CONTACT_US_REQUEST_RECIPIENT') ?: env('PARTNER_REQUEST_RECIPIENT'),
+    ],
+
     'google_maps' => [
         'geocoding_key' => env('GOOGLE_MAPS_GEOCODING_KEY'),
     ],
